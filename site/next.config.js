@@ -9,6 +9,9 @@ const isSwell = provider === '@vercel/commerce-swell'
 const isVendure = provider === '@vercel/commerce-vendure'
 
 module.exports = withCommerceConfig({
+  experimental: {
+    nextScriptWorkers: true,
+  },
   commerce,
   i18n: {
     locales: ['en-US', 'es'],
