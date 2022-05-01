@@ -1,3 +1,4 @@
+const isProd = process.env.NODE_ENV === 'production'
 const commerce = require('./commerce.config.json')
 const { withCommerceConfig, getProviderName } = require('./commerce-config')
 
@@ -9,6 +10,29 @@ const isSwell = provider === '@vercel/commerce-swell'
 const isVendure = provider === '@vercel/commerce-vendure'
 
 module.exports = withCommerceConfig({
+  reactStrictMode: true,
+  swcMinify: true,
+  async headers() {
+    return [
+      {
+        // matching all API routes
+        source: '/api/auth/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Credentials', value: 'true' },
+          { key: 'Access-Control-Allow-Origin', value: '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET, OPTIONS, POST' },
+          { key: 'Access-Control-Allow-Headers', value: '*' },
+        ],
+      },
+    ]
+  },
+  images: {
+    domains: [
+      'via.placeholder.com',
+      'praxio.azureedge.net',
+      'lh3.googleusercontent.com', // for google user profiles
+    ],
+  },
   experimental: {
     nextScriptWorkers: true,
   },
@@ -16,6 +40,36 @@ module.exports = withCommerceConfig({
   i18n: {
     locales: ['en-US', 'es'],
     defaultLocale: 'en-US',
+    // // turning this on will add locale (default locale if you dont supply one) to the url path
+    // // use with caution, as it will break the url path
+    // // https://nextjs.org/docs/advanced-features/i18n-routing
+    // // These are all the locales you want to support in
+    // // your application
+    // locales: ["en-US", "fr"],
+    // // This is the default locale you want to be used when visiting
+    // // a non-locale prefixed path e.g. `/hello`
+    // defaultLocale: "en-US",
+    // // This is a list of locale domains and the default locale they
+    // // should handle (these are only required when setting up domain routing)
+    // // Note: subdomains must be included in the domain value to be matched e.g. "fr.example.com".
+    // // By using domain routing you can configure locales to be served from different domains:
+    // domains: [
+    //   {
+    //     domain: 'example.com',
+    //     defaultLocale: 'en-US',
+    //   },
+    //   {
+    //     domain: 'example.nl',
+    //     defaultLocale: 'nl-NL',
+    //   },
+    //   {
+    //     domain: 'example.fr',
+    //     defaultLocale: 'fr',
+    //     // an optional http field can also be used to test
+    //     // locale domains locally with http instead of https
+    //     http: true,
+    //   },
+    // ],
   },
   rewrites() {
     return [
