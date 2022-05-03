@@ -1,13 +1,12 @@
 {
-  "name": "commerce",
+  "name": "praxio",
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "site",
-    "packages/*"
+    "site"
   ],
   "scripts": {
-    "build": "turbo run build --scope=next-commerce --include-dependencies --no-deps",
+    "build": "turbo run build --scope=praxioconsulting --include-dependencies --no-deps",
     "dev": "turbo run dev",
     "start": "turbo run start",
     "types": "turbo run types",

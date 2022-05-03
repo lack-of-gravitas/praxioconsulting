@@ -1,3 +1,52 @@
+## ⚠️ TO DO PILE
+
+TODO: General Directus GraphQL / Rest API Handler
+TODO: TypeScript knowledge
+TODO: Directus react ui element preview e.g. via image
+TODO: Preview of pages
+TODO: SEO fields
+
+DONE: Update Tailwind Config
+DONE: Update nextconfig.js
+
+DONE: Setup GitHub Token-based Login Using SSH
+https://awsm.page/git/use-github-with-ssh-complete-guide-including-vscode-setup/
+
+## Reference Notes - REGEX
+
+Regex to find a block of html attribs and replace just one occurrence in there
+className="mt-3-md shadow sm:mt-0 sm:ml-3 text-gray"
+with
+className="mt-3-md shadow sm:mt-0 sm:ml-3 text-orange"
+
+search regex className="(._) text-gray-darkest(._)"
+replace regex className={`$1 ${brandColors.defaultTextColor}$2`}
+focus:ring-tennisorange
+focus:border-tennisorange
+
+$1 is the variable from the search in brackets (.\*) - use more if search text is in the middle
+
+## Reference Notes - GitHub Merge and Cascade Code
+
+Process when <main> branch changes
+1 - switch branch
+git switch <branchname>
+
+2 - pull changes from main (without auto-committing changes with no-commit param)
+git pull --no-commit origin main <branchname>
+
+3 - review mods and conflicts
+
+4 - push commits to <branchname>
+git push origin <branchname>
+
+5 - wait for deploy and then test and validate
+
+### Other Commands
+
+git pull from main repo or push base-repo/master branch to other dependent repos using commands above
+(or git merge --no-ff <remote_repo_reference>/<branchname> if merging within same repo)
+git merge --no-ff website/main
 
 > If you encounter any problems while installing and running for the first time, please see the Troubleshoot section
 

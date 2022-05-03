@@ -3,7 +3,7 @@ import type {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from 'next'
-import commerce from '@lib/api/commerce'
+// import commerce from '@lib/api/commerce'
 import { Text } from '@components/ui'
 import { Layout } from '@components/common'
 import getSlug from '@lib/get-slug'
@@ -49,36 +49,34 @@ export async function getStaticProps({
   }
 }
 
-export async function getStaticPaths({ locales }: GetStaticPathsContext) {
-  const config = { locales }
-  const { pages }: { pages: Page[] } = await commerce.getAllPages({ config })
-  const [invalidPaths, log] = missingLocaleInPages()
-  const paths = pages
-    .map((page) => page.url)
-    .filter((url) => {
-      if (!url || !locales) return url
-      // If there are locales, only include the pages that include one of the available locales
-      if (locales.includes(getSlug(url).split('/')[0])) return url
+// export async function getStaticPaths({ locales }: GetStaticPathsContext) {
+//   const config = { locales }
+//   const { pages }: { pages: Page[] } = await commerce.getAllPages({ config })
+//   const [invalidPaths, log] = missingLocaleInPages()
+//   const paths = pages
+//     .map((page) => page.url)
+//     .filter((url) => {
+//       if (!url || !locales) return url
+//       // If there are locales, only include the pages that include one of the available locales
+//       if (locales.includes(getSlug(url).split('/')[0])) return url
 
-      invalidPaths.push(url)
-    })
-  log()
+//       invalidPaths.push(url)
+//     })
+//   log()
 
-  return {
-    paths,
-    fallback: 'blocking',
-  }
-}
+//   return {
+//     paths,
+//     fallback: 'blocking',
+//   }
+// }
 
-export default function Pages({
-  page,
-}: {page: Page}) {
+export default function Pages({ page }: { page: Page }) {
   const router = useRouter()
 
   return router.isFallback ? (
     <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
   ) : (
-    <div className="max-w-2xl mx-8 sm:mx-auto py-20">
+    <div className="max-w-2xl py-20 mx-8 sm:mx-auto">
       {page?.body && <Text html={page.body} />}
     </div>
   )

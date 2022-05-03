@@ -1,11 +1,11 @@
 import { FC } from 'react'
 import cn from 'clsx'
 import Link from 'next/link'
-import type { Product } from '@commerce/types/product'
+// import type { Product } from '@commerce/types/product'
 import s from './ProductCard.module.css'
 import Image, { ImageProps } from 'next/image'
-import WishlistButton from '@components/wishlist/WishlistButton'
-import usePrice from '@framework/product/use-price'
+// import WishlistButton from '@components/wishlist/WishlistButton'
+// import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
 
 interface Props {
@@ -25,11 +25,11 @@ const ProductCard: FC<Props> = ({
   noNameTag = false,
   variant = 'default',
 }) => {
-  const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
-  })
+  // const { price } = usePrice({
+  //   amount: product.price.value,
+  //   baseAmount: product.price.retailPrice,
+  //   currencyCode: product.price.currencyCode!,
+  // })
 
   const rootClassName = cn(
     s.root,
@@ -63,20 +63,20 @@ const ProductCard: FC<Props> = ({
 
         {variant === 'simple' && (
           <>
-            {process.env.COMMERCE_WISHLIST_ENABLED && (
+            {/* {process.env.COMMERCE_WISHLIST_ENABLED && (
               <WishlistButton
                 className={s.wishlistButton}
                 productId={product.id}
                 variant={product.variants[0]}
               />
-            )}
+            )} */}
             {!noNameTag && (
               <div className={s.header}>
                 <h3 className={s.name}>
                   <span>{product.name}</span>
                 </h3>
                 <div className={s.price}>
-                  {`${price} ${product.price?.currencyCode}`}
+                  {/* {`${price} ${product.price?.currencyCode}`} */}
                 </div>
               </div>
             )}
@@ -101,17 +101,17 @@ const ProductCard: FC<Props> = ({
 
         {variant === 'default' && (
           <>
-            {process.env.COMMERCE_WISHLIST_ENABLED && (
+            {/* {process.env.COMMERCE_WISHLIST_ENABLED && (
               <WishlistButton
                 className={s.wishlistButton}
                 productId={product.id}
                 variant={product.variants[0] as any}
               />
-            )}
-            <ProductTag
+            )} */}
+            {/* <ProductTag
               name={product.name}
               price={`${price} ${product.price?.currencyCode}`}
-            />
+            /> */}
             <div className={s.imageContainer}>
               {product?.images && (
                 <div>
