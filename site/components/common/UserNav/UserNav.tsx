@@ -14,7 +14,7 @@ import {
   Button,
 } from '@components/ui'
 
-// import type { LineItem } from '@commerce/types/cart'
+// import type { LineItem } from 'types/cart'
 
 // const countItem = (count: number, item: LineItem) => count + item.quantity
 

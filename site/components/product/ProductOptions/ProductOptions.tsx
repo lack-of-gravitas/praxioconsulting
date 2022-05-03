@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { Swatch } from '@components/product'
-import type { ProductOption } from '@commerce/types/product'
+import type { ProductOption } from 'types/product'
 import { SelectedOptions } from '../helpers'
 
 interface ProductOptionsProps {

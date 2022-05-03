@@ -1,4 +1,4 @@
-import type { Product } from '@commerce/types/product'
+import type { Product } from 'types/product'
 export type SelectedOptions = Record<string, string | null>
 import { Dispatch, SetStateAction } from 'react'
 

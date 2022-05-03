@@ -14,8 +14,8 @@ import { Sidebar, Button, LoadingDots } from '@components/ui'
 // import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView'
 // import { CheckoutProvider } from '@components/checkout/context'
 import { MenuSidebarView } from '@components/common/UserNav'
-// import type { Page } from '@commerce/types/page'
-// import type { Category } from '@commerce/types/site'
+// import type { Page } from 'types/page'
+// import type { Category } from 'types/site'
 import type { Link as LinkProps } from '../UserNav/MenuSidebarView'
 
 const Loading = () => (
@@ -86,39 +86,25 @@ const SidebarView: React.FC<{
       {sidebarView === 'SHIPPING_VIEW' && <ShippingView />}
       {sidebarView === 'PAYMENT_VIEW' && <PaymentMethodView />}
       {sidebarView === 'CHECKOUT_VIEW' && <CheckoutSidebarView />} */}
-      {sidebarView === 'MOBILE_MENU_VIEW' && <MenuSidebarView links={links} />}
+      {/* {sidebarView === 'MOBILE_MENU_VIEW' && <MenuSidebarView links={links} />} */}
     </Sidebar>
   )
 }
 
-const SidebarUI: React.FC<{ links: LinkProps[] }> = ({ links }) => {
-  const { displaySidebar, closeSidebar, sidebarView } = useUI()
-  return displaySidebar ? (
-    <SidebarView
-      links={links}
-      sidebarView={sidebarView}
-      closeSidebar={closeSidebar}
-    />
-  ) : null
-}
-
-const Layout: React.FC<Props> = ({
-  children,
-  pageProps: { categories = [], ...pageProps },
-}) => {
+const Layout: React.FC = ({ children }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
   const { locale = 'en-US' } = useRouter()
-  const navBarlinks = categories.slice(0, 2).map((c) => ({
-    label: c.name,
-    href: `/search/${c.slug}`,
-  }))
+  // const navBarlinks = categories.slice(0, 2).map((c) => ({
+  //   label: c.name,
+  //   href: `/search/${c.slug}`,
+  // }))
 
   return (
     // <CommerceProvider locale={locale}>
     <div className={cn(s.root)}>
-      <Navbar links={navBarlinks} />
+      {/* <Navbar links={navBarlinks} /> */}
       <main className="fit">{children}</main>
-      <Footer pages={pageProps.pages} />
+      {/* <Footer pages={pageProps.pages} /> */}
       <ModalUI />
       {/* <CheckoutProvider>
           <SidebarUI links={navBarlinks} />
