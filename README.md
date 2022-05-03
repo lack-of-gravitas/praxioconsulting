@@ -1,5 +1,18 @@
 ## ⚠️ TO DO PILE
 
+COMMERCE_PROVIDER=@vercel/commerce-local
+# Update these with your Supabase details from your project settings > API
+NEXT_PUBLIC_SUPABASE_URL=https://ivosegsqinbireogpitz.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2b3NlZ3NxaW5iaXJlb2dwaXR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTA3ODk0MjYsImV4cCI6MTk2NjM2NTQyNn0.l6AL7cipLvaik3IqXoc8ZjmKDNqUd_hk61sZ6HoikGA
+
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml2b3NlZ3NxaW5iaXJlb2dwaXR6Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY1MDc4OTQyNiwiZXhwIjoxOTY2MzY1NDI2fQ.D_6K0Yaz5WZyf3iAQ-XxV_IV9kZobQdFFDw8KZRpeM4
+
+# Update these with your Stripe credentials from https://dashboard.stripe.com/apikeys
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_Fv95cr5kks2SYDnXuMjR04Tk
+STRIPE_SECRET_KEY=sk_test_wUH3PsglHfcwRnyXvZmsXdRm
+STRIPE_WEBHOOK_SECRET=whsec_xQzZRmDnd5DJZ6DCLCgPIMVC7nts2EnC
+
+
 TODO: General Directus GraphQL / Rest API Handler
 TODO: TypeScript knowledge
 TODO: Directus react ui element preview e.g. via image
