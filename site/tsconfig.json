@@ -25,6 +25,13 @@
       "@types": ["types"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "../examples/api/nextjs-subs/create-checkout-session.ts"
+  ],
   "exclude": ["node_modules"]
 }

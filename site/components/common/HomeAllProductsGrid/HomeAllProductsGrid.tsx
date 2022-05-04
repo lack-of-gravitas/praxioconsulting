@@ -2,7 +2,6 @@ import { FC } from 'react'
 import Link from 'next/link'
 import type { Product } from 'types/product'
 import { Grid } from '@components/ui'
-import { ProductCard } from '@components/product'
 import s from './HomeAllProductsGrid.module.css'
 // import { getCategoryPath, getDesignerPath } from '@lib/search'
 
@@ -28,7 +27,7 @@ const HomeAllProductsGrid: FC<Props> = ({
               </Link> */}
             </li>
             {categories.map((cat: any) => (
-              <li key={cat.path} className="py-1 text-accent-8 text-base">
+              <li key={cat.path} className="py-1 text-base text-accent-8">
                 {/* <Link href={getCategoryPath(cat.path)}>
                   <a>{cat.name}</a>
                 </Link> */}
@@ -42,7 +41,7 @@ const HomeAllProductsGrid: FC<Props> = ({
               </Link> */}
             </li>
             {brands.flatMap(({ node }: any) => (
-              <li key={node.path} className="py-1 text-accent-8 text-base">
+              <li key={node.path} className="py-1 text-base text-accent-8">
                 {/* <Link href={getDesignerPath(node.path)}>
                   <a>{node.name}</a>
                 </Link> */}
@@ -53,7 +52,7 @@ const HomeAllProductsGrid: FC<Props> = ({
       </div>
       <div className="flex-1">
         <Grid layout="normal">
-          {products.map((product) => (
+          {/* {products.map((product) => (
             <ProductCard
               key={product.path}
               product={product}
@@ -63,7 +62,7 @@ const HomeAllProductsGrid: FC<Props> = ({
                 height: 480,
               }}
             />
-          ))}
+          ))} */}
         </Grid>
       </div>
     </div>

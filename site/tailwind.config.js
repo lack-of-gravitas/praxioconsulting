@@ -1,11 +1,15 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './lib/**/*.{js,ts,jsx,tsx}',
   ],
   safelist: ['outline-none'],
   theme: {
     extend: {
+      // keep default and further extend colors and such
       maxWidth: {
         '8xl': '1920px',
       },
@@ -36,11 +40,19 @@ module.exports = {
         blue: 'var(--blue)',
         green: 'var(--green)',
         red: 'var(--red)',
+        orange: colors.orange,
+        lime: colors.lime,
+        gray: colors.gray,
+        slate: colors.slate,
+        primaryColor: colors.cyan,
       },
       textColor: {
         base: 'var(--text-base)',
         primary: 'var(--text-primary)',
         secondary: 'var(--text-secondary)',
+      },
+      fontFamily: {
+        sans: ['Inter var', 'sans-serif'],
       },
       boxShadow: {
         'outline-normal': '0 0 0 2px var(--accent-2)',
@@ -55,4 +67,10 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    require('@tailwindcss/forms'), // cleaner forms - https://github.com/tailwindlabs/tailwindcss-forms
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'), // adds prose class for niceness on std elements without effort
+    require('@tailwindcss/line-clamp'), // restricts text to # lines
+  ],
 }
