@@ -31,7 +31,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
-    "../examples/api/nextjs-subs/create-checkout-session.ts"
+    "../examples/api/api/create-checkout-session.ts"
   ],
   "exclude": ["node_modules"]
 }

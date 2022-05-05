@@ -14,6 +14,12 @@ export type Page = {
   sort_order?: number
 }
 
+export interface PageMeta {
+  title: string
+  description: string
+  cardImage: string
+}
+
 export type PageTypes = {
   page: Page
 }

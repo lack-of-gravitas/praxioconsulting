@@ -5,3 +5,13 @@
 @import './components.css';
 
 @tailwind utilities;
+@layer base {
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal italic condensed;
+    font-weight: 100 200 300 500 700 900;
+    font-display: optional;
+    src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap')
+      format('woff2');
+  }
+}

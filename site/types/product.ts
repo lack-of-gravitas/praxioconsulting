@@ -1,3 +1,66 @@
+import Stripe from 'stripe'
+
+export type Product = {
+  id: string
+  active?: boolean
+  name: string
+  description: string
+  descriptionHtml?: string
+  sku?: string
+  slug?: string
+  path?: string
+  image?: string
+  images: ProductImage[]
+  variants: ProductVariant[]
+  price: ProductPrice
+  options: ProductOption[]
+  metadata?: Stripe.Metadata
+  vendor?: string
+}
+
+// start stripe subs
+export interface ProductWithPrice extends Product {
+  prices?: Price[]
+}
+
+export interface Price {
+  id: string /* primary key */
+  product_id?: string /* foreign key to products.id */
+  active?: boolean
+  description?: string
+  unit_amount?: number
+  currency?: string
+  type?: string
+  interval?: Stripe.Price.Recurring.Interval
+  interval_count?: number
+  trial_period_days?: number | null
+  metadata?: Stripe.Metadata
+  products?: Product
+}
+
+export interface PriceWithProduct extends Price {}
+
+export interface Subscription {
+  id: string /* primary key */
+  user_id: string
+  status?: Stripe.Subscription.Status
+  metadata?: Stripe.Metadata
+  price_id?: string /* foreign key to prices.id */
+  quantity?: number
+  cancel_at_period_end?: boolean
+  created: string
+  current_period_start: string
+  current_period_end: string
+  ended_at?: string
+  cancel_at?: string
+  canceled_at?: string
+  trial_start?: string
+  trial_end?: string
+  prices?: Price
+}
+
+// end stripe subs
+
 export type ProductImage = {
   url: string
   alt?: string
@@ -29,21 +92,6 @@ export type ProductVariant = {
   id: string | number
   options: ProductOption[]
   availableForSale?: boolean
-}
-
-export type Product = {
-  id: string
-  name: string
-  description: string
-  descriptionHtml?: string
-  sku?: string
-  slug?: string
-  path?: string
-  images: ProductImage[]
-  variants: ProductVariant[]
-  price: ProductPrice
-  options: ProductOption[]
-  vendor?: string
 }
 
 export type SearchProductsBody = {

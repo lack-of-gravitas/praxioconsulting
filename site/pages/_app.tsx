@@ -5,7 +5,13 @@ import 'keen-slider/keen-slider.min.css'
 import { FC, useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import { Head } from '@components/common'
-import { ManagedUIContext } from '@components/ui/context'
+// import { ManagedUIContext } from '@components/ui/context'
+
+// supabase auth
+// import { UserProvider } from '@supabase/supabase-auth-helpers/react'
+// import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
+// import { MyUserContextProvider } from '@lib/hooks/useUser'
+// end supabase imports
 
 const Noop: FC = ({ children }) => <>{children}</>
 
@@ -19,11 +25,16 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head />
-      <ManagedUIContext>
-        <Layout pageProps={pageProps}>
-          <Component {...pageProps} />
-        </Layout>
-      </ManagedUIContext>
+      {/* <ManagedUIContext> */}
+      {/* <UserProvider supabaseClient={supabaseClient}>
+        <MyUserContextProvider supabaseClient={supabaseClient}> */}
+      <Layout pageProps={pageProps}>
+        <Component {...pageProps} />
+      </Layout>
+      {/* </MyUserContextProvider>
+      </UserProvider> */}
+
+      {/* </ManagedUIContext> */}
     </>
   )
 }

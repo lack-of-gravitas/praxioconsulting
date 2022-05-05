@@ -1,14 +1,39 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  important: true,
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    './lib/**/*.{js,ts,jsx,tsx}',
+    // './lib/**/*.{js,ts,jsx,tsx}',
   ],
   safelist: ['outline-none'],
   theme: {
+    // fontFamily: fontFamily, // <-- this is where the override is happening
     extend: {
+      fontFamily: {
+        sans: [
+          '"Roboto"',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          '"Helvetica Neue"',
+          'Arial',
+          '"Noto Sans"',
+          'sans-serif',
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+          '"Noto Color Emoji"',
+        ],
+      },
       // keep default and further extend colors and such
       maxWidth: {
         '8xl': '1920px',
@@ -51,9 +76,7 @@ module.exports = {
         primary: 'var(--text-primary)',
         secondary: 'var(--text-secondary)',
       },
-      fontFamily: {
-        sans: ['Inter var', 'sans-serif'],
-      },
+
       boxShadow: {
         'outline-normal': '0 0 0 2px var(--accent-2)',
         magical:
