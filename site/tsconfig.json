@@ -22,16 +22,9 @@
       "@config/*": ["config/*"],
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
-      "@types": ["types"]
+      "@types/*": ["types/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "../examples/api/api/create-checkout-session.ts"
-  ],
+  "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
   "exclude": ["node_modules"]
 }

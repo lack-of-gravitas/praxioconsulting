@@ -10,10 +10,10 @@ export type Product = {
   slug?: string
   path?: string
   image?: string
-  images: ProductImage[]
-  variants: ProductVariant[]
-  price: ProductPrice
-  options: ProductOption[]
+  images?: ProductImage[]
+  variants?: ProductVariant[]
+  price?: ProductPrice
+  options?: ProductOption[]
   metadata?: Stripe.Metadata
   vendor?: string
 }

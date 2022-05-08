@@ -1,14 +1,30 @@
+Kyaro Adventures
+
+Description
+-safari
+-hiking
+-biking
+
+Contact
+Itinerary
+Booking / Payment
+
+Email
+
 ## ⚠️ TO DO PILE
+
 # Update these with your Supabase details from your project settings > API
+
 NEXT_PUBLIC_SUPABASE_URL=https://ivosegsqinbireogpitz.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 SUPABASE_SERVICE_ROLE_KEY=
+
 # Update these with your Stripe credentials from https://dashboard.stripe.com/apikeys
+
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
-
 
 TODO: General Directus GraphQL / Rest API Handler
 TODO: TypeScript knowledge

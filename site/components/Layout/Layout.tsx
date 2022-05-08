@@ -16,7 +16,7 @@ import { Sidebar, Button, LoadingDots } from '@components/ui'
 import { MenuSidebarView } from '@components/common/UserNav'
 // import type { Page } from 'types/page'
 // import type { Category } from 'types/site'
-import type { Link as LinkProps } from '../UserNav/MenuSidebarView'
+import type { Link as LinkProps } from '../common/UserNav/MenuSidebarView'
 
 const Loading = () => (
   <div className="flex items-center justify-center p-3 text-center w-80 h-80">
