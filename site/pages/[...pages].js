@@ -1,6 +1,6 @@
 import delve from 'dlv'
 import ErrorPage from 'next/error'
-import Layout from '@components/Layout'
+import Layout from '@components/sections/Layout'
 import { fetchGetJSON } from '@lib/api-helpers'
 // import { Block } from '@components/blocks'
 
@@ -92,35 +92,36 @@ export async function getStaticProps(context) {
     path = context.params.slug[context.params.slug.length - 1]
   }
 
-  let apiResponse = await fetchGetJSON(
-    `${process.env.NEXT_PUBLIC_BACKEND}/pages?_where[0][brand.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=${path}`
-  )
+  let apiResponse = ''
+  // await fetchGetJSON(
+  //   `${process.env.NEXT_PUBLIC_BACKEND}/pages?_where[0][brand.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=${path}`
+  // )
   //  console.log("apiResponse: ", apiResponse);
 
   let data = {}
-  data.path = path
-  data.globalData = {
-    name: apiResponse[0].brand.name,
-    tagline: apiResponse[0].brand.tagline,
-    domain: apiResponse[0].brand.domain,
-    locale: apiResponse[0].brand.locale,
-    themes: apiResponse[0].brand.themes,
-    navigation: apiResponse[0].brand.navigation,
-    footer: apiResponse[0].brand.footer,
-    seo: apiResponse[0].brand.seo,
-    locations: apiResponse[0].brand.locations,
-    socials: apiResponse[0].brand.socials,
-  }
-  data.pageData = apiResponse[0]
+  // data.path = path
+  // data.globalData = {
+  //   name: apiResponse[0].brand.name,
+  //   tagline: apiResponse[0].brand.tagline,
+  //   domain: apiResponse[0].brand.domain,
+  //   locale: apiResponse[0].brand.locale,
+  //   themes: apiResponse[0].brand.themes,
+  //   navigation: apiResponse[0].brand.navigation,
+  //   footer: apiResponse[0].brand.footer,
+  //   seo: apiResponse[0].brand.seo,
+  //   locations: apiResponse[0].brand.locations,
+  //   socials: apiResponse[0].brand.socials,
+  // }
+  // data.pageData = apiResponse[0]
 
-  apiResponse = await fetchGetJSON(
-    `${process.env.NEXT_PUBLIC_BACKEND}/articles?_where[0][brands.domain]=${process.env.NEXT_PUBLIC_BRAND}&_limit=3`
-  )
+  // apiResponse = await fetchGetJSON(
+  //   `${process.env.NEXT_PUBLIC_BACKEND}/articles?_where[0][brands.domain]=${process.env.NEXT_PUBLIC_BRAND}&_limit=3`
+  // )
 
-  // console.log("apiResponse: ", apiResponse);
+  // // console.log("apiResponse: ", apiResponse);
 
-  data.pageData.articles = apiResponse
-  // console.log("data: ", data);
+  // data.pageData.articles = apiResponse
+  // // console.log("data: ", data);
 
   // return props with data to component
   return {
@@ -177,7 +178,8 @@ export default Universals
 // } from 'next'
 // // import commerce from '@lib/api/commerce'
 // import { Text } from '@components/ui'
-// import { Layout } from '@components/common'
+// import Layout from '@components/sections/Layout'
+
 // import getSlug from '@lib/get-slug'
 // import { missingLocaleInPages } from '@lib/usage-warns'
 // import type { Page } from 'types'

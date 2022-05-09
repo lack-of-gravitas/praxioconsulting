@@ -34,37 +34,37 @@ module.exports =
     },
 
     // commerce,
-    i18n: {
-      // turning this on will add locale (default locale if you dont supply one) to the url path
-      // use with caution, as it will break the url path
-      // https://nextjs.org/docs/advanced-features/i18n-routing
-      // These are all the locales you want to support in your application
-      locales: ['en-US'],
-      // locales: ["en-US", "fr"],
-      // This is the default locale you want to be used when visiting a non-locale prefixed path e.g. `/hello`
-      defaultLocale: 'en-US',
-      // This is a list of locale domains and the default locale they
-      // should handle (these are only required when setting up domain routing)
-      // Note: subdomains must be included in the domain value to be matched e.g. "fr.example.com".
-      // By using domain routing you can configure locales to be served from different domains:
-      // domains: [
-      //   {
-      //     domain: 'example.com',
-      //     defaultLocale: 'en-US',
-      //   },
-      //   {
-      //     domain: 'example.nl',
-      //     defaultLocale: 'nl-NL',
-      //   },
-      //   {
-      //     domain: 'example.fr',
-      //     defaultLocale: 'fr',
-      //     // an optional http field can also be used to test
-      //     // locale domains locally with http instead of https
-      //     http: true,
-      //   },
-      // ],
-    },
+    // i18n: {
+    // turning this on will add locale (default locale if you dont supply one) to the url path
+    // use with caution, as it will break the url path
+    // https://nextjs.org/docs/advanced-features/i18n-routing
+    // These are all the locales you want to support in your application
+    // locales: ['en-US'],
+    // locales: ["en-US", "fr"],
+    // This is the default locale you want to be used when visiting a non-locale prefixed path e.g. `/hello`
+    // defaultLocale: 'en-US',
+    // This is a list of locale domains and the default locale they
+    // should handle (these are only required when setting up domain routing)
+    // Note: subdomains must be included in the domain value to be matched e.g. "fr.example.com".
+    // By using domain routing you can configure locales to be served from different domains:
+    // domains: [
+    //   {
+    //     domain: 'example.com',
+    //     defaultLocale: 'en-US',
+    //   },
+    //   {
+    //     domain: 'example.nl',
+    //     defaultLocale: 'nl-NL',
+    //   },
+    //   {
+    //     domain: 'example.fr',
+    //     defaultLocale: 'fr',
+    //     // an optional http field can also be used to test
+    //     // locale domains locally with http instead of https
+    //     http: true,
+    //   },
+    // ],
+    // },
     // rewrites() {
     //   return [
     //     (isBC || isShopify || isSwell || isVendure || isSaleor) && {

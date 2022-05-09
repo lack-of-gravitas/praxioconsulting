@@ -9,8 +9,8 @@ import CustomerMenuContent from './CustomerMenuContent'
 // import useCustomer from '@framework/customer/use-customer'
 import React from 'react'
 import {
-  Dropdown,
-  DropdownTrigger as DropdownTriggerInst,
+  // Dropdown,
+  // DropdownTrigger as DropdownTriggerInst,
   Button,
 } from '@components/ui'
 

@@ -1,4 +1,4 @@
-import Layout from '@components/Layout'
+import Layout from '@components/sections/Layout'
 import { Hero } from '@components/ui'
 
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'

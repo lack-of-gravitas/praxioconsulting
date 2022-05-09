@@ -64,7 +64,7 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
     >
       {children}
       {loading && (
-        <i className="pl-2 m-0 flex">
+        <i className="flex pl-2 m-0">
           <LoadingDots />
         </i>
       )}
@@ -73,3 +73,20 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
 })
 
 export default Button
+
+// BUTTON FROM COMMERCE JS (INCLUDES PRICE)
+
+{
+  /* <div className="py-4 d-flex">
+          <button onClick={this.handleAddToCart} disabled={soldOut}
+              className="h-56 pl-3 pr-4 bg-black font-color-white d-flex align-items-center flex-grow-1" type="button">
+            <span className="mr-3 text-center flex-grow-1">
+              { soldOut ? 'Sold out' : 'Add to cart' }
+            </span>
+            <span className="pl-3 border-left border-color-white">
+            {priceSymbol}{this.getPrice()}
+            </span>
+          </button>
+        </div>
+         */
+}

@@ -4,10 +4,10 @@ import { useRouter } from 'next/router'
 import { Moon, Sun } from '@components/icons'
 import s from './CustomerMenuContent.module.css'
 // import useLogout from '@framework/auth/use-logout'
-import {
-  DropdownContent,
-  DropdownMenuItem,
-} from '@components/ui/Dropdown/Dropdown'
+// import {
+//   DropdownContent,
+//   DropdownMenuItem,
+// } from '@components/ui/Dropdown/Dropdown'
 
 const LINKS = [
   {
@@ -35,7 +35,8 @@ export default function CustomerMenuContent() {
   }
 
   return (
-    <DropdownContent
+    <>
+      {/* <DropdownContent
       asChild
       side="bottom"
       sideOffset={10}
@@ -81,6 +82,7 @@ export default function CustomerMenuContent() {
           Logout
         </a>
       </DropdownMenuItem>
-    </DropdownContent>
+    </DropdownContent> */}
+    </>
   )
 }
