@@ -11,7 +11,7 @@ export { default as Logo } from './Logo'
 export { default as Modal } from './Modal'
 export { default as Quantity } from './Quantity'
 export { default as Rating } from './Rating'
-export { default as Sidebar } from './Sidebar'
+// export { default as Sidebar } from './Sidebar'yarn
 export { default as Skeleton } from './Skeleton'
 export { default as Text } from './Text'
 export { useUI } from './context'
