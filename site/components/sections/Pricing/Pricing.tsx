@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-import Button from 'components/ui/Button'
+import Button from '@components/ui/Button'
 import { postData } from '@lib/api-helpers'
 import { getStripe } from '@lib/stripe-client'
 import { useUser } from '@lib/hooks/useUser'

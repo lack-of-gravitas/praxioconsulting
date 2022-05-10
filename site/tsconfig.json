@@ -21,7 +21,7 @@
       "@utils/*": ["utils/*"],
       "@config/*": ["config/*"],
       "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"],
+      "@components/*": ["global/*"],
       "@types/*": ["types/*"]
     }
   },
