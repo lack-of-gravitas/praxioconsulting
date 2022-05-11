@@ -1,6 +1,6 @@
-import delve from "dlv";
-import Link from "next/link";
-import Image from "next/image";
+import delve from 'dlv'
+import Link from 'next/link'
+import Image from 'next/image'
 import {
   AnnotationIcon,
   GlobeAltIcon,
@@ -8,13 +8,13 @@ import {
   ScaleIcon,
   MailIcon,
   ArrowRightIcon,
-} from "@heroicons/react/outline";
+} from '@heroicons/react/outline'
 
-import RichContent from "../RichContent";
+import RichContent from '../../organisms/ContentBlock/RichContent'
 
-const MajorFeature = ({data}) => {
-  let { header, style, image, content, buttons } = data;
-  
+const MajorFeature = ({ data }) => {
+  let { header, style, image, content, buttons } = data
+
   function blockHeader() {
     return (
       <div className="relative">
@@ -25,7 +25,7 @@ const MajorFeature = ({data}) => {
           {header.text}
         </p>
       </div>
-    );
+    )
   }
 
   function featureImageLeft() {
@@ -71,7 +71,11 @@ const MajorFeature = ({data}) => {
               <RichContent content={content}></RichContent>
               {buttons.map((button, index) => (
                 <div key={index} className="mt-3 sm:mt-0 sm:flex-shrink-0 py-3">
-                  <Link href={button.link.href} className="cursor-auto" passHref>
+                  <Link
+                    href={button.link.href}
+                    className="cursor-auto"
+                    passHref
+                  >
                     <button
                       type="button"
                       className="rounded-md shadow-lg relative inline-flex items-center px-4 py-3 border border-transparent text-lg font-medium rounded-md text-white bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
@@ -133,7 +137,7 @@ const MajorFeature = ({data}) => {
           </div>
         </div>
       </>
-    );
+    )
   }
   function featureImageRight() {
     return (
@@ -236,7 +240,7 @@ const MajorFeature = ({data}) => {
           </div>
         </div>
       </>
-    );
+    )
   }
   function featureImageCenter() {
     return (
@@ -253,7 +257,11 @@ const MajorFeature = ({data}) => {
                   key={index}
                   className="mt-3 sm:mt-0 sm:ml-3 sm:flex-shrink-0 py-3"
                 >
-                  <Link href={button.link.href} className="cursor-auto" passHref>
+                  <Link
+                    href={button.link.href}
+                    className="cursor-auto"
+                    passHref
+                  >
                     <button
                       type="button"
                       className="rounded-md shadow-lg relative inline-flex items-center px-4 py-3 border border-transparent text-lg font-medium rounded-md text-white bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
@@ -282,7 +290,7 @@ const MajorFeature = ({data}) => {
           </div>
         </div>
       </>
-    );
+    )
   }
 
   return (
@@ -290,15 +298,15 @@ const MajorFeature = ({data}) => {
       <div className="py-16 bg-gray-50 overflow-hidden lg:py-15">
         <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
           {header && blockHeader()}
-          {image && style === "imageLeft" && featureImageLeft()}
-          {image && style === "imageRight" && featureImageRight()}
-          {image && style === "imageCenter" && featureImageCenter()}
+          {image && style === 'imageLeft' && featureImageLeft()}
+          {image && style === 'imageRight' && featureImageRight()}
+          {image && style === 'imageCenter' && featureImageCenter()}
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-MajorFeature.defaultProps = {};
+MajorFeature.defaultProps = {}
 
-export default MajorFeature;
+export default MajorFeature

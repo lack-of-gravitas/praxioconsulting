@@ -1,12 +1,12 @@
-import delve from "dlv";
-import Link from "next/link";
-import Image from "next/image";
-import { CheckIcon, XIcon, ArrowRightIcon } from "@heroicons/react/outline";
-import RichContent from "../RichContent";
+import delve from 'dlv'
+import Link from 'next/link'
+import Image from 'next/image'
+import { CheckIcon, XIcon, ArrowRightIcon } from '@heroicons/react/outline'
+import RichContent from '../../organisms/ContentBlock/RichContent'
 
 const MinorFeatures = ({ data }) => {
   // console.log("data ---", data);
-  let { header, perks } = data;
+  let { header, perks } = data
   // console.log('perks -- ', perks)
 
   return (
@@ -79,7 +79,7 @@ const MinorFeatures = ({ data }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default MinorFeatures;
+export default MinorFeatures
