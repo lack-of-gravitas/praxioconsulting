@@ -10,7 +10,7 @@ import {
   ArrowRightIcon,
 } from '@heroicons/react/outline'
 
-import RichContent from '../../ui/RichContent'
+import RichContent from '../RichContent'
 
 const MajorFeature = ({ data }) => {
   let { header, style, image, content, buttons } = data
@@ -18,10 +18,10 @@ const MajorFeature = ({ data }) => {
   function blockHeader() {
     return (
       <div className="relative">
-        <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <h2 className="text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-900 sm:text-4xl">
           {header.title}
         </h2>
-        <p className="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">
+        <p className="max-w-3xl mx-auto mt-4 text-xl text-center text-gray-500">
           {header.text}
         </p>
       </div>
@@ -32,7 +32,7 @@ const MajorFeature = ({ data }) => {
     return (
       <>
         <svg
-          className="hidden lg:block absolute right-full transform translate-x-1/2 translate-y-12"
+          className="absolute hidden transform translate-x-1/2 translate-y-12 lg:block right-full"
           width={404}
           height={784}
           fill="none"
@@ -70,7 +70,7 @@ const MajorFeature = ({ data }) => {
             <div className="lg:col-start-2">
               <RichContent content={content}></RichContent>
               {buttons.map((button, index) => (
-                <div key={index} className="mt-3 sm:mt-0 sm:flex-shrink-0 py-3">
+                <div key={index} className="py-3 mt-3 sm:mt-0 sm:flex-shrink-0">
                   <Link
                     href={button.link.href}
                     className="cursor-auto"
@@ -78,10 +78,10 @@ const MajorFeature = ({ data }) => {
                   >
                     <button
                       type="button"
-                      className="rounded-md shadow-lg relative inline-flex items-center px-4 py-3 border border-transparent text-lg font-medium rounded-md text-white bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+                      className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-md shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
                     >
                       {/* <ArrowRightIcon
-                      className="-ml-1 mr-2 h-6 w-6"
+                      className="w-6 h-6 mr-2 -ml-1"
                       aria-hidden="true"
                     /> */}
                       <span>{button.link.label}</span>
@@ -91,9 +91,9 @@ const MajorFeature = ({ data }) => {
               ))}
             </div>
 
-            <div className="mt-10 -mx-4 relative lg:mt-0 lg:col-start-1">
+            <div className="relative mt-10 -mx-4 lg:mt-0 lg:col-start-1">
               <svg
-                className="absolute left-1/2 transform -translate-x-1/2 translate-y-16 lg:hidden"
+                className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
                 width={784}
                 height={404}
                 fill="none"
@@ -143,7 +143,7 @@ const MajorFeature = ({ data }) => {
     return (
       <>
         <svg
-          className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
+          className="absolute hidden transform -translate-x-1/2 lg:block left-full -translate-y-1/4"
           width={404}
           height={784}
           fill="none"
@@ -179,14 +179,14 @@ const MajorFeature = ({ data }) => {
           <div className="relative">
             <RichContent content={content}></RichContent>
             {buttons.map((button, index) => (
-              <div key={index} className="mt-3 sm:mt-0  sm:flex-shrink-0 py-3">
+              <div key={index} className="py-3 mt-3 sm:mt-0 sm:flex-shrink-0">
                 <Link href={button.link.href} className="cursor-auto" passHref>
                   <button
                     type="button"
-                    className="rounded-md shadow-lg relative inline-flex items-center px-4 py-3 border border-transparent text-lg font-medium rounded-md text-white bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+                    className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-md shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
                   >
                     {/* <ArrowRightIcon
-                      className="-ml-1 mr-2 h-6 w-6"
+                      className="w-6 h-6 mr-2 -ml-1"
                       aria-hidden="true"
                     /> */}
                     <span>{button.link.label}</span>
@@ -196,9 +196,9 @@ const MajorFeature = ({ data }) => {
             ))}
           </div>
 
-          <div className="mt-10 -mx-4 relative lg:mt-0" aria-hidden="true">
+          <div className="relative mt-10 -mx-4 lg:mt-0" aria-hidden="true">
             <svg
-              className="absolute left-1/2 transform -translate-x-1/2 translate-y-16 lg:hidden"
+              className="absolute transform -translate-x-1/2 translate-y-16 left-1/2 lg:hidden"
               width={784}
               height={404}
               fill="none"
@@ -245,17 +245,17 @@ const MajorFeature = ({ data }) => {
   function featureImageCenter() {
     return (
       <>
-        <div className="relative bg-gray-50 pt-16 overflow-hidden sm:pt-24 lg:pt-24">
-          <div className="mx-auto max-w-full px-4 text-center sm:px-6 sm:max-w-7xl lg:px-8 lg:max-w-7xl">
+        <div className="relative pt-16 overflow-hidden bg-gray-50 sm:pt-24 lg:pt-24">
+          <div className="max-w-full px-4 mx-auto text-center sm:px-6 sm:max-w-7xl lg:px-8 lg:max-w-7xl">
             <div className="flex justify-center">
               <RichContent content={content}></RichContent>
             </div>
 
-            <div className="flex justify-center mt-8 flex lg:mt-0 lg:flex-shrink-0">
+            <div className="flex justify-center mt-8 lg:mt-0 lg:flex-shrink-0">
               {buttons.map((button, index) => (
                 <div
                   key={index}
-                  className="mt-3 sm:mt-0 sm:ml-3 sm:flex-shrink-0 py-3"
+                  className="py-3 mt-3 sm:mt-0 sm:ml-3 sm:flex-shrink-0"
                 >
                   <Link
                     href={button.link.href}
@@ -264,10 +264,10 @@ const MajorFeature = ({ data }) => {
                   >
                     <button
                       type="button"
-                      className="rounded-md shadow-lg relative inline-flex items-center px-4 py-3 border border-transparent text-lg font-medium rounded-md text-white bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+                      className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-md shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
                     >
                       {/* <ArrowRightIcon
-                        className="-ml-1 mr-2 h-6 w-6"
+                        className="w-6 h-6 mr-2 -ml-1"
                         aria-hidden="true"
                       /> */}
                       <span>{button.link.label}</span>
@@ -295,8 +295,8 @@ const MajorFeature = ({ data }) => {
 
   return (
     <>
-      <div className="py-16 bg-gray-50 overflow-hidden lg:py-15">
-        <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+      <div className="py-16 overflow-hidden bg-gray-50 lg:py-15">
+        <div className="relative max-w-xl px-4 mx-auto sm:px-6 lg:px-8 lg:max-w-7xl">
           {header && blockHeader()}
           {image && style === 'imageLeft' && featureImageLeft()}
           {image && style === 'imageRight' && featureImageRight()}

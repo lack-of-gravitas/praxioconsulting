@@ -2,7 +2,7 @@ import delve from 'dlv'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CheckIcon, XIcon, ArrowRightIcon } from '@heroicons/react/outline'
-import RichContent from '../../organisms/ContentBlock/RichContent'
+import RichContent from '../ContentBlock/RichContent'
 
 const MinorFeatures = ({ data }) => {
   // console.log("data ---", data);
@@ -12,10 +12,10 @@ const MinorFeatures = ({ data }) => {
   return (
     <>
       <div className="bg-white">
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
+        <div className="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
           {header && (
             <div>
-              <h2 className="text-base font-semibold text-primaryColor-600 uppercase tracking-wide">
+              <h2 className="text-base font-semibold tracking-wide uppercase text-primaryColor-600">
                 {header.title}
               </h2>
               <p className="mt-2 text-3xl font-extrabold text-gray-900">
@@ -31,21 +31,21 @@ const MinorFeatures = ({ data }) => {
                   <dt>
                     {perk.included ? (
                       <CheckIcon
-                        className="absolute h-6 w-6 text-green-900"
+                        className="absolute w-6 h-6 text-green-900"
                         aria-hidden="true"
                       />
                     ) : (
                       <XIcon
-                        className="absolute h-6 w-6 text-red-500"
+                        className="absolute w-6 h-6 text-red-500"
                         aria-hidden="true"
                       />
                     )}
 
-                    <p className="ml-9 text-lg leading-6 font-medium text-gray-900">
+                    <p className="text-lg font-medium leading-6 text-gray-900 ml-9">
                       {perk.title}
                     </p>
                   </dt>
-                  <dd className="mt-2 ml-9 text-base text-gray-500">
+                  <dd className="mt-2 text-base text-gray-500 ml-9">
                     {perk.description}
                   </dd>
                 </div>
@@ -56,20 +56,20 @@ const MinorFeatures = ({ data }) => {
                   <dt>
                     {perk.included ? (
                       <CheckIcon
-                        className="absolute h-6 w-6 text-green-900"
+                        className="absolute w-6 h-6 text-green-900"
                         aria-hidden="true"
                       />
                     ) : (
                       <XIcon
-                        className="absolute h-6 w-6 text-red-500"
+                        className="absolute w-6 h-6 text-red-500"
                         aria-hidden="true"
                       />
                     )}
-                    <p className="ml-9 text-lg leading-6 font-medium text-gray-900">
+                    <p className="text-lg font-medium leading-6 text-gray-900 ml-9">
                       {perk.title}
                     </p>
                   </dt>
-                  <dd className="mt-2 ml-9 text-base text-gray-500">
+                  <dd className="mt-2 text-base text-gray-500 ml-9">
                     {perk.description}
                   </dd>
                 </div>
