@@ -1,4 +1,4 @@
-import PreviewBanner from '../../organisms/Banner/previewBanner'
+import PreviewBanner from '../../organisms/Banner'
 import Seo from '../../atoms/SEO/seo'
 import dynamic from 'next/dynamic'
 
