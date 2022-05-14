@@ -1,3 +1,5 @@
+//https://nextjs.org/docs/basic-features/layouts
+
 import cn from 'clsx'
 import s from './Layout.module.css'
 import dynamic from 'next/dynamic'

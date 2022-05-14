@@ -18,10 +18,12 @@
     "incremental": true,
     "paths": {
       "@lib/*": ["lib/*"],
-      "@utils/*": ["utils/*"],
       "@config/*": ["config/*"],
       "@assets/*": ["assets/*"],
-      "@components/*": ["global/*"],
+      "@components/atoms/*": ["atoms/*"],
+      "@components/molecules/*": ["molecules/*"],
+      "@components/organisms/*": ["organisms/*"],
+      "@components/templates/*": ["templates/*"],
       "@types/*": ["types/*"]
     }
   },
