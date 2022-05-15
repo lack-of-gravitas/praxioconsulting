@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 import rangeMap from '@lib/range-map'
-import { Star } from '@components/icons'
+import { Star } from '@components/atoms/Icons'
 import cn from 'clsx'
 
 export interface RatingProps {

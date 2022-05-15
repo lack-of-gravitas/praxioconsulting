@@ -1,1 +1,1 @@
-export { default } from './VideoLibrary'
+export { default } from './CourseContent'

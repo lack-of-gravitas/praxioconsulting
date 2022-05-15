@@ -1,24 +1,20 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Disclosure } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/outline";
-import parse from "html-react-parser";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import Link from 'next/link'
+import Image from 'next/image'
+import { Disclosure } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/outline'
+import parse from 'html-react-parser'
 
 const FAQs = ({ data }) => {
   // console.log('data -- ', data)
-  let { header, item } = data;
+  let { header, item } = data
 
   return (
     <>
       <div className="bg-gray-50">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+        <div className="px-4 py-12 mx-auto max-w-7xl sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
             {header && (
-              <h2 className="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              <h2 className="text-3xl font-extrabold text-center text-gray-900 sm:text-4xl">
                 {header.title}
               </h2>
             )}
@@ -28,23 +24,23 @@ const FAQs = ({ data }) => {
                   {({ open }) => (
                     <>
                       <dt className="text-lg">
-                        <Disclosure.Button className="text-left w-full flex justify-between items-start text-gray-400">
+                        <Disclosure.Button className="flex items-start justify-between w-full text-left text-gray-400">
                           <span className="font-bold tracking-wider text-gray-900">
                             {faq.question}
                           </span>
-                          <span className="ml-6 h-7 flex items-center">
+                          <span className="flex items-center ml-6 h-7">
                             <ChevronDownIcon
                               className={classNames(
-                                open ? "-rotate-180" : "rotate-0",
-                                "h-6 w-6 transform"
+                                open ? '-rotate-180' : 'rotate-0',
+                                'h-6 w-6 transform'
                               )}
                               aria-hidden="true"
                             />
                           </span>
                         </Disclosure.Button>
                       </dt>
-                      <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                        <p className="prose text-base text-gray-500">
+                      <Disclosure.Panel as="dd" className="pr-12 mt-2">
+                        <p className="text-base prose text-gray-500">
                           {parse(faq.answer)}
                         </p>
                       </Disclosure.Panel>
@@ -57,7 +53,7 @@ const FAQs = ({ data }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default FAQs;
+export default FAQs

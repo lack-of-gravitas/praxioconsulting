@@ -18,11 +18,7 @@
     "incremental": true,
     "paths": {
       "@assets/*": ["assets/*"],
-      "@components/atoms/*": ["atoms/*"],
-      "@components/atoms/icons/*": ["icons/*"],
-      "@components/molecules/*": ["molecules/*"],
-      "@components/organisms/*": ["organisms/*"],
-      "@components/templates/*": ["templates/*"],
+      "@components/*": ["components/*"],
       "@config/*": ["config/*"],
       "@lib/*": ["lib/*"],
       "@types/*": ["types/*"]

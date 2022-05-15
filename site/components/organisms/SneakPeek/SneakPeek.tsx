@@ -1,17 +1,13 @@
-import Link from "next/link";
-import Image from "next/image";
-import ReactPlayer from "react-player";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import Link from 'next/link'
+import Image from 'next/image'
+import ReactPlayer from 'react-player'
 
 const SneakPeek = ({ data }) => {
-  let { header, contents } = data;
+  let { header, contents } = data
   // console.log("SneakPeek data -- ", data);
 
   const VideoCard = (content) => {
-    let video = content.content;
+    let video = content.content
     // console.log("video -- ", video);
 
     return (
@@ -37,8 +33,8 @@ const SneakPeek = ({ data }) => {
           </div>
         </div>
       </div>
-    );
-  };
+    )
+  }
 
   return (
     <>
@@ -63,7 +59,7 @@ const SneakPeek = ({ data }) => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default SneakPeek;
+export default SneakPeek

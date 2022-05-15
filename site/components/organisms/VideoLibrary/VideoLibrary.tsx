@@ -1,13 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
-import ReactPlayer from "react-player";
+import Link from 'next/link'
+import Image from 'next/image'
+import ReactPlayer from 'react-player'
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-const VideoLibrary = ({data}) => {
-  console.log("SneakPeek data -- ", data);
+const VideoLibrary = ({ data }) => {
+  console.log('SneakPeek data -- ', data)
 
   const VideoCard = (video) => {
     return (
@@ -30,13 +26,13 @@ const VideoLibrary = ({data}) => {
           </div>
         </div>
       </div>
-    );
-  };
+    )
+  }
 
   return (
     <>
       <div className="bg-white">
-        <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+        <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24">
           <div className="space-y-12">
             <ul
               role="list"
@@ -47,14 +43,14 @@ const VideoLibrary = ({data}) => {
                   <div className="space-y-4">
                     <div className="aspect-w-3 aspect-h-2">
                       <img
-                        className="object-cover shadow-lg rounded-md"
+                        className="object-cover rounded-md shadow-lg"
                         src={video.link}
                         alt=""
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <div className="text-lg leading-6 font-medium space-y-1">
+                      <div className="space-y-1 text-lg font-medium leading-6">
                         <h3>{video.name}</h3>
                       </div>
                     </div>
@@ -66,7 +62,7 @@ const VideoLibrary = ({data}) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default VideoLibrary;
+export default VideoLibrary

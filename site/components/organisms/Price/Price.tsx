@@ -1,8 +1,8 @@
-import { useState, useEffect, Fragment, useRef } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import parse from "html-react-parser";
-import { useRouter } from "next/router";
+import { useState, useEffect, Fragment, useRef } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import parse from 'html-react-parser'
+import { useRouter } from 'next/router'
 
 import {
   CheckIcon,
@@ -10,29 +10,29 @@ import {
   ArrowRightIcon,
   LockClosedIcon,
   ExclamationIcon,
-} from "@heroicons/react/outline";
+} from '@heroicons/react/outline'
 
-import { getProviders, signIn, getSession, useSession } from "next-auth/react";
-import { Dialog, Transition } from "@headlessui/react";
-import { fetchPostJSON } from "@utils/helpers";
-import { getStripe } from "@utils/stripe-client";
+import { getProviders, signIn, getSession, useSession } from 'next-auth/react'
+import { Dialog, Transition } from '@headlessui/react'
+import { fetchPostJSON } from '@utils/helpers'
+import { getStripe } from '@utils/stripe-client'
 
 // loadStripe` outside of a component’s render to avoid recreating the `Stripe` object on every render.
 
 // const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const Price = ({ data, product, displayFormat }) => {
-  const router = useRouter();
-  const { data: session, status } = useSession();
-  const [providers, setProviders] = useState({});
+  const router = useRouter()
+  const { data: session, status } = useSession()
+  const [providers, setProviders] = useState({})
 
-  const [openLogin, setOpenLogin] = useState(false);
-  const [openPurchaseCheck, setOpenPurchaseCheck] = useState(false);
-  const cancelButtonRef = useRef(null);
+  const [openLogin, setOpenLogin] = useState(false)
+  const [openPurchaseCheck, setOpenPurchaseCheck] = useState(false)
+  const cancelButtonRef = useRef(null)
 
-  const { header, description, perks } = data;
-  const [price, setPrice] = useState({ unit_amount: 0, currency: "USD" });
-  const [prices, setPrices] = useState(data.prices);
+  const { header, description, perks } = data
+  const [price, setPrice] = useState({ unit_amount: 0, currency: 'USD' })
+  const [prices, setPrices] = useState(data.prices)
 
   const handleCheckout = async (selectedPrice) => {
     // construct data
@@ -47,56 +47,56 @@ const Price = ({ data, product, displayFormat }) => {
       productId: product.stripeId,
       productSlug: `${product.categories[0].slug}s/${product.slug}`,
       productCategory: product.categories[0].slug,
-    };
+    }
 
     getSession().then(async (session) => {
       // check if already purchased
       const { purchases } = await fetchPostJSON(`/api/get-purchases`, {
         stripeId: session.user.stripeId,
-      });
+      })
 
       // console.log("purchases: ", purchases);
-      let checkoutReady = false;
+      let checkoutReady = false
 
       if (purchases && purchases.length === 0) {
-        checkoutReady = true; // no previous purchases
+        checkoutReady = true // no previous purchases
       }
 
       if (purchases && purchases.length > 0) {
         // find previous purchase
         const { productInfo } = purchases?.find(
           (p) => p.productInfo.stripeId === product.stripeId
-        );
+        )
 
         if (productInfo) {
-          checkoutReady = false;
-          setOpenPurchaseCheck(true); // matching product found, show 'already purchased' dialog
+          checkoutReady = false
+          setOpenPurchaseCheck(true) // matching product found, show 'already purchased' dialog
         } else {
-          checkoutReady = true; // no matching product found, proceed to checkout
+          checkoutReady = true // no matching product found, proceed to checkout
         }
       }
 
       if (checkoutReady) {
         // get Checkout Session
         const checkoutSession = await fetchPostJSON(
-          "/api/checkout_sessions",
+          '/api/checkout_sessions',
           data
-        );
+        )
         if (checkoutSession.statusCode === 500) {
           // console.error(checkoutSession.message);
-          return;
+          return
         }
 
         // Redirect to Checkout.
-        const stripe = await getStripe();
+        const stripe = await getStripe()
         const { error } = await stripe?.redirectToCheckout({
           sessionId: checkoutSession.id,
-        });
-        console.warn(error.message);
+        })
+        console.warn(error.message)
         // setLoading(false);
       }
-    });
-  };
+    })
+  }
 
   // get price from Stripe
   useEffect(async () => {
@@ -104,38 +104,38 @@ const Price = ({ data, product, displayFormat }) => {
     // console.log("Price | product: ", product);
 
     let req = {
-      method: "GET",
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRIPE_PRODUCTS}`, //basic vs bearer == oauth
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-    };
-    let res;
-    let results;
+    }
+    let res
+    let results
 
-    if (displayFormat === "single") {
+    if (displayFormat === 'single') {
       res = await fetch(
         `https://api.stripe.com/v1/prices/${data.stripeId}`,
         req
-      );
+      )
 
-      results = await res.json();
+      results = await res.json()
       // console.log("results: ", results);
-      setPrice(results);
+      setPrice(results)
     } else {
-      res = await fetch(`https://api.stripe.com/v1/prices`, req);
-      results = await res.json();
+      res = await fetch(`https://api.stripe.com/v1/prices`, req)
+      results = await res.json()
       // console.log("results: ", results);
       let filteredPrices = results.data.filter(
         (price) => price.product === product.stripeId && price.active === true
-      );
+      )
       // console.log("filtered | prices: ", filteredPrices);
 
       // merge with prices set in Strapi
       prices.map((price) => {
         filteredPrices.map((filteredPrice) => {
           if (price.stripeId === filteredPrice.id) {
-            (price.currency = filteredPrice.currency),
+            ;(price.currency = filteredPrice.currency),
               (price.metadata = filteredPrice.metadata),
               (price.nickname = filteredPrice.nickname),
               (price.recurring = filteredPrice.recurring),
@@ -143,38 +143,38 @@ const Price = ({ data, product, displayFormat }) => {
               (price.tiers_mode = filteredPrice.tiers_mode),
               (price.transform_quantity = filteredPrice.transform_quantity),
               (price.type = filteredPrice.type),
-              (price.unit_amount = filteredPrice.unit_amount);
+              (price.unit_amount = filteredPrice.unit_amount)
           }
-        });
-      });
+        })
+      })
       // console.log("prices: ", prices);
       let mergedPrices = prices.map((price) => {
         let filteredPrice = filteredPrices.find(
           (filteredPrice) => filteredPrice.id === price.stripeId
-        );
-        return { ...price, ...filteredPrice };
-      });
+        )
+        return { ...price, ...filteredPrice }
+      })
       // console.log("matched w Strapi | prices: ", mergedPrices);
-      setPrices(mergedPrices);
+      setPrices(mergedPrices)
     }
-  }, []);
+  }, [])
 
   // get supported Auth Providers
   useEffect(() => {
     async function fetchProviders() {
-      const prov = await getProviders();
-      setProviders(prov);
+      const prov = await getProviders()
+      setProviders(prov)
     }
-    fetchProviders();
-  }, []);
+    fetchProviders()
+  }, [])
 
   return (
     <>
       {openLogin && <LoginModal />}
       {openPurchaseCheck && <PurchaseCheckModal />}
-      {displayFormat === "single" ? <SinglePriceBlock /> : <MultiPriceBlock />}
+      {displayFormat === 'single' ? <SinglePriceBlock /> : <MultiPriceBlock />}
     </>
-  );
+  )
 
   function SinglePriceBlock() {
     return (
@@ -194,14 +194,14 @@ const Price = ({ data, product, displayFormat }) => {
             <div className="flex mt-8 lg:mt-0 lg:flex-shrink-0">
               <form
                 onSubmit={(e) => {
-                  e.preventDefault();
+                  e.preventDefault()
                   // if signed in show modal
                   if (session) {
                     // proceed to Stripe Checkout
-                    handleCheckout(price);
+                    handleCheckout(price)
                   } else {
                     // show sign in modal
-                    setOpenLogin(true);
+                    setOpenLogin(true)
                   }
                 }}
                 // action="/api/checkout-session" method="POST"
@@ -216,9 +216,9 @@ const Price = ({ data, product, displayFormat }) => {
                   />
                   <span>
                     {`Buy Now  ` +
-                      Intl.NumberFormat("en-US", {
-                        style: "currency",
-                        currency: price.currency ? price.currency : "USD",
+                      Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: price.currency ? price.currency : 'USD',
                         minimumFractionDigits: 2,
                       }).format(price?.unit_amount / 100)}
                   </span>
@@ -333,7 +333,7 @@ const Price = ({ data, product, displayFormat }) => {
           )}
         </div>
       </div>
-    );
+    )
   }
 
   function MultiPriceBlock() {
@@ -368,29 +368,29 @@ const Price = ({ data, product, displayFormat }) => {
                 ) : null}
                 <p className="flex items-baseline mt-4 text-gray-900">
                   <span className="text-5xl font-extrabold tracking-tight">
-                    {Intl.NumberFormat("en-US", {
-                      style: "currency",
+                    {Intl.NumberFormat('en-US', {
+                      style: 'currency',
                       currency: individualPrice.currency
                         ? individualPrice.currency
-                        : "USD",
+                        : 'USD',
                       minimumFractionDigits: 0,
                     }).format(individualPrice?.unit_amount / 100)}
                     {/* {(price.unit_amount / 100).toString()} */}
                   </span>
                   <span className="text-xl font-extrabold tracking-tight">
-                    {"  " + individualPrice.currency?.toUpperCase()}
+                    {'  ' + individualPrice.currency?.toUpperCase()}
                   </span>
                 </p>
                 <span className="ml-1 text-xl font-semibold">
                   {!individualPrice.recurring
-                    ? "one time"
+                    ? 'one time'
                     : individualPrice.recurring.interval_count === 1
-                    ? "per " + individualPrice.recurring.interval
-                    : "every " +
+                    ? 'per ' + individualPrice.recurring.interval
+                    : 'every ' +
                       individualPrice.recurring.interval_count +
-                      " " +
+                      ' ' +
                       individualPrice.recurring.interval +
-                      "s"}
+                      's'}
                 </span>
                 <div className="mt-6 text-gray-500">
                   {parse(individualPrice.description)}
@@ -420,14 +420,14 @@ const Price = ({ data, product, displayFormat }) => {
 
               <form
                 onSubmit={(e) => {
-                  e.preventDefault();
+                  e.preventDefault()
                   // if signed in show modal
                   if (session) {
                     // proceed to Stripe Checkout
-                    handleCheckout(individualPrice);
+                    handleCheckout(individualPrice)
                   } else {
                     // show sign in modal
-                    setOpenLogin(true);
+                    setOpenLogin(true)
                   }
                 }}
                 //action="/api/checkout-session" method="POST"
@@ -437,17 +437,17 @@ const Price = ({ data, product, displayFormat }) => {
                   // role="link"
                   className={classNames(
                     individualPrice.mostPopular
-                      ? "bg-primaryColor-700 text-white hover:bg-primaryColor-800"
-                      : "bg-gray-100 hover:text-white text-primaryColor-700 hover:bg-primaryColor-800",
-                    "mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium"
+                      ? 'bg-primaryColor-700 text-white hover:bg-primaryColor-800'
+                      : 'bg-gray-100 hover:text-white text-primaryColor-700 hover:bg-primaryColor-800',
+                    'mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium'
                   )}
                 >
                   {`Buy Now  ` +
-                    Intl.NumberFormat("en-US", {
-                      style: "currency",
+                    Intl.NumberFormat('en-US', {
+                      style: 'currency',
                       currency: individualPrice.currency
                         ? individualPrice.currency
-                        : "USD",
+                        : 'USD',
                       minimumFractionDigits: 2,
                     }).format(individualPrice?.unit_amount / 100)}
                 </button>
@@ -456,7 +456,7 @@ const Price = ({ data, product, displayFormat }) => {
           ))}
         </div>
       </div>
-    );
+    )
   }
 
   function LoginModal() {
@@ -523,18 +523,18 @@ const Price = ({ data, product, displayFormat }) => {
 
                 <form className="max-w-lg mx-auto bg-gray-100 border rounded-md">
                   <div className="flex flex-col gap-4 p-4 md:p-8">
-                    {status !== "loading" && providers ? (
+                    {status !== 'loading' && providers ? (
                       Object.values(providers).map((provider) => (
                         <div
                           className="flex items-center justify-center"
                           key={provider.name}
                         >
-                          {provider.id === "facebook" && (
+                          {provider.id === 'facebook' && (
                             <button
                               className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-md outline-none transition duration-100 gap-2 px-8 py-3`}
                               onClick={(e) => {
-                                e.preventDefault();
-                                signIn(provider.id);
+                                e.preventDefault()
+                                signIn(provider.id)
                               }}
                             >
                               <svg
@@ -554,12 +554,12 @@ const Price = ({ data, product, displayFormat }) => {
                             </button>
                           )}
 
-                          {provider.id === "google" && (
+                          {provider.id === 'google' && (
                             <button
                               className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-md outline-none transition duration-100 gap-2 px-8 py-3`}
                               onClick={(e) => {
-                                e.preventDefault();
-                                signIn(provider.id);
+                                e.preventDefault()
+                                signIn(provider.id)
                               }}
                             >
                               <svg
@@ -600,7 +600,7 @@ const Price = ({ data, product, displayFormat }) => {
 
                     <div className="m-2">
                       <p className="text-sm text-center text-gray-500">
-                        Refer to our{" "}
+                        Refer to our{' '}
                         <Link href="/privacy" passHref>
                           <a
                             target="_blank"
@@ -609,7 +609,7 @@ const Price = ({ data, product, displayFormat }) => {
                           >
                             Privacy Policy
                           </a>
-                        </Link>{" "}
+                        </Link>{' '}
                         for details.
                       </p>
                     </div>
@@ -630,7 +630,7 @@ const Price = ({ data, product, displayFormat }) => {
           </div>
         </Dialog>
       </Transition.Root>
-    );
+    )
   }
 
   function PurchaseCheckModal() {
@@ -721,12 +721,8 @@ const Price = ({ data, product, displayFormat }) => {
           </div>
         </Dialog>
       </Transition.Root>
-    );
+    )
   }
-};
-
-export default Price;
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
 }
+
+export default Price

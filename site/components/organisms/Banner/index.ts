@@ -1,1 +1,1 @@
-export { default } from './ArticlesPaginated'
+export { default } from './Banner'
