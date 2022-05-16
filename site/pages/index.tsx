@@ -60,7 +60,7 @@ export async function getStaticProps({
   // console.log("context (getstaticprops): ", context);
 
   // get data here and use react-query for magic local storage?
-  const data = {}
+  let data = { header: 0 }
   // console.log("data: ", data);
 
   // ****************************************************************************************

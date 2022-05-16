@@ -1,4 +1,4 @@
-import { Banner as PreviewBanner } from '@components/organisms'
+import { Banner } from '@components/organisms'
 import { SEO } from '@components/atoms'
 import dynamic from 'next/dynamic'
 

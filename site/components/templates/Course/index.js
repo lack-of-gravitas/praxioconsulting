@@ -1,4 +1,4 @@
-import { Banner as PreviewBanner } from '@components/organisms'
+import { Banner } from '@components/organisms'
 import { SEO } from '@components/atoms'
 import dynamic from 'next/dynamic'
 
@@ -75,7 +75,7 @@ const CourseLayout = ({ header, course, children, preview }) => {
   return (
     <div>
       {/* <Seo seo={seo} /> */}
-      {preview && <PreviewBanner />}
+      {/* {preview && <Banner />} */}
 
       {/* <CourseHeader {...header} slug={slug} /> */}
 

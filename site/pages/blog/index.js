@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 // import { getData, getRestaurants, getStrapiURL } from '../../utils'
 // import { getLocalizedParams } from '../../utils/localize'
-import { fetchGetJSON } from '@lib/api-helpers'
+// import { fetchGetJSON } from '@lib/api-helpers'
 
 // If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. gets data and delivers it to the Component to render UI
 export async function getStaticProps(context) {
@@ -21,33 +21,33 @@ export async function getStaticProps(context) {
   // check if there's a slug provided, if not it's likely home page so set the slug
   let path = 'service'
 
-  let apiResponse = await fetchGetJSON(
-    `${process.env.NEXT_PUBLIC_BACKEND}/pages?_where[0][brand.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=blog`
-  )
+  // let apiResponse = await fetchGetJSON(
+  //   `${process.env.NEXT_PUBLIC_BACKEND}/pages?_where[0][brand.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=blog`
+  // )
 
   let data = {}
   data.path = path + 's'
-  data.globalData = {
-    name: apiResponse[0].brand.name,
-    tagline: apiResponse[0].brand.tagline,
-    domain: apiResponse[0].brand.domain,
-    locale: apiResponse[0].brand.locale,
-    themes: apiResponse[0].brand.themes,
-    navigation: apiResponse[0].brand.navigation,
-    footer: apiResponse[0].brand.footer,
-    seo: apiResponse[0].brand.seo,
-    locations: apiResponse[0].brand.locations,
-    socials: apiResponse[0].brand.socials,
-  }
-  data.pageData = apiResponse[0]
+  // data.globalData = {
+  //   name: apiResponse[0].brand.name,
+  //   tagline: apiResponse[0].brand.tagline,
+  //   domain: apiResponse[0].brand.domain,
+  //   locale: apiResponse[0].brand.locale,
+  //   themes: apiResponse[0].brand.themes,
+  //   navigation: apiResponse[0].brand.navigation,
+  //   footer: apiResponse[0].brand.footer,
+  //   seo: apiResponse[0].brand.seo,
+  //   locations: apiResponse[0].brand.locations,
+  //   socials: apiResponse[0].brand.socials,
+  // }
+  // data.pageData = apiResponse[0]
 
-  apiResponse = await fetchGetJSON(
-    `${process.env.NEXT_PUBLIC_BACKEND}/articles?_where[0][brands.domain]=${process.env.NEXT_PUBLIC_BRAND}&_sort=created_at:DESC`
-  )
+  // apiResponse = await fetchGetJSON(
+  //   `${process.env.NEXT_PUBLIC_BACKEND}/articles?_where[0][brands.domain]=${process.env.NEXT_PUBLIC_BRAND}&_sort=created_at:DESC`
+  // )
 
   // console.log("apiResponse: ", apiResponse);
 
-  data.pageData.articles = apiResponse
+  // data.pageData.articles = apiResponse
   // console.log("data: ", data);
 
   // return props with data to component

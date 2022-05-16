@@ -1,5 +1,5 @@
-import { Block } from '@components/blocks'
-import { fetchGetJSON } from '@lib/api-helpers'
+// import { Block } from '@components/blocks'
+// import { fetchGetJSON } from '@lib/api-helpers'
 // import delve from 'dlv'
 import ErrorPage from 'next/error'
 import { Layout } from '@components/templates'
@@ -100,25 +100,25 @@ export async function getStaticProps(context) {
   // in production, this only runs once then revalidates based on the revalidate parameter
   // context contains route params for dynamic routes, preview, previewData, locale,locales, defaultLocale
   const preview = context.preview
-  let apiResponse = await fetchGetJSON(
-    `${process.env.NEXT_PUBLIC_BACKEND}/products?_where[0][brands.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=${context.params.slug}`
-  )
+  // let apiResponse = await fetchGetJSON(
+  //   `${process.env.NEXT_PUBLIC_BACKEND}/products?_where[0][brands.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=${context.params.slug}`
+  // )
 
   let data = {}
-  data.path = context.params.slug
-  data.globalData = {
-    name: apiResponse[0].brands[0].name,
-    tagline: apiResponse[0].brands[0].tagline,
-    domain: apiResponse[0].brands[0].domain,
-    locale: apiResponse[0].brands[0].locale,
-    themes: apiResponse[0].brands[0].themes,
-    navigation: apiResponse[0].brands[0].navigation,
-    footer: apiResponse[0].brands[0].footer,
-    seo: apiResponse[0].brands[0].seo,
-    locations: apiResponse[0].brands[0].locations,
-    socials: apiResponse[0].brands[0].socials,
-  }
-  data.pageData = apiResponse[0]
+  // data.path = context.params.slug
+  // data.globalData = {
+  //   name: apiResponse[0].brands[0].name,
+  //   tagline: apiResponse[0].brands[0].tagline,
+  //   domain: apiResponse[0].brands[0].domain,
+  //   locale: apiResponse[0].brands[0].locale,
+  //   themes: apiResponse[0].brands[0].themes,
+  //   navigation: apiResponse[0].brands[0].navigation,
+  //   footer: apiResponse[0].brands[0].footer,
+  //   seo: apiResponse[0].brands[0].seo,
+  //   locations: apiResponse[0].brands[0].locations,
+  //   socials: apiResponse[0].brands[0].socials,
+  // }
+  // data.pageData = apiResponse[0]
 
   // console.log(data);
   // return props with data to component

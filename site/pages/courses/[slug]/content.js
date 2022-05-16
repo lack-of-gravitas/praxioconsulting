@@ -6,7 +6,7 @@ import { Course } from '@components/templates'
 import ErrorPage from 'next/error'
 import { Layout } from '@components/templates'
 import Link from 'next/link'
-import { fetchGetJSON } from '@lib/api-helpers'
+// import { fetchGetJSON } from '@lib/api-helpers'
 
 export default function CourseContent({ data, preview }) {
   // get the session to check if the user logged in or not
@@ -62,18 +62,7 @@ export default function CourseContent({ data, preview }) {
   ) {
     return <ErrorPage statusCode={404} />
   } else {
-    return (
-      <>
-        {/* <CourseLayout
-          header={data.globalData}
-          {...data.pageData}
-          // course={data.pageData}
-          slug={data.pageData.slug}
-          //seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
-          preview={preview}
-        /> */}
-      </>
-    )
+    return <></>
   }
 }
 
@@ -86,53 +75,53 @@ export async function getStaticProps(context) {
 
   const preview = context.preview
   let data = {}
-  data.path = context.params.slug
+  // data.path = context.params.slug
 
-  let apiData = await fetchGetJSON(
-    `${process.env.NEXT_PUBLIC_BACKEND}/products?_where[0][brands.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=${context.params.slug}`
-  )
+  // let apiData = await fetchGetJSON(
+  //   `${process.env.NEXT_PUBLIC_BACKEND}/products?_where[0][brands.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=${context.params.slug}`
+  // )
 
-  data.globalData = {
-    name: apiData[0].brands[0].name,
-    locale: apiData[0].brands[0].locale,
-    domain: apiData[0].brands[0].domain,
-    themes: apiData[0].brands[0].themes,
-    navigation: apiData[0].brands[0].navigation,
-    footer: apiData[0].brands[0].footer,
-  }
+  // data.globalData = {
+  //   name: apiData[0].brands[0].name,
+  //   locale: apiData[0].brands[0].locale,
+  //   domain: apiData[0].brands[0].domain,
+  //   themes: apiData[0].brands[0].themes,
+  //   navigation: apiData[0].brands[0].navigation,
+  //   footer: apiData[0].brands[0].footer,
+  // }
 
-  // set pageData
-  data.pageData = {}
+  // // set pageData
+  // data.pageData = {}
 
-  apiData[0].blocks.forEach((block) => {
-    if (block.__component === 'blocks.course') {
-      // console.log("block] | ", block);
-      data.pageData.course = block.courses[0]
-    }
-  })
+  // apiData[0].blocks.forEach((block) => {
+  //   if (block.__component === 'blocks.course') {
+  //     // console.log("block] | ", block);
+  //     data.pageData.course = block.courses[0]
+  //   }
+  // })
 
-  // get modules
-  data.pageData.course.modules = await fetchGetJSON(
-    // get all modules that have content and courses associated to them, sorted by sortOrder
-    `${process.env.NEXT_PUBLIC_BACKEND}/modules?_where[0][courses_null]=false&_where[1][courses.id]=${data.pageData.course.id}&_sort=sortOrder:ASC`
-  )
-  // https://klubs.azurewebsites.net/modules?_where[0][courses_null]=false&_where[1][contents_null]=false&_where[2][courses.id]=2&_sort=sortOrder:ASC
-  data.pageData.course.contentExists = false
-  data.pageData.course.modules.map((module) => {
-    delete module.localizations
-    delete module.published_at
-    delete module.created_at
-    delete module.updated_at
-    delete module.courses
+  // // get modules
+  // data.pageData.course.modules = await fetchGetJSON(
+  //   // get all modules that have content and courses associated to them, sorted by sortOrder
+  //   `${process.env.NEXT_PUBLIC_BACKEND}/modules?_where[0][courses_null]=false&_where[1][courses.id]=${data.pageData.course.id}&_sort=sortOrder:ASC`
+  // )
+  // // https://klubs.azurewebsites.net/modules?_where[0][courses_null]=false&_where[1][contents_null]=false&_where[2][courses.id]=2&_sort=sortOrder:ASC
+  // data.pageData.course.contentExists = false
+  // data.pageData.course.modules.map((module) => {
+  //   delete module.localizations
+  //   delete module.published_at
+  //   delete module.created_at
+  //   delete module.updated_at
+  //   delete module.courses
 
-    // check if module has content
-    if (module.contents.length > 0) {
-      data.pageData.course.contentExists = true
-    }
-  })
+  //   // check if module has content
+  //   if (module.contents.length > 0) {
+  //     data.pageData.course.contentExists = true
+  //   }
+  // })
 
-  // data.pageData = data.pageData[0];
-  console.log('contentPage data | ', data.pageData)
+  // // data.pageData = data.pageData[0];
+  // console.log('contentPage data | ', data.pageData)
 
   // return props with data to component
   return {

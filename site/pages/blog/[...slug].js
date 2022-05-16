@@ -6,7 +6,7 @@ import { Layout } from '@components/templates'
 import parse from 'html-react-parser'
 import { CameraIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
-import { fetchGetJSON } from '@lib/api-helpers'
+// import { fetchGetJSON } from '@lib/api-helpers'
 
 export async function getStaticPaths() {
   // returns all pages that need to built at run time, ie no prebuilt paths
@@ -16,45 +16,6 @@ export async function getStaticPaths() {
     // fallback: true, // if true, if page not in the paths array above, will run getStaticProps to gen page on request
     fallback: 'blocking', // doesnt send any props down and waits for getstaticprops to return before rendering page "no flashes of missing content". Con is only the 1st visitor will have a delay on pages. Use this most of the time unless getStaticProps is slow on first run (slow API calls, slow to build pages, etc)
   }
-
-  // get list of valid paths associated to this domain (built at runtime) can be a subset of all paths
-  let dbQuery = `
-  query getSlugs ( $brand: String!) {
-    slugs: globals (where: {domain: $brand}) {
-      articles { slug } 
-    }
-  }`
-
-  let req = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      query: `${dbQuery}`,
-      variables: {
-        brand: `${process.env.NEXT_PUBLIC_BRAND}`,
-      },
-    }),
-  }
-
-  let data = []
-
-  fetch(`${process.env.NEXT_PUBLIC_BACKEND}/graphql`, req)
-    .then((res) => res.json())
-    .then((results) => {
-      // process all returned slugs and build business friendly paths
-      // console.log("results (getstaticpaths): ", JSON.stringify(results));
-
-      let slugArray = []
-
-      // generate all blog post paths
-      results.data.slugs[0].articles.forEach((article) => {
-        slugArray = [] // reset temp array
-        slugArray.push('blog', article.slug)
-        data = [...data, { params: { slug: slugArray } }]
-      })
-
-      // console.log("data (getstaticpaths):", JSON.stringify(data));
-    })
 
   // return {
   //   paths: data, // anything not present inside will be built dynamically or return 404, if empty, all routes need to be checked in getStaticProps
@@ -80,25 +41,25 @@ export async function getStaticProps(context) {
   const preview = context.preview
   // check if there's a slug provided, if not it's likely home page so set the slug
 
-  let apiResponse = await fetchGetJSON(
-    `${process.env.NEXT_PUBLIC_BACKEND}/articles?_where[0][brands.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=${context.params.slug}`
-  )
+  // let apiResponse = await fetchGetJSON(
+  //   `${process.env.NEXT_PUBLIC_BACKEND}/articles?_where[0][brands.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=${context.params.slug}`
+  // )
 
   let data = {}
-  data.path = context.params.slug
-  data.globalData = {
-    name: apiResponse[0].brands[0].name,
-    tagline: apiResponse[0].brands[0].tagline,
-    domain: apiResponse[0].brands[0].domain,
-    locale: apiResponse[0].brands[0].locale,
-    themes: apiResponse[0].brands[0].themes,
-    navigation: apiResponse[0].brands[0].navigation,
-    footer: apiResponse[0].brands[0].footer,
-    seo: apiResponse[0].brands[0].seo,
-    locations: apiResponse[0].brands[0].locations,
-    socials: apiResponse[0].brands[0].socials,
-  }
-  data.pageData = apiResponse[0]
+  // data.path = context.params.slug
+  // data.globalData = {
+  //   name: apiResponse[0].brands[0].name,
+  //   tagline: apiResponse[0].brands[0].tagline,
+  //   domain: apiResponse[0].brands[0].domain,
+  //   locale: apiResponse[0].brands[0].locale,
+  //   themes: apiResponse[0].brands[0].themes,
+  //   navigation: apiResponse[0].brands[0].navigation,
+  //   footer: apiResponse[0].brands[0].footer,
+  //   seo: apiResponse[0].brands[0].seo,
+  //   locations: apiResponse[0].brands[0].locations,
+  //   socials: apiResponse[0].brands[0].socials,
+  // }
+  // data.pageData = apiResponse[0]
   // console.log("data: ", data);
 
   // return props with data to component
