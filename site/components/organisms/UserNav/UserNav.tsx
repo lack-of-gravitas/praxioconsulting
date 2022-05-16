@@ -1,9 +1,9 @@
 import cn from 'clsx'
 import Link from 'next/link'
 import s from './UserNav.module.css'
-import { Avatar } from '@components/common'
+import { Avatar } from '@components/atoms'
 // import useCart from '@framework/cart/use-cart'
-import { useUI } from '@components/ui/context'
+// import { useUI } from '@components/ui/context'
 import { Heart, Menu } from '@components/atoms/Icons'
 import CustomerMenuContent from './CustomerMenuContent'
 // import useCustomer from '@framework/customer/use-customer'
@@ -12,7 +12,7 @@ import {
   // Dropdown,
   // DropdownTrigger as DropdownTriggerInst,
   Button,
-} from '@components/ui'
+} from '@components/atoms'
 
 // import type { LineItem } from 'types/cart'
 
@@ -23,13 +23,13 @@ const UserNav: React.FC<{
 }> = ({ className }) => {
   // const { data } = useCart()
   // const { data: isCustomerLoggedIn } = useCustomer()
-  const {
-    toggleSidebar,
-    closeSidebarIfPresent,
-    openModal,
-    setSidebarView,
-    openSidebar,
-  } = useUI()
+  // const {
+  //   toggleSidebar,
+  //   closeSidebarIfPresent,
+  //   openModal,
+  //   setSidebarView,
+  //   openSidebar,
+  // } = useUI()
 
   // const itemsCount = data?.lineItems.reduce(countItem, 0) ?? 0
   // const DropdownTrigger = isCustomerLoggedIn
@@ -88,8 +88,8 @@ const UserNav: React.FC<{
             aria-label="Menu"
             variant="naked"
             onClick={() => {
-              openSidebar()
-              setSidebarView('MOBILE_MENU_VIEW')
+              // openSidebar()
+              // setSidebarView('MOBILE_MENU_VIEW')
             }}
           >
             <Menu />

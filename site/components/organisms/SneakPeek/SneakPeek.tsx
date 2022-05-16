@@ -2,11 +2,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ReactPlayer from 'react-player'
 
-const SneakPeek = ({ data }) => {
+const SneakPeek = ({ data }: any) => {
   let { header, contents } = data
   // console.log("SneakPeek data -- ", data);
 
-  const VideoCard = (content) => {
+  const VideoCard = (content: any) => {
     let video = content.content
     // console.log("video -- ", video);
 
@@ -51,7 +51,7 @@ const SneakPeek = ({ data }) => {
             </div>
 
             <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
-              {contents.map((content, index) => (
+              {contents.map((content: any, index: any) => (
                 <VideoCard key={index} content={content} />
               ))}
             </div>

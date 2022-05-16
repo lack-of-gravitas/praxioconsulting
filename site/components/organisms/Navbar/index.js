@@ -1,31 +1,31 @@
-// import delve from "dlv";
-// import Cta from "./cta";
+// // import delve from "dlv";
+// import CTA from "./cta";
 // import LocalSwitch from "./localSwitch";
 // import Logo from "./logo";
 // import Nav from "./nav";
-import Link from "next/link";
-import Image from "next/image";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { classNames } from "@utils/helpers";
+import Link from 'next/link'
+import Image from 'next/image'
+// import { signIn, signOut, useSession } from 'next-auth/react'
+import { classNames } from '@lib/concat-classes'
 // ui imports
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon, UserIcon } from "@heroicons/react/outline";
+import { Fragment } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { BellIcon, MenuIcon, XIcon, UserIcon } from '@heroicons/react/outline'
 
 const userNavigation = [
   // { name: "Your Profile", href: "#" },
-  { name: "Account", href: "/user/profile" },
+  { name: 'Account', href: '/user/profile' },
   // { name: "Billing", href: "/user/profile" },
-];
+]
 
 export default function Navigation(data) {
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession()
   // console.log("sesson:", session, "status", status);
 
   // console.log("navigation --", data);
-  let { name, domain, navigation, slug, themes } = data;
+  let { name, domain, navigation, slug, themes } = data
 
-  slug !== "/" ? (slug = "/" + slug) : slug;
+  slug !== '/' ? (slug = '/' + slug) : slug
 
   function SiteLogo() {
     return (
@@ -77,7 +77,7 @@ export default function Navigation(data) {
           </a>
         </Link>
       </div>
-    );
+    )
   }
   function MobileLogo() {
     return (
@@ -88,7 +88,7 @@ export default function Navigation(data) {
           alt="Workflow"
         />
       </>
-    );
+    )
   }
   function DesktopLogo() {
     return (
@@ -131,7 +131,7 @@ export default function Navigation(data) {
           <span className="inline-block text-base font-medium">{name}</span>
         </div>
       </>
-    );
+    )
   }
   function DesktopMenuItems() {
     return (
@@ -144,11 +144,11 @@ export default function Navigation(data) {
                 // href={item.href}
                 className={classNames(
                   item.href === slug
-                    ? "border-primaryColor-700 text-gray-900"
-                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                  "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                    ? 'border-primaryColor-700 text-gray-900'
+                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                  'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
                 )}
-                aria-current={item.href === slug ? "page" : undefined}
+                aria-current={item.href === slug ? 'page' : undefined}
               >
                 {item.label}
               </a>
@@ -156,7 +156,7 @@ export default function Navigation(data) {
           ))}
         </div>
       </>
-    );
+    )
   }
 
   function MobileMenuItems() {
@@ -171,11 +171,11 @@ export default function Navigation(data) {
                 // href={item.href}
                 className={classNames(
                   item.href === slug
-                    ? "bg-primaryColor-50 border-primaryColor-700 text-primaryColor-700"
-                    : "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800",
-                  "block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+                    ? 'bg-primaryColor-50 border-primaryColor-700 text-primaryColor-700'
+                    : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800',
+                  'block pl-3 pr-4 py-2 border-l-4 text-base font-medium'
                 )}
-                aria-current={item.href === slug ? "page" : undefined}
+                aria-current={item.href === slug ? 'page' : undefined}
               >
                 {item.label}
               </Disclosure.Button>
@@ -184,7 +184,7 @@ export default function Navigation(data) {
         </div>
         <MobileProfileMenu />
       </Disclosure.Panel>
-    );
+    )
   }
 
   return (
@@ -232,7 +232,7 @@ export default function Navigation(data) {
         </div>
       </header>
     </>
-  );
+  )
 
   function MobileProfileMenu() {
     return (
@@ -245,8 +245,8 @@ export default function Navigation(data) {
                 <a
                   href={`/api/auth/signin`}
                   onClick={(e) => {
-                    e.preventDefault();
-                    signIn();
+                    e.preventDefault()
+                    signIn()
                   }}
                   className="text-primaryColor-600 hover:text-primaryColor-500"
                 >
@@ -299,8 +299,8 @@ export default function Navigation(data) {
                   href={`/api/auth/signout`}
                   className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                   onClick={(e) => {
-                    e.preventDefault();
-                    signOut();
+                    e.preventDefault()
+                    signOut()
                   }}
                 >
                   Sign Out
@@ -310,7 +310,7 @@ export default function Navigation(data) {
           )}
         </div>
       </>
-    );
+    )
   }
   function DesktopProfileMenu() {
     return (
@@ -320,8 +320,8 @@ export default function Navigation(data) {
             <a
               href={`/api/auth/signin`}
               onClick={(e) => {
-                e.preventDefault();
-                signIn();
+                e.preventDefault()
+                signIn()
               }}
               className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white border border-transparent rounded-md shadow-sm whitespace-nowrap bg-primaryColor-600 hover:bg-primaryColor-700"
             >
@@ -370,8 +370,8 @@ export default function Navigation(data) {
                         <a
                           href={item.href}
                           className={classNames(
-                            active ? "bg-gray-100" : "",
-                            "block px-4 py-2 text-sm text-gray-700"
+                            active ? 'bg-gray-100' : '',
+                            'block px-4 py-2 text-sm text-gray-700'
                           )}
                         >
                           {item.name}
@@ -384,8 +384,8 @@ export default function Navigation(data) {
                       href={`/api/auth/signout`}
                       className="block px-4 py-2 text-sm text-gray-700"
                       onClick={(e) => {
-                        e.preventDefault();
-                        signOut();
+                        e.preventDefault()
+                        signOut()
                       }}
                     >
                       Sign Out
@@ -397,6 +397,6 @@ export default function Navigation(data) {
           </div>
         )}
       </>
-    );
+    )
   }
 }

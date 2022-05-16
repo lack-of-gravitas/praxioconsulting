@@ -4,10 +4,12 @@ import cn from 'clsx'
 import s from './Layout.module.css'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import { useUI } from '@components/ui/context'
-import { Navbar, Footer } from '@components/common'
+// import { useUI } from '@components/ui/context'
+import { Navbar, Footer } from '@components/organisms'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
-import { Button, LoadingDots } from '@components/ui'
+
+import { Button } from '@components/atoms'
+import { LoadingDots } from '@components/atoms'
 // import type { Page } from 'types/page'
 
 const Loading = () => (
@@ -20,7 +22,7 @@ const dynamicProps = {
   loading: Loading,
 }
 
-const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
+const FeatureBar = dynamic(() => import('@components/organisms/FeatureBar'), {
   ...dynamicProps,
 })
 

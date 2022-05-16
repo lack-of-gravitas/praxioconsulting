@@ -1,4 +1,4 @@
-import delve from 'dlv'
+// import delve from 'dlv'
 import Link from 'next/link'
 import Image from 'next/image'
 import {
@@ -12,7 +12,7 @@ import {
 
 import RichContent from '../RichContent'
 
-const MajorFeature = ({ data }) => {
+const MajorFeature = ({ data }: any) => {
   let { header, style, image, content, buttons } = data
 
   function blockHeader() {
@@ -68,8 +68,8 @@ const MajorFeature = ({ data }) => {
         <div className="relative mt-12 sm:mt-16 lg:mt-12">
           <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div className="lg:col-start-2">
-              <RichContent content={content}></RichContent>
-              {buttons.map((button, index) => (
+              {/* <RichContent content={content}></RichContent> */}
+              {buttons.map((button: any, index: any) => (
                 <div key={index} className="py-3 mt-3 sm:mt-0 sm:flex-shrink-0">
                   <Link
                     href={button.link.href}
@@ -177,8 +177,8 @@ const MajorFeature = ({ data }) => {
         </svg>
         <div className="relative mt-12 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
           <div className="relative">
-            <RichContent content={content}></RichContent>
-            {buttons.map((button, index) => (
+            {/* <RichContent content={content}></RichContent> */}
+            {buttons.map((button: any, index: any) => (
               <div key={index} className="py-3 mt-3 sm:mt-0 sm:flex-shrink-0">
                 <Link href={button.link.href} className="cursor-auto" passHref>
                   <button
@@ -248,11 +248,11 @@ const MajorFeature = ({ data }) => {
         <div className="relative pt-16 overflow-hidden bg-gray-50 sm:pt-24 lg:pt-24">
           <div className="max-w-full px-4 mx-auto text-center sm:px-6 sm:max-w-7xl lg:px-8 lg:max-w-7xl">
             <div className="flex justify-center">
-              <RichContent content={content}></RichContent>
+              {/* <RichContent content={content}></RichContent> */}
             </div>
 
             <div className="flex justify-center mt-8 lg:mt-0 lg:flex-shrink-0">
-              {buttons.map((button, index) => (
+              {buttons.map((button: any, index: any) => (
                 <div
                   key={index}
                   className="py-3 mt-3 sm:mt-0 sm:ml-3 sm:flex-shrink-0"

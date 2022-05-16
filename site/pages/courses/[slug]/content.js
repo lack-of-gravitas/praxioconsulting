@@ -1,10 +1,10 @@
 import { LockClosedIcon } from '@heroicons/react/outline'
-import { signOut, getSession, useSession } from 'next-auth/react'
+// import { signOut, getSession, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import * as queries from '@services/queries'
-import CourseLayout from '@components/courseLayout'
+// import * as queries from '@services/queries'
+import { Course } from '@components/templates'
 import ErrorPage from 'next/error'
-import Layout from '@components/layout'
+import { Layout } from '@components/templates'
 import Link from 'next/link'
 import { fetchGetJSON } from '@lib/api-helpers'
 
@@ -64,14 +64,14 @@ export default function CourseContent({ data, preview }) {
   } else {
     return (
       <>
-        <CourseLayout
+        {/* <CourseLayout
           header={data.globalData}
           {...data.pageData}
           // course={data.pageData}
           slug={data.pageData.slug}
           //seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
           preview={preview}
-        />
+        /> */}
       </>
     )
   }

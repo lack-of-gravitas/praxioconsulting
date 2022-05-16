@@ -1,8 +1,8 @@
 import React from 'react'
-import delve from 'dlv'
+// import delve from 'dlv'
 import ErrorPage from 'next/error'
-import Layout from '@components/layout'
-import { Block } from '@components/blocks'
+import { Layout } from '@components/templates'
+// import { Block } from '@components/blocks'
 import { fetchGetJSON } from '@lib/api-helpers'
 
 // If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. gets data and delivers it to the Component to render UI
@@ -78,7 +78,8 @@ const Courses = ({ data, preview }) => {
       preview={preview}
     >
       {blocks?.map((block, key) => (
-        <Block key={key} block={block} data={data.pageData} />
+        <></>
+        // <Block key={key} block={block} data={data.pageData} />
       ))}
     </Layout>
   )

@@ -2,10 +2,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import ReactPlayer from 'react-player'
 
-const VideoLibrary = ({ data }) => {
+const VideoLibrary = ({ data }: any) => {
   console.log('SneakPeek data -- ', data)
 
-  const VideoCard = (video) => {
+  const VideoCard = (video: any) => {
     return (
       <div className="max-w-2xl pb-16 mx-auto overflow-hidden bg-white rounded-md shadow-lg dark:bg-gray-800">
         <div className="object-cover w-full player-wrapper aspect-video h-4/5">
@@ -38,7 +38,7 @@ const VideoLibrary = ({ data }) => {
               role="list"
               className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8"
             >
-              {data.map((video) => (
+              {data.map((video: any) => (
                 <li key={video.uri}>
                   <div className="space-y-4">
                     <div className="aspect-w-3 aspect-h-2">

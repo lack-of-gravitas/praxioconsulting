@@ -1,21 +1,21 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link'
+import Image from 'next/image'
 
-import { ArrowRightIcon } from "@heroicons/react/outline";
+import { ArrowRightIcon } from '@heroicons/react/outline'
 
 const Hero = ({ data }) => {
   // get layout and theme properties from props
-  let { header, buttons, image } = data;
+  let { header, buttons, image } = data
   // console.log('formats',JSON.stringify(image))
 
   return (
-    // <section className="text-gray-600 body-font py-40 flex justify-center items-center 2xl:h-screen">
-    <section className="w-full h-screen relative text-white">
+    // <section className="flex items-center justify-center py-40 text-gray-600 body-font 2xl:h-screen">
+    <section className="relative w-full h-screen text-white">
       <div>
-        <div className="w-full h-screen relative text-white">
+        <div className="relative w-full h-screen text-white">
           {image && image.formats.xlarge ? (
             <Image
-              className="absolute top-0 left-0 w-full h-full object-cover"
+              className="absolute top-0 left-0 object-cover w-full h-full"
               src={
                 image.formats.xlarge
                   ? image.formats.xlarge.url
@@ -40,7 +40,7 @@ const Hero = ({ data }) => {
 
             <>
               <Image
-                className="absolute top-0 left-0 w-full h-full object-cover"
+                className="absolute top-0 left-0 object-cover w-full h-full"
                 src="https://via.placeholder.com/1280/0891B2/E2E8F0?text=Large+Image+Required"
                 layout="fill"
                 // height={1280}
@@ -52,7 +52,7 @@ const Hero = ({ data }) => {
           )}
 
           {/* <Image
-            className="absolute top-0 left-0 w-full h-full object-cover"
+            className="absolute top-0 left-0 object-cover w-full h-full"
             src={image.formats.xlarge.url}
             layout="fill"
             // height={image.formats.xlarge.height}
@@ -62,12 +62,12 @@ const Hero = ({ data }) => {
             priority // largest contentful paint element so prioritises load
           /> */}
 
-          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center text-center px-12">
+          <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full px-12 text-center">
             <div>
-              <h1 className="text-3xl md:text-6xl leading-tight font-bold">
+              <h1 className="text-3xl font-bold leading-tight md:text-6xl">
                 {header && header.title} <br className="hidden md:block" />
               </h1>
-              <h4 className="text-xl md:text-3xl leading-tight mb-16">
+              <h4 className="mb-16 text-xl leading-tight md:text-3xl">
                 {header && header.subtitle}
               </h4>
 
@@ -75,7 +75,7 @@ const Hero = ({ data }) => {
                 {buttons?.map((button, index) => (
                   <div
                     key={index}
-                    className="mt-3 sm:mt-0 sm:ml-3 sm:flex-shrink-0 py-3"
+                    className="py-3 mt-3 sm:mt-0 sm:ml-3 sm:flex-shrink-0"
                   >
                     <Link
                       href={button.link.href}
@@ -84,10 +84,10 @@ const Hero = ({ data }) => {
                     >
                       <button
                         type="button"
-                        className="rounded-md shadow-lg relative inline-flex items-center px-4 py-5 border border-transparent text-lg font-medium rounded-md text-white bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+                        className="relative inline-flex items-center px-4 py-5 text-lg font-medium text-white border border-transparent rounded-md shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
                       >
                         <ArrowRightIcon
-                          className="-ml-1 mr-2 h-6 w-6"
+                          className="w-6 h-6 mr-2 -ml-1"
                           aria-hidden="true"
                         />
                         <span>{button.link.label}</span>
@@ -101,9 +101,9 @@ const Hero = ({ data }) => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-Hero.defaultProps = {};
+Hero.defaultProps = {}
 
-export default Hero;
+export default Hero

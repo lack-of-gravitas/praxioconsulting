@@ -3,8 +3,9 @@ import Image from 'next/image'
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 import parse from 'html-react-parser'
+import { classNames } from '@lib/concat-classes'
 
-const FAQs = ({ data }) => {
+const FAQs = ({ data }: any) => {
   // console.log('data -- ', data)
   let { header, item } = data
 
@@ -19,7 +20,7 @@ const FAQs = ({ data }) => {
               </h2>
             )}
             <dl className="mt-6 space-y-6 divide-y divide-gray-200">
-              {item?.map((faq) => (
+              {item?.map((faq: any) => (
                 <Disclosure as="div" key={faq.question} className="pt-6">
                   {({ open }) => (
                     <>

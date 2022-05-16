@@ -2,11 +2,11 @@ import dynamic from 'next/dynamic'
 
 const Articles = dynamic(() => import('./ArticlesPaginated'))
 const ContentBlock = dynamic(() => import('./ContentBlock'))
-const Cta = dynamic(() => import('./Cta'))
-const FAQs = dynamic(() => import('../global/FAQs'))
+const CTA = dynamic(() => import('./CallToAction'))
+const FAQs = dynamic(() => import('./FAQs'))
 const Hero = dynamic(() => import('./Hero'))
-const MajorFeature = dynamic(() => import('../global/MajorFeature'))
-const MinorFeatures = dynamic(() => import('../global/MinorFeatures'))
+const MajorFeature = dynamic(() => import('./MajorFeature'))
+const MinorFeatures = dynamic(() => import('./MinorFeatures'))
 const Price = dynamic(() => import('./Price'))
 const Products = dynamic(() => import('../templates/Products'))
 const RecentArticles = dynamic(() => import('./ArticlesRecent'))
@@ -29,7 +29,7 @@ export const Block = ({ block, data }) => {
       break
     case 'blocks.cta':
       // case "ComponentBlocksCta":
-      return <Cta data={block} />
+      return <CTA data={block} />
 
     case 'blocks.faq':
       // case "ComponentBlocksFaq":

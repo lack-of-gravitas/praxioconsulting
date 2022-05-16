@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-const Footer = ({ themes, footer }) => {
+const Footer = ({ themes, footer }: any) => {
   return (
     <footer className="bg-white">
       <div className="px-4 py-12 mx-auto overflow-hidden max-w-7xl sm:px-6 lg:px-8">
@@ -32,9 +32,9 @@ const Footer = ({ themes, footer }) => {
         </p>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-Footer.defaultProps = {};
+Footer.defaultProps = {}
 
-export default Footer;
+export default Footer

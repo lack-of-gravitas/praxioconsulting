@@ -1,6 +1,6 @@
-import delve from 'dlv'
+// import delve from 'dlv'
 import ErrorPage from 'next/error'
-import Layout from '@components/sections/Layout'
+import { Layout } from '@components/templates'
 import { fetchGetJSON } from '@lib/api-helpers'
 // import { Block } from '@components/blocks'
 

@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import type { Product } from 'types/product'
-import { Grid } from '@components/ui'
+import { Grid } from '@components/molecules'
 import s from './HomeAllProductsGrid.module.css'
 // import { getCategoryPath, getDesignerPath } from '@lib/search'
 

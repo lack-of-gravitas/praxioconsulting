@@ -1,10 +1,10 @@
-import delve from 'dlv'
+// import delve from 'dlv'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CheckIcon, XIcon, ArrowRightIcon } from '@heroicons/react/outline'
 import RichContent from '../RichContent'
 
-const MinorFeatures = ({ data }) => {
+const MinorFeatures = ({ data }: any) => {
   // console.log("data ---", data);
   let { header, perks } = data
   // console.log('perks -- ', perks)
@@ -26,7 +26,7 @@ const MinorFeatures = ({ data }) => {
           )}
           <div className="mt-12 lg:mt-0 lg:col-span-2">
             <dl className="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-auto sm:grid-rows-auto sm:grid-flow-col sm:gap-x-6 sm:gap-y-10 lg:gap-x-8">
-              {perks?.slice(0, Math.ceil(perks.length / 2)).map((perk) => (
+              {perks?.slice(0, Math.ceil(perks.length / 2)).map((perk: any) => (
                 <div key={perk.title} className="relative">
                   <dt>
                     {perk.included ? (
@@ -51,7 +51,7 @@ const MinorFeatures = ({ data }) => {
                 </div>
               ))}
 
-              {perks?.slice(Math.ceil(perks.length / 2)).map((perk) => (
+              {perks?.slice(Math.ceil(perks.length / 2)).map((perk: any) => (
                 <div key={perk.title} className="relative">
                   <dt>
                     {perk.included ? (

@@ -1,7 +1,7 @@
 import type { GetStaticPropsContext } from 'next'
 // import commerce from '@lib/api/commerce'
-import Layout from '@components/sections/Layout'
-import { Text } from '@components/ui'
+import { Layout } from '@components/templates'
+import { Text } from '@components/atoms'
 
 export async function getStaticProps({
   preview,

@@ -1,13 +1,13 @@
-import delve from 'dlv';
-import Head from 'next/head';
+// import delve from 'dlv';
+import Head from 'next/head'
 
 const Seo = ({ seo }) => {
-  const metaTags = delve(seo, 'metas');
-  const metaTitle = delve(seo, 'metaTitle');
-  const metaImage = delve(seo, 'metaImage');
-  const structuredData = delve(seo, 'structuredData');
-  const preventIndexing = delve(seo, 'preventIndexing');
-  const metaDescription = delve(seo, 'metaDescription');
+  const metaTags = delve(seo, 'metas')
+  const metaTitle = delve(seo, 'metaTitle')
+  const metaImage = delve(seo, 'metaImage')
+  const structuredData = delve(seo, 'structuredData')
+  const preventIndexing = delve(seo, 'preventIndexing')
+  const metaDescription = delve(seo, 'metaDescription')
 
   return (
     <Head>
@@ -34,7 +34,11 @@ const Seo = ({ seo }) => {
       <link rel="canonical" href={'url'} />
       {metaTags &&
         metaTags.map((meta) => (
-          <meta key={delve(meta, 'name')} name={delve(meta, 'name')} content={delve(meta, 'content')} />
+          <meta
+            key={delve(meta, 'name')}
+            name={delve(meta, 'name')}
+            content={delve(meta, 'content')}
+          />
         ))}
       {preventIndexing && (
         <>
@@ -44,7 +48,7 @@ const Seo = ({ seo }) => {
       )}
       <script type="application/ld+json">{structuredData}</script>
     </Head>
-  );
-};
+  )
+}
 
-export default Seo;
+export default Seo

@@ -1,45 +1,45 @@
-import delve from 'dlv';
-import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
-import { useOnClickOutside } from '../../../utils/hooks';
+// import delve from 'dlv';
+import { useRouter } from 'next/router'
+import { useEffect, useRef, useState } from 'react'
+import { useOnClickOutside } from '../../../utils/hooks'
 import {
   getLocalizedData,
   listLocalizedPaths,
   localizePath,
-} from '../../../utils/localize';
+} from '../../../utils/localize'
 
 const LocaleSwitch = ({ pageData, type }) => {
-  const router = useRouter();
-  const lang = delve(router.query, 'lang');
-  const isMounted = useRef(false);
-  const select = useRef();
-  const [locale, setLocale] = useState(pageData.locale);
-  const [showing, setShowing] = useState(false);
-  const [localizedPaths, setLocalizedPaths] = useState();
+  const router = useRouter()
+  const lang = delve(router.query, 'lang')
+  const isMounted = useRef(false)
+  const select = useRef()
+  const [locale, setLocale] = useState(pageData.locale)
+  const [showing, setShowing] = useState(false)
+  const [localizedPaths, setLocalizedPaths] = useState()
 
-  useOnClickOutside(select, () => setShowing(false));
+  useOnClickOutside(select, () => setShowing(false))
 
   useEffect(() => {
     const changeLocale = async () => {
       if (!isMounted.current && lang && lang !== pageData.locale) {
-        const localePage = await getLocalizedData(lang, pageData, type);
+        const localePage = await getLocalizedData(lang, pageData, type)
         router.push(`${localizePath(localePage, pageData.locale)}`, {
           locale: localePage.locale,
-        });
+        })
       }
 
-      setShowing(false);
-      const localizations = await listLocalizedPaths(pageData, type);
-      setLocalizedPaths(localizations);
-    };
+      setShowing(false)
+      const localizations = await listLocalizedPaths(pageData, type)
+      setLocalizedPaths(localizations)
+    }
 
-    setLocale(lang);
-    changeLocale();
+    setLocale(lang)
+    changeLocale()
 
     return () => {
-      isMounted.current = true;
-    };
-  }, [lang, pageData, router, type]);
+      isMounted.current = true
+    }
+  }, [lang, pageData, router, type])
 
   // }, [locale, router]); // doesn't work if I just have this array -- fix later
 
@@ -89,7 +89,7 @@ const LocaleSwitch = ({ pageData, type }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LocaleSwitch;
+export default LocaleSwitch

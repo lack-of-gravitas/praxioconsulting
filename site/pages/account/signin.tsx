@@ -4,10 +4,10 @@ import { useEffect, useState, FormEvent } from 'react'
 import { useUser } from '@supabase/supabase-auth-helpers/react'
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
 
-import Button from '@components/ui/Button'
+import { Button } from '@components/atoms'
 // import GitHub from 'components/icons/GitHub';
-import Input from '@components/ui/Input'
-import LoadingDots from '@components/ui/LoadingDots'
+import { Input } from '@components/atoms'
+import { LoadingDots } from '@components/atoms'
 // import Logo from 'components/icons/Logo';
 import { Provider } from '@supabase/supabase-js'
 import { getURL } from 'lib/api-helpers'
@@ -210,7 +210,7 @@ export default SignIn
 // import Link from "next/link";
 // import { fetchGetJSON } from "@lib/api-helpers";
 
-// export default function SignIn({ data }) {
+// export default function SignIn({ data }:any) {
 //   // get the session to check if the user logged in or not
 //   const router = useRouter();
 //   const { data: session, status } = useSession();

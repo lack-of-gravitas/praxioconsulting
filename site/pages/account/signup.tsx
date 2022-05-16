@@ -4,8 +4,8 @@ import { useEffect, useState, FormEvent } from 'react'
 import { useUser } from '@supabase/supabase-auth-helpers/react'
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
 
-import Button from '@components/ui/Button'
-import Input from '@components/ui/Input'
+import { Button } from '@components/atoms'
+import { Input } from '@components/atoms'
 // import Logo from 'components/icons/Logo';
 import { updateUserName } from 'lib/supabase-client'
 import { User } from '@supabase/gotrue-js'

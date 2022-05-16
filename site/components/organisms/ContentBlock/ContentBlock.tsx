@@ -1,37 +1,36 @@
-import delve from "dlv";
-import Link from "next/link";
-import Image from "next/image";
-import parse from "html-react-parser";
+// import delve from "dlv";
+import Link from 'next/link'
+import Image from 'next/image'
+import parse from 'html-react-parser'
 
-const ContentBlock = ({ data }) => {
-  let { header, content } = data;
+const ContentBlock = ({ data }: any) => {
+  let { header, content } = data
 
   function blockHeader() {
     return (
       <div className="relative">
-        <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        <h2 className="text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-900 sm:text-4xl">
           {header.title}
         </h2>
-        <p className="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">
+        <p className="max-w-3xl mx-auto mt-4 text-xl text-center text-gray-500">
           {header.text}
         </p>
       </div>
-    );
+    )
   }
 
   return (
     <>
-
-      <div className="relative py-16 bg-white overflow-hidden max-w-full">
-      {header && blockHeader()}
+      <div className="relative max-w-full py-16 overflow-hidden bg-white">
+        {header && blockHeader()}
 
         <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
           <div
-            className="relative h-full text-lg max-w-prose mx-auto"
+            className="relative h-full mx-auto text-lg max-w-prose"
             aria-hidden="true"
           >
             <svg
-              className="absolute top-12 left-full transform translate-x-32"
+              className="absolute transform translate-x-32 top-12 left-full"
               width={404}
               height={384}
               fill="none"
@@ -63,7 +62,7 @@ const ContentBlock = ({ data }) => {
               />
             </svg>
             <svg
-              className="absolute top-1/2 right-full transform -translate-y-1/2 -translate-x-32"
+              className="absolute transform -translate-x-32 -translate-y-1/2 top-1/2 right-full"
               width={404}
               height={384}
               fill="none"
@@ -95,7 +94,7 @@ const ContentBlock = ({ data }) => {
               />
             </svg>
             <svg
-              className="absolute bottom-12 left-full transform translate-x-32"
+              className="absolute transform translate-x-32 bottom-12 left-full"
               width={404}
               height={384}
               fill="none"
@@ -129,15 +128,15 @@ const ContentBlock = ({ data }) => {
           </div>
         </div>
         <div className="relative px-4 sm:px-6 lg:px-8">
-          <div className="text-lg max-w-prose mx-auto pt-8">
+          <div className="pt-8 mx-auto text-lg max-w-prose">
             {content && <div className="prose">{parse(content)}</div>}
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-ContentBlock.defaultProps = {};
+ContentBlock.defaultProps = {}
 
-export default ContentBlock;
+export default ContentBlock

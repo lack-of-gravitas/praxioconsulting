@@ -1,11 +1,11 @@
-import PreviewBanner from '../../organisms/Banner'
-import Seo from '../../atoms/SEO/seo'
+import { Banner as PreviewBanner } from '@components/organisms'
+import { SEO } from '@components/atoms'
 import dynamic from 'next/dynamic'
 
-import { classNames } from '@utils/helpers'
+import { classNames } from '@lib/concat-classes'
 import Link from 'next/link'
 import Image from 'next/image'
-import { signOut, getSession, useSession } from 'next-auth/react'
+// import { signOut, getSession, useSession } from 'next-auth/react'
 import { Fragment, useState, useEffect } from 'react'
 import { Disclosure, Dialog, Menu, Transition } from '@headlessui/react'
 import {
@@ -19,7 +19,7 @@ import {
 
 const CourseHeader = dynamic(() => import('../../organisms/CourseHeader'))
 const CourseFooter = dynamic(() => import('../../organisms/CourseFooter'))
-const MainContent = dynamic(() => import('./blocks/CourseContent/mainContent'))
+// const MainContent = dynamic(() => import('./blocks/CourseContent/mainContent'))
 
 const CourseLayout = ({ header, course, children, preview }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -620,9 +620,7 @@ const CourseLayout = ({ header, course, children, preview }) => {
                 <div className="max-w-full px-4 mx-auto sm:px-6 md:px-8">
                   <div className="py-4">
                     {activeContent ? (
-                      <>
-                        <MainContent data={activeContent} />
-                      </>
+                      <>{/* <MainContent data={activeContent} /> */}</>
                     ) : (
                       <>
                         <div className="flex flex-col pt-16 pb-12 bg-white ">

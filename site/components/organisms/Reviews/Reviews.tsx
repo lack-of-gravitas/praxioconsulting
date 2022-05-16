@@ -1,59 +1,59 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link'
+import Image from 'next/image'
 
-const Reviews = ({ data }) => {
-  let { header, reviews } = data;
-//   console.log("reviews --", reviews);
+const Reviews = ({ data }: any) => {
+  let { header, reviews } = data
+  //   console.log("reviews --", reviews);
   return (
     <>
-    
-    <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between">
+      <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between">
+        <div className="relative mx-auto max-w-7xl">
+          {header && (
+            <div className="text-center">
+              <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                {header.title}
+              </h2>
+              <p className="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">
+                {header.text}
+              </p>
+            </div>
+          )}
 
-      <div className="relative max-w-7xl mx-auto">
-        {header && (
-          <div className="text-center">
-            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-              {header.title}
-            </h2>
-            <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-              {header.text}
-            </p>
-          </div>
-        )}
+          <div
+            className={`text-center justify-items-stretch mt-12 max-w-lg mx-auto grid gap-5 lg:max-w-none lg:grid-cols-auto`}
+          >
+            {reviews.map((review: any, index: any) => (
+              <div
+                key={index}
+                className="max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
+              >
+                <Image
+                  className="object-cover object-center w-full h-56"
+                  src={review.image.formats.medium.url}
+                  layout="responsive"
+                  height={review.image.formats.medium.height}
+                  width={review.image.formats.medium.height}
+                  alt={review.image.name}
+                />
 
-        <div className={`text-center justify-items-stretch mt-12 max-w-lg mx-auto grid gap-5 lg:max-w-none lg:grid-cols-auto`}>
-          {reviews.map((review, index) => (
-            <div
-              key={index}
-              className="max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
-            >
-              <Image
-                className="object-cover object-center w-full h-56"
-                src={review.image.formats.medium.url}
-                layout="responsive"
-                height={review.image.formats.medium.height}
-                width={review.image.formats.medium.height}
-                alt={review.image.name}
-              />
-
-              <div className="flex items-center px-6 py-3 bg-primaryColor-700">
-                {review.headline && (
-                  <h1 className="text-lg font-semibold text-white">
-                    {review.headline}
+                <div className="flex items-center px-6 py-3 bg-primaryColor-700">
+                  {review.headline && (
+                    <h1 className="text-lg font-semibold text-white">
+                      {review.headline}
+                    </h1>
+                  )}
+                </div>
+                <div className="px-6 py-4">
+                  <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
+                    {review.name}
                   </h1>
-                )}
-              </div>
-              <div className="px-6 py-4">
-                <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
-                  {review.name}
-                </h1>
-                <p className="py-2 text-gray-900 dark:text-gray-400">
-                  {review.subname}
-                </p>
-                <p className="py-2 text-gray-700 dark:text-gray-400">
-                  {review.detail}
-                </p>
-                {/* <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
+                  <p className="py-2 text-gray-900 dark:text-gray-400">
+                    {review.subname}
+                  </p>
+                  <p className="py-2 text-gray-700 dark:text-gray-400">
+                    {review.detail}
+                  </p>
+                  {/* <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
                 <svg
                   className="w-6 h-6 fill-current"
                   viewBox="0 0 24 24"
@@ -104,14 +104,14 @@ const Reviews = ({ data }) => {
                 </svg>
                 <h1 className="px-2 text-sm">patterson@example.com</h1>
               </div> */}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-      </div>
     </>
-  );
-};
+  )
+}
 
-export default Reviews;
+export default Reviews

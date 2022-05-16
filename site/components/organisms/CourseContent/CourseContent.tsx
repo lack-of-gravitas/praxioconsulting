@@ -1,29 +1,29 @@
-import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
-import ReactPlayer from "react-player";
-import parse from "html-react-parser";
-import Link from "next/link";
+import dynamic from 'next/dynamic'
+import { useState, useEffect } from 'react'
+import ReactPlayer from 'react-player'
+import parse from 'html-react-parser'
+import Link from 'next/link'
 
 import {
   CollectionIcon,
   PencilAltIcon,
   AnnotationIcon,
   DownloadIcon,
-} from "@heroicons/react/solid";
+} from '@heroicons/react/solid'
 
-import { classNames } from "@utils/helpers";
+import { classNames } from '@lib/concat-classes'
 
 const tabs = [
-  { name: "Show Notes", icon: AnnotationIcon, current: true },
-  { name: "Files", icon: CollectionIcon, current: false },
-  { name: "Transcript", icon: PencilAltIcon, current: false },
-];
+  { name: 'Show Notes', icon: AnnotationIcon, current: true },
+  { name: 'Files', icon: CollectionIcon, current: false },
+  { name: 'Transcript', icon: PencilAltIcon, current: false },
+]
 
-export default function MainContent({ data }) {
-  console.log("MainContent: ", data);
-  const [activeTab, setActiveTab] = useState("Show Notes");
+export default function MainContent({ data }: any) {
+  console.log('MainContent: ', data)
+  const [activeTab, setActiveTab] = useState('Show Notes')
 
-  function RichText({ data }) {
+  function RichText({ data }: any) {
     return (
       <>
         <div className="relative pt-5 pb-5 bg-gray-50 sm:px-6 lg:pt-5 lg:pb-10">
@@ -32,12 +32,11 @@ export default function MainContent({ data }) {
           </div>
         </div>
       </>
-    );
+    )
   }
 
-  function Files({ data }) {
+  function Files({ data }: any) {
     // console.log("Files: ", data);
-  
 
     return (
       <div className="flex flex-col">
@@ -71,10 +70,10 @@ export default function MainContent({ data }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((file, idx) => (
+                  {data.map((file: any, idx: any) => (
                     <tr
                       key={file.name}
-                      className={idx % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                      className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}
                     >
                       <td className="px-6 py-4 text-sm font-medium text-left whitespace-nowrap">
                         <a
@@ -82,10 +81,10 @@ export default function MainContent({ data }) {
                           download
                           className=" text-primaryColor-700 hover:text-primaryColor-900"
                         >
-                          <DownloadIcon className="inline w-6 h-6 text-primaryColor-700" />{" "}
+                          <DownloadIcon className="inline w-6 h-6 text-primaryColor-700" />{' '}
                           Download
                         </a>
-                      </td>{" "}
+                      </td>{' '}
                       <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
                         {file.name}
                       </td>
@@ -146,10 +145,8 @@ export default function MainContent({ data }) {
       //     </div>
       //   </div>
       // </div>
-    );
+    )
   }
-
-  
 
   return (
     <>
@@ -188,9 +185,7 @@ export default function MainContent({ data }) {
                 <label htmlFor="tabs" className="sr-only">
                   Select a tab
                 </label>
-
-
-              </div> 
+              </div>
               {/* DESKTOP */}
               <div className=" sm:block">
                 <div className="border-b border-gray-200">
@@ -200,22 +195,22 @@ export default function MainContent({ data }) {
                         key={tab.name}
                         className={classNames(
                           tab.name === activeTab
-                            ? "border-primaryColor-700 text-coolGray-700"
-                            : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
-                          "cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm"
+                            ? 'border-primaryColor-700 text-coolGray-700'
+                            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                          'cursor-pointer group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm'
                         )}
-                        aria-current={tab.current ? "page" : undefined}
+                        aria-current={tab.current ? 'page' : undefined}
                         onClick={(e) => {
-                          e.preventDefault();
-                          setActiveTab(tab.name);
+                          e.preventDefault()
+                          setActiveTab(tab.name)
                         }}
                       >
                         <tab.icon
                           className={classNames(
                             tab.name === activeTab
-                              ? "text-coolGray-500"
-                              : "text-gray-400 group-hover:text-gray-500",
-                            "-ml-0.5 mr-2 h-5 w-5"
+                              ? 'text-coolGray-500'
+                              : 'text-gray-400 group-hover:text-gray-500',
+                            '-ml-0.5 mr-2 h-5 w-5'
                           )}
                           aria-hidden="true"
                         />
@@ -224,18 +219,18 @@ export default function MainContent({ data }) {
                     ))}
                   </nav>
                 </div>
-                {activeTab === "Show Notes" && (
+                {activeTab === 'Show Notes' && (
                   <RichText data={data.showNotes} />
                 )}
-                {activeTab == "Transcript" && (
+                {activeTab == 'Transcript' && (
                   <RichText data={data.transcript} />
                 )}
-                {activeTab == "Files" && <Files data={data.files} />}
+                {activeTab == 'Files' && <Files data={data.files} />}
               </div>
             </div>
           </div>
         </div>
       </div>
     </>
-  );
+  )
 }

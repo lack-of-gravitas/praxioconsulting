@@ -1,8 +1,8 @@
-import { Block } from '@components/blocks'
+// import { Block } from '@components/blocks'
 import { fetchGetJSON } from '@lib/api-helpers'
-import delve from 'dlv'
+// import delve from 'dlv'
 import ErrorPage from 'next/error'
-import Layout from '@components/layout'
+import { Layout } from '@components/templates'
 
 const ServicesPage = ({ data, preview }) => {
   console.log('ServicesPage | ', data)
@@ -28,7 +28,8 @@ const ServicesPage = ({ data, preview }) => {
       preview={preview}
     >
       {blocks?.map((block, key) => (
-        <Block key={key} block={block} data={data.pageData} />
+        <></>
+        // <Block key={key} block={block} data={data.pageData} />
       ))}
     </Layout>
   )

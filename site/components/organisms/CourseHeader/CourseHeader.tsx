@@ -1,16 +1,16 @@
-// import delve from "dlv";
-// import Cta from "./cta";
+// // import delve from "dlv";
+// import CTA from "./cta";
 // import LocalSwitch from "./localSwitch";
 // import Logo from "./logo";
 // import Nav from "./nav";
-import Link from "next/link";
-import Image from "next/image";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { classNames } from "@utils/helpers";
+import Link from 'next/link'
+import Image from 'next/image'
+// import { signIn, signOut, useSession } from 'next-auth/react'
+import { classNames } from '@lib/concat-classes'
 // ui imports
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon, UserIcon } from "@heroicons/react/outline";
+import { Fragment } from 'react'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { BellIcon, MenuIcon, XIcon, UserIcon } from '@heroicons/react/outline'
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
@@ -19,11 +19,11 @@ const navigation = [
   { name: 'Calendar', href: '#', current: false },
 ]
 
-export default function Navigation(data) {
-  const { data: session, status } = useSession();
-  let { name, domain, header, slug, themes } = data;
+export default function Navigation(data: any) {
+  // const { data: session, status } = useSession()
+  let { name, domain, header, slug, themes } = data
 
-  slug !== "/" ? (slug = "/" + slug) : slug;
+  slug !== '/' ? (slug = '/' + slug) : slug
 
   function DesktopLogo() {
     return (
@@ -63,39 +63,39 @@ export default function Navigation(data) {
           </a>
         </Link>
       </>
-    );
+    )
   }
   function DesktopMenuItems() {
     return (
       <>
         <div className="justify-end hidden sm:-my-px sm:ml-32 sm:flex sm:space-x-8">
-          {navigation.links.map((item, index) => (
+          {/* {navigation.links.map((item: any, index: any) => (
             <Link href={item.href} key={index} passHref>
               <a
                 // key={index}
                 // href={item.href}
                 className={classNames(
                   item.href === slug
-                    ? "border-primaryColor-700 text-gray-900"
-                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                  "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                    ? 'border-primaryColor-700 text-gray-900'
+                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                  'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
                 )}
-                aria-current={item.href === slug ? "page" : undefined}
+                aria-current={item.href === slug ? 'page' : undefined}
               >
                 {item.label}
               </a>
             </Link>
-          ))}
+          ))} */}
         </div>
       </>
-    );
+    )
   }
 
   function MobileMenuItems() {
     return (
       <Disclosure.Panel className="sm:hidden">
         <div className="pt-2 pb-3 space-y-1">
-          {navigation.links.map((item, index) => (
+          {/* {navigation.links.map((item: any, index: any) => (
             <Link href={item.href} key={index} passHref>
               <Disclosure.Button
                 // key={index}
@@ -103,19 +103,19 @@ export default function Navigation(data) {
                 // href={item.href}
                 className={classNames(
                   item.href === slug
-                    ? "bg-primaryColor-50 border-primaryColor-700 text-primaryColor-700"
-                    : "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800",
-                  "block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+                    ? 'bg-primaryColor-50 border-primaryColor-700 text-primaryColor-700'
+                    : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800',
+                  'block pl-3 pr-4 py-2 border-l-4 text-base font-medium'
                 )}
-                aria-current={item.href === slug ? "page" : undefined}
+                aria-current={item.href === slug ? 'page' : undefined}
               >
                 {item.label}
               </Disclosure.Button>
             </Link>
-          ))}
+          ))} */}
         </div>
       </Disclosure.Panel>
-    );
+    )
   }
 
   return (
@@ -125,7 +125,6 @@ export default function Navigation(data) {
           <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
         </noscript>
 
-     
         {/* <div className="min-h-full ">
           <Disclosure as="nav" className="bg-white border-b border-gray-200">
             {({ open }) => (
@@ -149,12 +148,7 @@ export default function Navigation(data) {
             )}
           </Disclosure>
         </div> */}
-
-        
       </header>
     </>
-  );
+  )
 }
-
-
-

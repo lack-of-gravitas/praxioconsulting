@@ -1,5 +1,5 @@
-import Layout from '@components/sections/Layout'
-import { Hero } from '@components/ui'
+import { Layout } from '@components/templates'
+import { Hero } from '@components/organisms'
 
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 

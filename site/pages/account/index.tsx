@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useState, ReactNode } from 'react'
-import LoadingDots from '@components/ui/LoadingDots'
-import Button from '@components/ui/Button'
+import { LoadingDots } from '@components/atoms'
+import { Button } from '@components/atoms'
 import { useUser } from 'lib/hooks/useUser'
 import { postData } from 'lib/api-helpers'
 import { withAuthRequired, User } from '@supabase/supabase-auth-helpers/nextjs'
@@ -157,7 +157,7 @@ export default function Account({ user }: { user: User }) {
 // import dynamic from "next/dynamic";
 // import ReactPlayer from "react-player/lazy";
 
-// export default function UserProfile({ data }) {
+// export default function UserProfile({ data }:any) {
 //   // get the session to check if the user logged in or not
 //   const router = useRouter();
 //   const { data: session, status } = useSession();

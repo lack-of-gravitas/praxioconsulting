@@ -1,38 +1,38 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link'
+import Image from 'next/image'
 
-const Articles = ({ data, articles }) => {
+const Articles = ({ data, articles }: any) => {
   // console.log("data //", data);
   // console.log("article //", articles.length);
 
-  let { header, maxCount, columns } = data;
-  articles = articles.slice(0, maxCount);
+  let { header, maxCount, columns } = data
+  articles = articles.slice(0, maxCount)
 
   return (
     <>
-      <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-        <div className="relative max-w-7xl mx-auto">
+      <div className="relative px-4 pt-16 pb-20 bg-gray-50 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+        <div className="relative mx-auto max-w-7xl">
           {header && (
             <div className="text-center">
-              <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
+              <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                 {header.title}
               </h2>
-              <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+              <p className="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">
                 {header.text}
               </p>
             </div>
           )}
 
           {/* CARDS */}
-          <div className="mt-12 max-w-xl mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-            {articles?.map((article, index) => (
+          <div className="grid max-w-xl gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
+            {articles?.map((article: any, index: any) => (
               <div
                 key={index}
                 className="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
               >
                 {article.image ? (
                   <Image
-                    className="w-full rounded-lg pt-5"
+                    className="w-full pt-5 rounded-lg"
                     src={
                       article.image.formats.medium
                         ? article.image.formats.medium.url
@@ -71,7 +71,7 @@ const Articles = ({ data, articles }) => {
                     <div className="flex items-center">
                       {/* <div className="flex items-center">
                         <Image
-                          className="object-cover h-15 rounded-full"
+                          className="object-cover rounded-full h-15"
                           src={article.author.picture.formats.thumbnail.url}
                           layout="intrinsic"
                           height={50}
@@ -97,7 +97,7 @@ const Articles = ({ data, articles }) => {
 
                   <div>
                     <a
-                      href={"/blog/" + article.slug}
+                      href={'/blog/' + article.slug}
                       className="block mt-2 text-2xl font-semibold text-primaryColor-700 dark:text-white hover:text-gray-600 hover:underline"
                     >
                       {article.title}
@@ -113,7 +113,7 @@ const Articles = ({ data, articles }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Articles;
+export default Articles
