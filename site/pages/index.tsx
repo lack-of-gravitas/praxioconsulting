@@ -2,6 +2,7 @@ import { Layout } from '@components/templates'
 import { Hero } from '@components/organisms'
 
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import { Button } from '@components/atoms'
 
 export default function Home({
   data,
@@ -41,6 +42,16 @@ export default function Home({
         headline=" Dessert dragée halvah croissant."
         description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
       />
+      <Button variant="primary">Test</Button>
+      <div className="py-4 d-flex">
+        <button
+          className="h-56 pl-3 pr-4 bg-black font-color-white d-flex align-items-center flex-grow-1"
+          type="button"
+        >
+          <span className="mr-3 text-center flex-grow-1">Add to Cart</span>
+          <span className="pl-3 border-left border-color-white">$10.00</span>
+        </button>
+      </div>
     </>
   )
 }

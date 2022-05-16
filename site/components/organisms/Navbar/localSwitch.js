@@ -47,7 +47,7 @@ const LocaleSwitch = ({ pageData, type }) => {
     <div className="inline-block text-left" ref={select}>
       <div>
         <button
-          className="md:mt-4 hover:bg-primary-50 hover:text-primary-600 focus:bg-primary-50 focus:text-primary-600 focus:outline-none flex items-center justify-between md:pl-8 cursor-pointer rounded-md"
+          className="md:mt-4 hover:bg-primary-50 hover:text-primary-600 focus:bg-primary-50 focus:text-primary-600 focus:outline-none flex items-center justify-between md:pl-8 cursor-pointer rounded-sm"
           onClick={() => setShowing(!showing)}
         >
           <div className="w-6 h-6">
@@ -62,7 +62,7 @@ const LocaleSwitch = ({ pageData, type }) => {
         </button>
       </div>
       <div
-        className={`origin-top-right absolute mt-2 w-24 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 ${
+        className={`origin-top-right absolute mt-2 w-24 rounded-sm shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 ${
           showing ? 'absolute' : 'hidden'
         }`}
       >

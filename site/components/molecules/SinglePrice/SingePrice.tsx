@@ -208,7 +208,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //             >
   //               <button
   //                 // type="button"
-  //                 className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-md shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+  //                 className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-sm shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
   //               >
   //                 <ArrowRightIcon
   //                   className="w-6 h-6 mr-2 -ml-1"
@@ -435,11 +435,11 @@ const Price = ({ data, product, displayFormat }: any) => {
   //               <button
   //                 // type="submit"
   //                 // role="link"
-  //                 className={classNames(
+  //                 className={cn(
   //                   individualPrice.mostPopular
   //                     ? 'bg-primaryColor-700 text-white hover:bg-primaryColor-800'
   //                     : 'bg-gray-100 hover:text-white text-primaryColor-700 hover:bg-primaryColor-800',
-  //                   'mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium'
+  //                   'mt-8 block w-full py-3 px-6 border border-transparent rounded-sm text-center font-medium'
   //                 )}
   //               >
   //                 {`Buy Now  ` +
@@ -521,7 +521,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                 </div>
   //               </div>
 
-  //               <form className="max-w-lg mx-auto bg-gray-100 border rounded-md">
+  //               <form className="max-w-lg mx-auto bg-gray-100 border rounded-sm">
   //                 <div className="flex flex-col gap-4 p-4 md:p-8">
   //                   {status !== 'loading' && providers ? (
   //                     Object.values(providers).map((provider) => (
@@ -531,7 +531,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                       >
   //                         {provider.id === 'facebook' && (
   //                           <button
-  //                             className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-md outline-none transition duration-100 gap-2 px-8 py-3`}
+  //                             className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-sm outline-none transition duration-100 gap-2 px-8 py-3`}
   //                             onClick={(e) => {
   //                               e.preventDefault()
   //                               signIn(provider.id)
@@ -556,7 +556,7 @@ const Price = ({ data, product, displayFormat }: any) => {
 
   //                         {provider.id === 'google' && (
   //                           <button
-  //                             className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-md outline-none transition duration-100 gap-2 px-8 py-3`}
+  //                             className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-sm outline-none transition duration-100 gap-2 px-8 py-3`}
   //                             onClick={(e) => {
   //                               e.preventDefault()
   //                               signIn(provider.id)
@@ -619,7 +619,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //               <div className="mt-5 sm:mt-6">
   //                 <button
   //                   type="button"
-  //                   className="inline-flex justify-center w-full px-4 py-2 text-base font-medium bg-white border rounded-md shadow-sm border-1 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-600 sm:text-sm"
+  //                   className="inline-flex justify-center w-full px-4 py-2 text-base font-medium bg-white border rounded-sm shadow-sm border-1 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-600 sm:text-sm"
   //                   onClick={() => setOpenLogin(false)}
   //                 >
   //                   Cancel
@@ -701,7 +701,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                 <Link href={`/user/profile`} className="cursor-auto" passHref>
   //                   <button
   //                     type="button"
-  //                     className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-amber-400 hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:ml-3 sm:w-auto sm:text-sm"
+  //                     className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-sm shadow-sm bg-amber-400 hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:ml-3 sm:w-auto sm:text-sm"
   //                     onClick={() => setOpenPurchaseCheck(false)}
   //                   >
   //                     Go to Account
@@ -709,7 +709,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                 </Link>
   //                 <button
   //                   type="button"
-  //                   className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+  //                   className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
   //                   onClick={() => setOpenPurchaseCheck(false)}
   //                   ref={cancelButtonRef}
   //                 >

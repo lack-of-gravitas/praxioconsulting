@@ -93,7 +93,7 @@ const SignIn = () => {
                   required
                 />
                 <Button
-                  variant="slim"
+                  variant="primary"
                   type="submit"
                   loading={loading}
                   disabled={!email.length}
@@ -121,7 +121,7 @@ const SignIn = () => {
                 />
                 <Button
                   className="mt-1"
-                  variant="slim"
+                  variant="primary"
                   type="submit"
                   loading={loading}
                   disabled={!password.length || !email.length}
@@ -171,7 +171,7 @@ const SignIn = () => {
           </div>
 
           <Button
-            variant="slim"
+            variant="primary"
             type="submit"
             disabled={loading}
             onClick={() => handleOAuthSignIn('github')}
@@ -258,7 +258,7 @@ export default SignIn
 //               Sign In
 //             </h2>
 
-//             <form className="max-w-lg mx-auto bg-gray-100 border rounded-md">
+//             <form className="max-w-lg mx-auto bg-gray-100 border rounded-sm">
 //               <div className="flex flex-col gap-4 p-4 md:p-8">
 //                 {status !== "loading" && providers ? (
 //                   Object.values(providers).map((provider) => (
@@ -268,7 +268,7 @@ export default SignIn
 //                     >
 //                       {provider.id === "facebook" && (
 //                         <button
-//                           className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-md outline-none transition duration-100 gap-2 px-8 py-3`}
+//                           className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-sm outline-none transition duration-100 gap-2 px-8 py-3`}
 //                           onClick={(e) => {
 //                             e.preventDefault();
 //                             signIn(provider.id);
@@ -293,7 +293,7 @@ export default SignIn
 
 //                       {provider.id === "google" && (
 //                         <button
-//                           className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-md outline-none transition duration-100 gap-2 px-8 py-3`}
+//                           className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-sm outline-none transition duration-100 gap-2 px-8 py-3`}
 //                           onClick={(e) => {
 //                             e.preventDefault();
 //                             signIn(provider.id);

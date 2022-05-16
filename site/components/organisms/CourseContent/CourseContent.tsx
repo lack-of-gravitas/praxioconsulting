@@ -11,8 +11,8 @@ import {
   DownloadIcon,
 } from '@heroicons/react/solid'
 
-import { classNames } from '@lib/concat-classes'
-
+// import cn from 'clsx'
+import cn from 'clsx'
 const tabs = [
   { name: 'Show Notes', icon: AnnotationIcon, current: true },
   { name: 'Files', icon: CollectionIcon, current: false },
@@ -118,7 +118,7 @@ export default function MainContent({ data }: any) {
       //                 passHref
       //                 href={file.url}
       //                 type="button"
-      //                 className="inline-flex items-center px-4 py-2 font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800 sm:text-sm"
+      //                 className="inline-flex items-center px-4 py-2 font-medium text-gray-700 bg-white border border-gray-300 rounded-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800 sm:text-sm"
       //               >
       //                 <a download>
       //                   <svg
@@ -193,7 +193,7 @@ export default function MainContent({ data }: any) {
                     {tabs.map((tab) => (
                       <a
                         key={tab.name}
-                        className={classNames(
+                        className={cn(
                           tab.name === activeTab
                             ? 'border-primaryColor-700 text-coolGray-700'
                             : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
@@ -206,7 +206,7 @@ export default function MainContent({ data }: any) {
                         }}
                       >
                         <tab.icon
-                          className={classNames(
+                          className={cn(
                             tab.name === activeTab
                               ? 'text-coolGray-500'
                               : 'text-gray-400 group-hover:text-gray-500',

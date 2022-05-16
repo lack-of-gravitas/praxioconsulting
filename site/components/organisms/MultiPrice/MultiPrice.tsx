@@ -175,7 +175,7 @@ const MultiPrice = ({ data, product }: any) => {
   //                   </div>
   //                 </div>
   //               </div>
-  //               <form className="max-w-lg mx-auto bg-gray-100 border rounded-md">
+  //               <form className="max-w-lg mx-auto bg-gray-100 border rounded-sm">
   //                 <div className="flex flex-col gap-4 p-4 md:p-8">
   //                   {status !== 'loading' && providers ? (
   //                     Object.values(providers).map((provider) => (
@@ -185,7 +185,7 @@ const MultiPrice = ({ data, product }: any) => {
   //                       >
   //                         {provider.id === 'facebook' && (
   //                           <button
-  //                             className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-md outline-none transition duration-100 gap-2 px-8 py-3`}
+  //                             className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-sm outline-none transition duration-100 gap-2 px-8 py-3`}
   //                             onClick={(e) => {
   //                               e.preventDefault()
   //                               signIn(provider.id)
@@ -209,7 +209,7 @@ const MultiPrice = ({ data, product }: any) => {
   //                         )}
   //                         {provider.id === 'google' && (
   //                           <button
-  //                             className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-md outline-none transition duration-100 gap-2 px-8 py-3`}
+  //                             className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-sm outline-none transition duration-100 gap-2 px-8 py-3`}
   //                             onClick={(e) => {
   //                               e.preventDefault()
   //                               signIn(provider.id)
@@ -270,7 +270,7 @@ const MultiPrice = ({ data, product }: any) => {
   //               <div className="mt-5 sm:mt-6">
   //                 <button
   //                   type="button"
-  //                   className="inline-flex justify-center w-full px-4 py-2 text-base font-medium bg-white border rounded-md shadow-sm border-1 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-600 sm:text-sm"
+  //                   className="inline-flex justify-center w-full px-4 py-2 text-base font-medium bg-white border rounded-sm shadow-sm border-1 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-600 sm:text-sm"
   //                   onClick={() => setOpen(false)}
   //                 >
   //                   Cancel
@@ -377,11 +377,11 @@ const MultiPrice = ({ data, product }: any) => {
   //               <button
   //                 // type="submit"
   //                 // role="link"
-  //                 className={classNames(
+  //                 className={cn(
   //                   price.mostPopular
   //                     ? 'bg-primaryColor-700 text-white hover:bg-primaryColor-800'
   //                     : 'bg-gray-100 hover:text-white text-primaryColor-700 hover:bg-primaryColor-800',
-  //                   'mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium'
+  //                   'mt-8 block w-full py-3 px-6 border border-transparent rounded-sm text-center font-medium'
   //                 )}
   //               >
   //                 Buy Now

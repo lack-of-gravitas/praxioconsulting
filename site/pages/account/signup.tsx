@@ -88,7 +88,7 @@ const SignUp = () => {
           />
           <div className="flex flex-col w-full pt-2">
             <Button
-              variant="slim"
+              variant="primary"
               type="submit"
               loading={loading}
               disabled={loading || !email.length || !password.length}

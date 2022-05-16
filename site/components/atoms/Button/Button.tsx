@@ -6,14 +6,14 @@ import React, {
   useRef,
 } from 'react'
 import mergeRefs from 'react-merge-refs'
-import s from './Button.module.css'
 import { LoadingDots } from '@components/atoms'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string
   className?: string
-  variant?: 'flat' | 'slim' | 'ghost' | 'naked'
+  variant?: 'primary' | 'secondary'
   active?: boolean
+  size?: 'small' | 'medium' | 'large'
   type?: 'submit' | 'reset' | 'button'
   Component?: string | JSXElementConstructor<any>
   width?: string | number
@@ -25,7 +25,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
   const {
     className,
-    variant = 'flat',
+    variant = 'primary', // primary | secondary
+    size = 'medium',
     children,
     active,
     width,
@@ -37,15 +38,11 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
   } = props
   const ref = useRef<typeof Component>(null)
 
+  // controls concatenation of classes
   const rootClassName = cn(
-    s.root,
-    {
-      [s.ghost]: variant === 'ghost',
-      [s.slim]: variant === 'slim',
-      [s.naked]: variant === 'naked',
-      [s.loading]: loading,
-      [s.disabled]: disabled,
-    },
+    variant === 'primary'
+      ? 'relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-sm shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800'
+      : '',
     className
   )
 
@@ -73,20 +70,3 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
 })
 
 export default Button
-
-// BUTTON FROM COMMERCE JS (INCLUDES PRICE)
-
-{
-  /* <div className="py-4 d-flex">
-          <button onClick={this.handleAddToCart} disabled={soldOut}
-              className="h-56 pl-3 pr-4 bg-black font-color-white d-flex align-items-center flex-grow-1" type="button">
-            <span className="mr-3 text-center flex-grow-1">
-              { soldOut ? 'Sold out' : 'Add to cart' }
-            </span>
-            <span className="pl-3 border-left border-color-white">
-            {priceSymbol}{this.getPrice()}
-            </span>
-          </button>
-        </div>
-         */
-}

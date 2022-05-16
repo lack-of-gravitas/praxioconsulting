@@ -87,13 +87,13 @@ const Products = ({ data }) => {
                     >
                       <button
                         type="button"
-                        className="relative inline-flex items-center px-4 text-lg font-medium text-white border border-transparent rounded-md shadow-lg hover:text-white bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+                        className="relative inline-flex items-center px-4 text-lg font-medium text-white border border-transparent rounded-sm shadow-lg hover:text-white bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
                       >
                         <ArrowRightIcon
                           className="w-6 h-6 mr-2 -ml-1"
                           aria-hidden="true"
                         />
-                        <span className="p-3 px-5 text-white rounded-md cursor-pointer ">
+                        <span className="p-3 px-5 text-white rounded-sm cursor-pointer ">
                           Learn More
                         </span>
                       </button>

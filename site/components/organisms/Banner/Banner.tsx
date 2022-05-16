@@ -27,15 +27,15 @@ export default function Banner() {
             </span>
           </p>
         </div>
-        {/* <div className="absolute inset-y-0 right-0 flex items-start pt-1 pr-1 sm:pt-1 sm:pr-2 sm:items-start">
+        <div className="absolute inset-y-0 right-0 flex items-start pt-1 pr-1 sm:pt-1 sm:pr-2 sm:items-start">
           <button
             type="button"
-            className="flex p-2 rounded-md hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-white"
+            className="flex p-2 rounded-sm hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-white"
           >
             <span className="sr-only">Dismiss</span>
             <XIcon className="w-6 h-6 text-white" aria-hidden="true" />
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   )

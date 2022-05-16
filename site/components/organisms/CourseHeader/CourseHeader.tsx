@@ -6,7 +6,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 // import { signIn, signOut, useSession } from 'next-auth/react'
-import { classNames } from '@lib/concat-classes'
+import cn from 'clsx'
 // ui imports
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -74,7 +74,7 @@ export default function Navigation(data: any) {
               <a
                 // key={index}
                 // href={item.href}
-                className={classNames(
+                className={cn(
                   item.href === slug
                     ? 'border-primaryColor-700 text-gray-900'
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
@@ -101,7 +101,7 @@ export default function Navigation(data: any) {
                 // key={index}
                 as="a"
                 // href={item.href}
-                className={classNames(
+                className={cn(
                   item.href === slug
                     ? 'bg-primaryColor-50 border-primaryColor-700 text-primaryColor-700'
                     : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800',

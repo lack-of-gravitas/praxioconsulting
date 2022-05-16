@@ -6,7 +6,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 // import { signIn, signOut, useSession } from 'next-auth/react'
-import { classNames } from '@lib/concat-classes'
+import cn from 'clsx'
 // ui imports
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -142,7 +142,7 @@ export default function Navigation(data) {
               <a
                 // key={index}
                 // href={item.href}
-                className={classNames(
+                className={cn(
                   item.href === slug
                     ? 'border-primaryColor-700 text-gray-900'
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
@@ -169,7 +169,7 @@ export default function Navigation(data) {
                 // key={index}
                 as="a"
                 // href={item.href}
-                className={classNames(
+                className={cn(
                   item.href === slug
                     ? 'bg-primaryColor-50 border-primaryColor-700 text-primaryColor-700'
                     : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800',
@@ -210,7 +210,7 @@ export default function Navigation(data) {
                     <DesktopProfileMenu />
                     <div className="flex items-center -mr-2 sm:hidden">
                       {/* Mobile menu button */}
-                      <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-700">
+                      <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-sm hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-700">
                         <span className="sr-only">Open main menu</span>
                         {open ? (
                           <XIcon className="block w-6 h-6" aria-hidden="true" />
@@ -323,7 +323,7 @@ export default function Navigation(data) {
                 e.preventDefault()
                 signIn()
               }}
-              className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white border border-transparent rounded-md shadow-sm whitespace-nowrap bg-primaryColor-600 hover:bg-primaryColor-700"
+              className="inline-flex items-center justify-center px-4 py-2 ml-8 text-base font-medium text-white border border-transparent rounded-sm shadow-sm whitespace-nowrap bg-primaryColor-600 hover:bg-primaryColor-700"
             >
               Sign in
             </a>
@@ -363,13 +363,13 @@ export default function Navigation(data) {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                   {userNavigation.map((item) => (
                     <Menu.Item key={item.name}>
                       {({ active }) => (
                         <a
                           href={item.href}
-                          className={classNames(
+                          className={cn(
                             active ? 'bg-gray-100' : '',
                             'block px-4 py-2 text-sm text-gray-700'
                           )}

@@ -38,7 +38,7 @@ export default function CourseContent({ data, preview }) {
                 </div>
                 <div className="flex mt-10 space-x-3 sm:border-l sm:border-transparent sm:pl-6">
                   <Link href="/user/signin" passHref>
-                    <a className="inline-flex items-center px-4 py-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-primaryColor-600 hover:bg-primaryColor-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500">
+                    <a className="inline-flex items-center px-4 py-2 text-base font-medium text-white border border-transparent rounded-sm shadow-sm bg-primaryColor-600 hover:bg-primaryColor-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500">
                       Login
                     </a>
                   </Link>

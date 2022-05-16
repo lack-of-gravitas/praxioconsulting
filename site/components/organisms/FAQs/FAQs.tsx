@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/outline'
 import parse from 'html-react-parser'
-import { classNames } from '@lib/concat-classes'
+import cn from 'clsx'
 
 const FAQs = ({ data }: any) => {
   // console.log('data -- ', data)
@@ -31,7 +31,7 @@ const FAQs = ({ data }: any) => {
                           </span>
                           <span className="flex items-center ml-6 h-7">
                             <ChevronDownIcon
-                              className={classNames(
+                              className={cn(
                                 open ? '-rotate-180' : 'rotate-0',
                                 'h-6 w-6 transform'
                               )}

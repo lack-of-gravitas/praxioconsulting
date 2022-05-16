@@ -43,7 +43,7 @@ const UserNav: React.FC<{
           <li className={s.item}>
             <Button
               className={s.item}
-              variant="naked"
+              variant="primary"
               onClick={() => {
                 setSidebarView('CART_VIEW')
                 toggleSidebar()
@@ -86,7 +86,7 @@ const UserNav: React.FC<{
           <Button
             className={s.item}
             aria-label="Menu"
-            variant="naked"
+            variant="primary"
             onClick={() => {
               // openSidebar()
               // setSidebarView('MOBILE_MENU_VIEW')
