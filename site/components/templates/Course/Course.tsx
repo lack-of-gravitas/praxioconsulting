@@ -320,7 +320,7 @@ const Course = ({ header, course, children, preview }: any) => {
 
               <div className="flex flex-col flex-1 overflow-y-auto">
                 <nav className="flex-1 px-2 py-4 space-y-1 cursor-pointer">
-                  {modules?.map((module: any) =>
+                  {/* {modules?.map((module: any) =>
                     !module.contents ? (
                       <div key={module.title}>
                         <a
@@ -395,7 +395,7 @@ const Course = ({ header, course, children, preview }: any) => {
                         )}
                       </Disclosure>
                     )
-                  )}
+                  )} */}
                 </nav>
 
                 {/* User Section */}

@@ -23,6 +23,7 @@ const ContentBlock = ({ data }: any) => {
     <>
       <div className="relative max-w-full py-16 overflow-hidden bg-white">
         {header && blockHeader()}
+        <div className="prose">{parse(data)}</div>
 
         <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
           <div
