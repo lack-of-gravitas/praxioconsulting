@@ -42,7 +42,7 @@ const VideoLibrary = ({ data }: any) => {
                 <li key={video.uri}>
                   <div className="space-y-4">
                     <div className="aspect-w-3 aspect-h-2">
-                      <img
+                      <Image
                         className="object-cover rounded-sm shadow-lg"
                         src={video.link}
                         alt=""

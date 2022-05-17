@@ -1,4 +1,3 @@
-// import delve from 'dlv'
 import ErrorPage from 'next/error'
 import { Layout } from '@components/templates'
 // import { fetchGetJSON } from '@lib/api-helpers'

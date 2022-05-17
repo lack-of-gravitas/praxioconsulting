@@ -1,4 +1,3 @@
-// import delve from 'dlv'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CheckIcon, XIcon, ArrowRightIcon } from '@heroicons/react/outline'
