@@ -25,7 +25,7 @@ const Reviews = ({ data }: any) => {
             {reviews.map((review: any, index: any) => (
               <div
                 key={index}
-                className="max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
+                className="max-w-sm mx-auto overflow-hidden bg-white rounded-sm shadow-lg dark:bg-gray-800"
               >
                 <Image
                   className="object-cover object-center w-full h-56"

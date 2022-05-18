@@ -1,35 +1,80 @@
-import cn from 'clsx'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Container } from '@components/molecules'
-const Img = ({ className = '', ...props }) => {
-  console.log(props)
+import { useState } from 'react'
+import Image, { ImageProps as NextImageProps } from 'next/image'
+import { LoadingDots } from '@components/atoms'
 
-  return (
-    <div className="border-t border-b bg-accent-9 border-accent-2">
-      {' '}
-      <Container>
-        <Image
-          className="object-cover w-full h-64"
-          // className={className}
-          alt={'test'}
-          {...props}
-          //   unoptimized={false}
-          src="https://via.placeholder.com/800"
-          layout="fill"
-          width={500}
-          height={500}
-        >
-          {/* {children} */}
-          {/* {loading && (
-      <i className="flex pl-2 m-0">
-        <LoadingDots />
-      </i>
-    )} */}
-        </Image>{' '}
-      </Container>
-    </div>
-  )
+type ImageWithStateProps = NextImageProps & {
+  fallback: string
+  debug?: string
 }
 
-export default Img
+const ImageWithState: React.FC<ImageWithStateProps> = ({ src, ...props }) => {
+  const [loading, setLoading] = useState(true)
+  const [onErrorSrc, setOnErrorSrc] = useState<string | undefined>(undefined)
+
+  return (
+    <div style={{ position: 'relative' }}>
+      {loading === true && (
+        <i className="flex pl-2 m-0">
+          <LoadingDots />
+        </i>
+      )}
+      <Image
+        className={'rounded-sm ' + props.className || ''}
+        alt={props.alt || 'Image'}
+        // src={props.src || 'https://www.fillmurray.com/640/360'}
+        layout={props.layout || 'fill'}
+        height={props.height || '640'}
+        width={props.width || '360'}
+        // unoptimized={false}
+        // https://dummyimage.com/640x360/fff/aaa
+        {...props}
+        src={onErrorSrc || src}
+        onLoadingComplete={() => setLoading(false)}
+        onError={(e) => handleOnError(e)}
+      />
+    </div>
+  )
+
+  function handleOnError(
+    e: React.SyntheticEvent<HTMLImageElement, Event>
+  ): void {
+    e?.currentTarget?.src !== props.fallback && setOnErrorSrc(props.fallback)
+  }
+}
+
+export default ImageWithState
+
+// function img(props: ImageWithStateProps) {
+//   const [loading, setLoading] = useState(true)
+//   const [onErrorSrc, setOnErrorSrc] = useState<string | undefined>(undefined)
+
+//   return (
+//     <div style={{ position: 'relative' }}>
+//       {loading === true && (
+//         <i className="flex pl-2 m-0">
+//           <LoadingDots />
+//         </i>
+//       )}
+//       <Image
+//         className={'rounded-sm ' + props.className || ''}
+//         alt={props.alt || 'Image'}
+//         // src={props.src || 'https://www.fillmurray.com/640/360'}
+//         layout={props.layout || 'fill'}
+//         height={props.height || '640'}
+//         width={props.width || '360'}
+//         // unoptimized={false}
+//         // https://dummyimage.com/640x360/fff/aaa
+//         {...props}
+//         src={onErrorSrc || src}
+//         onLoadingComplete={() => !props.debug && setLoading(false)}
+//         onError={(e) => handleOnError(e)}
+//       />
+//     </div>
+//   )
+
+//   function handleOnError(
+//     e: React.SyntheticEvent<HTMLImageElement, Event>
+//   ): void {
+//     e?.currentTarget?.src !== props.fallback && setOnErrorSrc(props.fallback)
+//   }
+// }

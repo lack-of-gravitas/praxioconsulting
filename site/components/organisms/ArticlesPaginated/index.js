@@ -1,22 +1,22 @@
-import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
-import { ArrowRightIcon } from "@heroicons/react/outline";
+import Link from 'next/link'
+import Image from 'next/image'
+import { useState } from 'react'
+import { ArrowRightIcon } from '@heroicons/react/outline'
 import {
   ArrowNarrowLeftIcon,
   ArrowNarrowRightIcon,
-} from "@heroicons/react/solid";
+} from '@heroicons/react/solid'
 
 const Articles = ({ data, articles }) => {
   // console.log("data //", data);
   // console.log("article //", articles);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [currArticleIndex, setcurrArticleIndex] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1)
+  const [currArticleIndex, setcurrArticleIndex] = useState(0)
 
-  let { header, maxCount, columns } = data;
+  let { header, maxCount, columns } = data
 
-  maxCount ? (maxCount = 4) : maxCount; //=== 0 ? articles.length : (articles = articles.slice(0, maxCount));
-  let lastPage = Math.ceil(articles.length / 12) || 1; // 12 articles per page or just 1 page
+  maxCount ? (maxCount = 4) : maxCount //=== 0 ? articles.length : (articles = articles.slice(0, maxCount));
+  let lastPage = Math.ceil(articles.length / 12) || 1 // 12 articles per page or just 1 page
 
   const PageNumbers = () => {
     return (
@@ -25,11 +25,11 @@ const Articles = ({ data, articles }) => {
           <div className="-mt-px w-0 flex-1 flex">
             <button
               className={`${
-                pageNumber <= 1 ? "cursor-not-allowed opacity-50" : ""
+                pageNumber <= 1 ? 'cursor-not-allowed opacity-50' : ''
               } border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-primaryColor-700 hover:border-gray-300`}
               onClick={() => {
-                setPageNumber(pageNumber - 1);
-                setcurrArticleIndex(Math.min((currArticleIndex -= 12), 0));
+                setPageNumber(pageNumber - 1)
+                setcurrArticleIndex(Math.min((currArticleIndex -= 12), 0))
               }}
               disabled={pageNumber <= 1}
             >
@@ -78,11 +78,11 @@ const Articles = ({ data, articles }) => {
           <div className="-mt-px w-0 flex-1 flex justify-end">
             <button
               className={`${
-                pageNumber >= lastPage ? "cursor-not-allowed opacity-50" : ""
+                pageNumber >= lastPage ? 'cursor-not-allowed opacity-50' : ''
               } border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-primaryColor-700 hover:border-gray-300`}
               onClick={() => {
-                setPageNumber(pageNumber + 1);
-                setcurrArticleIndex((currArticleIndex += 12));
+                setPageNumber(pageNumber + 1)
+                setcurrArticleIndex((currArticleIndex += 12))
               }}
               disabled={pageNumber >= lastPage}
             >
@@ -95,8 +95,8 @@ const Articles = ({ data, articles }) => {
           </div>
         </nav>
       </>
-    );
-  };
+    )
+  }
 
   return (
     <>
@@ -120,7 +120,7 @@ const Articles = ({ data, articles }) => {
                 .slice(currArticleIndex, currArticleIndex + 12)
                 .map((article, index) => (
                   <Link key={index} href={`/blog/${article.slug}`} passHref>
-                    <div className="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 cursor-pointer">
+                    <div className="max-w-2xl mx-auto overflow-hidden bg-white rounded-sm shadow-lg dark:bg-gray-800 cursor-pointer">
                       {article.image ? (
                         <Image
                           className="object-cover w-full h-64"
@@ -206,7 +206,7 @@ const Articles = ({ data, articles }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Articles;
+export default Articles

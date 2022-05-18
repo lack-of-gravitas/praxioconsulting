@@ -26,7 +26,7 @@ const Products = ({ data }: any) => {
             {products?.map((product: any, index: any) => (
               <div
                 key={index}
-                className="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800"
+                className="max-w-2xl mx-auto overflow-hidden bg-white rounded-sm shadow-lg dark:bg-gray-800"
               >
                 {product.images && product.images.length > 0 ? (
                   <Image

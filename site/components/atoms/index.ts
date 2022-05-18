@@ -2,7 +2,7 @@ export { default as Avatar } from './Avatar'
 export { default as Button } from './Button'
 export { default as Input } from './Input'
 export { default as Link } from './Link'
-export { default as Img } from './Image'
+export { default as Image } from './Image'
 
 export { default as LoadingDots } from './LoadingDots'
 export { default as Logo } from './Logo'

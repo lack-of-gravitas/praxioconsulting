@@ -77,7 +77,7 @@ export default function Pricing({ products }: Props) {
   //           Start building for free, then add a site plan to go live. Account
   //           plans unlock additional features.
   //         </p>
-  //         <div className="relative self-center mt-6 bg-zinc-900 rounded-lg p-0.5 flex sm:mt-8 border border-zinc-800">
+  //         <div className="relative self-center mt-6 bg-zinc-900 rounded-sm p-0.5 flex sm:mt-8 border border-zinc-800">
   //           <button
   //             onClick={() => setBillingInterval('month')}
   //             type="button"
@@ -117,7 +117,7 @@ export default function Pricing({ products }: Props) {
   //             <div
   //               key={product.id}
   //               className={cn(
-  //                 'rounded-lg shadow-sm divide-y divide-zinc-600 bg-zinc-900',
+  //                 'rounded-sm shadow-sm divide-y divide-zinc-600 bg-zinc-900',
   //                 {
   //                   'border border-pink-500': subscription
   //                     ? product.name === subscription?.prices?.products?.name

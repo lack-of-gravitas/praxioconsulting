@@ -355,14 +355,14 @@ const Price = ({ data, product, displayFormat }: any) => {
   //         {prices.map((individualPrice) => (
   //           <div
   //             key={individualPrice.header.title}
-  //             className="relative flex flex-col p-8 bg-white border border-gray-200 rounded-lg shadow-sm"
+  //             className="relative flex flex-col p-8 bg-white border border-gray-200 rounded-sm shadow-sm"
   //           >
   //             <div className="flex-1">
   //               <h3 className="text-xl font-semibold text-gray-900">
   //                 {individualPrice.header.title}
   //               </h3>
   //               {individualPrice.mostPopular ? (
-  //                 <p className="absolute top-0 py-1.5 px-4 bg-primaryColor-700 rounded-lg text-xs font-semibold uppercase tracking-wide text-white transform -translate-y-1/2">
+  //                 <p className="absolute top-0 py-1.5 px-4 bg-primaryColor-700 rounded-sm text-xs font-semibold uppercase tracking-wide text-white transform -translate-y-1/2">
   //                   Most popular
   //                 </p>
   //               ) : null}
@@ -496,7 +496,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
   //             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
   //           >
-  //             <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+  //             <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-sm shadow-xl sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
   //               <div>
   //                 <div className="flex items-center justify-center w-12 h-12 mx-auto rounded-full bg-primaryColor-100">
   //                   <LockClosedIcon
@@ -671,7 +671,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
   //             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
   //           >
-  //             <div className="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+  //             <div className="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-sm shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
   //               <div className="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
   //                 <div className="sm:flex sm:items-start">
   //                   <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto rounded-full bg-amber-100 sm:mx-0 sm:h-10 sm:w-10">

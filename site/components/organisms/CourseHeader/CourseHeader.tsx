@@ -32,7 +32,7 @@ export default function Navigation(data: any) {
             {themes[0].logo ? (
               <>
                 <Image
-                  className="w-full h-8 pt-5 mr-6 rounded-lg"
+                  className="w-full h-8 pt-5 mr-6 rounded-sm"
                   // className="hidden w-auto h-8 lg:block"
 
                   src={themes[0].logo.formats.xsmall.url}
@@ -45,7 +45,7 @@ export default function Navigation(data: any) {
             ) : (
               <>
                 <Image
-                  className="w-full h-10 pt-5 rounded-lg"
+                  className="w-full h-10 pt-5 rounded-sm"
                   src="https://via.placeholder.com/64/0891B2/E2E8F0?text=No+Image+Set"
                   layout="intrinsic"
                   height={48}

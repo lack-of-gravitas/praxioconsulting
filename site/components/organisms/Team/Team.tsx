@@ -27,7 +27,7 @@ const Team = ({ data }: any) => {
                     <div className="h-0 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
                       {person.picture && (
                         <Image
-                          className="object-cover rounded-lg shadow-lg"
+                          className="object-cover rounded-sm shadow-lg"
                           src={person.picture.formats.small.url}
                           layout="fill"
                           // height={person.picture.formats.small.height}

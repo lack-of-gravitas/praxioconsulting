@@ -211,7 +211,7 @@ const BlogPost = ({ data, preview }) => {
                 {data.pageData.image ? (
                   <>
                     <Image
-                      className="w-full pt-5 rounded-lg"
+                      className="w-full pt-5 rounded-sm"
                       src={
                         data.pageData.image.formats.medium
                           ? data.pageData.image.formats.medium.url
@@ -246,7 +246,7 @@ const BlogPost = ({ data, preview }) => {
                 ) : (
                   <>
                     <Image
-                      className="w-full rounded-lg"
+                      className="w-full rounded-sm"
                       src="https://via.placeholder.com/150/0891B2/E2E8F0?text=No+Image+Set"
                       layout="responsive"
                       height={700}

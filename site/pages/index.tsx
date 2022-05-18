@@ -1,10 +1,10 @@
 import { Layout } from '@components/templates'
 import { Hero } from '@components/organisms'
-import { Img } from '@components/atoms'
 
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { Button } from '@components/atoms'
 import { Footer } from '@components/organisms'
+import { Image } from '@components/atoms'
 export default function Home({
   data,
   preview,
@@ -39,7 +39,10 @@ export default function Home({
 
   return (
     <>
-      <Img src="https://via.placeholder.com/800x600" />
+      <Image
+        src="https://praxio.azureedge.net/consulting/00b71bcd-5fa7-4bf8-a842-d8f0af5f602a__8d9c8fc4636473fafa26cba1dac0c9ea16a4ac0c.png"
+        layout="fill"
+      />
       <Hero
         headline=" Dessert dragée halvah croissant."
         description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "

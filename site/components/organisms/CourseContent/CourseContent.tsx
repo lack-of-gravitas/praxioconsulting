@@ -42,7 +42,7 @@ export default function MainContent({ data }: any) {
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-            <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+            <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-sm">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
@@ -106,7 +106,7 @@ export default function MainContent({ data }: any) {
       //   <div className="relative mx-auto max-w-7xl">
       //     <div className="grid max-w-lg gap-5 mx-auto mt-5 lg:grid-cols-5 lg:max-w-none">
       //       {data.map((file) => {
-      //         <div className="bg-gray-50 sm:rounded-lg">
+      //         <div className="bg-gray-50 sm:rounded-sm">
       //           <div className="px-4 py-2 sm:p-6">
       //             <h3 className="text-base font-medium leading-6 text-gray-900">
       //               {file.name}
@@ -160,7 +160,7 @@ export default function MainContent({ data }: any) {
           </p>
         </div>
 
-        <div className="border-4 rounded-lg border-primaryColor-700 max-h-max">
+        <div className="border-4 rounded-sm border-primaryColor-700 max-h-max">
           <div className="overflow-hidden ">
             <div className="aspect-w-16 aspect-h-9">
               <ReactPlayer

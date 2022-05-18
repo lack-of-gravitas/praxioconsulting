@@ -10,8 +10,10 @@ module.exports =
     },
     images: {
       domains: [
-        'via.placeholder.com',
+        'fillmurray.com',
+        'dummyimage.com',
         'praxio.azureedge.net',
+        // 'praxio.blob.core.windows.net',
         'lh3.googleusercontent.com', // for google user profiles
       ],
     },

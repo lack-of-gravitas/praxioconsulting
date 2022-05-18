@@ -278,7 +278,7 @@ const MajorFeature = ({ data }: any) => {
 
             <div className="mt-12 -mb-10 sm:-mb-24 lg:-mb-80">
               <Image
-                className="rounded-lg shadow-xl ring-1 ring-black ring-opacity-5"
+                className="rounded-sm shadow-xl ring-1 ring-black ring-opacity-5"
                 src={image.formats.large.url}
                 layout="responsive"
                 height={image.formats.large.height}

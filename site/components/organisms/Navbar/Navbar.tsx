@@ -83,7 +83,7 @@ export default Navbar
 //             {themes[0].logo ? (
 //               <>
 //                 <Image
-//                   className="w-full pt-5 rounded-lg"
+//                   className="w-full pt-5 rounded-sm"
 //                   src={
 //                     themes[0].logo.formats.xsmall
 //                       ? themes[0].logo.formats.thumbnail.url
@@ -109,7 +109,7 @@ export default Navbar
 //                 <span className="block text-gray-800">{name}</span>
 
 //                 <Image
-//                   className="w-full rounded-lg"
+//                   className="w-full rounded-sm"
 //                   src="https://via.placeholder.com/64/0891B2/E2E8F0?text=No+Image+Set"
 //                   layout="responsive"
 //                   height={64}
@@ -146,7 +146,7 @@ export default Navbar
 //             {themes[0].logo ? (
 //               <>
 //                 <Image
-//                   className="w-full h-10 pt-5 mr-6 rounded-lg"
+//                   className="w-full h-10 pt-5 mr-6 rounded-sm"
 //                   // className="hidden w-auto h-8 lg:block"
 
 //                   src={themes[0].logo.formats.xsmall.url}
@@ -159,7 +159,7 @@ export default Navbar
 //             ) : (
 //               <>
 //                 <Image
-//                   className="w-full h-10 pt-5 rounded-lg"
+//                   className="w-full h-10 pt-5 rounded-sm"
 //                   src="https://via.placeholder.com/64/0891B2/E2E8F0?text=No+Image+Set"
 //                   layout="intrinsic"
 //                   height={48}
