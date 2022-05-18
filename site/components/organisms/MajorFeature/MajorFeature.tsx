@@ -1,13 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import {
-  AnnotationIcon,
-  GlobeAltIcon,
-  LightningBoltIcon,
-  ScaleIcon,
-  MailIcon,
-  ArrowRightIcon,
-} from '@heroicons/react/outline'
 
 import RichContent from '../RichContent'
 

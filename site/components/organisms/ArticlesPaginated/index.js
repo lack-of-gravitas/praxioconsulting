@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import { ArrowRightIcon } from '@heroicons/react/outline'
 import {
-  ArrowNarrowLeftIcon,
-  ArrowNarrowRightIcon,
-} from '@heroicons/react/solid'
+  ArrowLeft as ArrowLeftIcon,
+  ArrowRight as ArrowRightIcon,
+} from '@components/atoms/Icons'
 
 const Articles = ({ data, articles }) => {
   // console.log("data //", data);
@@ -21,8 +20,8 @@ const Articles = ({ data, articles }) => {
   const PageNumbers = () => {
     return (
       <>
-        <nav className="border-t border-gray-200 px-4 mt-10 flex items-center justify-between sm:px-0">
-          <div className="-mt-px w-0 flex-1 flex">
+        <nav className="flex items-center justify-between px-4 mt-10 border-t border-gray-200 sm:px-0">
+          <div className="flex flex-1 w-0 -mt-px">
             <button
               className={`${
                 pageNumber <= 1 ? 'cursor-not-allowed opacity-50' : ''
@@ -33,8 +32,8 @@ const Articles = ({ data, articles }) => {
               }}
               disabled={pageNumber <= 1}
             >
-              <ArrowNarrowLeftIcon
-                className="mr-3 h-5 w-5 text-primaryColor-700"
+              <ArrowLeftIcon
+                className="w-5 h-5 mr-3 text-primaryColor-700"
                 aria-hidden="true"
               />
               Previous
@@ -43,7 +42,7 @@ const Articles = ({ data, articles }) => {
           {/* <div className="hidden md:-mt-px md:flex">
             <a
               href="#"
-              className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
+              className="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300"
             >
               1
             </a>
@@ -52,30 +51,30 @@ const Articles = ({ data, articles }) => {
           }
             <a
               href="#"
-              className="border-primaryColor-500 text-primaryColor-700 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
+              className="inline-flex items-center px-4 pt-4 text-sm font-medium border-t-2 border-primaryColor-500 text-primaryColor-700"
               aria-current="page"
             >
               2
             </a>
 
-            <span className="border-transparent text-gray-500 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium">
+            <span className="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent">
               ...
             </span>
 
             <a
               href="#"
-              className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
+              className="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300"
             >
               9
             </a>
             <a
               href="#"
-              className="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium"
+              className="inline-flex items-center px-4 pt-4 text-sm font-medium text-gray-500 border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300"
             >
               10
             </a>
           </div> */}
-          <div className="-mt-px w-0 flex-1 flex justify-end">
+          <div className="flex justify-end flex-1 w-0 -mt-px">
             <button
               className={`${
                 pageNumber >= lastPage ? 'cursor-not-allowed opacity-50' : ''
@@ -87,8 +86,8 @@ const Articles = ({ data, articles }) => {
               disabled={pageNumber >= lastPage}
             >
               Next
-              <ArrowNarrowRightIcon
-                className="ml-3 h-5 w-5 text-primaryColor-700"
+              <ArrowRightIcon
+                className="w-5 h-5 ml-3 text-primaryColor-700"
                 aria-hidden="true"
               />
             </button>
@@ -100,13 +99,13 @@ const Articles = ({ data, articles }) => {
 
   return (
     <>
-      <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-        <div className="relative max-w-7xl mx-auto">
+      <div className="relative px-4 pt-16 pb-20 bg-gray-50 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+        <div className="relative mx-auto max-w-7xl">
           <div className="text-center">
-            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               {header.title}
             </h2>
-            <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+            <p className="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">
               {header.text}
             </p>
           </div>
@@ -114,13 +113,13 @@ const Articles = ({ data, articles }) => {
           {/* CARDS */}
           <PageNumbers />
 
-          <div className="mt-12 max-w-xl mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+          <div className="grid max-w-xl gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
             {articles &&
               articles
                 .slice(currArticleIndex, currArticleIndex + 12)
                 .map((article, index) => (
                   <Link key={index} href={`/blog/${article.slug}`} passHref>
-                    <div className="max-w-2xl mx-auto overflow-hidden bg-white rounded-sm shadow-lg dark:bg-gray-800 cursor-pointer">
+                    <div className="max-w-2xl mx-auto overflow-hidden bg-white rounded-sm shadow-lg cursor-pointer dark:bg-gray-800">
                       {article.image ? (
                         <Image
                           className="object-cover w-full h-64"
@@ -150,7 +149,7 @@ const Articles = ({ data, articles }) => {
                           <div className="flex items-center">
                             {/* <div className="flex items-center">
                             <Image
-                              className="object-cover h-15 rounded-full"
+                              className="object-cover rounded-full h-15"
                               src={article.author.picture.formats.thumbnail.url}
                               layout="intrinsic"
                               height={50}
@@ -193,7 +192,7 @@ const Articles = ({ data, articles }) => {
                 ))}
           </div>
 
-          {/* <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+          {/* <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
             {articles &&
               articles
                 .slice(currArticleIndex, currArticleIndex + 12)

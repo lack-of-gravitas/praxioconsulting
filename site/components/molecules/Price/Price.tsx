@@ -5,12 +5,12 @@ import parse from 'html-react-parser'
 import { useRouter } from 'next/router'
 
 import {
-  CheckIcon,
-  XIcon,
-  ArrowRightIcon,
-  LockClosedIcon,
-  ExclamationIcon,
-} from '@heroicons/react/outline'
+  Check as CheckIcon,
+  Cross as CrossIcon,
+  ArrowRight as ArrowRightIcon,
+  LockClosed as LockClosedIcon,
+  Exclamation as ExclamationIcon,
+} from '@components/atoms/Icons'
 
 // import { getProviders, signIn, getSession, useSession } from "next-auth/react";
 import { Dialog, Transition } from '@headlessui/react'
@@ -251,7 +251,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                             aria-hidden="true"
   //                           />
   //                         ) : (
-  //                           <XIcon
+  //                           <CrossIcon
   //                             className="flex-shrink-0 w-6 h-6 text-amber-500"
   //                             aria-hidden="true"
   //                           />
@@ -269,7 +269,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                             aria-hidden="true"
   //                           />
   //                         ) : (
-  //                           <XIcon
+  //                           <CrossIcon
   //                             className="flex-shrink-0 w-6 h-6 text-amber-500"
   //                             aria-hidden="true"
   //                           />
@@ -299,7 +299,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                             aria-hidden="true"
   //                           />
   //                         ) : (
-  //                           <XIcon
+  //                           <CrossIcon
   //                             className="flex-shrink-0 w-6 h-6 text-amber-500"
   //                             aria-hidden="true"
   //                           />
@@ -316,7 +316,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                             aria-hidden="true"
   //                           />
   //                         ) : (
-  //                           <XIcon
+  //                           <CrossIcon
   //                             className="flex-shrink-0 w-6 h-6 text-amber-500"
   //                             aria-hidden="true"
   //                           />
@@ -406,7 +406,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                         aria-hidden="true"
   //                       />
   //                     ) : (
-  //                       <XIcon
+  //                       <CrossIcon
   //                         className="flex-shrink-0 w-6 h-6 text-amber-500"
   //                         aria-hidden="true"
   //                       />

@@ -4,11 +4,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import parse from 'html-react-parser'
 import {
-  CheckIcon,
-  XIcon,
-  ArrowRightIcon,
-  LockClosedIcon,
-} from '@heroicons/react/outline'
+  Check as CheckIcon,
+  Cross as CrossIcon,
+  ArrowRight as ArrowRightIcon,
+  LockClosed as LockClosedIcon,
+} from '@components/atoms/Icons'
 import { fetchPostJSON } from '@lib/api-helpers'
 
 import { loadStripe } from '@stripe/stripe-js'
@@ -350,7 +350,7 @@ const MultiPrice = ({ data, product }: any) => {
   //                         aria-hidden="true"
   //                       />
   //                     ) : (
-  //                       <XIcon
+  //                       <CrossIcon
   //                         className="flex-shrink-0 w-6 h-6 text-red-500"
   //                         aria-hidden="true"
   //                       />

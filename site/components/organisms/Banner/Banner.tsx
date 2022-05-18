@@ -1,5 +1,4 @@
-/* This example requires Tailwind CSS v2.0+ */
-import { XIcon } from '@heroicons/react/outline'
+import { Cross as CrossIcon } from '@components/atoms/Icons'
 import { useRouter } from 'next/router'
 
 export default function Banner() {
@@ -33,7 +32,7 @@ export default function Banner() {
             className="flex p-2 rounded-sm hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-white"
           >
             <span className="sr-only">Dismiss</span>
-            <XIcon className="w-6 h-6 text-white" aria-hidden="true" />
+            <CrossIcon className="w-6 h-6 text-white" aria-hidden="true" />
           </button>
         </div>
       </div>

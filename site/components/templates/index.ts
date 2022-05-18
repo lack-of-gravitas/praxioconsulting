@@ -3,6 +3,8 @@ export { default as Contact } from './Contact'
 export { default as Course } from './Course'
 export { default as Home } from './Home'
 export { default as Layout } from './_defaultLayout'
+export { default as CourseLayout } from './_courseLayout'
+
 export { default as Legalese } from './Legalese'
 export { default as Page } from './Page'
 export { default as Posts } from './Posts'

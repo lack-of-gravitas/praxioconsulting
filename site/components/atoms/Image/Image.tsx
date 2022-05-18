@@ -2,12 +2,12 @@ import { useState } from 'react'
 import Image, { ImageProps as NextImageProps } from 'next/image'
 import { LoadingDots } from '@components/atoms'
 
-type ImageWithStateProps = NextImageProps & {
-  fallback: string
-  debug?: string
-}
+// type ImageWithStateProps = ImageProps & {
+//   fallback: string
+//   debug?: string
+// }
 
-const ImageWithState: React.FC<ImageWithStateProps> = ({ src, ...props }) => {
+const ImageWithState: React.FC<NextImageProps> = ({ src, ...props }) => {
   const [loading, setLoading] = useState(true)
   const [onErrorSrc, setOnErrorSrc] = useState<string | undefined>(undefined)
 
@@ -30,16 +30,15 @@ const ImageWithState: React.FC<ImageWithStateProps> = ({ src, ...props }) => {
         {...props}
         src={onErrorSrc || src}
         onLoadingComplete={() => setLoading(false)}
-        onError={(e) => handleOnError(e)}
+        // onError={(e) => handleOnError(e)}
       />
     </div>
   )
 
-  function handleOnError(
-    e: React.SyntheticEvent<HTMLImageElement, Event>
-  ): void {
-    e?.currentTarget?.src !== props.fallback && setOnErrorSrc(props.fallback)
-  }
+  //   function handleOnError(
+  //     e: React.SyntheticEvent<HTMLImageElement, Event>
+  //   ): void {
+  //     e?.currentTarget?.src !== props.fallback && setOnErrorSrc(props.fallback)
 }
 
 export default ImageWithState

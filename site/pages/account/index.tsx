@@ -152,7 +152,7 @@ export default function Account({ user }: { user: User }) {
 // import { loadStripe } from "@stripe/stripe-js";
 // import { fetchGetJSON, fetchPostJSON } from "@lib/api-helpers";
 
-// import { LogoutIcon } from "@heroicons/react/outline";
+// import { LogoutIcon } from "@components/atoms/Icons";
 // import { ArrowRightIcon } from "@heroicons/react/solid";
 // import dynamic from "next/dynamic";
 // import ReactPlayer from "react-player/lazy";

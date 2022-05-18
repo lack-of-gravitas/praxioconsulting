@@ -1,6 +1,6 @@
 // // import delve from "dlv";
 import Link from 'next/link'
-import { ArrowRightIcon } from '@heroicons/react/outline'
+import { ArrowRight as ArrowRightIcon } from '@components/atoms/Icons'
 import CallToAction from '.'
 
 const CTA = ({ data }: any) => {

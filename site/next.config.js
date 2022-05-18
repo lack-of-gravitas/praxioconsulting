@@ -10,7 +10,7 @@ module.exports =
     },
     images: {
       domains: [
-        'fillmurray.com',
+        'www.fillmurray.com',
         'dummyimage.com',
         'praxio.azureedge.net',
         // 'praxio.blob.core.windows.net',

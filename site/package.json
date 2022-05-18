@@ -16,8 +16,6 @@
   "dependencies": {
     "@builder.io/partytown": "^0.5.4",
     "@headlessui/react": "^1.6.1",
-    "@heroicons/react": "^1.0.6",
-    "@react-spring/web": "^9.4.5",
     "@stripe/stripe-js": "^1.29.0",
     "@supabase/supabase-auth-helpers": "^1.4.1",
     "@tailwindcss/aspect-ratio": "^0.4.0",

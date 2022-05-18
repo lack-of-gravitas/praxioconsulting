@@ -1,4 +1,4 @@
-import { LockClosedIcon } from '@heroicons/react/outline'
+import { LockClosedIcon } from '@components/atoms/Icons'
 // import { signOut, getSession, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 // import * as queries from '@services/queries'

@@ -9,7 +9,11 @@ import cn from 'clsx'
 // ui imports
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon, UserIcon } from '@heroicons/react/outline'
+import {
+  Menu as MenuIcon,
+  Cross as CrossIcon,
+  User as UserIcon,
+} from '@components/atoms/Icons'
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },

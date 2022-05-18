@@ -3,7 +3,6 @@ import { Hero } from '@components/organisms'
 
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import { Button } from '@components/atoms'
-import { Footer } from '@components/organisms'
 import { Image } from '@components/atoms'
 export default function Home({
   data,
@@ -39,16 +38,12 @@ export default function Home({
 
   return (
     <>
-      <Image
-        src="https://praxio.azureedge.net/consulting/00b71bcd-5fa7-4bf8-a842-d8f0af5f602a__8d9c8fc4636473fafa26cba1dac0c9ea16a4ac0c.png"
-        layout="fill"
-      />
+      {/* <Layout> */}
       <Hero
         headline=" Dessert dragée halvah croissant."
         description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
       />
-      <Button variant="primary">Test</Button>
-      <Footer />
+      {/* </Layout> */}
     </>
   )
 }

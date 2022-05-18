@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRightIcon } from '@heroicons/react/outline'
+import { ArrowRight as ArrowRightIcon } from '@components/atoms/Icons'
 
 const Products = ({ data }: any) => {
   let { header, products, filter, slug, visible } = data

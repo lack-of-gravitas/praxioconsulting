@@ -1,4 +1,3 @@
-import { Banner } from '@components/organisms'
 import { SEO } from '@components/atoms'
 import dynamic from 'next/dynamic'
 
@@ -9,13 +8,13 @@ import Image from 'next/image'
 import { Fragment, useState, useEffect } from 'react'
 import { Disclosure, Dialog, Menu, Transition } from '@headlessui/react'
 import {
-  CollectionIcon,
-  LogoutIcon,
-  AcademicCapIcon,
-  MenuAlt2Icon,
-  UserIcon,
-  XIcon,
-} from '@heroicons/react/outline'
+  Collection as CollectionIcon,
+  Logout as LogoutIcon,
+  Academic as AcademicCapIcon,
+  Menu as MenuIcon,
+  User as UserIcon,
+  Cross as CrossIcon,
+} from '@components/atoms/Icons'
 
 const CourseHeader = dynamic(() => import('../../organisms/CourseHeader'))
 const CourseFooter = dynamic(() => import('../../organisms/CourseFooter'))
@@ -125,7 +124,7 @@ const Course = ({ header, course, children, preview }: any) => {
                         onClick={() => setSidebarOpen(false)}
                       >
                         <span className="sr-only">Close sidebar</span>
-                        <XIcon
+                        <CrossIcon
                           className="w-10 h-10 text-primaryColor-500 "
                           aria-hidden="true"
                         />

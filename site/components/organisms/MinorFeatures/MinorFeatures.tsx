@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { CheckIcon, XIcon, ArrowRightIcon } from '@heroicons/react/outline'
+import { Check as CheckIcon, Cross as CrossIcon } from '@components/atoms/Icons'
 import RichContent from '../RichContent'
 
 const MinorFeatures = ({ data }: any) => {
@@ -34,7 +34,7 @@ const MinorFeatures = ({ data }: any) => {
                         aria-hidden="true"
                       />
                     ) : (
-                      <XIcon
+                      <CrossIcon
                         className="absolute w-6 h-6 text-red-500"
                         aria-hidden="true"
                       />
@@ -59,7 +59,7 @@ const MinorFeatures = ({ data }: any) => {
                         aria-hidden="true"
                       />
                     ) : (
-                      <XIcon
+                      <CrossIcon
                         className="absolute w-6 h-6 text-red-500"
                         aria-hidden="true"
                       />

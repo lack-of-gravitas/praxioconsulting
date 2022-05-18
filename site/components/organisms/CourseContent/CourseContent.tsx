@@ -5,18 +5,18 @@ import parse from 'html-react-parser'
 import Link from 'next/link'
 
 import {
-  CollectionIcon,
-  PencilAltIcon,
-  AnnotationIcon,
-  DownloadIcon,
-} from '@heroicons/react/solid'
+  Collection as CollectionIcon,
+  Pencil as PencilIcon,
+  Annotation as AnnotationIcon,
+  Download as DownloadIcon,
+} from '@components/atoms/Icons'
 
 // import cn from 'clsx'
 import cn from 'clsx'
 const tabs = [
   { name: 'Show Notes', icon: AnnotationIcon, current: true },
   { name: 'Files', icon: CollectionIcon, current: false },
-  { name: 'Transcript', icon: PencilAltIcon, current: false },
+  { name: 'Transcript', icon: PencilIcon, current: false },
 ]
 
 export default function MainContent({ data }: any) {

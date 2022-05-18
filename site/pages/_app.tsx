@@ -4,7 +4,7 @@ import '@assets/chrome-bug.css'
 
 import { FC, useEffect } from 'react'
 import type { AppProps } from 'next/app'
-// import { Head } from '@components/common'
+import { Head } from '@components/organisms'
 // import { ManagedUIContext } from '@components/ui/context'
 
 // supabase auth
@@ -24,7 +24,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {/* <Head /> */}
+      <Head />
       {/* <ManagedUIContext> */}
       <UserProvider supabaseClient={supabaseClient}>
         <MyUserContextProvider supabaseClient={supabaseClient}>

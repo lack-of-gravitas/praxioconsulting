@@ -4,7 +4,7 @@ import ErrorPage from 'next/error'
 import { Layout } from '@components/templates'
 // import * as queries from '@services/queries'
 import parse from 'html-react-parser'
-import { CameraIcon } from '@heroicons/react/solid'
+import { Camera as CameraIcon } from '@components/atoms/Icons'
 import Image from 'next/image'
 // import { fetchGetJSON } from '@lib/api-helpers'
 

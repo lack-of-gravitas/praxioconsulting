@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Disclosure } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/outline'
+import { ChevronDown as ChevronDownIcon } from '@components/atoms/Icons'
 import parse from 'html-react-parser'
 import cn from 'clsx'
 

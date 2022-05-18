@@ -40,21 +40,9 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <div className="relative">
-      <Navbar
-      // links={navBarlinks}
-      />
       <main className="">{children}</main>
       <Footer
       // pages={pageProps.pages}
-      />
-      <FeatureBar
-        title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
-        hide={acceptedCookies}
-        action={
-          <Button className="mx-5" onClick={() => onAcceptCookies()}>
-            Accept cookies
-          </Button>
-        }
       />
     </div>
   )
