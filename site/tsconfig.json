@@ -21,9 +21,17 @@
       "@components/*": ["components/*"],
       "@config/*": ["config/*"],
       "@lib/*": ["lib/*"],
-      "@types/*": ["types/*"]
+      "@types/*": ["types/*"],
+      "@queries/*": ["Posts.tsx/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "queries"
+  ],
   "exclude": ["node_modules"]
 }

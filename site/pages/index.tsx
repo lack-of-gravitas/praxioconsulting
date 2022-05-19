@@ -2,8 +2,6 @@ import { Layout } from '@components/templates'
 import { Hero } from '@components/organisms'
 
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import { Button } from '@components/atoms'
-import { Image } from '@components/atoms'
 export default function Home({
   data,
   preview,
@@ -11,14 +9,18 @@ export default function Home({
   // console.log("data (Component): ", data);
   // console.log("data (Component): ", JSON.stringify(data));
   // if (data === undefined) {
-  //   return <ErrorPage statusCode={404} />;
+  //   return  <Layout>
+  //   <PageNotFound statusCode={404} />
+  // </Layout>;
   // }
   // if (
   //   data.pageData === null ||
   //   data.pageData === undefined ||
   //   Object.keys(data.pageData).length === 0
   // ) {
-  //   return <ErrorPage statusCode={404} />;
+  //   return  <Layout>
+  //   <PageNotFound statusCode={404} />
+  // </Layout>
   // }
 
   // const blocks = delve(data.pageData, "blocks");
@@ -65,23 +67,6 @@ export async function getStaticProps({
   // get data here and use react-query for magic local storage?
   let data = { header: 0 }
   // console.log("data: ", data);
-
-  // ****************************************************************************************
-  // NEXTJS COMMERCE EXAMPLE
-  // const config = { locale, locales }
-  // const productsPromise = commerce.getAllProducts({
-  //   variables: { first: 6 },
-  //   config,
-  //   preview,
-  //   // Saleor provider only
-  //   ...({ featured: true } as any),
-  // })
-  // const pagesPromise = commerce.getAllPages({ config, preview })
-  // const siteInfoPromise = commerce.getSiteInfo({ config, preview })
-  // const { products } = await productsPromise
-  // const { pages } = await pagesPromise
-  // const { categories, brands } = await siteInfoPromise
-  // ****************************************************************************************
 
   return {
     // will be passed to the page component as props

@@ -233,7 +233,9 @@ export default SignIn
 //   }
 
 //   if (data === undefined) {
-//     return <ErrorPage statusCode={404} />;
+//     return  <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>;
 //   }
 
 //   if (
@@ -241,7 +243,9 @@ export default SignIn
 //     data.globalData === undefined ||
 //     Object.keys(data.globalData).length === 0
 //   ) {
-//     return <ErrorPage statusCode={404} />;
+//     return  <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>;
 //   }
 
 //   return (

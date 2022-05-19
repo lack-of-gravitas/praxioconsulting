@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ErrorPage from 'next/error'
+import { PageNotFound } from '@components/templates'
 import { Layout } from '@components/templates'
 // import * as queries from '@services/queries'
 // import { Block } from '@components/blocks'
@@ -11,7 +11,7 @@ import { useState } from 'react'
 // import { fetchGetJSON } from '@lib/api-helpers'
 
 // If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. gets data and delivers it to the Component to render UI
-export async function getStaticProps(context) {
+export async function getStaticProps(context: any) {
   // console.log("context (getstaticprops): ", context);
   // locally getStaticProps is run every time
   // in production, this only runs once then revalidates based on the revalidate parameter
@@ -26,7 +26,7 @@ export async function getStaticProps(context) {
   // )
 
   let data = {}
-  data.path = path + 's'
+  // data.path = path + 's'
   // data.globalData = {
   //   name: apiResponse[0].brand.name,
   //   tagline: apiResponse[0].brand.tagline,
@@ -57,19 +57,27 @@ export async function getStaticProps(context) {
   }
 }
 
-const Blog = ({ data, preview }) => {
+const Blog = ({ data, preview }: any) => {
   // console.log("data (Component): ", data);
   // console.log("data (Component): ", JSON.stringify(data));
 
   if (data === undefined) {
-    return <ErrorPage statusCode={404} />
+    return (
+      <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>
+    )
   }
   if (
     data.pageData === null ||
     data.pageData === undefined ||
     Object.keys(data.pageData).length === 0
   ) {
-    return <ErrorPage statusCode={404} />
+    return (
+      <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>
+    )
   }
 
   const blocks = delve(data.pageData, 'blocks')
@@ -81,7 +89,7 @@ const Blog = ({ data, preview }) => {
       seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
       preview={preview}
     >
-      {blocks?.map((block, key) => (
+      {blocks?.map((block: any, key: any) => (
         <></>
         // <Block key={key} block={block} data={data.pageData} />
       ))}

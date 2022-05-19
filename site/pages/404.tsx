@@ -1,7 +1,7 @@
 import type { GetStaticPropsContext } from 'next'
 // import commerce from '@lib/api/commerce'
 import { Layout } from '@components/templates'
-import { Text } from '@components/atoms'
+import { PageNotFound } from '@components/templates'
 
 export async function getStaticProps({
   preview,
@@ -23,12 +23,15 @@ export async function getStaticProps({
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center max-w-2xl py-20 mx-8 sm:mx-auto fit">
-      <Text variant="heading">Not Found</Text>
-      <Text className="">
-        The requested page doesn't exist or you don't have access to it.
-      </Text>
-    </div>
+    <>
+      <PageNotFound />
+    </>
+    // <div className="flex flex-col items-center justify-center max-w-2xl py-20 mx-8 sm:mx-auto fit">
+    //   <Text variant="heading">Not Found</Text>
+    //   <Text className="">
+    //     The requested page doesn't exist or you don't have access to it.
+    //   </Text>
+    // </div>
   )
 }
 

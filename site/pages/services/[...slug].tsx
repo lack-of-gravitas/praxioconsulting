@@ -1,21 +1,29 @@
 // import { Block } from '@components/blocks'
 // import { fetchGetJSON } from '@lib/api-helpers'
 
-import ErrorPage from 'next/error'
+import { PageNotFound } from '@components/templates'
 import { Layout } from '@components/templates'
 
 const ServicesPage = ({ data, preview }) => {
   console.log('ServicesPage | ', data)
 
   if (data === undefined) {
-    return <ErrorPage statusCode={404} />
+    return (
+      <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>
+    )
   }
   if (
     data.pageData === null ||
     data.pageData === undefined ||
     Object.keys(data.pageData).length === 0
   ) {
-    return <ErrorPage statusCode={404} />
+    return (
+      <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>
+    )
   }
 
   const blocks = data.pageData.blocks

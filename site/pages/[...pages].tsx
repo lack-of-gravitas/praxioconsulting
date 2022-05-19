@@ -1,9 +1,10 @@
-import ErrorPage from 'next/error'
 import { Layout } from '@components/templates'
+import { PageNotFound } from '@components/templates'
+
 // import { fetchGetJSON } from '@lib/api-helpers'
 // import { Block } from '@components/blocks'
 
-export async function getStaticPaths(context) {
+export async function getStaticPaths(context: any) {
   // console.log("slug gsp: ", context);
   // returns all pages that need to built at run time, ie no prebuilt paths
   return {
@@ -15,7 +16,7 @@ export async function getStaticPaths(context) {
 }
 
 // If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. gets data and delivers it to the Component to render UI
-export async function getStaticProps(context) {
+export async function getStaticProps(context: any) {
   // locally getStaticProps is run every time
   // in production, this only runs once then revalidates based on the revalidate parameter
   // context contains route params for dynamic routes, preview, previewData, locale,locales, defaultLocale
@@ -70,34 +71,41 @@ export async function getStaticProps(context) {
 // If you export an async function called getStaticPaths from a page that uses dynamic routes, Next.js will statically pre-render all the paths specified by getStaticPaths.
 // If the page uses an optional catch-all route, supply null, [], undefined or false to render the root-most route. For example, if you supply slug: false for pages/[[...slug]], Next.js will statically generate the page /.
 
-const Universals = ({ data, preview }) => {
+const Universals = ({ data, preview }: any) => {
   // console.log("data (Component): ", data);
 
   if (data === undefined) {
-    return <ErrorPage statusCode={404} />
+    return (
+      <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>
+    )
   }
   if (
     data.pageData === null ||
     data.pageData === undefined ||
     Object.keys(data.pageData).length === 0
   ) {
-    return <ErrorPage statusCode={404} />
+    return (
+      <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>
+    )
   }
 
-  const blocks = delve(data.pageData, 'blocks')
+  // const blocks = delve(data.pageData, 'blocks')
   // console.log("blocks: ", blocks);
 
   return (
     <Layout
-      data={data.globalData}
-      slug={data.path}
-      seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
-      preview={preview}
+    // data={data.globalData}
+    // slug={data.path}
+    // seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
+    // preview={preview}
     >
-      {blocks?.map((block, key) => (
-        <> </>
-        // <Block key={key} block={block} data={data.pageData} />
-      ))}
+      {/* {blocks?.map((block, key) => (
+        <Block key={key} block={block} data={data.pageData} />
+      ))} */}
     </Layout>
   )
 }

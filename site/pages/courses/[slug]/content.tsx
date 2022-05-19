@@ -3,7 +3,7 @@ import { LockClosedIcon } from '@components/atoms/Icons'
 import { useRouter } from 'next/router'
 // import * as queries from '@services/queries'
 import { Course } from '@components/templates'
-import ErrorPage from 'next/error'
+import { PageNotFound } from '@components/templates'
 import { Layout } from '@components/templates'
 import Link from 'next/link'
 // import { fetchGetJSON } from '@lib/api-helpers'
@@ -52,7 +52,11 @@ export default function CourseContent({ data, preview }) {
   }
 
   if (data === undefined) {
-    return <ErrorPage statusCode={404} />
+    return (
+      <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>
+    )
   }
 
   if (
@@ -60,7 +64,11 @@ export default function CourseContent({ data, preview }) {
     data.globalData === undefined ||
     Object.keys(data.globalData).length === 0
   ) {
-    return <ErrorPage statusCode={404} />
+    return (
+      <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>
+    )
   } else {
     return <></>
   }

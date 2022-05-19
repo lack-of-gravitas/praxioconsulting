@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ErrorPage from 'next/error'
+import { PageNotFound } from '@components/templates'
 import { Layout } from '@components/templates'
 // import { Block } from '@components/blocks'
 // import { fetchGetJSON } from '@lib/api-helpers'
@@ -58,14 +58,22 @@ const Courses = ({ data, preview }) => {
   // console.log("data (Component): ", JSON.stringify(data));
 
   if (data === undefined) {
-    return <ErrorPage statusCode={404} />
+    return (
+      <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>
+    )
   }
   if (
     data.pageData === null ||
     data.pageData === undefined ||
     Object.keys(data.pageData).length === 0
   ) {
-    return <ErrorPage statusCode={404} />
+    return (
+      <Layout>
+        <PageNotFound statusCode={404} />
+      </Layout>
+    )
   }
 
   const blocks = delve(data.pageData, 'blocks')
