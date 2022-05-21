@@ -12,7 +12,7 @@ module.exports =
       domains: [
         'www.fillmurray.com',
         'dummyimage.com',
-        'praxio.azureedge.net',
+        'klubs.azureedge.net',
         // 'praxio.blob.core.windows.net',
         'lh3.googleusercontent.com', // for google user profiles
       ],
