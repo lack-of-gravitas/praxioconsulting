@@ -8,11 +8,11 @@ import { Layout } from '@components/templates'
 import Link from 'next/link'
 // import { fetchGetJSON } from '@lib/api-helpers'
 
-export default function CourseContent({ data, preview }) {
+export default function CourseContent({ data, preview }: any) {
   // get the session to check if the user logged in or not
   console.log('courseContent: ', data.pageData.course.modules)
   const router = useRouter()
-  const { data: session, status } = useSession()
+  // const { data: session, status } = useSession()
 
   // display content based on status and data
   if (status === 'unauthenticated') {

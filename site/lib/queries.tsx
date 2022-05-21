@@ -1,5 +1,8 @@
 import { fetchPostJSON } from '@lib/api-helpers'
 
+// graphql better for specific fields and m2m / m2a fields as you can define joins
+// rest api better for getting all fields
+
 // get brand details to populate header, footer, etc.
 export async function getBrand() {
   const query = {
@@ -96,140 +99,55 @@ export async function getTeam() {
 }
 
 export async function getPage(slug: string) {
-  const query = {
-    query: `query {
-        }`,
-    variables: {
-      domain: `${process.env.NEXT_PUBLIC_BRAND}`,
-    },
-  }
-  const response = await fetchPostJSON(
-    process.env.NEXT_PUBLIC_GRAPHQL_API,
-    query
-  )
-
-  if (!response.ok) {
-    throw new Error('Network response was not ok')
-  }
-
-  return response.data
+  // https://klubs.azurewebsites.net/items/pages?fields=*,brand.domain,sections.*&filter[brand][domain][_eq]=https://therunningklub.com&filter[slug][_eq]=privacy
 }
 
-export async function getPostSummary(slug: string) {
-  const query = {
-    query: `query {
-        }`,
-    variables: {
-      domain: `${process.env.NEXT_PUBLIC_BRAND}`,
-    },
-  }
-  const response = await fetchPostJSON(
-    process.env.NEXT_PUBLIC_GRAPHQL_API,
-    query
-  )
-
-  if (!response.ok) {
-    throw new Error('Network response was not ok')
-  }
-
-  return response.data
-}
-
-export async function getPostDetail(slug: string) {
-  const query = {
-    query: `query {
-        }`,
-    variables: {
-      domain: `${process.env.NEXT_PUBLIC_BRAND}`,
-    },
-  }
-  const response = await fetchPostJSON(
-    process.env.NEXT_PUBLIC_GRAPHQL_API,
-    query
-  )
-
-  if (!response.ok) {
-    throw new Error('Network response was not ok')
-  }
-
-  return response.data
-}
 // id parameter of type integer
-export async function getSection(id: number) {}
-export async function getProductSummary(slug: string) {
-  // get product summary first
-  // https://klubs.azurewebsites.net/items/products?filter[slug][_eq]=couch-to-5km
-  // https://klubs.azurewebsites.net/items/products?fields=*&filter[slug][_eq]=couch-to-5km
-
-  // let apiResponse = await fetchGetJSON(
-  //   `${process.env.NEXT_PUBLIC_BACKEND}/pages?_where[0][brand.domain]=${process.env.NEXT_PUBLIC_BRAND}&_where[1][slug]=${path}`
-  // );
-
-  const query = {
-    query: `query {
-        }`,
-    variables: {
-      domain: `${process.env.NEXT_PUBLIC_BRAND}`,
-    },
-  }
-  const response = await fetchPostJSON(
-    process.env.NEXT_PUBLIC_GRAPHQL_API,
-    query
-  )
-
-  if (!response.ok) {
-    throw new Error('Network response was not ok')
-  }
-
-  return response.data
+export async function getPageSection(id: number) {
+  // https://klubs.azurewebsites.net/items/pages_sections?fields=*,item.*&filter[id][_eq]=3
 }
 
-export async function getProductDetail(slug: string) {
+export async function getPosts(slug: string) {
+  //https://klubs.azurewebsites.net/items/posts?fields=slug,name,description,status,date_created,date_updated,mainImage,tags&filter[brands][brands_id][domain][_eq]=https://therunningklub.com
+}
+
+export async function getPost(slug: string) {
+  // https://klubs.azurewebsites.net/items/posts?fields=slug,name,content,status,date_created,date_updated,mainImage,related_posts.*,tags,author.first_name,author.last_name,author.avatar&filter[brands][brands_id][domain][_eq]=https://therunningklub.com
+}
+
+export async function getProducts(slug: string, type?: string) {
+  https://klubs.azurewebsites.net/items/products?fields=id,status,slug,name,stripeId,type,description,image.id&filter[brands][brands_id][domain][_eq]=https://therunningklub.com&filter[type][_in]=course,Service
+}
+
+export async function getProduct(slug: string) {
   // get product summary first
   // https://klubs.azurewebsites.net/items/products?filter[slug][_eq]=couch-to-5km
 
-  // then get all page sections pages vs products_sections are diff endpoints
+  // then get all page sections if includeDetail is set, pass to getSection
   //https://klubs.azurewebsites.net/items/pages_sections?filter[id][_eq]=2
   //"_in": ["vegetables", "fruit"]
+
+  const query = {
+    query: `query {
+        }`,
+    variables: {
+      domain: `${process.env.NEXT_PUBLIC_BRAND}`,
+    },
+  }
+  const response = await fetchPostJSON(
+    process.env.NEXT_PUBLIC_GRAPHQL_API,
+    query
+  )
+
+  if (!response.ok) {
+    throw new Error('Network response was not ok')
+  }
+
+  return response.data
+}
+
+export async function getProductSection(id: number) {
   //https://klubs.azurewebsites.net/items/products_sections?filter[id][_eq]=2
   // &filter[id][_eq]=2 -- gets specific section
   // &filter[products_id][_eq]=16 -- gets all sections associated to this page / product
-
-  const query = {
-    query: `query {
-        }`,
-    variables: {
-      domain: `${process.env.NEXT_PUBLIC_BRAND}`,
-    },
-  }
-  const response = await fetchPostJSON(
-    process.env.NEXT_PUBLIC_GRAPHQL_API,
-    query
-  )
-
-  if (!response.ok) {
-    throw new Error('Network response was not ok')
-  }
-
-  return response.data
-}
-
-export async function getImage(id: string, key?: string) {
-  const query = {
-    query: `query {
-        }`,
-    variables: {
-      domain: `${process.env.NEXT_PUBLIC_BRAND}`,
-    },
-  }
-  const response = await fetchPostJSON(
-    process.env.NEXT_PUBLIC_GRAPHQL_API,
-    query
-  )
-
-  if (!response.ok) {
-    throw new Error('Network response was not ok')
-  }
-
-  return response.data
 }

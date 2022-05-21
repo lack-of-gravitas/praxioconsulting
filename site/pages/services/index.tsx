@@ -5,7 +5,7 @@ import { Layout } from '@components/templates'
 // import { fetchGetJSON } from '@lib/api-helpers'
 
 // If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. gets data and delivers it to the Component to render UI
-export async function getStaticProps(context) {
+export async function getStaticProps(context: any) {
   // console.log("context (getstaticprops): ", context);
   // locally getStaticProps is run every time
   // in production, this only runs once then revalidates based on the revalidate parameter
@@ -53,7 +53,7 @@ export async function getStaticProps(context) {
   }
 }
 
-const Services = ({ data, preview }) => {
+const Services = ({ data, preview }: any) => {
   // console.log("data (Component): ", (data));
   // console.log("data (Component): ", JSON.stringify(data));
 

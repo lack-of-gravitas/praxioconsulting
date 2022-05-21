@@ -4,7 +4,7 @@
 import { PageNotFound } from '@components/templates'
 import { Layout } from '@components/templates'
 
-const ServicesPage = ({ data, preview }) => {
+const ServicesPage = ({ data, preview }: any) => {
   console.log('ServicesPage | ', data)
 
   if (data === undefined) {
@@ -35,7 +35,7 @@ const ServicesPage = ({ data, preview }) => {
       seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
       preview={preview}
     >
-      {blocks?.map((block, key) => (
+      {blocks?.map((block: any, key: any) => (
         <></>
         // <Block key={key} block={block} data={data.pageData} />
       ))}

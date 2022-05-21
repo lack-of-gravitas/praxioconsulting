@@ -4,7 +4,7 @@
 import { PageNotFound } from '@components/templates'
 import { Layout } from '@components/templates'
 
-const CoursePage = ({ data, preview }) => {
+const CoursePage = ({ data, preview }: any) => {
   // console.log("data (Component): ", JSON.stringify(data.pageData.length));
 
   if (data === undefined) {
@@ -35,7 +35,7 @@ const CoursePage = ({ data, preview }) => {
       seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
       preview={preview}
     >
-      {blocks?.map((block, key) => (
+      {blocks?.map((block: any, key: any) => (
         <></>
         // <Block key={key} block={block} data={data.pageData} />
       ))}
@@ -73,7 +73,7 @@ export async function getStaticPaths() {
     }),
   }
 
-  let data = []
+  let data: any = []
 
   fetch(`${process.env.NEXT_PUBLIC_BACKEND}/graphql`, req)
     .then((res) => res.json())
@@ -102,7 +102,7 @@ export async function getStaticPaths() {
 }
 
 // If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. gets data and delivers it to the Component to render UI
-export async function getStaticProps(context) {
+export async function getStaticProps(context: any) {
   // console.log("context (getstaticprops): ", context);
   // locally getStaticProps is run every time
   // in production, this only runs once then revalidates based on the revalidate parameter
