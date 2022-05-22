@@ -26,12 +26,6 @@ export default function NotFound() {
     <>
       <PageNotFound />
     </>
-    // <div className="flex flex-col items-center justify-center max-w-2xl py-20 mx-8 sm:mx-auto fit">
-    //   <Text variant="heading">Not Found</Text>
-    //   <Text className="">
-    //     The requested page doesn't exist or you don't have access to it.
-    //   </Text>
-    // </div>
   )
 }
 

@@ -74,24 +74,24 @@ export async function getStaticProps(context: any) {
 const Universals = ({ data, preview }: any) => {
   // console.log("data (Component): ", data);
 
-  if (data === undefined) {
-    return (
-      <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>
-    )
-  }
-  if (
-    data.pageData === null ||
-    data.pageData === undefined ||
-    Object.keys(data.pageData).length === 0
-  ) {
-    return (
-      <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>
-    )
-  }
+  // if (data === undefined) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // }
+  // if (
+  //   data.pageData === null ||
+  //   data.pageData === undefined ||
+  //   Object.keys(data.pageData).length === 0
+  // ) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // }
 
   // const blocks = delve(data.pageData, 'blocks')
   // console.log("blocks: ", blocks);

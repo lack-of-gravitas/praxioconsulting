@@ -1,8 +1,8 @@
 import { Layout } from '@components/templates'
-import { Hero } from '@components/organisms'
+import { Home } from '@components/templates'
 
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-export default function Home({
+export default function Index({
   data,
   preview,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -40,17 +40,12 @@ export default function Home({
 
   return (
     <>
-      {/* <Layout> */}
-      <Hero
-        headline=" Dessert dragée halvah croissant."
-        description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
-      />
-      {/* </Layout> */}
+      <Home />
     </>
   )
 }
 
-Home.Layout = Layout
+Index.Layout = Layout
 
 // If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. gets data and delivers it to the Component to render UI.
 // in DEV getStaticProps is run every time

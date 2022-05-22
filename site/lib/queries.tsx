@@ -116,7 +116,7 @@ export async function getPost(slug: string) {
 }
 
 export async function getProducts(slug: string, type?: string) {
-  https://klubs.azurewebsites.net/items/products?fields=id,status,slug,name,stripeId,type,description,image.id&filter[brands][brands_id][domain][_eq]=https://therunningklub.com&filter[type][_in]=course,Service
+  // https://klubs.azurewebsites.net/items/products?fields=id,status,slug,name,stripeId,type,description,image.id&filter[brands][brands_id][domain][_eq]=https://therunningklub.com&filter[type][_in]=course,Service
 }
 
 export async function getProduct(slug: string) {
@@ -125,7 +125,6 @@ export async function getProduct(slug: string) {
 
   // then get all page sections if includeDetail is set, pass to getSection
   //https://klubs.azurewebsites.net/items/pages_sections?filter[id][_eq]=2
-  //"_in": ["vegetables", "fruit"]
 
   const query = {
     query: `query {

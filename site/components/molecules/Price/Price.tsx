@@ -14,7 +14,6 @@ import {
 
 // import { getProviders, signIn, getSession, useSession } from "next-auth/react";
 import { Dialog, Transition } from '@headlessui/react'
-import { fetchPostJSON } from '@lib/api-helpers'
 import { getStripe } from '@lib/stripe-client'
 
 // loadStripe` outside of a component’s render to avoid recreating the `Stripe` object on every render.

@@ -24,10 +24,6 @@ const dynamicProps = {
   loading: Loading,
 }
 
-const FeatureBar = dynamic(() => import('@components/organisms/FeatureBar'), {
-  ...dynamicProps,
-})
-
 // interface Props {
 //   pageProps: {
 //     pages?: Page[]
@@ -41,9 +37,6 @@ const Layout: React.FC = ({ children }) => {
   return (
     <div className="relative">
       <main className="">{children}</main>
-      <Footer
-      // pages={pageProps.pages}
-      />
     </div>
   )
 }

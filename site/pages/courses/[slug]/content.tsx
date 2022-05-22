@@ -1,81 +1,114 @@
-import { LockClosedIcon } from '@components/atoms/Icons'
+import { LockClosed as LockClosedIcon } from '@components/atoms/Icons'
 // import { signOut, getSession, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 // import * as queries from '@services/queries'
-import { Course } from '@components/templates'
+import { CourseContent } from '@components/templates'
 import { PageNotFound } from '@components/templates'
-import { Layout } from '@components/templates'
-import Link from 'next/link'
+import { CourseLayout as Layout } from '@components/templates'
 // import { fetchGetJSON } from '@lib/api-helpers'
 
-export default function CourseContent({ data, preview }: any) {
+export default function Content({ data, preview }: any) {
   // get the session to check if the user logged in or not
-  console.log('courseContent: ', data.pageData.course.modules)
-  const router = useRouter()
+  // console.log('courseContent: ', data.pageData.course.modules)
+  // const router = useRouter()
   // const { data: session, status } = useSession()
 
-  // display content based on status and data
-  if (status === 'unauthenticated') {
-    return (
-      <Layout
-        data={data.globalData}
-        slug={data.path}
-        seo={data.pageData?.seo ? data.pageData.seo : data.globalData.seo}
-        // preview={preview}
-      >
-        <div className="min-h-full px-4 py-16 bg-white sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
-          <div className="mx-auto max-w-max">
-            <main className="sm:flex">
-              <LockClosedIcon className="h-64 font-extrabold text-primaryColor-600" />
-              <div className="sm:ml-6 sm:border-l">
-                <div className=" sm:border-gray-200 sm:pl-6">
-                  <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
-                    Locked Content
-                  </h1>
-                  <p className="mt-1 text-base text-gray-500">
-                    You need to sign in to access purchased content.
-                  </p>
-                </div>
-                <div className="flex mt-10 space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-                  <Link href="/user/signin" passHref>
-                    <a className="inline-flex items-center px-4 py-2 text-base font-medium text-white border border-transparent rounded-sm shadow-sm bg-primaryColor-600 hover:bg-primaryColor-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500">
-                      Login
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </main>
-          </div>
-        </div>
-      </Layout>
-    )
-  }
+  // if (data === undefined) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // }
+  // if (
+  //   data.pageData === null ||
+  //   data.pageData === undefined ||
+  //   Object.keys(data.pageData).length === 0
+  // ) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // }
 
-  if (data === undefined) {
-    return (
-      <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>
-    )
-  }
+  return (
+    <Layout
+    // data={data.globalData}
+    // slug={data.pageData.slug}
+    // seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
+    // preview={preview}
+    >
+      <CourseContent />
+      {/* {blocks?.map((block: any, key: any) => (
+        <></>
+        // <Block key={key} block={block} data={data.pageData} />
+      ))} */}
+    </Layout>
+  )
 
-  if (
-    data.globalData === null ||
-    data.globalData === undefined ||
-    Object.keys(data.globalData).length === 0
-  ) {
-    return (
-      <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>
-    )
-  } else {
-    return <></>
-  }
+  // // display content based on status and data
+  // if (status === 'unauthenticated') {
+  //   return (
+  //     <Layout
+  //       data={data.globalData}
+  //       slug={data.path}
+  //       seo={data.pageData?.seo ? data.pageData.seo : data.globalData.seo}
+  //       // preview={preview}
+  //     >
+  //       <div className="min-h-full px-4 py-16 bg-white sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
+  //         <div className="mx-auto max-w-max">
+  //           <main className="sm:flex">
+  //             <LockClosedIcon className="h-64 font-extrabold text-primaryColor-600" />
+  //             <div className="sm:ml-6 sm:border-l">
+  //               <div className=" sm:border-gray-200 sm:pl-6">
+  //                 <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+  //                   Locked Content
+  //                 </h1>
+  //                 <p className="mt-1 text-base text-gray-500">
+  //                   You need to sign in to access purchased content.
+  //                 </p>
+  //               </div>
+  //               <div className="flex mt-10 space-x-3 sm:border-l sm:border-transparent sm:pl-6">
+  //                 <Link href="/user/signin" passHref>
+  //                   <a className="inline-flex items-center px-4 py-2 text-base font-medium text-white border border-transparent rounded-sm shadow-sm bg-primaryColor-600 hover:bg-primaryColor-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500">
+  //                     Login
+  //                   </a>
+  //                 </Link>
+  //               </div>
+  //             </div>
+  //           </main>
+  //         </div>
+  //       </div>
+  //     </Layout>
+  //   )
+  // }
+
+  // if (data === undefined) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // }
+
+  // if (
+  //   data.globalData === null ||
+  //   data.globalData === undefined ||
+  //   Object.keys(data.globalData).length === 0
+  // ) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // } else {
+  //   return <></>
+  // }
 }
 
 // If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. gets data and delivers it to the Component to render UI
-export async function getStaticProps(context) {
+export async function getStaticProps(context: any) {
   // console.log("course content (getstaticprops): ", context);
   // locally getStaticProps is run every time
   // in production, this only runs once then revalidates based on the revalidate parameter

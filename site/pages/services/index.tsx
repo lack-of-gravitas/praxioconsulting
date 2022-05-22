@@ -1,8 +1,7 @@
 import React from 'react'
-import { PageNotFound } from '@components/templates'
+import { PageNotFound, Products } from '@components/templates'
 import { Layout } from '@components/templates'
 // import { Block } from '@components/blocks'
-// import { fetchGetJSON } from '@lib/api-helpers'
 
 // If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. gets data and delivers it to the Component to render UI
 export async function getStaticProps(context: any) {
@@ -57,38 +56,39 @@ const Services = ({ data, preview }: any) => {
   // console.log("data (Component): ", (data));
   // console.log("data (Component): ", JSON.stringify(data));
 
-  if (data === undefined) {
-    return (
-      <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>
-    )
-  }
-  if (
-    data.pageData === null ||
-    data.pageData === undefined ||
-    Object.keys(data.pageData).length === 0
-  ) {
-    return (
-      <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>
-    )
-  }
+  // if (data === undefined) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // }
+  // if (
+  //   data.pageData === null ||
+  //   data.pageData === undefined ||
+  //   Object.keys(data.pageData).length === 0
+  // ) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // }
 
-  const blocks = data.pageData.blocks
+  // const blocks = data.pageData.blocks
 
   return (
     <Layout
-      data={data.globalData}
-      slug={data.pageData.slug}
-      seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
-      preview={preview}
+    // data={data.globalData}
+    // slug={data.pageData.slug}
+    // seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
+    // preview={preview}
     >
-      {blocks?.map((block, key) => (
+      <Products />
+      {/* {blocks?.map((block, key) => (
         <></>
         // <Block key={key} block={block} data={data.pageData} />
-      ))}
+      ))} */}
     </Layout>
   )
 }

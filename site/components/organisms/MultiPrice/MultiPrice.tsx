@@ -9,7 +9,6 @@ import {
   ArrowRight as ArrowRightIcon,
   LockClosed as LockClosedIcon,
 } from '@components/atoms/Icons'
-import { fetchPostJSON } from '@lib/api-helpers'
 
 import { loadStripe } from '@stripe/stripe-js'
 // import { getProviders, signIn, getSession, useSession } from 'next-auth/react'

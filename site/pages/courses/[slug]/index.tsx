@@ -2,43 +2,44 @@
 // import { fetchGetJSON } from '@lib/api-helpers'
 
 import { PageNotFound } from '@components/templates'
-import { Layout } from '@components/templates'
+import { CourseLayout as Layout } from '@components/templates'
 
 const CoursePage = ({ data, preview }: any) => {
   // console.log("data (Component): ", JSON.stringify(data.pageData.length));
 
-  if (data === undefined) {
-    return (
-      <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>
-    )
-  }
-  if (
-    data.pageData === null ||
-    data.pageData === undefined ||
-    Object.keys(data.pageData).length === 0
-  ) {
-    return (
-      <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>
-    )
-  }
+  // if (data === undefined) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // }
+  // if (
+  //   data.pageData === null ||
+  //   data.pageData === undefined ||
+  //   Object.keys(data.pageData).length === 0
+  // ) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // }
 
-  const blocks = delve(data.pageData, 'blocks')
+  // const blocks = delve(data.pageData, 'blocks')
 
   return (
     <Layout
-      data={data.globalData}
-      slug={data.pageData.slug}
-      seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
-      preview={preview}
+    // data={data.globalData}
+    // slug={data.pageData.slug}
+    // seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
+    // preview={preview}
     >
-      {blocks?.map((block: any, key: any) => (
+      <PageNotFound statusCode={404} />
+      {/* {blocks?.map((block: any, key: any) => (
         <></>
         // <Block key={key} block={block} data={data.pageData} />
-      ))}
+      ))} */}
     </Layout>
   )
 }

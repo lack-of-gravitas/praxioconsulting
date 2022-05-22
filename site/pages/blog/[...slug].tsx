@@ -2,10 +2,7 @@ import React from 'react'
 
 import { PageNotFound } from '@components/templates'
 import { Layout } from '@components/templates'
-// import * as queries from '@services/queries'
-import parse from 'html-react-parser'
-import { Camera as CameraIcon } from '@components/atoms/Icons'
-import Image from 'next/image'
+import Post from '@components/templates/Post'
 // import { fetchGetJSON } from '@lib/api-helpers'
 
 export async function getStaticPaths() {
@@ -72,228 +69,28 @@ export async function getStaticProps(context: any) {
 const BlogPost = ({ data, preview }: any) => {
   // console.log("data (Component): ", JSON.stringify(data.pageData));
 
-  if (
-    data.pageData === null ||
-    data.pageData === undefined ||
-    Object.keys(data.pageData).length === 0
-  ) {
-    return (
-      <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>
-    )
-  }
+  // if (
+  //   data.pageData === null ||
+  //   data.pageData === undefined ||
+  //   Object.keys(data.pageData).length === 0
+  // ) {
+  //   return (
+  //     <Layout>
+  //       <PageNotFound statusCode={404} />
+  //     </Layout>
+  //   )
+  // }
 
   return (
     <Layout
-      data={data.globalData}
-      slug={'blog'}
-      seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
-      preview={preview}
+    // data={data.globalData}
+    // slug={'blog'}
+    // seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
+    // preview={preview}
     >
-      {data.pageData ? (
-        <div className="relative py-16 overflow-hidden bg-white">
-          <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
-            <div
-              className="relative h-full mx-auto text-lg max-w-prose"
-              aria-hidden="true"
-            >
-              <svg
-                className="absolute transform translate-x-32 top-12 left-full"
-                width={404}
-                height={384}
-                fill="none"
-                viewBox="0 0 404 384"
-              >
-                <defs>
-                  <pattern
-                    id="74b3fd99-0a6f-4271-bef2-e80eeafdf357"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect
-                      x={0}
-                      y={0}
-                      width={4}
-                      height={4}
-                      className="text-gray-200"
-                      fill="currentColor"
-                    />
-                  </pattern>
-                </defs>
-                <rect
-                  width={404}
-                  height={384}
-                  fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)"
-                />
-              </svg>
-              <svg
-                className="absolute transform -translate-x-32 -translate-y-1/2 top-1/2 right-full"
-                width={404}
-                height={384}
-                fill="none"
-                viewBox="0 0 404 384"
-              >
-                <defs>
-                  <pattern
-                    id="f210dbf6-a58d-4871-961e-36d5016a0f49"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect
-                      x={0}
-                      y={0}
-                      width={4}
-                      height={4}
-                      className="text-gray-200"
-                      fill="currentColor"
-                    />
-                  </pattern>
-                </defs>
-                <rect
-                  width={404}
-                  height={384}
-                  fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)"
-                />
-              </svg>
-              <svg
-                className="absolute transform translate-x-32 bottom-12 left-full"
-                width={404}
-                height={384}
-                fill="none"
-                viewBox="0 0 404 384"
-              >
-                <defs>
-                  <pattern
-                    id="d3eb07ae-5182-43e6-857d-35c643af9034"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect
-                      x={0}
-                      y={0}
-                      width={4}
-                      height={4}
-                      className="text-gray-200"
-                      fill="currentColor"
-                    />
-                  </pattern>
-                </defs>
-                <rect
-                  width={404}
-                  height={384}
-                  fill="url(#d3eb07ae-5182-43e6-857d-35c643af9034)"
-                />
-              </svg>
-            </div>
-          </div>
-          <div className="relative px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto text-lg max-w-prose">
-              <h1>
-                <span className="block text-base font-semibold tracking-wide text-center text-gray-700 uppercase">
-                  {data.pageData.subtitle}
-                </span>
-                <span className="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-900 sm:text-4xl">
-                  {data.pageData.title}
-                </span>
-              </h1>
-
-              <p className="mt-8 mb-8 text-xl leading-8 text-gray-500">
-                {data.pageData.excerpt}
-              </p>
-
-              <figure>
-                {data.pageData.image ? (
-                  <>
-                    <Image
-                      className="w-full pt-5 rounded-sm"
-                      src={
-                        data.pageData.image.formats.medium
-                          ? data.pageData.image.formats.medium.url
-                          : data.pageData.image.formats.small.url
-                      }
-                      layout="responsive"
-                      height={
-                        data.pageData.image.formats.medium
-                          ? data.pageData.image.formats.medium.height
-                          : data.pageData.image.formats.small.height
-                      }
-                      width={
-                        data.pageData.image.formats.medium
-                          ? data.pageData.image.formats.medium.width
-                          : data.pageData.image.formats.small.height
-                      }
-                      alt={data.pageData.image.name}
-                      priority // largest contentful paint element so prioritises load
-                    />
-                    {data.pageData.image.caption && (
-                      <figcaption className="flex mt-3 text-sm text-gray-500">
-                        <CameraIcon
-                          className="flex-none w-5 h-5 text-gray-400"
-                          aria-hidden="true"
-                        />
-                        <span className="ml-2">
-                          {data.pageData.image.caption}
-                        </span>
-                      </figcaption>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <Image
-                      className="w-full rounded-sm"
-                      src="https://via.placeholder.com/150/0891B2/E2E8F0?text=No+Image+Set"
-                      layout="responsive"
-                      height={700}
-                      width={700}
-                      alt=""
-                    />
-                  </>
-                )}
-              </figure>
-            </div>
-
-            {data.pageData.content && (
-              <>
-                <div className="mx-auto mt-6 prose prose-lg text-gray-500 prose-cyan">
-                  {parse(data.pageData.content)}
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
+      <Post />
     </Layout>
   )
 }
 
 export default BlogPost
-
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/typography'),
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
