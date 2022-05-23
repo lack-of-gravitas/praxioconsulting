@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 // import { useUI } from '@components/ui/context'
 import { Navbar, Footer } from '@components/organisms'
 import { Banner } from '@components/organisms'
-
+// import { FeatureBar } from '@components/organisms'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 
 import { Button } from '@components/atoms'

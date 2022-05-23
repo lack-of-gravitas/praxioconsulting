@@ -6,9 +6,13 @@ import {
   useQueryClient,
   QueryClient,
   QueryClientProvider,
+  Hydrate,
 } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
-import { FC, useEffect } from 'react'
+// https://prateeksurana.me/blog/mastering-data-fetching-with-react-query-and-next-js/
+
+import { FC, useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
 import { Head } from '@components/organisms'
 // import { ManagedUIContext } from '@components/ui/context'
@@ -20,17 +24,28 @@ import { MyUserContextProvider } from '@lib/hooks/useUser'
 // end supabase imports
 
 const Noop: FC = ({ children }) => <>{children}</>
-// Create a client
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false, // https://react-query.tanstack.com/guides/window-focus-refetching
-    },
-  },
-})
+
+// // Create a client
+// const queryClient = new QueryClient({
+//   defaultOptions: {
+//     queries: {
+//       refetchOnWindowFocus: false, // https://react-query.tanstack.com/guides/window-focus-refetching
+//     },
+//   },
+// })
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const Layout = (Component as any).Layout || Noop
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false, // https://react-query.tanstack.com/guides/window-focus-refetching
+          },
+        },
+      })
+  )
 
   useEffect(() => {
     document.body.classList?.remove('loading')
@@ -38,13 +53,16 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head />
       <UserProvider supabaseClient={supabaseClient}>
         <MyUserContextProvider supabaseClient={supabaseClient}>
           <QueryClientProvider client={queryClient}>
-            <Layout pageProps={pageProps}>
-              <Component {...pageProps} />
-            </Layout>{' '}
+            <Hydrate state={pageProps.dehydratedState}>
+              <Head />
+              <Layout pageProps={pageProps}>
+                <Component {...pageProps} />
+              </Layout>
+              <ReactQueryDevtools initialIsOpen={false} />{' '}
+            </Hydrate>
           </QueryClientProvider>
         </MyUserContextProvider>
       </UserProvider>

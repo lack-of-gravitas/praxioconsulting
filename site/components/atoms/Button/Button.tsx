@@ -13,6 +13,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
   variant?: 'primary' | 'secondary'
   active?: boolean
+  showArrow?: boolean
   size?: 'small' | 'medium' | 'large'
   type?: 'submit' | 'reset' | 'button'
   Component?: string | JSXElementConstructor<any>
@@ -25,23 +26,32 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
   const {
     className,
-    variant = 'primary', // primary | secondary
-    size = 'medium',
+    variant, // primary | secondary, controls color and style
+    size, // small | medium | large
     children,
     active,
     width,
     loading = false,
     disabled = false,
-    style = {},
     Component = 'button',
     ...rest
   } = props
   const ref = useRef<typeof Component>(null)
 
   // controls concatenation of classes
-  const rootClassName = cn(
+  const rootClasses =
+    'relative inline-flex items-center px-4 py-3 rounded-sm shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2'
+  const variantClasses =
+    variant == 'primary'
+      ? 'bg-primary-1 text-primary-2'
+      : 'bg-secondary-1 text-secondary-2'
+
+  const sizeClasses = 'text-lg font-medium text-white'
+
+  const twClasses = cn(
+    rootClasses,
     variant === 'primary'
-      ? 'relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-sm shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800'
+      ? ' border border-transparent  bg-primaryColor-700 hover:bg-primaryColor-800  focus:ring-primaryColor-800'
       : '',
     className
   )
@@ -51,12 +61,8 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
       aria-pressed={active}
       data-variant={variant}
       ref={mergeRefs([ref, buttonRef])}
-      className={rootClassName}
+      className={twClasses}
       disabled={disabled}
-      style={{
-        width,
-        ...style,
-      }}
       {...rest}
     >
       {children}

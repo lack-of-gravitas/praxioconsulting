@@ -55,44 +55,44 @@ export async function getStaticPaths() {
     fallback: 'blocking', // doesnt send any props down and waits for getstaticprops to return before rendering page "no flashes of missing content". Con is only the 1st visitor will have a delay on pages. Use this most of the time unless getStaticProps is slow on first run (slow API calls, slow to build pages, etc)
   }
 
-  // get list of valid paths associated to this domain (built at runtime) can be a subset of all paths
-  let dbQuery = `
-  query getSlugs ( $brand: String!) {
-    slugs: globals (where: {domain: $brand}) {
-      products { slug } 
-    }
-  }`
+  // // get list of valid paths associated to this domain (built at runtime) can be a subset of all paths
+  // let dbQuery = `
+  // query getSlugs ( $brand: String!) {
+  //   slugs: globals (where: {domain: $brand}) {
+  //     products { slug }
+  //   }
+  // }`
 
-  let req = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      query: `${dbQuery}`,
-      variables: {
-        brand: `${process.env.NEXT_PUBLIC_BRAND}`,
-      },
-    }),
-  }
+  // let req = {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({
+  //     query: `${dbQuery}`,
+  //     variables: {
+  //       brand: `${process.env.NEXT_PUBLIC_BRAND}`,
+  //     },
+  //   }),
+  // }
 
-  let data: any = []
+  // let data: any = []
 
-  fetch(`${process.env.NEXT_PUBLIC_BACKEND}/graphql`, req)
-    .then((res) => res.json())
-    .then((results) => {
-      // process all returned slugs and build business friendly paths
-      // console.log("results (getstaticpaths): ", JSON.stringify(results));
+  // fetch(`${process.env.NEXT_PUBLIC_BACKEND}/graphql`, req)
+  //   .then((res) => res.json())
+  //   .then((results) => {
+  //     // process all returned slugs and build business friendly paths
+  //     // console.log("results (getstaticpaths): ", JSON.stringify(results));
 
-      let slugArray = []
+  //     let slugArray = []
 
-      // generate all blog post paths
-      results.data.slugs[0].articles.forEach((article) => {
-        slugArray = [] // reset temp array
-        slugArray.push('products', product.slug)
-        data = [...data, { params: { slug: slugArray } }]
-      })
+  //     // generate all blog post paths
+  //     results.data.slugs[0].articles.forEach((article) => {
+  //       slugArray = [] // reset temp array
+  //       slugArray.push('products', product.slug)
+  //       data = [...data, { params: { slug: slugArray } }]
+  //     })
 
-      // console.log("data (getstaticpaths):", JSON.stringify(data));
-    })
+  //     // console.log("data (getstaticpaths):", JSON.stringify(data));
+  //   })
 
   // return {
   //   paths: data, // anything not present inside will be built dynamically or return 404, if empty, all routes need to be checked in getStaticProps

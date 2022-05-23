@@ -11,7 +11,7 @@
     font-style: normal italic condensed;
     font-weight: 100 200 300 500 700 900;
     font-display: optional;
-    src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap')
-      format('woff2');
+    src: url('https://fonts.googleapis.com/css2?family=Roboto') format('woff2'),
+      url('https://fonts.googleapis.com/css2?family=Roboto') format('woff');
   }
 }

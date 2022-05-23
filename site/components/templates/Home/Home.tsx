@@ -1,8 +1,7 @@
-/* This example requires Tailwind CSS v2.0+ */
-
 export default function Home({ data }: any) {
   return (
     <div className="relative overflow-hidden bg-gray-50">
+      {/* BACKGROUND DOTS */}
       <div
         className="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full"
         aria-hidden="true"

@@ -8,20 +8,19 @@ import { getPageSection } from '@lib/queries'
 import dynamic from 'next/dynamic'
 
 export default function About({ data }: any) {
-  // for each id in data.sections, query for the section details
-  const sectionData = data.sections.map((section: any) => {
-    getPageSection(section.id)
-  })
-
-  // for each sectionData, render component
-  const sections = sectionData.map((section: any) => {
-    const Section = dynamic(
-      () => import(`@components/organisms/${section.collection}`),
-      {
-        ssr: false,
-        loading: () => <div>Loading...</div>,
-      }
-    )
-    return <Section key={section.id} data={section} />
-  })
+  // // for each id in data.sections, query for the section details
+  // const sectionData = data.sections.map((section: any) => {
+  //   getPageSection(section.id)
+  // })
+  // // for each sectionData, render component
+  // const sections = sectionData.map((section: any) => {
+  //   const Section = dynamic(
+  //     () => import(`@components/organisms/${section.collection}`),
+  //     {
+  //       ssr: false,
+  //       loading: () => <div>Loading...</div>,
+  //     }
+  //   )
+  //   return <Section key={section.id} data={section} />
+  // })
 }

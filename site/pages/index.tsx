@@ -1,13 +1,18 @@
 import { Layout } from '@components/templates'
 import { Home } from '@components/templates'
+import { useQuery, QueryClient, dehydrate } from 'react-query'
+import { getPage } from '@lib/queries'
 
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 export default function Index({
   data,
   preview,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  // console.log("data (Component): ", data);
-  // console.log("data (Component): ", JSON.stringify(data));
+  return (
+    <>
+      <Home />
+    </>
+  )
   // if (data === undefined) {
   //   return  <Layout>
   //   <PageNotFound statusCode={404} />
@@ -22,9 +27,7 @@ export default function Index({
   //   <PageNotFound statusCode={404} />
   // </Layout>
   // }
-
   // const blocks = delve(data.pageData, "blocks");
-
   // return (
   //   <Layout
   //     data={data.globalData}
@@ -37,12 +40,6 @@ export default function Index({
   //     ))}
   //   </Layout>
   // );
-
-  return (
-    <>
-      <Home />
-    </>
-  )
 }
 
 Index.Layout = Layout
@@ -53,25 +50,28 @@ Index.Layout = Layout
 // context contains route params for dynamic routes, preview, previewData, locale,locales, defaultLocale
 export async function getStaticProps({
   // get from context variable i.e. context.preview, context.locale etc.
+  params,
   preview,
   locale,
   locales,
 }: GetStaticPropsContext) {
-  // console.log("context (getstaticprops): ", context);
+  const data = {}
+  // const {
+  //   status,
+  //   data: data,
+  //   error,
+  //   isFetching,
+  //   isSuccess,
+  // } = useQuery('posts', async () => await getPage('home'))
+  // console.log(data)
+  // const data = {} //await getPage('home')
 
   // get data here and use react-query for magic local storage?
-  let data = { header: 0 }
+  // let data = { header: 0 }
   // console.log("data: ", data);
 
   return {
     // will be passed to the page component as props
     props: { data, preview: preview ? true : null },
-    // props: {
-    //   products,
-    //   categories,
-    //   brands,
-    //   pages,
-    // },
-    revalidate: 60, // In seconds. False = cached until next build, 28800 = 8 hours
   }
 }

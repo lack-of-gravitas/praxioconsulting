@@ -234,8 +234,8 @@ export default SignIn
 
 //   if (data === undefined) {
 //     return  <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>;
+//   <PageNotFound statusCode={404} />
+// </Layout>;
 //   }
 
 //   if (
@@ -244,8 +244,8 @@ export default SignIn
 //     Object.keys(data.globalData).length === 0
 //   ) {
 //     return  <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>;
+//   <PageNotFound statusCode={404} />
+// </Layout>;
 //   }
 
 //   return (

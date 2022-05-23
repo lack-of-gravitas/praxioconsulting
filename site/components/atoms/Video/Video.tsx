@@ -6,7 +6,7 @@ import React, {
   CSSProperties,
 } from 'react'
 import cn from 'clsx'
-import s from './VideoPlayer.module.css'
+import s from './Video.module.css'
 
 interface TextProps {
   variant?: Variant

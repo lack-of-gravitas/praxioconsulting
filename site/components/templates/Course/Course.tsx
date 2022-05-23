@@ -16,8 +16,8 @@ import {
   Cross as CrossIcon,
 } from '@components/atoms/Icons'
 
-const CourseHeader = dynamic(() => import('../../organisms/CourseHeader'))
-const CourseFooter = dynamic(() => import('../../organisms/CourseFooter'))
+// const CourseHeader = dynamic(() => import('../../organisms/CourseHeader'))
+// const CourseFooter = dynamic(() => import('../../organisms/CourseFooter'))
 // const MainContent = dynamic(() => import('./blocks/CourseContent/mainContent'))
 
 const Course = ({ header, course, children, preview }: any) => {
@@ -660,7 +660,7 @@ const Course = ({ header, course, children, preview }: any) => {
         </div>
       </>
 
-      <CourseFooter {...header} />
+      {/* <CourseFooter {...header} /> */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { fetchPostJSON } from '@lib/api-helpers'
+import { fetchPostJSON, fetchGetJSON } from '@lib/api-helpers'
 
 // graphql better for specific fields and m2m / m2a fields as you can define joins
 // rest api better for getting all fields
@@ -98,8 +98,21 @@ export async function getTeam() {
   return response.data
 }
 
-export async function getPage(slug: string) {
-  // https://klubs.azurewebsites.net/items/pages?fields=*,brand.domain,sections.*&filter[brand][domain][_eq]=https://therunningklub.com&filter[slug][_eq]=privacy
+export async function getPage(slug?: string) {
+  const response = await fetchGetJSON(
+    `${
+      process.env.NEXT_PUBLIC_REST_API
+    }/pages?fields=*,sections.*&filter[brand][domain][_eq]=${
+      process.env.NEXT_PUBLIC_BRAND
+    }&filter[slug][_eq]=${slug ? slug : 'home'}`
+  )
+
+  if (!response.ok) {
+    console.log(response)
+    throw new Error('Network response was not ok')
+  }
+
+  return response.data
 }
 
 // id parameter of type integer

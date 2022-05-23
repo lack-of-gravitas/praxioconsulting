@@ -227,8 +227,8 @@ export default function Account({ user }: { user: User }) {
 
 //   if (data === undefined) {
 //     return  <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>;
+//   <PageNotFound statusCode={404} />
+// </Layout>;
 //   }
 
 //   if (
@@ -237,8 +237,8 @@ export default function Account({ user }: { user: User }) {
 //     Object.keys(data.globalData).length === 0
 //   ) {
 //     return  <Layout>
-        <PageNotFound statusCode={404} />
-      </Layout>;
+//   <PageNotFound statusCode={404} />
+// </Layout>;
 //   }
 
 //   return (
