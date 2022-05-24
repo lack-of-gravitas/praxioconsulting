@@ -1,45 +1,37 @@
 import { Layout } from '@components/templates'
 import { Home } from '@components/templates'
 import { useQuery, QueryClient, dehydrate } from 'react-query'
-import { getPage } from '@lib/queries'
-
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+
+const getdata = async () =>
+  await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_REST_API}/pages?fields=*,sections.*&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}&filter[slug][_eq]=home`
+    )
+  ).json()
+
 export default function Index({
-  data,
+  // statdata,
   preview,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { status, data, error, isFetching, isSuccess } = useQuery(
+    'home',
+    getdata,
+    { cacheTime: Infinity, staleTime: 1000 * 60 * 10 }
+  )
+  console.log(data)
+  if (isFetching) {
+    return <div>Loading...</div>
+  }
+  if (!data) {
+    return <div>Error: No data</div>
+  }
+
   return (
     <>
       <Home />
     </>
   )
-  // if (data === undefined) {
-  //   return  <Layout>
-  //   <PageNotFound statusCode={404} />
-  // </Layout>;
-  // }
-  // if (
-  //   data.pageData === null ||
-  //   data.pageData === undefined ||
-  //   Object.keys(data.pageData).length === 0
-  // ) {
-  //   return  <Layout>
-  //   <PageNotFound statusCode={404} />
-  // </Layout>
-  // }
-  // const blocks = delve(data.pageData, "blocks");
-  // return (
-  //   <Layout
-  //     data={data.globalData}
-  //     slug={data.pageData.slug}
-  //     seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
-  //     preview={preview}
-  //   >
-  //     {blocks?.map((block, key) => (
-  //       <Block key={key} block={block} data={data.pageData} />
-  //     ))}
-  //   </Layout>
-  // );
 }
 
 Index.Layout = Layout
@@ -55,23 +47,24 @@ export async function getStaticProps({
   locale,
   locales,
 }: GetStaticPropsContext) {
-  const data = {}
-  // const {
-  //   status,
-  //   data: data,
-  //   error,
-  //   isFetching,
-  //   isSuccess,
-  // } = useQuery('posts', async () => await getPage('home'))
-  // console.log(data)
-  // const data = {} //await getPage('home')
-
-  // get data here and use react-query for magic local storage?
-  // let data = { header: 0 }
-  // console.log("data: ", data);
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false, // https://react-query.tanstack.com/guides/window-focus-refetching
+        staleTime: 1000 * 60 * 10, // 10 minutes
+      },
+    },
+  })
+  // if (!queryClient.getQueryData('home')) {
+  await queryClient.prefetchQuery('home', getdata)
+  // }
 
   return {
     // will be passed to the page component as props
-    props: { data, preview: preview ? true : null },
+    props: {
+      dehydratedState: dehydrate(queryClient),
+      preview: preview ? true : null,
+    },
+    // props: { statdata, preview: preview ? true : null },
   }
 }

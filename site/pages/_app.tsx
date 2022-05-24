@@ -1,18 +1,11 @@
 import '@assets/main.css'
 import '@assets/chrome-bug.css'
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-  Hydrate,
-} from 'react-query'
+import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-
+import { getBrand } from '@lib/queries'
 // https://prateeksurana.me/blog/mastering-data-fetching-with-react-query-and-next-js/
 
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useRef } from 'react'
 import type { AppProps } from 'next/app'
 import { Head } from '@components/organisms'
 // import { ManagedUIContext } from '@components/ui/context'
@@ -25,27 +18,20 @@ import { MyUserContextProvider } from '@lib/hooks/useUser'
 
 const Noop: FC = ({ children }) => <>{children}</>
 
-// // Create a client
-// const queryClient = new QueryClient({
-//   defaultOptions: {
-//     queries: {
-//       refetchOnWindowFocus: false, // https://react-query.tanstack.com/guides/window-focus-refetching
-//     },
-//   },
-// })
-
 export default function MyApp({ Component, pageProps }: AppProps) {
-  const Layout = (Component as any).Layout || Noop
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            refetchOnWindowFocus: false, // https://react-query.tanstack.com/guides/window-focus-refetching
-          },
+  const queryClient = useRef(
+    new QueryClient({
+      defaultOptions: {
+        queries: {
+          refetchOnWindowFocus: false, // https://react-query.tanstack.com/guides/window-focus-refetching
+          // cacheTime: Infinity,
+          staleTime: 1000 * 60 * 10, // 10 minutes
         },
-      })
+      },
+    })
   )
+
+  const Layout = (Component as any).Layout || Noop
 
   useEffect(() => {
     document.body.classList?.remove('loading')
@@ -55,13 +41,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <UserProvider supabaseClient={supabaseClient}>
         <MyUserContextProvider supabaseClient={supabaseClient}>
-          <QueryClientProvider client={queryClient}>
+          <QueryClientProvider client={queryClient.current}>
             <Hydrate state={pageProps.dehydratedState}>
               <Head />
               <Layout pageProps={pageProps}>
                 <Component {...pageProps} />
               </Layout>
-              <ReactQueryDevtools initialIsOpen={false} />{' '}
+              <ReactQueryDevtools initialIsOpen={false} />
             </Hydrate>
           </QueryClientProvider>
         </MyUserContextProvider>

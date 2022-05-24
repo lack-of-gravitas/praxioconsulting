@@ -106,9 +106,9 @@ export async function getPage(slug?: string) {
       process.env.NEXT_PUBLIC_BRAND
     }&filter[slug][_eq]=${slug ? slug : 'home'}`
   )
+  console.log(response)
 
   if (!response.ok) {
-    console.log(response)
     throw new Error('Network response was not ok')
   }
 
