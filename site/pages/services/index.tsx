@@ -1,53 +1,34 @@
-import React from 'react'
-import { PageNotFound } from '@components/templates'
 import { Layout } from '@components/templates'
 import { Home } from '@components/templates'
 import { useQuery, QueryClient, dehydrate } from 'react-query'
-import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
-export default function Services({
-  // statdata,
-  preview,
-}: InferGetStaticPropsType<typeof getStaticProps>) {}
+const getdata = async () =>
+  await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_REST_API}/pages?fields=id,slug,name,sections.id,sections.item,sections.sort,sections.collection&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}&filter[slug][_eq]=services`
+    )
+  ).json()
 
-;({ data, preview }: any) => {
-  // console.log("data (Component): ", (data));
-  // console.log("data (Component): ", JSON.stringify(data));
-
-  // if (data === undefined) {
-  //   return (
-  //     <Layout>
-  //       <PageNotFound statusCode={404} />
-  //     </Layout>
-  //   )
-  // }
-  // if (
-  //   data.pageData === null ||
-  //   data.pageData === undefined ||
-  //   Object.keys(data.pageData).length === 0
-  // ) {
-  //   return (
-  //     <Layout>
-  //       <PageNotFound statusCode={404} />
-  //     </Layout>
-  //   )
-  // }
-
-  // const blocks = data.pageData.blocks
+export default function Services({ slug, preview }: any) {
+  const { status, data, error, isFetching, isSuccess } = useQuery(
+    'services',
+    getdata,
+    {
+      staleTime: 1000 * 60 * 10,
+    }
+  )
+  console.log(data)
+  if (isFetching) {
+    return <div>Loading...</div>
+  }
+  if (!data || data.data.length === 0) {
+    return <div>Error: No data</div>
+  }
 
   return (
-    <Layout
-    // data={data.globalData}
-    // slug={data.pageData.slug}
-    // seo={data.pageData.seo ? data.pageData.seo : data.globalData.seo}
-    // preview={preview}
-    >
-      <Products />
-      {/* {blocks?.map((block, key) => (
-        <></>
-        // <Block key={key} block={block} data={data.pageData} />
-      ))} */}
-    </Layout>
+    <>
+      <Home />
+    </>
   )
 }
 
@@ -69,15 +50,16 @@ export async function getStaticProps(context: any) {
     },
   })
   // if (!queryClient.getQueryData('home')) {
-  await queryClient.prefetchQuery('home', getdata)
+  await queryClient.prefetchQuery('services', getdata)
   // }
 
   return {
     props: {
+      slug: 'services',
       // data,
       dehydratedState: dehydrate(queryClient),
-      preview: preview ? true : null,
+      preview: context.preview ? true : null,
     }, // will be passed to the page component as props
-    revalidate: 30, // In seconds. False means page is cached until next build, 28800 = 8 hours
+    revalidate: 28800, // In seconds. False means page is cached until next build, 28800 = 8 hours
   }
 }

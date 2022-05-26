@@ -1,7 +1,7 @@
 export { default as ArticlesPaginated } from './ArticlesPaginated'
 export { default as ArticlesRecent } from './ArticlesRecent'
 export { default as Banner } from './Banner'
-export { default as ContentBlock } from './ContentBlock'
+export { default as Content } from './Content'
 export { default as CourseContent } from './CourseContent'
 export { default as CourseFooter } from './CourseFooter'
 export { default as CourseHeader } from './CourseHeader'

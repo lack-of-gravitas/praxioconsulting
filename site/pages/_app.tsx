@@ -2,8 +2,6 @@ import '@assets/main.css'
 import '@assets/chrome-bug.css'
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { getBrand } from '@lib/queries'
-// https://prateeksurana.me/blog/mastering-data-fetching-with-react-query-and-next-js/
 
 import { FC, useEffect, useRef } from 'react'
 import type { AppProps } from 'next/app'
@@ -24,7 +22,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       defaultOptions: {
         queries: {
           refetchOnWindowFocus: false, // https://react-query.tanstack.com/guides/window-focus-refetching
-          // cacheTime: Infinity,
+
           staleTime: 1000 * 60 * 10, // 10 minutes
         },
       },

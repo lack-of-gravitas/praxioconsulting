@@ -78,11 +78,11 @@ body {
   overscroll-behavior-x: none;
 }
 
-body {
+/*body {
   position: relative;
   min-height: 100%;
   margin: 0;
-}
+}*/
 
 a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

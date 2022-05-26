@@ -4,7 +4,6 @@
 // import dynamic components to render
 
 // query and render each sections details
-import { getPageSection } from '@lib/queries'
 import dynamic from 'next/dynamic'
 
 export default function About({ data }: any) {

@@ -1,6 +1,10 @@
 const isProd = process.env.NODE_ENV === 'production'
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+// module.exports = withBundleAnalyzer({})
 
-module.exports =
+module.exports = withBundleAnalyzer(
   // withCommerceConfig(
   {
     reactStrictMode: true,
@@ -10,10 +14,8 @@ module.exports =
     },
     images: {
       domains: [
-        'www.fillmurray.com',
         'dummyimage.com',
         'klubs.azureedge.net',
-        // 'praxio.blob.core.windows.net',
         'lh3.googleusercontent.com', // for google user profiles
       ],
     },
@@ -89,6 +91,7 @@ module.exports =
     //   ].filter(Boolean)
     // },
   }
+)
 // )
 
 // Don't delete this console log, useful to see the commerce config in Vercel deployments
