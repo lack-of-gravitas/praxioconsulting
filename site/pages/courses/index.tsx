@@ -1,16 +1,19 @@
-import { Layout } from '@components/templates'
-import { Home } from '@components/templates'
+import { Layout, Section } from '@components/templates'
 import { useQuery, QueryClient, dehydrate } from 'react-query'
 
 const getdata = async () =>
   await (
     await fetch(
-      `${process.env.NEXT_PUBLIC_REST_API}/pages?fields=id,slug,name,sections.id,sections.item,sections.sort,sections.collection&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}&filter[slug][_eq]=courses`
+      `${process.env.NEXT_PUBLIC_REST_API}/pages` +
+        `?fields=id,slug,name,sections.id,sections.sort,sections.collection,sections.item.*,sections.item.buttons.*,sections.item.buttons.item.slug,sections.item.buttons.item.name` +
+        `&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
+        `&filter[slug][_eq]=courses` +
+        `&filter[status][_eq]=published`
     )
   ).json()
 
 export default function Courses({ slug, preview }: any) {
-  const { status, data, error, isFetching, isSuccess } = useQuery(
+  const { status, data, error, isFetching, isSuccess }: any = useQuery(
     'courses',
     getdata,
     {
@@ -25,9 +28,13 @@ export default function Courses({ slug, preview }: any) {
     return <div>Error: No data</div>
   }
 
+  const sections = data.data[0].sections
+
   return (
     <>
-      <Home />
+      {sections?.map((section: any) => (
+        <Section key={section.id} section={section} />
+      ))}
     </>
   )
 }

@@ -1,11 +1,10 @@
 import { PageNotFound, Layout } from '@components/templates'
 import { useQuery, QueryClient, dehydrate } from 'react-query'
-import { Home } from '@components/templates'
 import { Section } from '@components/templates'
 let getdata: any = {}
 
 export default function Page({ slug, preview }: any) {
-  const { status, data, error, isFetching, isSuccess } = useQuery(
+  const { status, data, error, isFetching, isSuccess }: any = useQuery(
     slug,
     getdata,
     {
@@ -20,36 +19,19 @@ export default function Page({ slug, preview }: any) {
     return <div>Loading...</div>
   }
 
+  // check if data is an object
+
   if (!data || data.data.length === 0) {
     return <PageNotFound />
   }
 
   const sections = data.data[0].sections
 
-  // if data is an object
-  // if (typeof data === 'object') {
-  //   console.log('data is an object')
-  //   // check if data has a data property
-  //   if (data.data) {
-  //     console.log('data has a data property')
-  //     // check if data.data is an array
-
-  //     if (Array.isArray(data.data)) {
-  //       console.log('data.data is an array')
-  //       // check lenght of data.data
-  //       if (data.data.length > 0) {
-  //         console.log('data.data has a length')
-  //       }
-  //     }
-  //   }
-  // }
-
   return (
     <>
       {sections?.map((section: any) => (
         <Section key={section.id} section={section} />
       ))}
-      <Home />
     </>
   )
 }
@@ -65,7 +47,11 @@ export async function getStaticProps(context: any) {
   getdata = async () =>
     await (
       await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API}/pages?fields=id,slug,name,sections.id,sections.item.*,sections.sort,sections.collection&filter[slug][_eq]=${context.params.slug}&filter[status][_eq]=published&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
+        `${process.env.NEXT_PUBLIC_REST_API}/pages` +
+          `?fields=id,slug,name,sections.id,sections.sort,sections.collection,sections.item.*,sections.item.buttons.*,sections.item.buttons.item.slug,sections.item.buttons.item.name` +
+          `&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
+          `&filter[slug][_eq]=${context.params.slug}` +
+          `&filter[status][_eq]=published`
       )
     ).json()
 

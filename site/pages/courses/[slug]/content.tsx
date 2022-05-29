@@ -1,15 +1,10 @@
 import { useRouter } from 'next/router'
-import {
-  PageNotFound,
-  CourseLayout as Layout,
-  CourseContent,
-  Home,
-} from '@components/templates'
+import { PageNotFound, CourseLayout as Layout } from '@components/templates'
 import { useQuery, QueryClient, dehydrate } from 'react-query'
 
 let getdata: any
 export default function Content({ slug, preview }: any) {
-  const { status, data, error, isFetching, isSuccess } = useQuery(
+  const { status, data, error, isFetching, isSuccess }: any = useQuery(
     slug,
     getdata,
     {
@@ -27,11 +22,7 @@ export default function Content({ slug, preview }: any) {
     return <div>Error: No data</div>
   }
 
-  return (
-    <>
-      <Home />
-    </>
-  )
+  return <></>
 }
 
 Content.Layout = Layout

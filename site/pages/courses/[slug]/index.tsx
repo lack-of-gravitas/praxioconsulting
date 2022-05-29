@@ -1,10 +1,9 @@
-import { Layout } from '@components/templates'
-import { Home } from '@components/templates'
+import { Layout, Section } from '@components/templates'
 import { useQuery, QueryClient, dehydrate } from 'react-query'
 
 let getdata: any
 export default function Course({ slug, preview }: any) {
-  const { status, data, error, isFetching, isSuccess } = useQuery(
+  const { status, data, error, isFetching, isSuccess }: any = useQuery(
     slug,
     getdata,
     {
@@ -22,9 +21,12 @@ export default function Course({ slug, preview }: any) {
     return <div>Error: No data</div>
   }
 
+  const sections = data.data[0].sections
   return (
     <>
-      <Home />
+      {sections?.map((section: any) => (
+        <Section key={section.id} section={section} />
+      ))}
     </>
   )
 }
@@ -41,7 +43,7 @@ export async function getStaticProps(context: any) {
   getdata = async () =>
     await (
       await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API}/products?fields=id,name,stripeId,type,image,sections.id,sections.item,sections.sort,sections.collection&filter[slug][_eq]=${context.params.slug}&filter[status][_eq]=published&filter[brands][brands_id][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
+        `${process.env.NEXT_PUBLIC_REST_API}/products?fields=id,name,stripeId,type,image,sections.id,sections.item.*,sections.sort,sections.collection&filter[slug][_eq]=${context.params.slug}&filter[status][_eq]=published&filter[brands][brands_id][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
       )
     ).json()
 

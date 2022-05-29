@@ -1,12 +1,8 @@
-//https://nextjs.org/docs/basic-features/layouts
-
 import cn from 'clsx'
-// import s from './Layout.module.css'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 // import { useUI } from '@components/ui/context'
 import { Navbar, Footer } from '@components/organisms'
-import { Banner } from '@components/organisms'
 
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 

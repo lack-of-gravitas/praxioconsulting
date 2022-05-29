@@ -1,16 +1,19 @@
 import { Layout } from '@components/templates'
-import { Home, PageNotFound } from '@components/templates'
+import { PageNotFound, Section } from '@components/templates'
 import { useQuery, QueryClient, dehydrate } from 'react-query'
 
 const getdata = async () =>
   await (
     await fetch(
-      `${process.env.NEXT_PUBLIC_REST_API}/pages?fields=id,slug,name,sections.id,sections.item,sections.sort,sections.collection&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}&filter[slug][_eq]=home`
+      `${process.env.NEXT_PUBLIC_REST_API}/pages` +
+        `?fields=id,slug,name,sections.id,sections.sort,sections.collection,sections.item.*, sections.item.buttons.*,sections.item.buttons.item.slug,sections.item.buttons.item.name` +
+        `&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
+        `&filter[slug][_eq]=home`
     )
   ).json()
 
 export default function Index({ slug, preview }: any) {
-  const { status, data, error, isFetching, isSuccess } = useQuery(
+  const { status, data, error, isFetching, isSuccess }: any = useQuery(
     'home',
     getdata,
     { cacheTime: Infinity, staleTime: 1000 * 60 * 10 }
@@ -23,9 +26,13 @@ export default function Index({ slug, preview }: any) {
     return <PageNotFound />
   }
 
+  const sections = data.data[0].sections
+
   return (
     <>
-      <Home />
+      {sections?.map((section: any) => (
+        <Section key={section.id} section={section} />
+      ))}
     </>
   )
 }

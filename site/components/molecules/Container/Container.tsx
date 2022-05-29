@@ -8,6 +8,7 @@ interface ContainerProps {
   clean?: boolean
 }
 
+// background dots include
 const Container: FC<ContainerProps> = ({
   children,
   className,

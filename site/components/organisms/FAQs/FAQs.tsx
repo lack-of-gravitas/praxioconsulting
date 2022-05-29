@@ -4,6 +4,7 @@ import { Disclosure } from '@headlessui/react'
 import { ChevronDown as ChevronDownIcon } from '@components/atoms/Icons'
 import parse from 'html-react-parser'
 import cn from 'clsx'
+import { SectionHeader } from '@components/molecules'
 
 const FAQs = ({ data }: any) => {
   // console.log('data -- ', data)
@@ -14,11 +15,18 @@ const FAQs = ({ data }: any) => {
       <div className="bg-gray-50">
         <div className="px-4 py-12 mx-auto max-w-7xl sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
-            {header && (
+            {(data.title || data.subtitle) && (
+              <SectionHeader
+                title={data.title ? data.title : ''}
+                subtitle={data.subtitle ? data.subtitle : ''}
+              />
+            )}
+
+            {/* {header && (
               <h2 className="text-3xl font-extrabold text-center text-gray-900 sm:text-4xl">
                 {header.title}
               </h2>
-            )}
+            )} */}
             <dl className="mt-6 space-y-6 divide-y divide-gray-200">
               {item?.map((faq: any) => (
                 <Disclosure as="div" key={faq.question} className="pt-6">

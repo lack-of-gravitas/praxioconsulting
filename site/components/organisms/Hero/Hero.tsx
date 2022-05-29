@@ -1,28 +1,79 @@
 import React, { FC } from 'react'
 import { Container } from '@components/molecules'
-import { ArrowRight } from '@components/atoms/Icons'
+import { ArrowRight as ArrowRightIcon } from '@components/atoms/Icons'
 import Link from 'next/link'
 import Image from 'next/image'
-interface HeroProps {
-  data: any
-}
 
-const Hero: FC<HeroProps> = ({ data }) => {
+export default function Hero({ data }: any) {
+  // console.log(data)
+
   return (
-    <div className="border-t border-b bg-accent-9 border-accent-2">
-      <Container>
+    // <section className="flex items-center justify-center py-40 text-gray-600 body-font 2xl:h-screen">
+    <Container>
+      <section className="relative w-full h-screen text-white">
         <div>
-          <div>
-            <Link href="/">
-              <a className="flex items-center pt-3 font-bold cursor-pointer text-accent-0 hover:underline w-max-content">
-                Read it here HERO TEST
-              </a>
-            </Link>
+          <div className="relative w-full h-screen text-white">
+            {data.image !== '' ? (
+              <Image
+                className="absolute top-0 left-0 object-cover w-full h-full"
+                src={`${process.env.NEXT_PUBLIC_ASSETS_URL}/${data.image}`}
+                layout="fill"
+                alt={data.section_name}
+                priority
+              />
+            ) : (
+              <>
+                <Image
+                  className="absolute top-0 left-0 object-cover w-full h-full"
+                  src="https://dummyimage.com/1280x720/000/fff"
+                  layout="fill"
+                  // height={1280}
+                  // width={900}
+                  alt=""
+                  priority
+                />
+              </>
+            )}
+
+            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full px-12 text-center">
+              <div>
+                <h1 className="text-3xl font-bold leading-tight md:text-6xl">
+                  {data.title} <br className="hidden md:block" />
+                </h1>
+                <h4 className="mb-16 text-xl leading-tight md:text-3xl">
+                  {data.subtitle}
+                </h4>
+
+                <div className="mt-8 lg:mt-0 lg:ml-8">
+                  {data.buttons?.map(({ id, item }: any) => (
+                    <div
+                      key={id}
+                      className="py-3 mt-3 sm:mt-0 sm:ml-3 sm:flex-shrink-0"
+                    >
+                      <Link
+                        href={'/' + item.slug}
+                        className="cursor-auto"
+                        passHref
+                      >
+                        <button
+                          type="button"
+                          className="relative inline-flex items-center px-4 py-5 text-lg font-medium text-white border border-transparent rounded-sm shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+                        >
+                          <ArrowRightIcon
+                            className="w-6 h-6 mr-2 -ml-1"
+                            aria-hidden="true"
+                          />
+                          <span>{item.name}</span>
+                        </button>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </Container>
-    </div>
+      </section>
+    </Container>
   )
 }
-
-export default Hero

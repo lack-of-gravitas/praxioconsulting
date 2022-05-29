@@ -1,6 +1,6 @@
-import { Layout } from '@components/templates'
-import { Posts } from '@components/templates'
+import { PageNotFound, Layout } from '@components/templates'
 import { useQuery, QueryClient, dehydrate } from 'react-query'
+import { Section } from '@components/templates'
 
 const getdata = async () =>
   await (
@@ -10,24 +10,31 @@ const getdata = async () =>
   ).json()
 
 export default function Blog({ slug, preview }: any) {
-  const { status, data, error, isFetching, isSuccess } = useQuery(
+  const { status, data, error, isFetching, isSuccess }: any = useQuery(
     'blog',
     getdata,
     {
       staleTime: 1000 * 60 * 10,
     }
   )
-  console.log(data)
+
   if (isFetching) {
     return <div>Loading...</div>
   }
+
+  // check if data is an object
+
   if (!data || data.data.length === 0) {
-    return <div>Error: No data</div>
+    return <PageNotFound />
   }
+
+  const sections = data.data[0].sections
 
   return (
     <>
-      <Posts />
+      {sections?.map((section: any) => (
+        <Section key={section.id} section={section} />
+      ))}
     </>
   )
 }
