@@ -2,68 +2,100 @@ import dynamic from 'next/dynamic'
 export { default as Layout } from './_defaultLayout'
 export { default as CourseLayout } from './_courseLayout'
 export { default as PageNotFound } from './PageNotFound'
-
+// General
 const CallToAction = dynamic(() => import('@components/organisms/CallToAction'))
-const Content = dynamic(() => import('@components/organisms/Content'))
-const CourseSummary = dynamic(
-  () => import('@components/organisms/Course/CourseSummary')
+const BasicContent = dynamic(() => import('@components/organisms/BasicContent'))
+const FeatureMajor = dynamic(
+  () => import('@components/organisms/Feature/FeatureMajor')
 )
-const CourseContent = dynamic(
-  () => import('@components/organisms/Course/CourseContent')
+const FeatureList = dynamic(
+  () => import('@components/organisms/Feature/FeatureList')
 )
-const CourseFooter = dynamic(
-  () => import('@components/organisms/Course/CourseFooter')
-)
-const CourseHeader = dynamic(
-  () => import('@components/organisms/Course/CourseHeader')
-)
-const CourseOutline = dynamic(
-  () => import('@components/organisms/Course/CourseOutline')
-)
-
-const FAQs = dynamic(() => import('@components/organisms/FAQs'))
-const FeatureMajor = dynamic(() => import('@components/organisms/Feature'))
-const FeatureMinor = dynamic(() => import('@components/organisms/Feature'))
 const Hero = dynamic(() => import('@components/organisms/Hero'))
+const Team = dynamic(() => import('@components/organisms/Team'))
 
-const PostDetail = dynamic(
-  () => import('@components/organisms/Post/PostDetail')
-)
+// Posts
 const PostsAll = dynamic(() => import('@components/organisms/Post/PostsAll'))
 const PostsRecent = dynamic(
   () => import('@components/organisms/Post/PostsRecent')
 )
 
-const ProductSummary = dynamic(() => import('@components/organisms/Product'))
-const ProductPeek = dynamic(() => import('@components/organisms/Product'))
-const ProductPricing = dynamic(() => import('@components/organisms/Product'))
-const ProductReviews = dynamic(() => import('@components/organisms/Product'))
-const ProductsAll = dynamic(() => import('@components/organisms/Product'))
-const ProductsFeatured = dynamic(() => import('@components/organisms/Product'))
+// Products
+const ProductsAll = dynamic(
+  () => import('@components/organisms/Product/ProductsAll')
+)
+const ProductsFeatured = dynamic(
+  () => import('@components/organisms/Product/ProductsFeatured')
+)
 
-const Team = dynamic(() => import('@components/organisms/Team'))
+const ProductFAQs = dynamic(
+  () => import('@components/organisms/Product/ProductFAQs')
+)
+const ProductPeek = dynamic(
+  () => import('@components/organisms/Product/ProductPeek')
+)
+const ProductPricing = dynamic(
+  () => import('@components/organisms/Product/ProductPricing')
+)
+const ProductReviews = dynamic(
+  () => import('@components/organisms/Product/ProductReviews')
+)
 
 export const Section = ({ section }: any) => {
   console.log('rendering:', section.collection)
 
   switch (section.collection) {
-    case 'ui_hero':
+    // General
+    case 'BasicContent':
+      return <BasicContent data={section.item} />
+      break
+    case 'CallToAction':
+      return <CallToAction data={section.item} />
+      break
+    case 'Hero':
       return <Hero data={section.item} />
       break
-    case 'ui_content':
-      return <Content data={section.item} />
+    case 'Team':
+      return <Team data={section.item} />
+      break
+    case 'FeatureMajor':
+      return <FeatureMajor data={section.item} />
+      break
+    case 'FeatureList':
+      return <FeatureList data={section.item} />
       break
 
-    case 'ui_cards':
-    case 'ui_courses':
-    case 'ui_cta':
-    case 'ui_faq':
-    case 'ui_major_feature':
-    case 'ui_minor_features':
-    case 'ui_pricing':
-    case 'ui_reviews':
-    case 'ui_sneakpeek':
-      return <></>
+    // Posts
+    case 'PostsAll':
+      return <PostsAll data={section.item} />
+      break
+    case 'PostsRecent':
+      return <PostsRecent data={section.item} />
+      break
+
+    // Products
+    case 'ProductsAll':
+      return <ProductsAll data={section.item} />
+      break
+    case 'ProductsFeatured':
+      return <ProductsFeatured data={section.item} />
+      break
+
+    // case 'ProductComponents':
+    //   return <ProductComponents data={section.item} />
+    //   break
+    case 'ProductFAQs':
+      return <ProductFAQs data={section.item} />
+      break
+    case 'ProductPeek':
+      return <ProductPeek data={section.item} />
+      break
+    case 'ProductPricing':
+      return <ProductPricing data={section.item} />
+      break
+    case 'ProductReviews':
+      return <ProductReviews data={section.item} />
+      break
 
     default:
       return <></>

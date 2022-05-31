@@ -4,25 +4,12 @@ import { Check as CheckIcon, Cross as CrossIcon } from '@components/atoms/Icons'
 import { SectionHeader } from '@components/molecules'
 
 const MinorFeatures = ({ data }: any) => {
-  // console.log("data ---", data);
   let { header, perks } = data
-  // console.log('perks -- ', perks)
 
   return (
     <>
       <div className="bg-white">
         <div className="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-          {/* {header && (
-            <div>
-              <h2 className="text-base font-semibold tracking-wide uppercase text-primaryColor-600">
-                {header.title}
-              </h2>
-              <p className="mt-2 text-3xl font-extrabold text-gray-900">
-                {header.subtitle}
-              </p>
-              <p className="mt-4 text-lg text-gray-500">{header.text}</p>
-            </div>
-          )} */}
           {(data.title || data.subtitle) && (
             <SectionHeader
               title={data.title ? data.title : ''}

@@ -3,9 +3,12 @@ import { Container } from '@components/molecules'
 import { ArrowRight as ArrowRightIcon } from '@components/atoms/Icons'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useQuery } from 'react-query'
 
 export default function Hero({ data }: any) {
-  // console.log(data)
+  const { status, brandData, error, isFetching, isSuccess }: any =
+    useQuery('brand')
+  console.log('branddata:', brandData)
 
   return (
     // <section className="flex items-center justify-center py-40 text-gray-600 body-font 2xl:h-screen">
@@ -57,7 +60,7 @@ export default function Hero({ data }: any) {
                       >
                         <button
                           type="button"
-                          className="relative inline-flex items-center px-4 py-5 text-lg font-medium text-white border border-transparent rounded-sm shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+                          className={`relative inline-flex items-center px-4 py-5 text-lg font-medium text-white border border-transparent rounded-sm shadow-lg bg-primaryColor-800 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800`}
                         >
                           <ArrowRightIcon
                             className="w-6 h-6 mr-2 -ml-1"

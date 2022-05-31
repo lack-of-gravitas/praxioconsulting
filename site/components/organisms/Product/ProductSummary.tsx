@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function ProductSummary({ data }: any) {
   const products = [
     {
@@ -24,7 +26,7 @@ export default function ProductSummary({ data }: any) {
           {products.map((product) => (
             <div key={product.id} className="relative group">
               <div className="w-full overflow-hidden bg-gray-200 rounded-sm min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                <img
+                <Image
                   src={product.imageSrc}
                   alt={product.imageAlt}
                   className="object-cover object-center w-full h-full lg:w-full lg:h-full"

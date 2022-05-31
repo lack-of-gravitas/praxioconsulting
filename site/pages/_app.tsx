@@ -22,7 +22,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       defaultOptions: {
         queries: {
           refetchOnWindowFocus: false, // https://react-query.tanstack.com/guides/window-focus-refetching
-
           staleTime: 1000 * 60 * 10, // 10 minutes
         },
       },

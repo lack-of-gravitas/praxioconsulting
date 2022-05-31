@@ -1,9 +1,8 @@
 // // import delve from "dlv";
 import Link from 'next/link'
 import { ArrowRight as ArrowRightIcon } from '@components/atoms/Icons'
-import CallToAction from '.'
 
-const CTA = ({ data }: any) => {
+export default function CallToAction({ data }: any) {
   let { header, buttons } = data
   return (
     <>
@@ -48,7 +47,3 @@ const CTA = ({ data }: any) => {
     </>
   )
 }
-
-CTA.defaultProps = {}
-
-export default CTA

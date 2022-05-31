@@ -3,18 +3,16 @@ export default function SectionHeader({ data }: any) {
     <>
       {data && (
         <div className="mx-auto text-lg max-w-prose">
-          <h1>
-            {data.subtitle && (
-              <span className="block text-base font-semibold tracking-wide text-center text-indigo-600 uppercase">
-                {data.subtitle}
-              </span>
-            )}
-            {data.title && (
-              <span className="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-900 sm:text-4xl">
-                {data.title}
-              </span>
-            )}
-          </h1>
+          {data.subtitle && (
+            <p className="mt-2 text-3xl font-extrabold text-gray-900">
+              {data.subtitle}
+            </p>
+          )}
+          {data.title && (
+            <h2 className="text-base font-semibold tracking-wide uppercase text-primaryColor-600">
+              {data.title}
+            </h2>
+          )}
         </div>
       )}
     </>

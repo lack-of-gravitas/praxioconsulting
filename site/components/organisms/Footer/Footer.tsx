@@ -9,24 +9,7 @@ import { Link } from '@components/atoms'
 // import Image from "next/image";
 // import { I18nWidget } from '@components/common'
 
-interface Props {
-  className?: string
-  children?: any
-  pages?: Page[]
-}
-
-const links = [
-  {
-    name: 'Home',
-    url: '/',
-  },
-]
-
-const Footer: FC<Props> = ({ className, pages }) => {
-  const { sitePages } = usePages(pages)
-  const rootClassName = cn(className)
-
-  const tagline = 'A place to share your knowledge'
+const Footer = ({ data }: any) => {
   const footer = {
     footerColumns: {
       marketing: [
@@ -56,6 +39,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
     },
   }
 
+  console.log(data)
   return (
     <>
       <footer className="bg-white" aria-labelledby="footer-heading">
@@ -74,7 +58,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 </a>
               </Link>
 
-              <p className="text-lg text-gray-500">{tagline}</p>
+              {/* <p className="text-lg text-gray-500">{data.tagline}</p> */}
             </div>
             <div
               className={`grid-cols-3 mt-12 grid gap-8 xl:mt-0 xl:col-span-2`}
@@ -112,28 +96,27 @@ const Footer: FC<Props> = ({ className, pages }) => {
     </>
   )
 }
+export default Footer
 
-function usePages(pages?: Page[]) {
-  const { locale } = useRouter()
-  const sitePages: Page[] = []
+// function usePages(pages?: Page[]) {
+//   const { locale } = useRouter()
+//   const sitePages: Page[] = []
 
-  if (pages) {
-    pages.forEach((page) => {
-      const slug = page.url && getSlug(page.url)
-      if (!slug) return
-      if (locale && !slug.startsWith(`${locale}/`)) return
-      sitePages.push(page)
-    })
-  }
+//   if (pages) {
+//     pages.forEach((page) => {
+//       const slug = page.url && getSlug(page.url)
+//       if (!slug) return
+//       if (locale && !slug.startsWith(`${locale}/`)) return
+//       sitePages.push(page)
+//     })
+//   }
 
-  return {
-    sitePages: sitePages.sort(bySortOrder),
-  }
-}
+//   return {
+//     sitePages: sitePages.sort(bySortOrder),
+//   }
+// }
 
 // Sort pages by the sort order assigned in the BC dashboard
-function bySortOrder(a: Page, b: Page) {
-  return (a.sort_order ?? 0) - (b.sort_order ?? 0)
-}
-
-export default Footer
+// function bySortOrder(a: Page, b: Page) {
+//   return (a.sort_order ?? 0) - (b.sort_order ?? 0)
+// }

@@ -16,7 +16,8 @@ import {
   Cross as CrossIcon,
 } from '@components/atoms/Icons'
 
-const CourseSummary = ({ header, course, children, preview }: any) => {
+export default function CourseSummary({ data }: any) {
+  const { header, course, children, preview } = data
   const [sidebarOpen, setSidebarOpen] = useState(false)
   //   const { data: session, status } = useSession()
   const { themes, navigation } = header
@@ -51,13 +52,13 @@ const CourseSummary = ({ header, course, children, preview }: any) => {
                   this is a mistake, please contact us.
                 </p>
                 <div className="mt-6">
-                  <a
-                    href="/"
-                    className="text-base font-medium text-primaryColor-600 hover:text-primaryColor-500"
-                  >
-                    Go home
-                    <span aria-hidden="true"> &rarr;</span>
-                  </a>
+                  <Link href="/">
+                    {' '}
+                    <a className="text-base font-medium text-primaryColor-600 hover:text-primaryColor-500">
+                      Go home
+                      <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -628,13 +629,12 @@ const CourseSummary = ({ header, course, children, preview }: any) => {
                                   Hat Icon) to view and access the content.
                                 </p>
                                 <div className="mt-6">
-                                  <a
-                                    href="/"
-                                    className="text-base font-medium text-primaryColor-600 hover:text-primaryColor-500"
-                                  >
-                                    Home Page
-                                    <span aria-hidden="true"> &rarr;</span>
-                                  </a>
+                                  <Link href="/">
+                                    <a className="text-base font-medium text-primaryColor-600 hover:text-primaryColor-500">
+                                      Home Page
+                                      <span aria-hidden="true"> &rarr;</span>
+                                    </a>
+                                  </Link>
                                 </div>
                               </div>
                             </div>
@@ -655,5 +655,3 @@ const CourseSummary = ({ header, course, children, preview }: any) => {
     </div>
   )
 }
-
-export default CourseSummary

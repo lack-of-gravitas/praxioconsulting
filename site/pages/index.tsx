@@ -18,7 +18,9 @@ export default function Index({ slug, preview }: any) {
     getdata,
     { cacheTime: Infinity, staleTime: 1000 * 60 * 10 }
   )
+
   console.log(data)
+
   if (isFetching) {
     return <div>Loading...</div>
   }

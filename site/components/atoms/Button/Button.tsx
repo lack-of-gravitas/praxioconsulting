@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import mergeRefs from 'react-merge-refs'
 import { LoadingDots } from '@components/atoms'
+import { useQuery } from 'react-query'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string
@@ -22,8 +23,25 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean
 }
 
+const getdata = async () =>
+  await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_REST_API}/brands` +
+        `?fields=name,tagline,lightLogo,darkLogo,primaryColor,accentColor,homepage.slug,` +
+        `header.collection,header.item.name,header.item.slug,` +
+        `footer.id,footer.sort,footer.item.name,footer.item.links.collection,footer.item.links.sort,footer.item.links.item.name,footer.item.links.item.slug` +
+        `&filter[domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
+    )
+  ).json()
+
 // eslint-disable-next-line react/display-name
 const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
+  const { status, data, error, isFetching, isSuccess }: any = useQuery(
+    'brand',
+    getdata,
+    { cacheTime: Infinity, staleTime: 1000 * 60 * 10 }
+  )
+
   const {
     className,
     variant, // primary | secondary, controls color and style
@@ -61,7 +79,7 @@ const Button: React.FC<ButtonProps> = forwardRef((props, buttonRef) => {
       aria-pressed={active}
       data-variant={variant}
       ref={mergeRefs([ref, buttonRef])}
-      className={twClasses}
+      // className={`bg-[${data.accentColor}]`} // fucks up build
       disabled={disabled}
       {...rest}
     >

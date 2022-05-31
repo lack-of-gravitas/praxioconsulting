@@ -6,7 +6,7 @@ import parse from 'html-react-parser'
 import cn from 'clsx'
 import { SectionHeader } from '@components/molecules'
 
-const FAQs = ({ data }: any) => {
+export default function ProductFAQs({ data }: any) {
   // console.log('data -- ', data)
   let { header, item } = data
 
@@ -22,11 +22,6 @@ const FAQs = ({ data }: any) => {
               />
             )}
 
-            {/* {header && (
-              <h2 className="text-3xl font-extrabold text-center text-gray-900 sm:text-4xl">
-                {header.title}
-              </h2>
-            )} */}
             <dl className="mt-6 space-y-6 divide-y divide-gray-200">
               {item?.map((faq: any) => (
                 <Disclosure as="div" key={faq.question} className="pt-6">
@@ -64,5 +59,3 @@ const FAQs = ({ data }: any) => {
     </>
   )
 }
-
-export default FAQs

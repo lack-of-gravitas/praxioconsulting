@@ -1,17 +1,22 @@
+import Image from 'next/image'
+import Link from 'next/link'
+
 export default function PageNotFound({ statusCode }: any) {
   return (
     <>
       <div className="flex flex-col min-h-full pt-16 pb-12 bg-white">
         <main className="flex flex-col justify-center flex-grow w-full px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex justify-center flex-shrink-0">
-            <a href="/" className="inline-flex">
-              <span className="sr-only">Workflow</span>
-              <img
-                className="w-auto h-12"
-                src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
-                alt=""
-              />
-            </a>
+            <Link href="/">
+              <a className="inline-flex">
+                <span className="sr-only">Workflow</span>
+                <Image
+                  className="w-auto h-12"
+                  src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
+                  alt=""
+                />
+              </a>
+            </Link>
           </div>
           <div className="py-16">
             <div className="text-center">
@@ -25,12 +30,12 @@ export default function PageNotFound({ statusCode }: any) {
                 Sorry, we couldn’t find the page you’re looking for.
               </p>
               <div className="mt-6">
-                <a
-                  href="/"
-                  className="text-base font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Go back home<span aria-hidden="true"> &rarr;</span>
-                </a>
+                <Link href="/">
+                  {' '}
+                  <a className="text-base font-medium text-indigo-600 hover:text-indigo-500">
+                    Go back home<span aria-hidden="true"> &rarr;</span>
+                  </a>
+                </Link>
               </div>
             </div>
           </div>

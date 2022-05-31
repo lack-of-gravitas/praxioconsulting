@@ -1,40 +1,6 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import ReactPlayer from 'react-player'
-
-const ProductPeek = ({ data }: any) => {
+export default function ProductPeek({ data }: any) {
   let { header, contents } = data
   // console.log("SneakPeek data -- ", data);
-
-  const VideoCard = (content: any) => {
-    let video = content.content
-    // console.log("video -- ", video);
-
-    return (
-      <div className="max-w-2xl pb-16 mx-auto overflow-hidden bg-white rounded-sm shadow-lg dark:bg-gray-800">
-        <div className="object-cover w-full player-wrapper aspect-video h-4/5">
-          <ReactPlayer
-            controls={true}
-            className="react-player "
-            url={JSON.parse(video.video).url}
-            width="100%"
-            height="100%"
-          />
-        </div>
-
-        <div className="px-6">
-          <div>
-            <span className="block mt-2 text-2xl font-semibold text-gray-800 dark:text-white hover:text-gray-600 hover:underline">
-              {video.title}
-            </span>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              {video.description}
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <>
@@ -52,7 +18,8 @@ const ProductPeek = ({ data }: any) => {
 
             <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
               {contents.map((content: any, index: any) => (
-                <VideoCard key={index} content={content} />
+                // <VideoCard key={index} content={content} />
+                <></>
               ))}
             </div>
           </div>
@@ -61,5 +28,3 @@ const ProductPeek = ({ data }: any) => {
     </>
   )
 }
-
-export default ProductPeek

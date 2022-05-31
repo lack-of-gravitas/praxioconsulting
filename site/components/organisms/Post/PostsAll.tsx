@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { SectionHeader } from '@components/molecules'
 
-const PostsAll = ({ data, articles }: any) => {
+export default function PostsAll({ data, articles }: any) {
   // console.log("data //", data);
   // console.log("article //", articles.length);
 
@@ -123,16 +123,6 @@ const PostsAll = ({ data, articles }: any) => {
     </>
   )
 }
-
-export default PostsAll
-
-// import Link from 'next/link'
-// import Image from 'next/image'
-// import { useState } from 'react'
-// import {
-//   ArrowLeft as ArrowLeftIcon,
-//   ArrowRight as ArrowRightIcon,
-// } from '@components/atoms/Icons'
 
 // const Articles = ({ data, articles }) => {
 //   // console.log("data //", data);

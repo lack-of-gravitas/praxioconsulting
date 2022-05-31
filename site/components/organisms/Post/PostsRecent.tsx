@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { SectionHeader } from '@components/molecules'
 
-const PostsRecent = ({ data, articles }: any) => {
+export default function PostsRecent({ data, articles }: any) {
   // console.log("data //", data);
   // console.log("article //", articles.length);
 
@@ -123,8 +123,6 @@ const PostsRecent = ({ data, articles }: any) => {
     </>
   )
 }
-
-export default PostsRecent
 
 // import Link from 'next/link'
 // import Image from 'next/image'

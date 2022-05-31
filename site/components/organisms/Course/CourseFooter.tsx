@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
-const CourseFooter = ({ themes, footer }: any) => {
+export default function CourseFooter({ data }: any) {
+  const { themes, footer } = data
   return (
     <footer className="bg-white">
       <div className="px-4 py-12 mx-auto overflow-hidden max-w-7xl sm:px-6 lg:px-8">
@@ -34,5 +35,3 @@ const CourseFooter = ({ themes, footer }: any) => {
     </footer>
   )
 }
-
-export default CourseFooter

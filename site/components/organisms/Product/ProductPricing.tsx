@@ -8,14 +8,16 @@ import { getStripe } from '@lib/stripe-client'
 import { useUser } from '@lib/hooks/useUser'
 // import Product from 'types'
 
-interface Props {
-  products: any //ProductWithPrice[]
-}
+// interface Props {
+//   products: any //ProductWithPrice[]
+// }
 
 type BillingInterval = 'year' | 'month'
 
-export default function ProductPricing({ products }: Props) {
+export default function ProductPricing({ data }: any) {
   const router = useRouter()
+
+  return <></>
   // const [billingInterval, setBillingInterval] =
   //   useState<BillingInterval>('month')
   // const [priceIdLoading, setPriceIdLoading] = useState<string>()
@@ -162,7 +164,7 @@ export default function ProductPricing({ products }: Props) {
   //         <div className="flex flex-col items-center my-12 space-y-4 sm:mt-8 sm:space-y-0 md:mx-auto md:max-w-2xl sm:grid sm:gap-6 sm:grid-cols-5">
   //           <div className="flex items-center justify-start">
   //             <a href="https://nextjs.org" aria-label="Next.js Link">
-  //               <img
+  //               <Image
   //                 src="/nextjs.svg"
   //                 alt="Next.js Logo"
   //                 className="h-12 text-white"
@@ -171,7 +173,7 @@ export default function ProductPricing({ products }: Props) {
   //           </div>
   //           <div className="flex items-center justify-start">
   //             <a href="https://vercel.com" aria-label="Vercel.com Link">
-  //               <img
+  //               <Image
   //                 src="/vercel.svg"
   //                 alt="Vercel.com Logo"
   //                 className="h-6 text-white"
@@ -180,7 +182,7 @@ export default function ProductPricing({ products }: Props) {
   //           </div>
   //           <div className="flex items-center justify-start">
   //             <a href="https://stripe.com" aria-label="stripe.com Link">
-  //               <img
+  //               <Image
   //                 src="/stripe.svg"
   //                 alt="stripe.com Logo"
   //                 className="h-12 text-white"
@@ -189,7 +191,7 @@ export default function ProductPricing({ products }: Props) {
   //           </div>
   //           <div className="flex items-center justify-start">
   //             <a href="https://supabase.io" aria-label="supabase.io Link">
-  //               <img
+  //               <Image
   //                 src="/supabase.svg"
   //                 alt="supabase.io Logo"
   //                 className="h-10 text-white"
@@ -198,7 +200,7 @@ export default function ProductPricing({ products }: Props) {
   //           </div>
   //           <div className="flex items-center justify-start">
   //             <a href="https://github.com" aria-label="github.com Link">
-  //               <img
+  //               <Image
   //                 src="/github.svg"
   //                 alt="github.com Logo"
   //                 className="h-8 text-white"
