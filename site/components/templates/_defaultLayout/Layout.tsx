@@ -18,7 +18,7 @@ const Layout: React.FC = ({ children }) => {
   const getdata = async () =>
     await (
       await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API}/brands` +
+        `${process.env.NEXT_PUBLIC_REST_API}/Brands` +
           `?fields=name,tagline,lightLogo,darkLogo,primaryColor,accentColor,homepage.slug,` +
           `header.collection,header.item.name,header.item.slug,` +
           `footer.id,footer.sort,footer.item.name,footer.item.links.collection,footer.item.links.sort,footer.item.links.item.name,footer.item.links.item.slug` +

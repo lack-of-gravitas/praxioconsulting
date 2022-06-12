@@ -16,6 +16,7 @@ module.exports = withBundleAnalyzer(
       domains: [
         'dummyimage.com',
         'klubs.azureedge.net',
+        'images.unsplash.com',
         'klubs.azurewebsites.net',
         'lh3.googleusercontent.com', // for google user profiles
       ],

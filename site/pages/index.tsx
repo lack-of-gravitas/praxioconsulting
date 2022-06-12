@@ -5,7 +5,7 @@ import { useQuery, QueryClient, dehydrate } from 'react-query'
 const getdata = async () =>
   await (
     await fetch(
-      `${process.env.NEXT_PUBLIC_REST_API}/pages` +
+      `${process.env.NEXT_PUBLIC_REST_API}/Pages` +
         `?fields=id,slug,name,sections.id,sections.sort,sections.collection,sections.item.*, sections.item.buttons.*,sections.item.buttons.item.slug,sections.item.buttons.item.name` +
         `&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
         `&filter[slug][_eq]=home`
@@ -24,9 +24,9 @@ export default function Index({ slug, preview }: any) {
   if (isFetching) {
     return <div>Loading...</div>
   }
-  if (!data || data.data.length === 0) {
-    return <PageNotFound />
-  }
+  // if (!data || data.data.length === 0) {
+  //   return <PageNotFound />
+  // }
 
   const sections = data.data[0].sections
 
