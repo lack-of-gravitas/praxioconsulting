@@ -1,5 +1,5 @@
 import { BackgroundDots } from '@components/atoms'
-import { SectionHeader, Prose } from '@components/molecules'
+import { SectionHeader, ProseGeneral } from '@components/molecules'
 
 export default function BasicContent({ data }: any) {
   return (
@@ -14,7 +14,7 @@ export default function BasicContent({ data }: any) {
                 subtitle={data.subtitle ? data.subtitle : ''}
               />
             )}
-            {data.content && <Prose content={data.content} />}
+            {data.content && <ProseGeneral content={data.content} />}
           </div>
         )}
       </div>
