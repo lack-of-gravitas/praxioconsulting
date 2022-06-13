@@ -6,7 +6,7 @@ const getdata = async () =>
   await (
     await fetch(
       `${process.env.NEXT_PUBLIC_REST_API}/Pages` +
-        `?fields=id,slug,name,sections.id,sections.sort,sections.collection,sections.item.*, sections.item.buttons.*,sections.item.buttons.item.slug,sections.item.buttons.item.name,sections.item.buttons.item.type` +
+        `?fields=id,slug,name,sections.id,sections.sort,sections.collection,sections.item.*,sections.item.buttons.*,sections.item.buttons.item.slug,sections.item.buttons.item.name,sections.item.buttons.item.type` +
         `&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
         `&filter[slug][_eq]=home`
     )
@@ -29,11 +29,12 @@ export default function Index({ slug, preview }: any) {
   // }
 
   const sections = data.data[0].sections
+  // TODO: Sort Sections by index
 
   return (
     <>
       {sections?.map((section: any) => (
-        <Section key={section.id} section={section} />
+        <Section key={section.sort} section={section} />
       ))}
     </>
   )

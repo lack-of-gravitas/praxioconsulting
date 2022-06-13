@@ -36,7 +36,7 @@ export default function CourseHeader(data: any) {
             {themes[0].logo ? (
               <>
                 <Image
-                  className="w-full h-8 pt-5 mr-6 rounded-sm"
+                  className="w-full h-8 pt-5 mr-6 rounded-xs"
                   // className="hidden w-auto h-8 lg:block"
 
                   src={themes[0].logo.formats.xsmall.url}
@@ -49,7 +49,7 @@ export default function CourseHeader(data: any) {
             ) : (
               <>
                 <Image
-                  className="w-full h-10 pt-5 rounded-sm"
+                  className="w-full h-10 pt-5 rounded-xs"
                   src="https://via.placeholder.com/64/0891B2/E2E8F0?text=No+Image+Set"
                   layout="intrinsic"
                   height={48}
@@ -106,7 +106,7 @@ export default function CourseHeader(data: any) {
                 // href={item.href}
                 className={cn(
                   item.href === slug
-                    ? 'bg-primaryColor-50 border-primaryColor-700 text-primaryColor-700'
+                    ? 'bg-indigo-50 border-primaryColor-700 text-primaryColor-700'
                     : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800',
                   'block pl-3 pr-4 py-2 border-l-4 text-base font-medium'
                 )}

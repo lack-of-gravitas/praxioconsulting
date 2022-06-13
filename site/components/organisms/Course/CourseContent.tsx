@@ -52,7 +52,7 @@ export default function CourseContent({ data }: any) {
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-            <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-sm">
+            <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-xs">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
@@ -116,7 +116,7 @@ export default function CourseContent({ data }: any) {
       //   <div className="relative mx-auto max-w-7xl">
       //     <div className="grid max-w-lg gap-5 mx-auto mt-5 lg:grid-cols-5 lg:max-w-none">
       //       {data.map((file) => {
-      //         <div className="bg-gray-50 sm:rounded-sm">
+      //         <div className="bg-gray-50 sm:rounded-xs">
       //           <div className="px-4 py-2 sm:p-6">
       //             <h3 className="text-base font-medium leading-6 text-gray-900">
       //               {file.name}
@@ -128,7 +128,7 @@ export default function CourseContent({ data }: any) {
       //                 passHref
       //                 href={file.url}
       //                 type="button"
-      //                 className="inline-flex items-center px-4 py-2 font-medium text-gray-700 bg-white border border-gray-300 rounded-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800 sm:text-sm"
+      //                 className="inline-flex items-center px-4 py-2 font-medium text-gray-700 bg-white border border-gray-300 rounded-xs shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800 sm:text-sm"
       //               >
       //                 <a download>
       //                   <svg
@@ -170,7 +170,7 @@ export default function CourseContent({ data }: any) {
           </p>
         </div>
 
-        <div className="border-4 rounded-sm border-primaryColor-700 max-h-max">
+        <div className="border-4 rounded-xs border-primaryColor-700 max-h-max">
           <div className="overflow-hidden ">
             <div className="aspect-w-16 aspect-h-9">
               <ReactPlayer
@@ -386,7 +386,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                                 item.current
 //                                   ? 'bg-gray-900 text-white'
 //                                   : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-//                                 'group flex items-center px-2 py-2 text-base font-medium rounded-sm'
+//                                 'group flex items-center px-2 py-2 text-base font-medium rounded-xs'
 //                               )}
 //                               aria-current={item.current ? 'page' : undefined}
 //                             >
@@ -436,7 +436,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                           item.current
 //                             ? 'bg-gray-900 text-white'
 //                             : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-//                           'group flex items-center px-2 py-2 text-sm font-medium rounded-sm'
+//                           'group flex items-center px-2 py-2 text-sm font-medium rounded-xs'
 //                         )}
 //                         aria-current={item.current ? 'page' : undefined}
 //                       >
@@ -642,7 +642,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                                 module.current
 //                                   ? 'bg-gray-900 text-white'
 //                                   : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-//                                 'group flex items-center px-2 py-2 text-base font-medium rounded-sm  cursor-pointer'
+//                                 'group flex items-center px-2 py-2 text-base font-medium rounded-xs  cursor-pointer'
 //                               )}
 //                               onClick={(e) => {
 //                                 e.preventDefault()
@@ -666,9 +666,9 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                                 <Disclosure.Button
 //                                   className={cn(
 //                                     module.current
-//                                       ? 'bg-primaryColor-700 text-white'
+//                                       ? 'bg-indigo-700 text-white'
 //                                       : ' text-white hover:bg-gray-50 hover:text-gray-900',
-//                                     'group w-full flex items-center pr-2 py-2 text-left text-md font-bold rounded-sm focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
+//                                     'group w-full flex items-center pr-2 py-2 text-left text-md font-bold rounded-xs focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
 //                                   )}
 //                                 >
 //                                   <svg
@@ -694,7 +694,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                                       type="button"
 //                                       key={subItem.title}
 //                                       // as="a"
-//                                       className="flex items-center w-full py-2 pl-10 pr-2 text-sm font-light text-white rounded-sm group hover:text-gray-900 hover:bg-gray-50"
+//                                       className="flex items-center w-full py-2 pl-10 pr-2 text-sm font-light text-white rounded-xs group hover:text-gray-900 hover:bg-gray-50"
 //                                       onClick={(e) => {
 //                                         e.preventDefault()
 //                                         setActiveContent(subItem)
@@ -748,7 +748,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                     <div className="flex flex-shrink-0 pb-3 ml-3">
 //                       <button
 //                         type="button"
-//                         className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-sm shadow-sm bg-primaryColor-700 hover:bg-primaryColor-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
+//                         className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-xs shadow-sm bg-indigo-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
 //                         // href={`/api/auth/signout`}
 //                         onClick={(e) => {
 //                           e.preventDefault()
@@ -804,7 +804,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                             module.current
 //                               ? 'bg-gray-900 text-white'
 //                               : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-//                             'group flex items-center px-2 py-2 text-base font-medium rounded-sm cursor-pointer'
+//                             'group flex items-center px-2 py-2 text-base font-medium rounded-xs cursor-pointer'
 //                           )}
 //                           onClick={(e) => {
 //                             // console.log(module);
@@ -827,9 +827,9 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                             <Disclosure.Button
 //                               className={cn(
 //                                 module.current
-//                                   ? 'bg-primaryColor-700 text-white'
+//                                   ? 'bg-indigo-700 text-white'
 //                                   : ' text-white hover:bg-gray-50 hover:text-gray-900',
-//                                 'group w-full flex items-center pr-2 py-2 text-left text-prose font-bold rounded-sm focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
+//                                 'group w-full flex items-center pr-2 py-2 text-left text-prose font-bold rounded-xs focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
 //                               )}
 //                             >
 //                               <svg
@@ -854,7 +854,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                                 <a
 //                                   key={subItem.title}
 //                                   //   as="a"
-//                                   className="flex items-center w-full py-2 pl-10 pr-2 font-light text-white rounded-sm text-prose group hover:text-gray-900 hover:bg-gray-50"
+//                                   className="flex items-center w-full py-2 pl-10 pr-2 font-light text-white rounded-xs text-prose group hover:text-gray-900 hover:bg-gray-50"
 //                                   onClick={(e) => {
 //                                     e.preventDefault()
 //                                     // console.log(subItem);
@@ -912,7 +912,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                 <div className="flex flex-shrink-0 pb-3 ml-3">
 //                   <button
 //                     type="button"
-//                     className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-sm shadow-sm bg-primaryColor-700 hover:bg-primaryColor-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
+//                     className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-xs shadow-sm bg-indigo-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
 //                     // href={`/api/auth/signout`}
 //                     onClick={(e) => {
 //                       e.preventDefault()
@@ -937,7 +937,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                       <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 //                         {/* Mobile menu button*/}
 
-//                         <div className="inline-flex items-center justify-center p-2 text-gray-400 rounded-sm hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+//                         <div className="inline-flex items-center justify-center p-2 text-gray-400 rounded-xs hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
 //                           <button
 //                             type="button"
 //                             className="px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primaryColor-500 md:hidden"
@@ -1035,7 +1035,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                             leaveFrom="transform opacity-100 scale-100"
 //                             leaveTo="transform opacity-0 scale-95"
 //                           >
-//                             <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+//                             <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-xs shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 //                               <Menu.Item>
 //                                 {({ active }: any) => (
 //                                   <Link href="/user/profile" passHref>

@@ -33,7 +33,7 @@ export default function Courses({ slug, preview }: any) {
   return (
     <>
       {sections?.map((section: any) => (
-        <Section key={section.id} section={section} />
+        <Section key={section.sort} section={section} />
       ))}
     </>
   )

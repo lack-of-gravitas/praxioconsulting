@@ -4,7 +4,7 @@ import { useEffect, useState, FormEvent } from 'react'
 import { useUser } from '@supabase/supabase-auth-helpers/react'
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
 
-import { Button } from '@components/atoms'
+// import { Button } from '@components/atoms'
 import { Input } from '@components/atoms'
 // import Logo from 'components/icons/Logo';
 import { updateUserName } from 'lib/supabase-client'
@@ -87,14 +87,14 @@ const SignUp = () => {
             onChange={setPassword}
           />
           <div className="flex flex-col w-full pt-2">
-            <Button
+            {/* <Button
               variant="primary"
               type="submit"
               loading={loading}
               disabled={loading || !email.length || !password.length}
             >
               Sign up
-            </Button>
+            </Button> */}
           </div>
 
           <span className="pt-1 text-sm text-center">

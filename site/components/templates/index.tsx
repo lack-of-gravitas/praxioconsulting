@@ -2,6 +2,8 @@ import dynamic from 'next/dynamic'
 export { default as Layout } from './_defaultLayout'
 export { default as CourseLayout } from './_courseLayout'
 export { default as PageNotFound } from './PageNotFound'
+import { useQuery } from 'react-query'
+
 const CallToAction = dynamic(() => import('@components/organisms/CallToAction'))
 const BasicContent = dynamic(() => import('@components/organisms/BasicContent'))
 const FeatureMajor = dynamic(
@@ -45,21 +47,21 @@ export const Section = ({ section }: any) => {
     case 'BasicContent':
       return <BasicContent data={section.item} />
       break
-    // case 'CallToAction':
-    //   return <CallToAction data={section.item} />
-    //   break
+    case 'CallToAction':
+      return <CallToAction data={section.item} />
+      break
     case 'Hero':
       return <Hero data={section.item} />
       break
     // case 'Team':
     //   return <Team data={section.item} />
     //   break
-    // case 'FeatureMajor':
-    //   return <FeatureMajor data={section.item} />
-    //   break
-    // case 'FeatureList':
-    //   return <FeatureList data={section.item} />
-    //   break
+    case 'FeatureMajor':
+      return <FeatureMajor data={section.item} />
+      break
+    case 'FeatureList':
+      return <FeatureList data={section.item} />
+      break
 
     // // Posts
     // case 'PostsAll':

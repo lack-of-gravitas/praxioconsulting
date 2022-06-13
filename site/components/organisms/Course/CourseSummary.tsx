@@ -157,7 +157,7 @@ export default function CourseSummary({ data }: any) {
                                 module.current
                                   ? 'bg-gray-900 text-white'
                                   : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                'group flex items-center px-2 py-2 text-base font-medium rounded-sm  cursor-pointer'
+                                'group flex items-center px-2 py-2 text-base font-medium rounded-xs  cursor-pointer'
                               )}
                               onClick={(e) => {
                                 e.preventDefault()
@@ -181,9 +181,9 @@ export default function CourseSummary({ data }: any) {
                                 <Disclosure.Button
                                   className={cn(
                                     module.current
-                                      ? 'bg-primaryColor-700 text-white'
+                                      ? 'bg-indigo-700 text-white'
                                       : ' text-white hover:bg-gray-50 hover:text-gray-900',
-                                    'group w-full flex items-center pr-2 py-2 text-left text-md font-bold rounded-sm focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
+                                    'group w-full flex items-center pr-2 py-2 text-left text-md font-bold rounded-xs focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
                                   )}
                                 >
                                   <svg
@@ -209,7 +209,7 @@ export default function CourseSummary({ data }: any) {
                                       type="button"
                                       key={subItem.title}
                                       // as="a"
-                                      className="flex items-center w-full py-2 pl-10 pr-2 text-sm font-light text-white rounded-sm group hover:text-gray-900 hover:bg-gray-50"
+                                      className="flex items-center w-full py-2 pl-10 pr-2 text-sm font-light text-white rounded-xs group hover:text-gray-900 hover:bg-gray-50"
                                       onClick={(e) => {
                                         e.preventDefault()
                                         setActiveContent(subItem)
@@ -263,7 +263,7 @@ export default function CourseSummary({ data }: any) {
                     <div className="flex flex-shrink-0 pb-3 ml-3">
                       <button
                         type="button"
-                        className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-sm shadow-sm bg-primaryColor-700 hover:bg-primaryColor-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
+                        className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-xs shadow-sm bg-indigo-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
                         // href={`/api/auth/signout`}
                         onClick={(e) => {
                           e.preventDefault()
@@ -319,7 +319,7 @@ export default function CourseSummary({ data }: any) {
                             module.current
                               ? 'bg-gray-900 text-white'
                               : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                            'group flex items-center px-2 py-2 text-base font-medium rounded-sm cursor-pointer'
+                            'group flex items-center px-2 py-2 text-base font-medium rounded-xs cursor-pointer'
                           )}
                           onClick={(e) => {
                             // console.log(module);
@@ -342,9 +342,9 @@ export default function CourseSummary({ data }: any) {
                             <Disclosure.Button
                               className={cn(
                                 module.current
-                                  ? 'bg-primaryColor-700 text-white'
+                                  ? 'bg-indigo-700 text-white'
                                   : ' text-white hover:bg-gray-50 hover:text-gray-900',
-                                'group w-full flex items-center pr-2 py-2 text-left text-prose font-bold rounded-sm focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
+                                'group w-full flex items-center pr-2 py-2 text-left text-prose font-bold rounded-xs focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
                               )}
                             >
                               <svg
@@ -369,7 +369,7 @@ export default function CourseSummary({ data }: any) {
                                 <a
                                   key={subItem.title}
                                   //   as="a"
-                                  className="flex items-center w-full py-2 pl-10 pr-2 font-light text-white rounded-sm text-prose group hover:text-gray-900 hover:bg-gray-50"
+                                  className="flex items-center w-full py-2 pl-10 pr-2 font-light text-white rounded-xs text-prose group hover:text-gray-900 hover:bg-gray-50"
                                   onClick={(e) => {
                                     e.preventDefault()
                                     // console.log(subItem);
@@ -427,7 +427,7 @@ export default function CourseSummary({ data }: any) {
                 <div className="flex flex-shrink-0 pb-3 ml-3">
                   <button
                     type="button"
-                    className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-sm shadow-sm bg-primaryColor-700 hover:bg-primaryColor-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
+                    className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-xs shadow-sm bg-indigo-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
                     // href={`/api/auth/signout`}
                     onClick={(e) => {
                       e.preventDefault()
@@ -452,7 +452,7 @@ export default function CourseSummary({ data }: any) {
                       <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                         {/* Mobile menu button*/}
 
-                        <div className="inline-flex items-center justify-center p-2 text-gray-400 rounded-sm hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <div className="inline-flex items-center justify-center p-2 text-gray-400 rounded-xs hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                           <button
                             type="button"
                             className="px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primaryColor-500 md:hidden"
@@ -550,7 +550,7 @@ export default function CourseSummary({ data }: any) {
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                           >
-                            <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-sm shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-xs shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                               <Menu.Item>
                                 {({ active }: any) => (
                                   <Link href="/user/profile" passHref>

@@ -6,7 +6,7 @@ import { Navbar, Footer } from '@components/organisms'
 
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 
-import { Button } from '@components/atoms'
+// import { Button } from '@components/atoms'
 import { LoadingDots } from '@components/atoms'
 // import type { Page } from 'types/page'
 

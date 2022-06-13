@@ -207,7 +207,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //             >
   //               <button
   //                 // type="button"
-  //                 className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-sm shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+  //                 className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-xs shadow-lg bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
   //               >
   //                 <ArrowRightIcon
   //                   className="w-6 h-6 mr-2 -ml-1"
@@ -354,14 +354,14 @@ const Price = ({ data, product, displayFormat }: any) => {
   //         {prices.map((individualPrice) => (
   //           <div
   //             key={individualPrice.header.title}
-  //             className="relative flex flex-col p-8 bg-white border border-gray-200 rounded-sm shadow-sm"
+  //             className="relative flex flex-col p-8 bg-white border border-gray-200 rounded-xs shadow-sm"
   //           >
   //             <div className="flex-1">
   //               <h3 className="text-xl font-semibold text-gray-900">
   //                 {individualPrice.header.title}
   //               </h3>
   //               {individualPrice.mostPopular ? (
-  //                 <p className="absolute top-0 py-1.5 px-4 bg-primaryColor-700 rounded-sm text-xs font-semibold uppercase tracking-wide text-white transform -translate-y-1/2">
+  //                 <p className="absolute top-0 py-1.5 px-4 bg-indigo-700 rounded-xs text-xs font-semibold uppercase tracking-wide text-white transform -translate-y-1/2">
   //                   Most popular
   //                 </p>
   //               ) : null}
@@ -436,9 +436,9 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                 // role="link"
   //                 className={cn(
   //                   individualPrice.mostPopular
-  //                     ? 'bg-primaryColor-700 text-white hover:bg-primaryColor-800'
-  //                     : 'bg-gray-100 hover:text-white text-primaryColor-700 hover:bg-primaryColor-800',
-  //                   'mt-8 block w-full py-3 px-6 border border-transparent rounded-sm text-center font-medium'
+  //                     ? 'bg-indigo-700 text-white hover:bg-indigo-800'
+  //                     : 'bg-gray-100 hover:text-white text-primaryColor-700 hover:bg-indigo-800',
+  //                   'mt-8 block w-full py-3 px-6 border border-transparent rounded-xs text-center font-medium'
   //                 )}
   //               >
   //                 {`Buy Now  ` +
@@ -495,9 +495,9 @@ const Price = ({ data, product, displayFormat }: any) => {
   //             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
   //             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
   //           >
-  //             <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-sm shadow-xl sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+  //             <div className="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-xs shadow-xl sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
   //               <div>
-  //                 <div className="flex items-center justify-center w-12 h-12 mx-auto rounded-full bg-primaryColor-100">
+  //                 <div className="flex items-center justify-center w-12 h-12 mx-auto rounded-full bg-indigo-100">
   //                   <LockClosedIcon
   //                     className="w-6 h-6 text-primaryColor-800"
   //                     aria-hidden="true"
@@ -520,7 +520,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                 </div>
   //               </div>
 
-  //               <form className="max-w-lg mx-auto bg-gray-100 border rounded-sm">
+  //               <form className="max-w-lg mx-auto bg-gray-100 border rounded-xs">
   //                 <div className="flex flex-col gap-4 p-4 md:p-8">
   //                   {status !== 'loading' && providers ? (
   //                     Object.values(providers).map((provider) => (
@@ -530,7 +530,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                       >
   //                         {provider.id === 'facebook' && (
   //                           <button
-  //                             className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-sm outline-none transition duration-100 gap-2 px-8 py-3`}
+  //                             className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-xs outline-none transition duration-100 gap-2 px-8 py-3`}
   //                             onClick={(e) => {
   //                               e.preventDefault()
   //                               signIn(provider.id)
@@ -555,7 +555,7 @@ const Price = ({ data, product, displayFormat }: any) => {
 
   //                         {provider.id === 'google' && (
   //                           <button
-  //                             className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-sm outline-none transition duration-100 gap-2 px-8 py-3`}
+  //                             className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-xs outline-none transition duration-100 gap-2 px-8 py-3`}
   //                             onClick={(e) => {
   //                               e.preventDefault()
   //                               signIn(provider.id)
@@ -618,7 +618,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //               <div className="mt-5 sm:mt-6">
   //                 <button
   //                   type="button"
-  //                   className="inline-flex justify-center w-full px-4 py-2 text-base font-medium bg-white border rounded-sm shadow-sm border-1 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-600 sm:text-sm"
+  //                   className="inline-flex justify-center w-full px-4 py-2 text-base font-medium bg-white border rounded-xs shadow-sm border-1 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-600 sm:text-sm"
   //                   onClick={() => setOpenLogin(false)}
   //                 >
   //                   Cancel
@@ -670,7 +670,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
   //             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
   //           >
-  //             <div className="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-sm shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+  //             <div className="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-xs shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
   //               <div className="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
   //                 <div className="sm:flex sm:items-start">
   //                   <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 mx-auto rounded-full bg-amber-100 sm:mx-0 sm:h-10 sm:w-10">
@@ -700,7 +700,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                 <Link href={`/user/profile`} className="cursor-auto" passHref>
   //                   <button
   //                     type="button"
-  //                     className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-sm shadow-sm bg-amber-400 hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:ml-3 sm:w-auto sm:text-sm"
+  //                     className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-xs shadow-sm bg-amber-400 hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:ml-3 sm:w-auto sm:text-sm"
   //                     onClick={() => setOpenPurchaseCheck(false)}
   //                   >
   //                     Go to Account
@@ -708,7 +708,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                 </Link>
   //                 <button
   //                   type="button"
-  //                   className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+  //                   className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-xs shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
   //                   onClick={() => setOpenPurchaseCheck(false)}
   //                   ref={cancelButtonRef}
   //                 >

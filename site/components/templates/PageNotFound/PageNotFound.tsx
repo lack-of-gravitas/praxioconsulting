@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-
+import { Logo } from '@components/atoms'
 export default function PageNotFound({ statusCode }: any) {
   return (
     <>
@@ -10,11 +10,12 @@ export default function PageNotFound({ statusCode }: any) {
             <Link href="/">
               <a className="inline-flex">
                 <span className="sr-only">Workflow</span>
-                <Image
+                <Logo />
+                {/* <Image
                   className="w-auto h-12"
                   src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
                   alt=""
-                />
+                /> */}
               </a>
             </Link>
           </div>
@@ -31,7 +32,6 @@ export default function PageNotFound({ statusCode }: any) {
               </p>
               <div className="mt-6">
                 <Link href="/">
-                  {' '}
                   <a className="text-base font-medium text-indigo-600 hover:text-indigo-500">
                     Go back home<span aria-hidden="true"> &rarr;</span>
                   </a>

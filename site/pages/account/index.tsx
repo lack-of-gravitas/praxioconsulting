@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useState, ReactNode } from 'react'
 import { LoadingDots } from '@components/atoms'
-import { Button } from '@components/atoms'
+// import { Button } from '@components/atoms'
 import { useUser } from 'lib/hooks/useUser'
 import { postData } from 'lib/api-helpers'
 import { withAuthRequired, User } from '@supabase/supabase-auth-helpers/nextjs'
@@ -15,7 +15,7 @@ interface Props {
 
 function Card({ title, description, footer, children }: Props) {
   return (
-    <div className="w-full max-w-3xl m-auto my-8 border rounded-sm border-zinc-700 p">
+    <div className="w-full max-w-3xl m-auto my-8 border rounded-xs border-zinc-700 p">
       <div className="px-5 py-4">
         <h3 className="mb-1 text-2xl font-medium">{title}</h3>
         <p className="text-zinc-300">{description}</p>
@@ -80,14 +80,14 @@ export default function Account({ user }: { user: User }) {
               <p className="pb-4 sm:pb-0">
                 Manage your subscription on Stripe.
               </p>
-              <Button
+              {/* <Button
                 variant="primary"
                 loading={loading}
                 disabled={loading || !subscription}
                 onClick={redirectToCustomerPortal}
               >
                 Open customer portal
-              </Button>
+              </Button> */}
             </div>
           }
         >
@@ -273,7 +273,7 @@ export default function Account({ user }: { user: User }) {
 //           <div className="items-center mt-3 text-center md:block md:mt-0 md:absolute md:top-3 md:right-0">
 //             <button
 //               type="button"
-//               className="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-white border border-transparent rounded-sm shadow-sm bg-primaryColor-600 hover:bg-primaryColor-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
+//               className="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-white border border-transparent rounded-xs shadow-sm bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
 //               href={`/api/auth/signout`}
 //               onClick={(e) => {
 //                 e.preventDefault();
@@ -296,9 +296,9 @@ export default function Account({ user }: { user: User }) {
 //     return (
 //       <>
 //         {!products && (
-//           <div className="w-full max-w-sm p-10 mx-auto border rounded-sm shadow border-slate-700">
+//           <div className="w-full max-w-sm p-10 mx-auto border rounded-xs shadow border-slate-700">
 //             <div className="flex space-x-4 animate-pulse">
-//               <div className="w-10 h-10 rounded-sm bg-slate-700">.</div>
+//               <div className="w-10 h-10 rounded-xs bg-slate-700">.</div>
 //               <div className="flex-1 py-1 space-y-6">
 //                 <div className="h-2 rounded bg-slate-700"></div>
 //                 <div className="space-y-3">
@@ -542,7 +542,7 @@ export default function Account({ user }: { user: User }) {
 //   //         >
 //   //           <button
 //   //             type="submit"
-//   //             className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-sm shadow-lg bg-primaryColor-700 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+//   //             className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-xs shadow-lg bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
 //   //           >
 //   //             <ArrowRightIcon
 //   //               className="w-6 h-6 mr-2 -ml-1"

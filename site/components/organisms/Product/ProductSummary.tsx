@@ -25,7 +25,7 @@ export default function ProductSummary({ data }: any) {
         <div className="grid grid-cols-1 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
             <div key={product.id} className="relative group">
-              <div className="w-full overflow-hidden bg-gray-200 rounded-sm min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none">
+              <div className="w-full overflow-hidden bg-gray-200 rounded-xs min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none">
                 <Image
                   src={product.imageSrc}
                   alt={product.imageAlt}

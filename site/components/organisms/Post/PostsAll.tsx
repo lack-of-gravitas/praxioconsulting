@@ -36,11 +36,11 @@ export default function PostsAll({ data, articles }: any) {
             {articles?.map((article: any, index: any) => (
               <div
                 key={index}
-                className="max-w-2xl mx-auto overflow-hidden bg-white rounded-sm shadow-lg dark:bg-gray-800"
+                className="max-w-2xl mx-auto overflow-hidden bg-white rounded-xs shadow-lg dark:bg-gray-800"
               >
                 {article.image ? (
                   <Image
-                    className="w-full pt-5 rounded-sm"
+                    className="w-full pt-5 rounded-xs"
                     src={
                       article.image.formats.medium
                         ? article.image.formats.medium.url
@@ -237,7 +237,7 @@ export default function PostsAll({ data, articles }: any) {
 //                 .slice(currArticleIndex, currArticleIndex + 12)
 //                 .map((article, index) => (
 //                   <Link key={index} href={`/blog/${article.slug}`} passHref>
-//                     <div className="max-w-2xl mx-auto overflow-hidden bg-white rounded-sm shadow-lg cursor-pointer dark:bg-gray-800">
+//                     <div className="max-w-2xl mx-auto overflow-hidden bg-white rounded-xs shadow-lg cursor-pointer dark:bg-gray-800">
 //                       {article.image ? (
 //                         <Image
 //                           className="object-cover w-full h-64"

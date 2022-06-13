@@ -4,7 +4,7 @@ import { useEffect, useState, FormEvent } from 'react'
 import { useUser } from '@supabase/supabase-auth-helpers/react'
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
 
-import { Button } from '@components/atoms'
+// import { Button } from '@components/atoms'
 // import GitHub from 'components/icons/GitHub';
 import { Input } from '@components/atoms'
 import { LoadingDots } from '@components/atoms'
@@ -92,14 +92,14 @@ const SignIn = () => {
                   onChange={setEmail}
                   required
                 />
-                <Button
+                {/* <Button
                   variant="primary"
                   type="submit"
                   loading={loading}
                   disabled={!email.length}
                 >
                   Send magic link
-                </Button>
+                </Button> */}
               </form>
             )}
 
@@ -119,7 +119,7 @@ const SignIn = () => {
                   onChange={setPassword}
                   required
                 />
-                <Button
+                {/* <Button
                   className="mt-1"
                   variant="primary"
                   type="submit"
@@ -127,7 +127,7 @@ const SignIn = () => {
                   disabled={!password.length || !email.length}
                 >
                   Sign in
-                </Button>
+                </Button> */}
               </form>
             )}
 
@@ -170,15 +170,14 @@ const SignIn = () => {
             ></div>
           </div>
 
-          <Button
+          {/* <Button
             variant="primary"
             type="submit"
             disabled={loading}
             onClick={() => handleOAuthSignIn('github')}
           >
-            {/* <GitHub /> */}
             <span className="ml-2">Continue with GitHub</span>
-          </Button>
+          </Button> */}
         </div>
       </div>
     )
@@ -262,7 +261,7 @@ export default SignIn
 //               Sign In
 //             </h2>
 
-//             <form className="max-w-lg mx-auto bg-gray-100 border rounded-sm">
+//             <form className="max-w-lg mx-auto bg-gray-100 border rounded-xs">
 //               <div className="flex flex-col gap-4 p-4 md:p-8">
 //                 {status !== "loading" && providers ? (
 //                   Object.values(providers).map((provider) => (
@@ -272,7 +271,7 @@ export default SignIn
 //                     >
 //                       {provider.id === "facebook" && (
 //                         <button
-//                           className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-sm outline-none transition duration-100 gap-2 px-8 py-3`}
+//                           className={`flex w-full justify-center items-center bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-base md:text-base font-semibold text-center rounded-xs outline-none transition duration-100 gap-2 px-8 py-3`}
 //                           onClick={(e) => {
 //                             e.preventDefault();
 //                             signIn(provider.id);
@@ -297,7 +296,7 @@ export default SignIn
 
 //                       {provider.id === "google" && (
 //                         <button
-//                           className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-sm outline-none transition duration-100 gap-2 px-8 py-3`}
+//                           className={`flex w-full justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 border border-gray-300 focus-visible:ring ring-gray-300 text-gray-800 text-base md:text-base font-semibold text-center rounded-xs outline-none transition duration-100 gap-2 px-8 py-3`}
 //                           onClick={(e) => {
 //                             e.preventDefault();
 //                             signIn(provider.id);

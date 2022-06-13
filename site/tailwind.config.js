@@ -2,17 +2,28 @@ const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  mode: 'jit',
   important: true,
   future: {
     removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
+    // purgeLayersByDefault: true,
   },
+
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+
     // './lib/**/*.{js,ts,jsx,tsx}',
   ],
-  safelist: ['outline-none'],
+  safelist: [
+    'outline-none',
+
+    // {
+    //   pattern: /(border|bg|text)-\[(.*)\]/,
+    //   variants: ['xs', 'md', 'lg', 'xl', 'hover', 'focus', 'lg:hover'],
+    // },
+  ],
+
   theme: {
     // fontFamily: fontFamily, // <-- this is where the override is happening
     extend: {

@@ -34,7 +34,7 @@ const VideoCard = ({ data }: any) => {
   // console.log("video -- ", video);
 
   return (
-    <div className="max-w-2xl pb-16 mx-auto overflow-hidden bg-white rounded-sm shadow-lg dark:bg-gray-800">
+    <div className="max-w-2xl pb-16 mx-auto overflow-hidden bg-white rounded-xs shadow-lg dark:bg-gray-800">
       <div className="object-cover w-full player-wrapper aspect-video h-4/5">
         <ReactPlayer
           controls={true}

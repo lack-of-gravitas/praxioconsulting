@@ -44,7 +44,7 @@ const Modal: FC<ModalProps> = ({ children, onClose }) => {
           aria-label="Close panel"
           className={s.close}
         >
-          <Cross className="h-6 w-6" />
+          <Cross className="w-6 h-6" />
         </button>
         <FocusTrap focusFirst>{children}</FocusTrap>
       </div>

@@ -1,7 +1,7 @@
 import { ArrowRight as ArrowRightIcon } from '@components/atoms/Icons'
 import Link from 'next/link'
 
-export default function ButtonHero({ id, item, collection }: any) {
+export default function ButtonHero({ id, item, color, collection }: any) {
   let coll = ''
 
   switch (collection) {
@@ -21,7 +21,8 @@ export default function ButtonHero({ id, item, collection }: any) {
         passHref
       >
         <a
-          className={`relative inline-flex items-center px-4 py-5 text-lg font-medium text-white border border-transparent rounded-sm shadow-lg bg-primaryColor-800 hover:bg-primaryColor-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800`}
+          style={{ backgroundColor: color ? color : '#FFA439' }}
+          className={`relative inline-flex items-center px-4 py-5 text-lg font-medium text-white border border-transparent rounded-xs shadow-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800`}
         >
           <ArrowRightIcon className="w-6 h-6 mr-2 -ml-1" aria-hidden="true" />
           <span>{item.name}</span>

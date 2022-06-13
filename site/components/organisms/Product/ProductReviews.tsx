@@ -20,7 +20,7 @@ export default function ProductReviews({ data }: any) {
             {reviews.map((review: any, index: any) => (
               <div
                 key={index}
-                className="max-w-sm mx-auto overflow-hidden bg-white rounded-sm shadow-lg dark:bg-gray-800"
+                className="max-w-sm mx-auto overflow-hidden bg-white rounded-xs shadow-lg dark:bg-gray-800"
               >
                 <Image
                   className="object-cover object-center w-full h-56"
@@ -31,7 +31,7 @@ export default function ProductReviews({ data }: any) {
                   alt={review.image.name}
                 />
 
-                <div className="flex items-center px-6 py-3 bg-primaryColor-700">
+                <div className="flex items-center px-6 py-3 bg-indigo-700">
                   {review.headline && (
                     <h1 className="text-lg font-semibold text-white">
                       {review.headline}

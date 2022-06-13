@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-import { Button } from '@components/atoms'
+// import { Button } from '@components/atoms'
 import { postData } from '@lib/api-helpers'
 import { getStripe } from '@lib/stripe-client'
 import { useUser } from '@lib/hooks/useUser'
@@ -79,7 +79,7 @@ export default function ProductPricing({ data }: any) {
   //           Start building for free, then add a site plan to go live. Account
   //           plans unlock additional features.
   //         </p>
-  //         <div className="relative self-center mt-6 bg-zinc-900 rounded-sm p-0.5 flex sm:mt-8 border border-zinc-800">
+  //         <div className="relative self-center mt-6 bg-zinc-900 rounded-xs p-0.5 flex sm:mt-8 border border-zinc-800">
   //           <button
   //             onClick={() => setBillingInterval('month')}
   //             type="button"
@@ -87,7 +87,7 @@ export default function ProductPricing({ data }: any) {
   //               billingInterval === 'month'
   //                 ? 'relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white'
   //                 : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
-  //             } rounded-sm m-1 py-2 text-sm font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 focus:z-10 sm:w-auto sm:px-8`}
+  //             } rounded-xs m-1 py-2 text-sm font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 focus:z-10 sm:w-auto sm:px-8`}
   //           >
   //             Monthly billing
   //           </button>
@@ -98,7 +98,7 @@ export default function ProductPricing({ data }: any) {
   //               billingInterval === 'year'
   //                 ? 'relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white'
   //                 : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
-  //             } rounded-sm m-1 py-2 text-sm font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 focus:z-10 sm:w-auto sm:px-8`}
+  //             } rounded-xs m-1 py-2 text-sm font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 focus:z-10 sm:w-auto sm:px-8`}
   //           >
   //             Yearly billing
   //           </button>
@@ -119,7 +119,7 @@ export default function ProductPricing({ data }: any) {
   //             <div
   //               key={product.id}
   //               className={cn(
-  //                 'rounded-sm shadow-sm divide-y divide-zinc-600 bg-zinc-900',
+  //                 'rounded-xs shadow-sm divide-y divide-zinc-600 bg-zinc-900',
   //                 {
   //                   'border border-pink-500': subscription
   //                     ? product.name === subscription?.prices?.products?.name
@@ -146,7 +146,7 @@ export default function ProductPricing({ data }: any) {
   //                   disabled={isLoading}
   //                   loading={priceIdLoading === price.id}
   //                   onClick={() => handleCheckout(price)}
-  //                   className="block w-full py-2 mt-8 text-sm font-semibold text-center text-white rounded-sm hover:bg-zinc-900"
+  //                   className="block w-full py-2 mt-8 text-sm font-semibold text-center text-white rounded-xs hover:bg-zinc-900"
   //                 >
   //                   {product.name === subscription?.prices?.products?.name
   //                     ? 'Manage'

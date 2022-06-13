@@ -1,15 +1,16 @@
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { Navbar, Footer } from '@components/organisms'
-import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 import { PageNotFound } from '@components/templates'
+import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 
-import { Button } from '@components/atoms'
 import { LoadingDots } from '@components/atoms'
 // import type { Page } from 'types/page'
 import { useQuery } from 'react-query'
 
-const FeatureBar = dynamic(() => import('@components/organisms/FeatureBar'))
+const ButtonCookie = dynamic(
+  () => import('@components/atoms/Button/ButtonCookie')
+)
 
 const Layout: React.FC = ({ children }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
@@ -44,15 +45,7 @@ const Layout: React.FC = ({ children }) => {
       <Navbar data={data.data[0]} />
       <main>{children}</main>
       <Footer data={data.data[0]} />
-      <FeatureBar
-        title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
-        hide={acceptedCookies}
-        action={
-          <Button className="mx-5" onClick={() => onAcceptCookies()}>
-            Accept cookies
-          </Button>
-        }
-      />
+      {/* {!acceptedCookies && <ButtonCookie data={data.data[0].accentColor} />} */}
     </div>
   )
 }

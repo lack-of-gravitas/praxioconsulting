@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-const Team = ({ data }: any) => {
+const Team = ({ brand, data }: any) => {
   // console.log("Team -- ", data);
   let { header, members } = data
 
@@ -27,7 +27,7 @@ const Team = ({ data }: any) => {
                     <div className="h-0 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
                       {person.picture && (
                         <Image
-                          className="object-cover rounded-sm shadow-lg"
+                          className="object-cover rounded-xs shadow-lg"
                           src={person.picture.formats.small.url}
                           layout="fill"
                           // height={person.picture.formats.small.height}
