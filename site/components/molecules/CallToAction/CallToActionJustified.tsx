@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { ProseHeading } from '@components/molecules'
 const Button = dynamic(() => import('@components/atoms/Button/ButtonHero'))
 
-export default function CallToActionJustified({ brand, data }: any) {
+export default function CallToActionJustified({ data, genericData }: any) {
   return (
     <>
       {data && (

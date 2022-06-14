@@ -1,10 +1,6 @@
-import dynamic from 'next/dynamic'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Check as CheckIcon, Cross as CrossIcon } from '@components/atoms/Icons'
 import { ProseHeading } from '@components/molecules'
 
-export default function FeatureList({ brand, data }: any) {
+export default function FeatureList({ data, genericData }: any) {
   return (
     <>
       {data && (
@@ -25,10 +21,7 @@ export default function FeatureList({ brand, data }: any) {
                         >
                           {item.icon}
                         </span>
-                        {/* <CheckIcon
-                          className="absolute w-6 h-6 text-green-500"
-                          aria-hidden="true"
-                        /> */}
+
                         <p className="text-lg font-medium leading-6 text-gray-900 ml-9">
                           {item.heading}
                         </p>

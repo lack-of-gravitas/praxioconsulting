@@ -10,7 +10,7 @@ const HeroFullScreen = dynamic(
   () => import('@components/molecules/Hero/HeroFullScreen')
 )
 
-export default function Hero({ brand, data }: any) {
+export default function Hero({ data, genericData }: any) {
   return (
     <>
       {data.style === 'full' && <HeroFullScreen data={data} />}

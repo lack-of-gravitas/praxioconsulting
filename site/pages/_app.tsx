@@ -9,9 +9,9 @@ import { Head } from '@components/organisms'
 // import { ManagedUIContext } from '@components/ui/context'
 
 // supabase auth
-import { UserProvider } from '@supabase/supabase-auth-helpers/react'
-import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
-import { MyUserContextProvider } from '@lib/hooks/useUser'
+// import { UserProvider } from '@supabase/supabase-auth-helpers/react'
+// import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
+// import { MyUserContextProvider } from '@lib/hooks/useUser'
 // end supabase imports
 
 const Noop: FC = ({ children }) => <>{children}</>
@@ -36,19 +36,19 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <UserProvider supabaseClient={supabaseClient}>
-        <MyUserContextProvider supabaseClient={supabaseClient}>
-          <QueryClientProvider client={queryClient.current}>
-            <Hydrate state={pageProps.dehydratedState}>
-              <Head />
-              <Layout pageProps={pageProps}>
-                <Component {...pageProps} />
-              </Layout>
-              <ReactQueryDevtools initialIsOpen={false} />
-            </Hydrate>
-          </QueryClientProvider>
-        </MyUserContextProvider>
-      </UserProvider>
+      {/* <UserProvider supabaseClient={supabaseClient}>
+        <MyUserContextProvider supabaseClient={supabaseClient}> */}
+      <QueryClientProvider client={queryClient.current}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Head />
+          <Layout pageProps={pageProps}>
+            <Component {...pageProps} />
+          </Layout>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </Hydrate>
+      </QueryClientProvider>
+      {/* </MyUserContextProvider>
+      </UserProvider> */}
     </>
   )
 }

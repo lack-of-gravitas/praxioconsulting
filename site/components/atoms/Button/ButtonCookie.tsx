@@ -17,7 +17,7 @@ export default function ButtonCookie({ data }: any) {
             <div className="px-3 py-3 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <div className="flex flex-wrap items-center justify-between">
                 <div className="flex items-center flex-1 w-auto">
-                  {/* <span className="flex p-2 bg-indigo-800 rounded-lg">
+                  {/* <span className="flex p-2 bg-indigo-800 rounded-xs">
                     <SpeakerphoneIcon className="w-6 h-6 text-white" aria-hidden="true" />
                   </span> */}
                   <p className="ml-3 font-medium text-white">

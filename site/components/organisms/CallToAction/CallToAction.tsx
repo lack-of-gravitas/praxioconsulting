@@ -7,11 +7,11 @@ const CallToActionJustified = dynamic(
   () => import('@components/molecules/CallToAction/CallToActionJustified')
 )
 
-export default function CallToAction({ brand, data }: any) {
+export default function CallToAction({ data, genericData }: any) {
   return (
     <>
       {data.style === 'center' && <CallToActionCenter data={data} />}
-      {data.style === 'center' && <CallToActionJustified data={data} />}
+      {data.style === 'justified' && <CallToActionJustified data={data} />}
     </>
   )
 }

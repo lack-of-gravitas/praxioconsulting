@@ -13,7 +13,7 @@ export default function Page({ slug, preview }: any) {
   )
 
   // log data
-  console.log(slug, ':  ', data)
+  // console.log(slug, ':  ', data)
 
   if (isFetching) {
     return <div>Loading...</div>

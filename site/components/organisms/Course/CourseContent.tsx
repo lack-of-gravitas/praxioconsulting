@@ -30,7 +30,7 @@ const tabs = [
 ]
 
 export default function CourseContent({ data }: any) {
-  console.log('MainContent: ', data)
+  // console.log('MainContent: ', data)
   const [activeTab, setActiveTab] = useState('Show Notes')
 
   function RichText({ data }: any) {
@@ -128,7 +128,7 @@ export default function CourseContent({ data }: any) {
       //                 passHref
       //                 href={file.url}
       //                 type="button"
-      //                 className="inline-flex items-center px-4 py-2 font-medium text-gray-700 bg-white border border-gray-300 rounded-xs shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800 sm:text-sm"
+      //                 className="inline-flex items-center px-4 py-2 font-medium text-gray-700 bg-white border border-gray-300 shadow-sm rounded-xs hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800 sm:text-sm"
       //               >
       //                 <a download>
       //                   <svg
@@ -748,7 +748,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                     <div className="flex flex-shrink-0 pb-3 ml-3">
 //                       <button
 //                         type="button"
-//                         className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-xs shadow-sm bg-indigo-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
+//                         className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white bg-indigo-700 border border-transparent shadow-sm rounded-xs hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
 //                         // href={`/api/auth/signout`}
 //                         onClick={(e) => {
 //                           e.preventDefault()
@@ -912,7 +912,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                 <div className="flex flex-shrink-0 pb-3 ml-3">
 //                   <button
 //                     type="button"
-//                     className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-xs shadow-sm bg-indigo-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
+//                     className="flex-wrap items-center px-4 py-2 text-sm font-medium text-white bg-indigo-700 border border-transparent shadow-sm rounded-xs hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
 //                     // href={`/api/auth/signout`}
 //                     onClick={(e) => {
 //                       e.preventDefault()
@@ -1035,7 +1035,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                             leaveFrom="transform opacity-100 scale-100"
 //                             leaveTo="transform opacity-0 scale-95"
 //                           >
-//                             <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-xs shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+//                             <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white shadow-lg rounded-xs ring-1 ring-black ring-opacity-5 focus:outline-none">
 //                               <Menu.Item>
 //                                 {({ active }: any) => (
 //                                   <Link href="/user/profile" passHref>

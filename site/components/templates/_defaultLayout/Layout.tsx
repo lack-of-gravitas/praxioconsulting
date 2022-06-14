@@ -12,16 +12,16 @@ const ButtonCookie = dynamic(
   () => import('@components/atoms/Button/ButtonCookie')
 )
 
-const Layout: React.FC = ({ children }) => {
+const Layout: React.FC = ({ children }: any) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-
+  // console.log('children: ', children)
   // get brand info
   const getdata = async () =>
     await (
       await fetch(
         `${process.env.NEXT_PUBLIC_REST_API}/Brands` +
           `?fields=name,tagline,lightLogo,darkLogo,primaryColor,accentColor,homepage.slug,` +
-          `header.collection,header.item.name,header.item.slug,` +
+          `header.collection,header.item.id,header.item.name,header.item.slug,` +
           `footer.id,footer.sort,footer.item.name,footer.item.links.collection,footer.item.links.sort,footer.item.links.item.name,footer.item.links.item.slug` +
           `&filter[domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
       )

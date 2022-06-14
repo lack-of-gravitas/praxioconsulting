@@ -1,34 +1,8 @@
-Kyaro Adventures
-
-Description
--safari
--hiking
--biking
-
-Contact
-Itinerary
-Booking / Payment
-
-Email
-
 ## ⚠️ TO DO PILE
 
-# Update these with your Supabase details from your project settings > API
-
-NEXT_PUBLIC_SUPABASE_URL=https://ivosegsqinbireogpitz.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-
-SUPABASE_SERVICE_ROLE_KEY=
-
-# Update these with your Stripe credentials from https://dashboard.stripe.com/apikeys
-
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-STRIPE_SECRET_KEY=
-STRIPE_WEBHOOK_SECRET=
-
-TODO: General Directus GraphQL / Rest API Handler
-TODO: TypeScript knowledge
-TODO: Directus react ui element preview e.g. via image
+DONE: General Directus GraphQL / Rest API Handler
+DONE: TypeScript knowledge
+DONE: Directus react ui element preview e.g. via image
 TODO: Preview of pages
 TODO: SEO fields
 
@@ -44,6 +18,8 @@ Regex to find a block of html attribs and replace just one occurrence in there
 className="mt-3-md shadow sm:mt-0 sm:ml-3 text-gray"
 with
 className="mt-3-md shadow sm:mt-0 sm:ml-3 text-orange"
+
+regex \bbg-indigo-(\d\*)\b
 
 search regex className="(._) text-gray-darkest(._)"
 replace regex className={`$1 ${brandColors.defaultTextColor}$2`}

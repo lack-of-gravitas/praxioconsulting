@@ -7,7 +7,7 @@ const FeatureMajorRight = dynamic(
   () => import('@components/molecules/FeatureMajor/FeatureMajorRight')
 )
 
-export default function FeatureMajor({ brand, data }: any) {
+export default function FeatureMajor({ data, genericData }: any) {
   return (
     <>
       {data.style === 'left' && <FeatureMajorLeft data={data} />}
