@@ -1,39 +1,60 @@
+import dynamic from 'next/dynamic'
 import { PageNotFound, Layout } from '@components/templates'
-import { useQuery, QueryClient, dehydrate } from 'react-query'
-import { Section } from '@components/templates'
+import { useQueries, QueryClient, dehydrate } from 'react-query'
+const BasicContent = dynamic(() => import('@components/organisms/BasicContent'))
+const HeaderPage = dynamic(
+  () => import('@components/molecules/Header/HeaderPage')
+)
+const HeaderImage = dynamic(
+  () => import('@components/molecules/Header/HeaderImage')
+)
+
 let getdata: any = {}
+const getBrandColors = async () =>
+  await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_REST_API}/Brands` +
+        `?fields=primaryColor,accentColor` +
+        `&filter[domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
+    )
+  ).json()
 
-const BlogPost = ({ slug, preview }: any) => {
-  const { status, data, error, isFetching, isSuccess }: any = useQuery(
-    slug,
-    getdata,
-    {
-      staleTime: 1000 * 60 * 10,
-    }
-  )
+export default function BlogPost({ slug, preview }: any) {
+  let results: any = useQueries([
+    { queryKey: slug, queryFn: getdata, cacheTime: Infinity },
+    { queryKey: 'colors', queryFn: getBrandColors, cacheTime: Infinity },
+  ])
 
-  if (isFetching) {
-    return <div>Loading...</div>
+  let brand = {}
+
+  if (!results[0].isFetching) {
+    brand = results[0].data.data[0]
+    // console.log('fetched brand: ', brand)
   }
 
-  // check if data is an object
-
-  if (!data || data.data.length === 0) {
-    return <PageNotFound />
-  }
-
-  const sections = data.data[0].sections
+  console.log(slug, results[0].data.data[0])
 
   return (
     <>
-      {sections?.map((section: any) => (
-        <Section key={section.sort} section={section} />
-      ))}
+      <HeaderPage
+        data={{
+          title: results[0].data.data[0].name,
+          description: results[0].data.data[0].description,
+          date_created: results[0].data.data[0].date_created,
+        }}
+      />
+      <HeaderImage
+        data={{
+          image: results[0].data.data[0].image
+            ? results[0].data.data[0].image
+            : '',
+        }}
+      />
+      <BasicContent data={results[0].data.data[0]} />
     </>
   )
 }
-
-export default BlogPost
+BlogPost.Layout = Layout
 
 // If you export an async function called getStaticProps from a page, Next.js will pre-render this page at build time using the props returned by getStaticProps. gets data and delivers it to the Component to render UI
 export async function getStaticProps(context: any) {
@@ -44,11 +65,10 @@ export async function getStaticProps(context: any) {
   getdata = async () =>
     await (
       await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API}/pages` +
-          `?fields=id,slug,name,sections.id,sections.sort,sections.collection,sections.item.*,sections.item.buttons.*,sections.item.buttons.item.slug,sections.item.buttons.item.name` +
-          `&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
-          `&filter[slug][_eq]=${context.params.slug}` +
-          `&filter[status][_eq]=published`
+        `${process.env.NEXT_PUBLIC_REST_API}/Posts` +
+          `?fields=slug,name,image,description,content,status,date_created` +
+          `&filter[brands][brands_id][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
+          `&filter[slug][_eq]=${context.params.slug}`
       )
     ).json()
 

@@ -1,38 +1,22 @@
-import { PageNotFound, Layout } from '@components/templates'
-import { useQuery, QueryClient, dehydrate } from 'react-query'
-import { Section } from '@components/templates'
+import { PageNotFound, Layout, Section } from '@components/templates'
+import { useQueries, QueryClient, dehydrate } from 'react-query'
 
-const getdata = async () =>
-  await (
-    await fetch(
-      `${process.env.NEXT_PUBLIC_REST_API}/pages?fields=id,slug,name,sections.id,sections.item,sections.sort,sections.collection&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}&filter[slug][_eq]=blog`
-    )
-  ).json()
+let getdata: any = {}
 
 export default function Blog({ slug, preview }: any) {
-  const { status, data, error, isFetching, isSuccess }: any = useQuery(
-    'blog',
-    getdata,
-    {
-      staleTime: 1000 * 60 * 10,
-    }
-  )
+  let results: any = useQueries([
+    { queryKey: 'blog', queryFn: getdata, cacheTime: Infinity },
+  ])
 
-  if (isFetching) {
+  if (results[0].isFetching) {
     return <div>Loading...</div>
   }
 
-  // check if data is an object
-
-  if (!data || data.data.length === 0) {
-    return <PageNotFound />
-  }
-
-  const sections = data.data[0].sections
+  console.log('blog', results[0].data)
 
   return (
     <>
-      {sections?.map((section: any) => (
+      {results[0].data?.data[0].sections?.map((section: any) => (
         <Section key={section.sort} section={section} />
       ))}
     </>
@@ -46,6 +30,16 @@ export async function getStaticProps(context: any) {
   // locally getStaticProps is run every time
   // in production, this only runs once then revalidates based on the revalidate parameter
   // context contains route params for dynamic routes, preview, previewData, locale,locales, defaultLocale
+
+  getdata = async () =>
+    await (
+      await fetch(
+        `${process.env.NEXT_PUBLIC_REST_API}/Pages?fields=id,slug,name,sections.id,sections.item,sections.sort,sections.collection` +
+          `&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
+          `&filter[slug][_eq]=blog` +
+          `&filter[status][_eq]=published`
+      )
+    ).json()
 
   const queryClient = new QueryClient({
     defaultOptions: {

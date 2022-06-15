@@ -1,6 +1,6 @@
 import { ProseHeading } from '@components/molecules'
 
-export default function FeatureList({ data, genericData }: any) {
+export default function FeatureList({ data, brand }: any) {
   return (
     <>
       {data && (

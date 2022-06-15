@@ -1,239 +1,51 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { SectionHeader } from '@components/molecules'
+import dynamic from 'next/dynamic'
+import { useQueries } from 'react-query'
 
-export default function PostsRecent({ data, articles }: any) {
-  // console.log("data //", data);
-  // console.log("article //", articles.length);
+const ProseHeading = dynamic(
+  () => import('@components/molecules/Prose/ProseHeading')
+)
+const CardPost = dynamic(() => import('@components/molecules/Card/CardPost'))
 
-  let { header, maxCount, columns } = data
-  articles = articles.slice(0, maxCount)
+export default function PostsRecent({ data, brand }: any) {
+  // console.log('PostsRecent :', data)
+
+  const getRecentPosts = async () =>
+    await (
+      await fetch(
+        `${process.env.NEXT_PUBLIC_REST_API}/Posts` +
+          `?fields=id,slug,name,description,date_created,mainImage` +
+          `&filter[brands][brands_id][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
+          `&filter[status][_eq]=published` +
+          `&sort[]=-date_created&limit=${data.limit ? data.limit : 3}`
+      )
+    ).json()
+
+  let results: any = useQueries([
+    { queryKey: 'recentPosts', queryFn: getRecentPosts, cacheTime: Infinity },
+  ])
+
+  let posts: any = []
+
+  if (!results[0].isFetching) {
+    posts = results[0].data.data
+    console.log('fetched posts: ', posts)
+  }
 
   return (
     <>
-      <div className="relative px-4 pt-16 pb-20 bg-gray-50 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-        <div className="relative mx-auto max-w-7xl">
-          {(data.title || data.subtitle) && (
-            <SectionHeader
-              title={data.title ? data.title : ''}
-              subtitle={data.subtitle ? data.subtitle : ''}
-            />
-          )}
+      <div className="bg-gray-100">
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="max-w-2xl py-16 mx-auto text-center sm:py-24 lg:py-32 lg:max-w-none">
+            {data.text && <ProseHeading content={data.text} />}
 
-          {/* {header && (
-            <div className="text-center">
-              <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                {header.title}
-              </h2>
-              <p className="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">
-                {header.text}
-              </p>
+            <div className="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-x-6">
+              {posts.map((post: any) => (
+                <CardPost key={post.id} data={post} brand={brand} />
+              ))}
             </div>
-          )} */}
-
-          {/* CARDS */}
-          <div className="grid max-w-xl gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
-            {articles?.map((article: any, index: any) => (
-              <div
-                key={index}
-                className="max-w-2xl mx-auto overflow-hidden bg-white rounded-xs shadow-lg dark:bg-gray-800"
-              >
-                {article.image ? (
-                  <Image
-                    className="w-full pt-5 rounded-xs"
-                    src={
-                      article.image.formats.medium
-                        ? article.image.formats.medium.url
-                        : article.image.formats.small.url
-                    }
-                    layout="responsive"
-                    height={
-                      article.image.formats.medium
-                        ? article.image.formats.medium.height
-                        : article.image.formats.small.height
-                    }
-                    width={
-                      article.image.formats.medium
-                        ? article.image.formats.medium.width
-                        : article.image.formats.small.height
-                    }
-                    alt={article.image.name}
-                  />
-                ) : (
-                  //
-
-                  <>
-                    <Image
-                      className="object-cover w-full h-64"
-                      src="https://via.placeholder.com/150/0891B2/E2E8F0?text=No+Image+Set"
-                      layout="responsive"
-                      height={700}
-                      width={700}
-                      alt=""
-                    />
-                  </>
-                )}
-
-                <div className="p-6">
-                  <div className="mb-4">
-                    <div className="flex items-center">
-                      {/* <div className="flex items-center">
-                        <Image
-                          className="object-cover rounded-full h-15"
-                          src={article.author.picture.formats.thumbnail.url}
-                          layout="intrinsic"
-                          height={50}
-                          width={50}
-                          alt={article.author.picture.name}
-                        />
-
-                        <span
-                          href="#"
-                          className="mx-2 font-semibold text-gray-700 dark:text-gray-200"
-                        >
-                          {"by " +
-                            article.author.admin_user.firstname +
-                            " " +
-                            article.author.admin_user.lastname}
-                        </span>
-                      </div> */}
-                      <span className="mx-1 text-xs text-right text-gray-600 dark:text-gray-300">
-                        {new Date(article.published_at).toLocaleDateString()}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <a
-                      href={'/blog/' + article.slug}
-                      className="block mt-2 text-2xl font-semibold text-primaryColor-700 dark:text-white hover:text-gray-600 hover:underline"
-                    >
-                      {article.title}
-                    </a>
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                      {article.excerpt}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
     </>
   )
 }
-
-// import Link from 'next/link'
-// import Image from 'next/image'
-// import { SectionHeader } from '@components/molecules'
-
-// const Articles = ({ data, articles }: any) => {
-//   let { header, maxCount, columns } = data
-//   articles = articles.slice(0, maxCount)
-
-//   return (
-//     <>
-//       <div className="relative px-4 pt-16 pb-20 bg-gray-50 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-//         <div className="relative mx-auto max-w-7xl">
-//           {(data.title || data.subtitle) && (
-//             <SectionHeader
-//               title={data.title ? data.title : ''}
-//               subtitle={data.subtitle ? data.subtitle : ''}
-//             />
-//           )}
-
-//           {/* CARDS */}
-//           <div className="grid max-w-xl gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
-//             {articles?.map((article: any, index: any) => (
-//               <div
-//                 key={index}
-//                 className="max-w-2xl mx-auto overflow-hidden bg-white rounded-xs shadow-lg dark:bg-gray-800"
-//               >
-//                 {article.image ? (
-//                   <Image
-//                     className="w-full pt-5 rounded-xs"
-//                     src={
-//                       article.image.formats.medium
-//                         ? article.image.formats.medium.url
-//                         : article.image.formats.small.url
-//                     }
-//                     layout="responsive"
-//                     height={
-//                       article.image.formats.medium
-//                         ? article.image.formats.medium.height
-//                         : article.image.formats.small.height
-//                     }
-//                     width={
-//                       article.image.formats.medium
-//                         ? article.image.formats.medium.width
-//                         : article.image.formats.small.height
-//                     }
-//                     alt={article.image.name}
-//                   />
-//                 ) : (
-//                   //
-
-//                   <>
-//                     <Image
-//                       className="object-cover w-full h-64"
-//                       src="https://via.placeholder.com/150/0891B2/E2E8F0?text=No+Image+Set"
-//                       layout="responsive"
-//                       height={700}
-//                       width={700}
-//                       alt=""
-//                     />
-//                   </>
-//                 )}
-
-//                 <div className="p-6">
-//                   <div className="mb-4">
-//                     <div className="flex items-center">
-//                       {/* <div className="flex items-center">
-//                         <Image
-//                           className="object-cover rounded-full h-15"
-//                           src={article.author.picture.formats.thumbnail.url}
-//                           layout="intrinsic"
-//                           height={50}
-//                           width={50}
-//                           alt={article.author.picture.name}
-//                         />
-
-//                         <span
-//                           href="#"
-//                           className="mx-2 font-semibold text-gray-700 dark:text-gray-200"
-//                         >
-//                           {"by " +
-//                             article.author.admin_user.firstname +
-//                             " " +
-//                             article.author.admin_user.lastname}
-//                         </span>
-//                       </div> */}
-//                       <span className="mx-1 text-xs text-right text-gray-600 dark:text-gray-300">
-//                         {new Date(article.published_at).toLocaleDateString()}
-//                       </span>
-//                     </div>
-//                   </div>
-
-//                   <div>
-//                     <a
-//                       href={'/blog/' + article.slug}
-//                       className="block mt-2 text-2xl font-semibold text-primaryColor-700 dark:text-white hover:text-gray-600 hover:underline"
-//                     >
-//                       {article.title}
-//                     </a>
-//                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-//                       {article.excerpt}
-//                     </p>
-//                   </div>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
-
-// export default Articles

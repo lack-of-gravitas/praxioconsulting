@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 export { default as Layout } from './_defaultLayout'
 export { default as CourseLayout } from './_courseLayout'
 export { default as PageNotFound } from './PageNotFound'
-import { useQuery } from 'react-query'
+import { useQueries } from 'react-query'
 
 const CallToAction = dynamic(() => import('@components/organisms/CallToAction'))
 const BasicContent = dynamic(() => import('@components/organisms/BasicContent'))
@@ -39,61 +39,80 @@ const ProductReviews = dynamic(
   () => import('@components/organisms/Product/ProductReviews')
 )
 
-export const Section = ({ section, genericData }: any) => {
+const getBrandColors = async () =>
+  await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_REST_API}/Brands` +
+        `?fields=primaryColor,accentColor` +
+        `&filter[domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
+    )
+  ).json()
+
+export const Section = ({ section }: any) => {
   console.log('rendering:', section.collection)
-  // console.log('genericData: ', genericData ? genericData : 'no genericData')
+
+  let results: any = useQueries([
+    { queryKey: 'colors', queryFn: getBrandColors, cacheTime: Infinity },
+  ])
+
+  let brand = {}
+
+  if (!results[0].isFetching) {
+    brand = results[0].data.data[0]
+    // console.log('fetched brand: ', brand)
+  }
 
   switch (section.collection) {
     // General
     case 'BasicContent':
-      return <BasicContent data={section.item} genericData={genericData} />
+      return <BasicContent data={section.item} brand={brand} />
       break
     case 'CallToAction':
-      return <CallToAction data={section.item} genericData={genericData} />
+      return <CallToAction data={section.item} brand={brand} />
       break
     case 'Hero':
-      return <Hero data={section.item} genericData={genericData} />
+      return <Hero data={section.item} brand={brand} />
       break
     case 'Team':
-      return <Team data={section.item} genericData={genericData} />
+      return <Team data={section.item} brand={brand} />
       break
     case 'FeatureMajor':
-      return <FeatureMajor data={section.item} genericData={genericData} />
+      return <FeatureMajor data={section.item} brand={brand} />
       break
     case 'FeatureList':
-      return <FeatureList data={section.item} genericData={genericData} />
+      return <FeatureList data={section.item} brand={brand} />
       break
 
-    // // Posts
-    // case 'PostsAll':
-    //   return <PostsAll data={section.item} genericData={genericData} />
-    //   break
-    // case 'PostsRecent':
-    //   return <PostsRecent data={section.item} genericData={genericData} />
-    //   break
+    // Posts
+    case 'PostsAll':
+      return <PostsAll data={section.item} brand={brand} />
+      break
+    case 'PostsRecent':
+      return <PostsRecent data={section.item} brand={brand} />
+      break
 
-    // // Products
-    // case 'ProductsAll':
-    //   return <ProductsAll data={section.item} genericData={genericData} />
-    //   break
+    // Products
+    case 'ProductsAll':
+      return <ProductsAll data={section.item} brand={brand} />
+      break
     case 'ProductsFeatured':
-      return <ProductsFeatured data={section.item} genericData={genericData} />
+      return <ProductsFeatured data={section.item} brand={brand} />
       break
 
     // case 'ProductComponents':
-    //   return <ProductComponents data={section.item} genericData={genericData} />
+    //   return <ProductComponents data={section.item} brand={brand} />
     //   break
     // case 'ProductFAQs':
-    //   return <ProductFAQs data={section.item} genericData={genericData} />
+    //   return <ProductFAQs data={section.item}  brand={brand}/>
     //   break
     // case 'ProductPeek':
-    //   return <ProductPeek data={section.item} genericData={genericData} />
+    //   return <ProductPeek data={section.item}  brand={brand}/>
     //   break
     // case 'ProductPricing':
-    //   return <ProductPricing data={section.item} genericData={genericData} />
+    //   return <ProductPricing data={section.item} brand={brand} />
     //   break
     // case 'ProductReviews':
-    //   return <ProductReviews data={section.item} genericData={genericData} />
+    //   return <ProductReviews data={section.item} brand={brand} />
     //   break
 
     default:

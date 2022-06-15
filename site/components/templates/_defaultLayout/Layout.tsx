@@ -22,7 +22,7 @@ const Layout: React.FC = ({ children }: any) => {
         `${process.env.NEXT_PUBLIC_REST_API}/Brands` +
           `?fields=name,tagline,lightLogo,darkLogo,primaryColor,accentColor,homepage.slug,` +
           `header.collection,header.item.id,header.item.name,header.item.slug,` +
-          `footer.id,footer.sort,footer.item.name,footer.item.links.collection,footer.item.links.sort,footer.item.links.item.name,footer.item.links.item.slug` +
+          `footer.id,footer.sort,footer.item.id,footer.item.name,footer.item.links.collection,footer.item.links.sort,footer.item.links.item.name,footer.item.links.item.slug` +
           `&filter[domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
       )
     ).json()

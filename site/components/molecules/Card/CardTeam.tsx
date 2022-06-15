@@ -2,11 +2,8 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function CardTeam({ data, genericData }: any) {
-  // console.log('CardTeam :', data)
-  // bb8b4b63-8ca3-4e7f-a2db-de4ac695f442
-  console.log('CardTeam: ', data)
-  // console.log('cardTeam: ', genericData ? genericData : 'no genericData')
+export default function CardTeam({ data, brand }: any) {
+  // console.log('CardTeam: ', data)
 
   return (
     <>
@@ -45,7 +42,9 @@ export default function CardTeam({ data, genericData }: any) {
                 </div>
                 <h3 className="mt-6 font-extrabold prose prose-lg text-left">
                   <span
-                    // style={{ color: color ? color : '#FFA439' }}
+                    style={{
+                      color: brand.accentColor ? brand.accentColor : '#FFA439',
+                    }}
                     className="absolute inset-0"
                   />
                   {data.directus_users_id.first_name +

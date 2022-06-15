@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { ProseHero } from '@components/molecules'
 const Button = dynamic(() => import('@components/atoms/Button/ButtonHero'))
 
-export default function HeroCenter({ data, genericData }: any) {
+export default function HeroCenter({ data, brand }: any) {
   return (
     <>
       {data && (

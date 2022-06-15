@@ -4,7 +4,7 @@ import { Disclosure } from '@headlessui/react'
 import { ChevronDown as ChevronDownIcon } from '@components/atoms/Icons'
 import parse from 'html-react-parser'
 import cn from 'clsx'
-import { SectionHeader } from '@components/molecules'
+import { HeaderSection } from '@components/molecules'
 
 export default function ProductFAQs({ data }: any) {
   // console.log('data -- ', data)
@@ -16,7 +16,7 @@ export default function ProductFAQs({ data }: any) {
         <div className="px-4 py-12 mx-auto max-w-7xl sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
             {(data.title || data.subtitle) && (
-              <SectionHeader
+              <HeaderSection
                 title={data.title ? data.title : ''}
                 subtitle={data.subtitle ? data.subtitle : ''}
               />

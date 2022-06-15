@@ -1,6 +1,6 @@
 import { Layout } from '@components/templates'
 import { PageNotFound, Section } from '@components/templates'
-import { useQuery, useQueries, QueryClient, dehydrate } from 'react-query'
+import { useQueries, QueryClient, dehydrate } from 'react-query'
 
 const getdata = async () =>
   await (
@@ -12,62 +12,21 @@ const getdata = async () =>
     )
   ).json()
 
-const getteam = async () =>
-  await (
-    await fetch(
-      `${process.env.NEXT_PUBLIC_REST_API}/Brands` +
-        `?fields=team.id,team.sort,team.directus_users_id.first_name,team.directus_users_id.last_name,team.directus_users_id.title,team.directus_users_id.description,team.directus_users_id.avatar` +
-        `&filter[domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
-    )
-  ).json()
-
-const getBrandColors = async () =>
-  await (
-    await fetch(
-      `${process.env.NEXT_PUBLIC_REST_API}/Brands` +
-        `?fields=primaryColor,accentColor` +
-        `&filter[domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
-    )
-  ).json()
-
 export default function Index({ slug, preview }: any) {
-  // const { status, data, error, isFetching, isSuccess }: any = useQuery(
-  //   'home',
-  //   getdata,
-  //   { cacheTime: Infinity, staleTime: 1000 * 60 * 10 }
-  // )
-
-  let results = useQueries([
+  let results: any = useQueries([
     { queryKey: 'home', queryFn: getdata, cacheTime: Infinity },
-    { queryKey: 'team', queryFn: getteam },
-    { queryKey: 'brandColors', queryFn: getBrandColors },
   ])
 
-  if (results[0].isFetching || results[1].isFetching || results[2].isFetching) {
+  if (results[0].isFetching) {
     return <div>Loading...</div>
   }
-  // if (!data || data.data.length === 0) {
-  //   return <PageNotFound />
-  // }
 
-  console.log('home', results[0].data.data[0])
-  // console.log('team', results[1].data.data[0])
-  // console.log('brandColors', results[2].data.data[0])
+  // console.log('home', results[0].data.data[0])
 
   return (
     <>
       {results[0].data.data[0].sections?.map((section: any) => (
-        <Section
-          key={section.sort}
-          section={section}
-          genericData={{
-            team: results[1].data?.data[0].team,
-            brandColors: {
-              accentColor: results[2].data?.data[0].accentColor,
-              primaryColor: results[2].data?.data[0].primaryColor,
-            },
-          }}
-        />
+        <Section key={section.sort} section={section} />
       ))}
     </>
   )

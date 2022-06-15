@@ -50,7 +50,7 @@ export default function Footer({ data }: any) {
               >
                 {data.footer.map((column: any) => {
                   return (
-                    <div key={column.name} className="space-y-5">
+                    <div key={column.id} className="space-y-5">
                       <h3
                         style={{
                           color: data.accentColor

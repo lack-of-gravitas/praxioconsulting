@@ -4,7 +4,7 @@ import { ProseHero } from '@components/molecules'
 
 const Button = dynamic(() => import('@components/atoms/Button/ButtonHero'))
 
-export default function HeroTextOnly({ data, genericData }: any) {
+export default function HeroTextOnly({ data, brand }: any) {
   return (
     <div className="relative overflow-hidden">
       <div className="relative pt-6 pb-16 sm:pb-24">

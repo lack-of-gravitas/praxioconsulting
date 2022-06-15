@@ -1,5 +1,5 @@
 import { BackgroundDots } from '@components/atoms'
-import { SectionHeader, ProseGeneral } from '@components/molecules'
+import { HeaderSection, ProseGeneral } from '@components/molecules'
 
 export default function BasicContent({ data }: any) {
   return (
@@ -9,7 +9,7 @@ export default function BasicContent({ data }: any) {
         {data && (
           <div className="relative px-4 sm:px-6 lg:px-4">
             {(data.title || data.subtitle) && (
-              <SectionHeader
+              <HeaderSection
                 title={data.title ? data.title : ''}
                 subtitle={data.subtitle ? data.subtitle : ''}
               />

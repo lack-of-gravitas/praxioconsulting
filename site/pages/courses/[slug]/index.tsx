@@ -43,7 +43,7 @@ export async function getStaticProps(context: any) {
   getdata = async () =>
     await (
       await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API}/products?fields=id,name,stripeId,type,image,sections.id,sections.item.*,sections.sort,sections.collection&filter[slug][_eq]=${context.params.slug}&filter[status][_eq]=published&filter[brands][brands_id][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
+        `${process.env.NEXT_PUBLIC_REST_API}/products?fields=id,name,stripeId,type,image,sections.id,sections.item.*,sections.sort,sections.collection&filter[slug][_eq]=${context.params.slug}&filter[status][_eq]=published&filter[brands][Brands_id][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
       )
     ).json()
 

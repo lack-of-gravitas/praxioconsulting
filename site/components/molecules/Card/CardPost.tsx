@@ -4,19 +4,15 @@ import Link from 'next/link'
 
 const Button = dynamic(() => import('@components/atoms/Button/ButtonGeneral'))
 
-export default function CardProduct({ data, brand }: any) {
-  // console.log('ProductCard :', data)
+export default function CardPost({ data, brand }: any) {
+  // console.log('PostCard :', data)
 
   return (
     <>
       {data && (
         <>
-          <div className="relative pb-5 cursor-pointer group">
-            <Link
-              href={'/' + data.type + 's/' + data.slug}
-              className=""
-              passHref
-            >
+          <Link href={'/blog/' + data.slug} className="" passHref>
+            <div className="relative pb-5 cursor-pointer group">
               <>
                 <div className="relative w-full overflow-hidden bg-white rounded-xs h-80 group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
                   {data.image && data.image !== '' ? (
@@ -48,15 +44,18 @@ export default function CardProduct({ data, brand }: any) {
                   />
                   {data.name}
                 </h3>
-                <p className="prose text-left text-gray-900 prose-base">
+                {/* <p className="font-semibold prose text-left text-gray-700 prose-base">
+                  <time dateTime={data.date_created}>
+                    Published:{' '}
+                    {new Date(data.date_created).toLocaleDateString()}
+                  </time>
+                </p> */}
+                <p className="pb-5 prose text-left text-gray-900 prose-base">
                   {data.description}
                 </p>
-                <span className="flex items-center">
-                  <Button item={data} collection={'Products'} />
-                </span>
               </>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </>
       )}
     </>

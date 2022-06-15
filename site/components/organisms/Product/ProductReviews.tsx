@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { SectionHeader } from '@components/molecules'
+import { HeaderSection } from '@components/molecules'
 
 export default function ProductReviews({ data }: any) {
   let { header, reviews } = data
@@ -9,7 +9,7 @@ export default function ProductReviews({ data }: any) {
       <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <div className="relative mx-auto max-w-7xl">
           {(data.title || data.subtitle) && (
-            <SectionHeader
+            <HeaderSection
               title={data.title ? data.title : ''}
               subtitle={data.subtitle ? data.subtitle : ''}
             />
