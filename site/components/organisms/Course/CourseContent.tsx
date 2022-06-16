@@ -95,7 +95,7 @@ export default function CourseContent({ data }: any) {
                           Download
                         </a>
                       </td>{' '}
-                      <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
+                      <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
                         {file.name}
                       </td>
                       <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
@@ -118,7 +118,7 @@ export default function CourseContent({ data }: any) {
       //       {data.map((file) => {
       //         <div className="bg-gray-50 sm:rounded-xs">
       //           <div className="px-4 py-2 sm:p-6">
-      //             <h3 className="text-base font-medium leading-6 text-gray-900">
+      //             <h3 className="text-base font-medium leading-6 text-gray-800">
       //               {file.name}
       //             </h3>
 
@@ -162,7 +162,7 @@ export default function CourseContent({ data }: any) {
     <>
       <div className="max-w-full mx-auto">
         <div className="pb-5 border-b border-gray-200">
-          <h3 className="text-lg font-bold leading-6 text-gray-900">
+          <h3 className="text-lg font-bold leading-6 text-gray-800">
             {data.title}
           </h3>
           <p className="max-w-full mt-2 text-base text-gray-500">
@@ -187,7 +187,7 @@ export default function CourseContent({ data }: any) {
         <div className="max-w-full mx-auto ">
           <div className="py-4">
             <div className="pt-10">
-              <h3 className="text-lg font-bold leading-6 text-gray-900">
+              <h3 className="text-lg font-bold leading-6 text-gray-800">
                 Supporting Content
               </h3>
 
@@ -528,7 +528,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                 <p className="text-2xl font-bold tracking-wide text-primaryColor-700">
 //                   Oops!
 //                 </p>
-//                 <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+//                 <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-800 sm:text-5xl">
 //                   Content not available.
 //                 </h1>
 //                 <p className="mt-2 text-base text-gray-500">
@@ -667,7 +667,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                                   className={cn(
 //                                     module.current
 //                                       ? 'bg-indigo-700 text-white'
-//                                       : ' text-white hover:bg-gray-50 hover:text-gray-900',
+//                                       : ' text-white hover:bg-gray-50 hover:text-gray-800',
 //                                     'group w-full flex items-center pr-2 py-2 text-left text-md font-bold rounded-xs focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
 //                                   )}
 //                                 >
@@ -694,7 +694,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                                       type="button"
 //                                       key={subItem.title}
 //                                       // as="a"
-//                                       className="flex items-center w-full py-2 pl-10 pr-2 text-sm font-light text-white rounded-xs group hover:text-gray-900 hover:bg-gray-50"
+//                                       className="flex items-center w-full py-2 pl-10 pr-2 text-sm font-light text-white rounded-xs group hover:text-gray-800 hover:bg-gray-50"
 //                                       onClick={(e) => {
 //                                         e.preventDefault()
 //                                         setActiveContent(subItem)
@@ -828,7 +828,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                               className={cn(
 //                                 module.current
 //                                   ? 'bg-indigo-700 text-white'
-//                                   : ' text-white hover:bg-gray-50 hover:text-gray-900',
+//                                   : ' text-white hover:bg-gray-50 hover:text-gray-800',
 //                                 'group w-full flex items-center pr-2 py-2 text-left text-prose font-bold rounded-xs focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
 //                               )}
 //                             >
@@ -854,7 +854,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                                 <a
 //                                   key={subItem.title}
 //                                   //   as="a"
-//                                   className="flex items-center w-full py-2 pl-10 pr-2 font-light text-white rounded-xs text-prose group hover:text-gray-900 hover:bg-gray-50"
+//                                   className="flex items-center w-full py-2 pl-10 pr-2 font-light text-white rounded-xs text-prose group hover:text-gray-800 hover:bg-gray-50"
 //                                   onClick={(e) => {
 //                                     e.preventDefault()
 //                                     // console.log(subItem);
@@ -1106,7 +1106,7 @@ const reviews = { href: '#', average: 4, totalCount: 117 }
 //                                 <p className="text-2xl font-bold tracking-wide text-primaryColor-700">
 //                                   Hi there, welcome to the Course.
 //                                 </p>
-//                                 <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+//                                 <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-800 sm:text-5xl">
 //                                   Select a module to start
 //                                 </h1>
 //                                 <p className="mt-2 text-base text-gray-500">

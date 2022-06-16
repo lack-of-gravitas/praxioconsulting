@@ -50,7 +50,7 @@ export default function CardPost({ data, brand }: any) {
                     {new Date(data.date_created).toLocaleDateString()}
                   </time>
                 </p> */}
-                <p className="pb-5 prose text-left text-gray-900 prose-base">
+                <p className="pb-5 prose text-left text-gray-800 prose-base">
                   {data.description}
                 </p>
               </>

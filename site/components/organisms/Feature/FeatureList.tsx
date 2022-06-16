@@ -22,7 +22,7 @@ export default function FeatureList({ data, brand }: any) {
                           {item.icon}
                         </span>
 
-                        <p className="text-lg font-medium leading-6 text-gray-900 ml-9">
+                        <p className="text-lg font-medium leading-6 text-gray-800 ml-9">
                           {item.heading}
                         </p>
                       </dt>

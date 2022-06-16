@@ -110,7 +110,7 @@ export default function Navbar({ data }: any) {
                               //     ? data.accentColor
                               //     : '#FFA439',
                               // }}
-                              className="inline-flex items-center px-2 pt-1 text-sm font-medium text-gray-900 "
+                              className="inline-flex items-center px-2 pt-1 text-sm font-medium text-gray-800 "
                             >
                               <span>{item.name}</span>
                             </a>

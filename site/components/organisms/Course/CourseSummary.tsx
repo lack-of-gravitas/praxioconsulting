@@ -44,7 +44,7 @@ export default function CourseSummary({ data }: any) {
                 <p className="text-2xl font-bold tracking-wide text-primaryColor-700">
                   Oops!
                 </p>
-                <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-800 sm:text-5xl">
                   Content not available.
                 </h1>
                 <p className="mt-2 text-base text-gray-500">
@@ -182,7 +182,7 @@ export default function CourseSummary({ data }: any) {
                                   className={cn(
                                     module.current
                                       ? 'bg-indigo-700 text-white'
-                                      : ' text-white hover:bg-gray-50 hover:text-gray-900',
+                                      : ' text-white hover:bg-gray-50 hover:text-gray-800',
                                     'group w-full flex items-center pr-2 py-2 text-left text-md font-bold rounded-xs focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
                                   )}
                                 >
@@ -209,7 +209,7 @@ export default function CourseSummary({ data }: any) {
                                       type="button"
                                       key={subItem.title}
                                       // as="a"
-                                      className="flex items-center w-full py-2 pl-10 pr-2 text-sm font-light text-white rounded-xs group hover:text-gray-900 hover:bg-gray-50"
+                                      className="flex items-center w-full py-2 pl-10 pr-2 text-sm font-light text-white rounded-xs group hover:text-gray-800 hover:bg-gray-50"
                                       onClick={(e) => {
                                         e.preventDefault()
                                         setActiveContent(subItem)
@@ -343,7 +343,7 @@ export default function CourseSummary({ data }: any) {
                               className={cn(
                                 module.current
                                   ? 'bg-indigo-700 text-white'
-                                  : ' text-white hover:bg-gray-50 hover:text-gray-900',
+                                  : ' text-white hover:bg-gray-50 hover:text-gray-800',
                                 'group w-full flex items-center pr-2 py-2 text-left text-prose font-bold rounded-xs focus:outline-none focus:ring-2 focus:ring-primaryColor-800'
                               )}
                             >
@@ -369,7 +369,7 @@ export default function CourseSummary({ data }: any) {
                                 <a
                                   key={subItem.title}
                                   //   as="a"
-                                  className="flex items-center w-full py-2 pl-10 pr-2 font-light text-white rounded-xs text-prose group hover:text-gray-900 hover:bg-gray-50"
+                                  className="flex items-center w-full py-2 pl-10 pr-2 font-light text-white rounded-xs text-prose group hover:text-gray-800 hover:bg-gray-50"
                                   onClick={(e) => {
                                     e.preventDefault()
                                     // console.log(subItem);
@@ -621,7 +621,7 @@ export default function CourseSummary({ data }: any) {
                                 <p className="text-2xl font-bold tracking-wide text-primaryColor-700">
                                   Hi there, welcome to the Course.
                                 </p>
-                                <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                                <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-gray-800 sm:text-5xl">
                                   Select a module to start
                                 </h1>
                                 <p className="mt-2 text-base text-gray-500">

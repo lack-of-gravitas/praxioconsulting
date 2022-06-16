@@ -161,7 +161,7 @@ const MultiPrice = ({ data, product }: any) => {
   //                 <div className="mt-3 text-center sm:mt-5">
   //                   <Dialog.Title
   //                     as="h3"
-  //                     className="text-lg font-medium leading-6 text-gray-900"
+  //                     className="text-lg font-medium leading-6 text-gray-800"
   //                   >
   //                     Sign up or Login
   //                   </Dialog.Title>
@@ -288,7 +288,7 @@ const MultiPrice = ({ data, product }: any) => {
   //     <div className="px-4 py-24 mx-auto bg-white max-w-7xl sm:px-6 lg:px-8">
   //       {header && (
   //         <div className="text-center">
-  //           <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+  //           <h2 className="text-3xl font-extrabold tracking-tight text-gray-800 sm:text-4xl">
   //             {header.title}
   //           </h2>
   //           <p className="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">
@@ -304,7 +304,7 @@ const MultiPrice = ({ data, product }: any) => {
   //             className="relative flex flex-col p-8 bg-white border border-gray-200 rounded-xs shadow-sm"
   //           >
   //             <div className="flex-1">
-  //               <h3 className="text-xl font-semibold text-gray-900">
+  //               <h3 className="text-xl font-semibold text-gray-800">
   //                 {price.header.title}
   //               </h3>
   //               {price.mostPopular ? (
@@ -312,7 +312,7 @@ const MultiPrice = ({ data, product }: any) => {
   //                   Most popular
   //                 </p>
   //               ) : null}
-  //               <p className="flex items-baseline mt-4 text-gray-900">
+  //               <p className="flex items-baseline mt-4 text-gray-800">
   //                 <span className="text-5xl font-extrabold tracking-tight">
   //                   {Intl.NumberFormat('en-US', {
   //                     style: 'currency',

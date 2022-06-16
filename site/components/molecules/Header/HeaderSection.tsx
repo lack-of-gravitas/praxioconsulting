@@ -4,7 +4,7 @@ export default function HeaderSection({ data }: any) {
       {data && (
         <div className="mx-auto text-lg max-w-prose">
           {data.subtitle && (
-            <p className="mt-2 text-3xl font-extrabold text-gray-900">
+            <p className="mt-2 text-3xl font-extrabold text-gray-800">
               {data.subtitle}
             </p>
           )}

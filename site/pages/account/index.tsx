@@ -265,7 +265,7 @@ export default function Account({ user }: { user: User }) {
 //       <div className="relative pb-5 sm:pb-0">
 //         <div className="md:flex md:items-center md:justify-between">
 //           <h2>
-//             <span className="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-900 sm:text-4xl">
+//             <span className="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-800 sm:text-4xl">
 //               Your Account
 //             </span>
 //           </h2>
@@ -318,7 +318,7 @@ export default function Account({ user }: { user: User }) {
 
 //         {products && (
 //           <div className="pb-10">
-//             <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
+//             <h2 className="text-2xl font-extrabold tracking-tight text-gray-800">
 //               Courses
 //             </h2>
 //             <div className="text-base leading-8 text-gray-500 ">
@@ -401,7 +401,7 @@ export default function Account({ user }: { user: User }) {
 //         {/* Bonus Content - Video Library */}
 //         {allVideos?.length > 0 && (
 //           <div className="pb-10">
-//             <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
+//             <h2 className="text-2xl font-extrabold tracking-tight text-gray-800">
 //               Bonus Content - Video Library
 //             </h2>
 
@@ -439,7 +439,7 @@ export default function Account({ user }: { user: User }) {
 //         {/* Services */}
 //         {products && (
 //           <div className="pb-10">
-//             <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
+//             <h2 className="text-2xl font-extrabold tracking-tight text-gray-800">
 //               Other Paid Products
 //             </h2>
 //             <div className="text-base leading-8 text-gray-500 ">
@@ -525,7 +525,7 @@ export default function Account({ user }: { user: User }) {
 //   // function Billing() {
 //   //   return (
 //   //     <>
-//   //       <h2 className="pt-5 text-2xl font-extrabold tracking-tight text-gray-900">
+//   //       <h2 className="pt-5 text-2xl font-extrabold tracking-tight text-gray-800">
 //   //         Billing
 //   //       </h2>
 //   //       <p className="text-base leading-8 text-gray-500 ">

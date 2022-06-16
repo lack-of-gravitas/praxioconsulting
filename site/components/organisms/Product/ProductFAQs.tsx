@@ -1,61 +1,46 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { Disclosure } from '@headlessui/react'
-import { ChevronDown as ChevronDownIcon } from '@components/atoms/Icons'
-import parse from 'html-react-parser'
-import cn from 'clsx'
-import { HeaderSection } from '@components/molecules'
-
-export default function ProductFAQs({ data }: any) {
-  // console.log('data -- ', data)
-  let { header, item } = data
+import dynamic from 'next/dynamic'
+const ProseHeading = dynamic(
+  () => import('@components/molecules/Prose/ProseHeading')
+)
+const ProseGeneral = dynamic(
+  () => import('@components/molecules/Prose/ProseGeneral')
+)
+export default function ProductFAQs({ data, brand }: any) {
+  // console.log('ProductFAQs: ', data)
 
   return (
     <>
-      <div className="bg-gray-50">
-        <div className="px-4 py-12 mx-auto max-w-7xl sm:py-16 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
-            {(data.title || data.subtitle) && (
-              <HeaderSection
-                title={data.title ? data.title : ''}
-                subtitle={data.subtitle ? data.subtitle : ''}
-              />
-            )}
+      {data && (
+        <div className="bg-gray-50">
+          <div className="px-4 py-12 mx-auto divide-y divide-gray-200 max-w-7xl sm:px-6 lg:py-16 lg:px-8">
+            <div className="relative z-10 p-12">
+              <div className="text-center">
+                {data.text && <ProseHeading content={data.text} />}
+              </div>
+            </div>
 
-            <dl className="mt-6 space-y-6 divide-y divide-gray-200">
-              {item?.map((faq: any) => (
-                <Disclosure as="div" key={faq.question} className="pt-6">
-                  {({ open }) => (
-                    <>
-                      <dt className="text-lg">
-                        <Disclosure.Button className="flex items-start justify-between w-full text-left text-gray-400">
-                          <span className="font-bold tracking-wider text-gray-900">
-                            {faq.question}
-                          </span>
-                          <span className="flex items-center ml-6 h-7">
-                            <ChevronDownIcon
-                              className={cn(
-                                open ? '-rotate-180' : 'rotate-0',
-                                'h-6 w-6 transform'
-                              )}
-                              aria-hidden="true"
-                            />
-                          </span>
-                        </Disclosure.Button>
-                      </dt>
-                      <Disclosure.Panel as="dd" className="pr-12 mt-2">
-                        <p className="text-base prose text-gray-500">
-                          {parse(faq.answer)}
-                        </p>
-                      </Disclosure.Panel>
-                    </>
-                  )}
-                </Disclosure>
-              ))}
-            </dl>
+            <div className="mt-8">
+              <dl className="divide-y divide-gray-200">
+                {data.items?.map((faq: any) => (
+                  <div
+                    key={faq.question}
+                    className="pt-6 pb-8 md:grid md:grid-cols-12 md:gap-8"
+                  >
+                    <dt className="text-base font-medium text-gray-800 md:col-span-3">
+                      {faq.question}
+                    </dt>
+                    <dd className="mt-2 md:mt-0 md:col-span-7">
+                      <p className="prose text-gray-800 prose-base">
+                        {faq.answer}
+                      </p>
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   )
 }

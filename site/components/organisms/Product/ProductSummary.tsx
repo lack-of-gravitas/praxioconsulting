@@ -18,7 +18,7 @@ export default function ProductSummary({ data }: any) {
   return (
     <div className="bg-white">
       <div className="max-w-2xl px-4 py-16 mx-auto sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
+        <h2 className="text-2xl font-extrabold tracking-tight text-gray-800">
           Customers also purchased
         </h2>
 
@@ -42,7 +42,7 @@ export default function ProductSummary({ data }: any) {
                   </h3>
                   <p className="mt-1 text-sm text-gray-500">{product.color}</p>
                 </div>
-                <p className="text-sm font-medium text-gray-900">
+                <p className="text-sm font-medium text-gray-800">
                   {product.price}
                 </p>
               </div>

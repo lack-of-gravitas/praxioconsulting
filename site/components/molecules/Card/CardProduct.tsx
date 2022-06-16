@@ -48,7 +48,7 @@ export default function CardProduct({ data, brand }: any) {
                   />
                   {data.name}
                 </h3>
-                <p className="prose text-left text-gray-900 prose-base">
+                <p className="prose text-left text-gray-800 prose-base">
                   {data.description}
                 </p>
                 <span className="flex items-center">

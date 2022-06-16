@@ -20,7 +20,7 @@ export default function ProductReviews({ data }: any) {
             {reviews.map((review: any, index: any) => (
               <div
                 key={index}
-                className="max-w-sm mx-auto overflow-hidden bg-white rounded-xs shadow-lg dark:bg-gray-800"
+                className="max-w-sm mx-auto overflow-hidden bg-white shadow-lg rounded-xs dark:bg-gray-800"
               >
                 <Image
                   className="object-cover object-center w-full h-56"
@@ -42,7 +42,7 @@ export default function ProductReviews({ data }: any) {
                   <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
                     {review.name}
                   </h1>
-                  <p className="py-2 text-gray-900 dark:text-gray-400">
+                  <p className="py-2 text-gray-800 dark:text-gray-400">
                     {review.subname}
                   </p>
                   <p className="py-2 text-gray-700 dark:text-gray-400">

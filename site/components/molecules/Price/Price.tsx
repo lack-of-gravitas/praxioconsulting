@@ -180,7 +180,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //     <div className="bg-slate-100">
   //       <div className="px-4 py-16 mx-auto max-w-7xl sm:py-12 sm:px-6 lg:px-8">
   //         <div className="py-6 mx-auto max-w-7xl lg:py-12 lg:flex lg:items-center lg:justify-between">
-  //           <h2 className="text-3xl text-gray-900 md:text-4xl">
+  //           <h2 className="text-3xl text-gray-800 md:text-4xl">
   //             <span className="block font-extrabold tracking-tight">
   //               {header?.title}
   //             </span>
@@ -340,7 +340,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //     <div className="px-4 py-24 mx-auto bg-white max-w-7xl sm:px-6 lg:px-8">
   //       {header && (
   //         <div className="text-center">
-  //           <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+  //           <h2 className="text-3xl font-extrabold tracking-tight text-gray-800 sm:text-4xl">
   //             {header.title}
   //           </h2>
   //           <p className="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">
@@ -357,7 +357,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //             className="relative flex flex-col p-8 bg-white border border-gray-200 rounded-xs shadow-sm"
   //           >
   //             <div className="flex-1">
-  //               <h3 className="text-xl font-semibold text-gray-900">
+  //               <h3 className="text-xl font-semibold text-gray-800">
   //                 {individualPrice.header.title}
   //               </h3>
   //               {individualPrice.mostPopular ? (
@@ -365,7 +365,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                   Most popular
   //                 </p>
   //               ) : null}
-  //               <p className="flex items-baseline mt-4 text-gray-900">
+  //               <p className="flex items-baseline mt-4 text-gray-800">
   //                 <span className="text-5xl font-extrabold tracking-tight">
   //                   {Intl.NumberFormat('en-US', {
   //                     style: 'currency',
@@ -506,7 +506,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                 <div className="mt-3 text-center sm:mt-5">
   //                   <Dialog.Title
   //                     as="h3"
-  //                     className="text-lg font-medium leading-6 text-gray-900"
+  //                     className="text-lg font-medium leading-6 text-gray-800"
   //                   >
   //                     Sign up or Login
   //                   </Dialog.Title>
@@ -682,7 +682,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
   //                     <Dialog.Title
   //                       as="h3"
-  //                       className="text-lg font-medium leading-6 text-gray-900"
+  //                       className="text-lg font-medium leading-6 text-gray-800"
   //                     >
   //                       Heads up! Looks like you've already bought this course.
   //                     </Dialog.Title>

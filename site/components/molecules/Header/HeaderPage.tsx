@@ -7,12 +7,12 @@ export default function HeaderPage({ data }: any) {
             {data && (
               <div className="pb-5 prose border-b border-gray-200">
                 {data.title && (
-                  <h1 className="text-2xl font-extrabold tracking-tight prose text-gray-900 sm:text-3xl">
+                  <h1 className="text-2xl font-extrabold tracking-tight prose text-gray-800 sm:text-3xl">
                     {data.title}
                   </h1>
                 )}
                 {data.subtitle && (
-                  <h3 className="text-lg font-medium leading-6 prose text-gray-900">
+                  <h3 className="text-lg font-medium leading-6 prose text-gray-800">
                     {data.subtitle}
                   </h3>
                 )}

@@ -51,10 +51,10 @@ export default function CardTeam({ data, brand }: any) {
                     ' ' +
                     data.directus_users_id.last_name}
                 </h3>
-                <p className="font-semibold prose text-left text-gray-900 prose-base">
+                <p className="font-semibold prose text-left text-gray-800 prose-base">
                   {data.directus_users_id.title}
                 </p>
-                <p className="prose text-left text-gray-900 prose-base">
+                <p className="prose text-left text-gray-800 prose-base">
                   {data.directus_users_id.description}
                 </p>
               </>
