@@ -102,18 +102,18 @@ export const Section = ({ section }: any) => {
     // case 'ProductComponents':
     //   return <ProductComponents data={section.item} brand={brand} />
     //   break
-    // case 'ProductFAQs':
-    //   return <ProductFAQs data={section.item}  brand={brand}/>
-    //   break
+    case 'ProductFAQs':
+      return <ProductFAQs data={section.item} brand={brand} />
+      break
     // case 'ProductPeek':
     //   return <ProductPeek data={section.item}  brand={brand}/>
     //   break
     // case 'ProductPricing':
     //   return <ProductPricing data={section.item} brand={brand} />
     //   break
-    // case 'ProductReviews':
-    //   return <ProductReviews data={section.item} brand={brand} />
-    //   break
+    case 'ProductReviews':
+      return <ProductReviews data={section.item} brand={brand} />
+      break
 
     default:
       return <></>
