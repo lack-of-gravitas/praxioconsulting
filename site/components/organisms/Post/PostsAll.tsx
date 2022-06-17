@@ -35,7 +35,7 @@ export default function Posts({ data, brand }: any) {
 
   if (!results[0].isFetching) {
     posts = results[0].data.data
-    console.log('fetched products: ', posts)
+    // console.log('fetched products: ', posts)
   }
 
   return (

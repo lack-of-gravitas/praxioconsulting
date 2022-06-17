@@ -9,16 +9,16 @@ const CardProduct = dynamic(
 )
 
 export default function ProductsAll({ data, brand }: any) {
-  console.log('ProductsAll :', data)
+  // console.log('ProductsAll :', data)
 
   const getProducts = async () =>
     await (
       await fetch(
         `${process.env.NEXT_PUBLIC_REST_API}/Products` +
           `?fields=id,slug,name,description,image,type` +
-          `&filter[brands][Brands_id][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
           `&filter[status][_eq]=published` +
-          `&filter[type][_in]=${data.filter.slice(0, -1)}`
+          `&filter[type][_in]=${data.filter.slice(0, -1)}` +
+          `&filter[brands][Brands_id][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
       )
     ).json()
 
@@ -34,7 +34,7 @@ export default function ProductsAll({ data, brand }: any) {
 
   if (!results[0].isFetching) {
     products = results[0].data.data
-    console.log('fetched products: ', products)
+    // console.log('fetched products: ', products)
   }
 
   return (

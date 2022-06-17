@@ -28,7 +28,7 @@ export default function PostsRecent({ data, brand }: any) {
 
   if (!results[0].isFetching) {
     posts = results[0].data.data
-    console.log('fetched posts: ', posts)
+    // console.log('fetched posts: ', posts)
   }
 
   return (

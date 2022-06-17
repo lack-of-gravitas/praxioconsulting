@@ -12,7 +12,7 @@ export default function Services({ slug, preview }: any) {
     return <div>Loading...</div>
   }
 
-  console.log('courses', results[0].data)
+  console.log('courses:', results[0].data)
 
   return (
     <>

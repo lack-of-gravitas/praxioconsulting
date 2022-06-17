@@ -11,7 +11,7 @@ export default function Course({ slug, preview }: any) {
     return <div>Loading...</div>
   }
 
-  console.log(slug, results[0].data)
+  console.log(slug, ': ', results[0].data)
 
   return (
     <>
