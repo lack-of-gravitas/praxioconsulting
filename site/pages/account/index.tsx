@@ -1,7 +1,13 @@
+import dynamic from 'next/dynamic'
+import { useQueries, QueryClient, dehydrate } from 'react-query'
+import { getAccount } from '@lib/queries'
+
+const Layout = dynamic(
+  () => import('@components/templates/_defaultLayout/Layout')
+)
+
 import Link from 'next/link'
 import { useState, ReactNode } from 'react'
-import { LoadingDots } from '@components/atoms'
-// import { Button } from '@components/atoms'
 import { useUser } from 'lib/hooks/useUser'
 import { postData } from 'lib/api-helpers'
 import { withAuthRequired, User } from '@supabase/supabase-auth-helpers/nextjs'
@@ -93,9 +99,7 @@ export default function Account({ user }: { user: User }) {
         >
           <div className="mt-8 mb-4 text-xl font-semibold">
             {isLoading ? (
-              <div className="h-12 mb-6">
-                <LoadingDots />
-              </div>
+              <div className="h-12 mb-6">{/* <LoadingDots /> */}</div>
             ) : subscription ? (
               `${subscriptionPrice}/${subscription?.prices?.interval}`
             ) : (
@@ -117,9 +121,7 @@ export default function Account({ user }: { user: User }) {
                 `${userDetails.first_name} ${userDetails.last_name}`
               }`
             ) : (
-              <div className="h-8 mb-6">
-                <LoadingDots />
-              </div>
+              <div className="h-8 mb-6">{/* <LoadingDots /> */}</div>
             )}
           </div>
         </Card>
@@ -273,7 +275,7 @@ export default function Account({ user }: { user: User }) {
 //           <div className="items-center mt-3 text-center md:block md:mt-0 md:absolute md:top-3 md:right-0">
 //             <button
 //               type="button"
-//               className="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-white border border-transparent rounded-xs shadow-sm bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
+//               className="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-white bg-indigo-600 border border-transparent shadow-sm rounded-xs hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-500"
 //               href={`/api/auth/signout`}
 //               onClick={(e) => {
 //                 e.preventDefault();
@@ -296,7 +298,7 @@ export default function Account({ user }: { user: User }) {
 //     return (
 //       <>
 //         {!products && (
-//           <div className="w-full max-w-sm p-10 mx-auto border rounded-xs shadow border-slate-700">
+//           <div className="w-full max-w-sm p-10 mx-auto border shadow rounded-xs border-slate-700">
 //             <div className="flex space-x-4 animate-pulse">
 //               <div className="w-10 h-10 rounded-xs bg-slate-700">.</div>
 //               <div className="flex-1 py-1 space-y-6">
@@ -542,7 +544,7 @@ export default function Account({ user }: { user: User }) {
 //   //         >
 //   //           <button
 //   //             type="submit"
-//   //             className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-xs shadow-lg bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+//   //             className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white bg-indigo-700 border border-transparent shadow-lg rounded-xs hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
 //   //           >
 //   //             <ArrowRightIcon
 //   //               className="w-6 h-6 mr-2 -ml-1"

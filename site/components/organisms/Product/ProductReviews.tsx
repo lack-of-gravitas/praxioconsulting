@@ -7,7 +7,7 @@ const ProseHeading = dynamic(
 
 const Review = dynamic(() => import('@components/molecules/Review/Review'))
 
-export default function ProductReviews({ data, brand }: any) {
+export default function ProductReviews({ data, colors }: any) {
   const getdata = async () =>
     await (
       await fetch(
@@ -32,7 +32,7 @@ export default function ProductReviews({ data, brand }: any) {
             <div className="grid md:grid-cols-3 gap-6 lg:gap-12 text-center">
               {data.items?.map((review: any) => (
                 <>
-                  <Review data={review} brand={brand} />
+                  <Review data={review} colors={colors} />
                 </>
               ))}
             </div>

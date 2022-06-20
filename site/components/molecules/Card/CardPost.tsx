@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Button = dynamic(() => import('@components/atoms/Button/ButtonGeneral'))
 
-export default function CardPost({ data, brand }: any) {
+export default function CardPost({ data, colors }: any) {
   // console.log('PostCard :', data)
 
   return (

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { ProseHero } from '@components/molecules'
 const Button = dynamic(() => import('@components/atoms/Button/ButtonHero'))
 
-export default function HeroFullScreen({ data, brand }: any) {
+export default function HeroFullScreen({ data, colors }: any) {
   return (
     <>
       {data && (

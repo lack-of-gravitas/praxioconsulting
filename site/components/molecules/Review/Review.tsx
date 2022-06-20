@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 const ProseGeneral = dynamic(
   () => import('@components/molecules/Prose/ProseGeneral')
 )
-export default function Review({ data, brand }: any) {
+export default function Review({ data, colors }: any) {
   return (
     <>
       {data && (

@@ -1,49 +1,53 @@
 import dynamic from 'next/dynamic'
 import { useQueries } from 'react-query'
+import { getTeam } from '@lib/queries'
 
 const ProseHeading = dynamic(
   () => import('@components/molecules/Prose/ProseHeading')
 )
 const CardTeam = dynamic(() => import('@components/molecules/Card/CardTeam'))
 
-export default function Team({ data, brand }: any) {
-  // console.log('Team: ', data)
-
-  const getTeam = async () =>
-    await (
-      await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API}/Brands` +
-          `?fields=team.id,team.sort,team.directus_users_id.first_name,team.directus_users_id.last_name,team.directus_users_id.title,team.directus_users_id.description,team.directus_users_id.avatar` +
-          `&filter[domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
-      )
-    ).json()
+export default function Team({ data, colors }: any) {
+  // console.log(data.collection, '(received data) ', data)
 
   let results: any = useQueries([
-    { queryKey: 'team', queryFn: getTeam, cacheTime: Infinity },
+    {
+      queryKey: [data.collection, data.id],
+      queryFn: async () =>
+        getTeam(data.id, data.pages_id ? 'PageSections' : 'ProductSections'),
+      cacheTime: Infinity,
+    },
   ])
 
-  let team: any = []
-
+  let sectionData: any = []
   if (!results[0].isFetching) {
-    team = results[0].data.data[0].team
-    // console.log('fetched team: ', team)
+    sectionData = results[0].data
+    // console.log('fetched:', data.collection, sectionData.team)
   }
 
   return (
     <>
-      <div className="bg-gray-100">
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="max-w-2xl py-16 mx-auto text-center sm:py-24 lg:py-32 lg:max-w-none">
-            {data.text && <ProseHeading content={data.text} />}
+      {sectionData && (
+        <div className="bg-gray-100">
+          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="max-w-2xl py-16 mx-auto text-center sm:py-24 lg:py-32 lg:max-w-none">
+              <ProseHeading
+                content={sectionData?.text ? sectionData.text : ''}
+              />
 
-            <div className="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-x-6">
-              {team.map((item: any) => (
-                <CardTeam key={item.id} data={item} brand={brand} />
-              ))}
+              <div className="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-x-6">
+                {sectionData.team?.map((item: any) => (
+                  <CardTeam
+                    key={item.id}
+                    data={item.directus_users_id}
+                    colors={colors}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   )
 }

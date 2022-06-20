@@ -1,4 +1,6 @@
 import dynamic from 'next/dynamic'
+import { useQueries } from 'react-query'
+import { getProductsFeatured } from '@lib/queries'
 
 const ProseHeading = dynamic(
   () => import('@components/molecules/Prose/ProseHeading')
@@ -7,23 +9,47 @@ const CardProduct = dynamic(
   () => import('@components/molecules/Card/CardProduct')
 )
 
-export default function ProductsFeatured({ data, brand }: any) {
-  // console.log('ProductsFeatured :', data)
+export default function ProductsFeatured({ data, colors }: any) {
+  // console.log(data.collection, '(received data) ', data)
+  let results: any = useQueries([
+    {
+      queryKey: [data.collection, data.id],
+      queryFn: async () =>
+        getProductsFeatured(
+          data.id,
+          data.pages_id ? 'PageSections' : 'ProductSections'
+        ),
+      cacheTime: Infinity,
+    },
+  ])
+
+  let sectionData: any = []
+  if (!results[0].isFetching) {
+    sectionData = results[0].data.data[0].item
+    // console.log('fetched:', data.collection, sectionData)
+  }
+
   return (
     <>
-      <div className="bg-gray-100">
-        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="max-w-2xl py-16 mx-auto text-center sm:py-24 lg:py-32 lg:max-w-none">
-            {data.text && <ProseHeading content={data.text} />}
+      {sectionData && (
+        <div className="bg-gray-100">
+          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div className="max-w-2xl py-16 mx-auto text-center sm:py-24 lg:py-32 lg:max-w-none">
+              <ProseHeading
+                content={sectionData?.text ? sectionData.text : ''}
+              />
 
-            <div className="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
-              {data.items.map((item: any) => (
-                <CardProduct key={item.item.id} data={item.item} />
-              ))}
+              <div
+                className={`mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6`}
+              >
+                {sectionData.items?.map((item: any) => (
+                  <CardProduct key={item.item.id} data={item.item} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   )
 }

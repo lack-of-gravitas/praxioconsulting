@@ -1,35 +1,36 @@
-import { Layout } from '@components/templates'
-import { PageNotFound, Section } from '@components/templates'
+import dynamic from 'next/dynamic'
 import { useQueries, QueryClient, dehydrate } from 'react-query'
+import { PageNotFound, Section } from '@components/templates'
+import { getPage } from '@lib/queries'
 
-const getdata = async () =>
-  await (
-    await fetch(
-      `${process.env.NEXT_PUBLIC_REST_API}/Pages` +
-        `?fields=id,slug,name,sections.id,sections.sort,sections.collection,sections.item.*,sections.item.buttons.*,sections.item.buttons.item.slug,sections.item.buttons.item.name,sections.item.buttons.item.type,sections.item.items.item.id,sections.item.items.item.slug,sections.item.items.item.description,sections.item.items.item.name,sections.item.items.item.image,sections.item.items.item.type` +
-        `&filter[brand][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}` +
-        `&filter[slug][_eq]=home`
-    )
-  ).json()
+const Layout = dynamic(
+  () => import('@components/templates/_defaultLayout/Layout')
+)
 
 export default function Index({ slug, preview }: any) {
   let results: any = useQueries([
-    { queryKey: 'home', queryFn: getdata, cacheTime: Infinity },
+    { queryKey: 'home', queryFn: () => getPage('home'), cacheTime: Infinity },
   ])
 
-  if (results[0].isFetching) {
-    return <div>Loading...</div>
+  if (!results[0].isFetching) {
+    console.log(slug, '(received data): ', results[0].data?.data[0])
+
+    return (
+      <>
+        {results[0].data?.data[0]?.sections?.map((section: any) => (
+          <Section key={section.sort} section={section} />
+        ))}
+      </>
+    )
   }
 
-  // console.log('home', results[0].data.data[0])
-
-  return (
-    <>
-      {results[0].data.data[0].sections?.map((section: any) => (
-        <Section key={section.sort} section={section} />
-      ))}
-    </>
-  )
+  if (results[0].isError) {
+    return (
+      <>
+        <PageNotFound />
+      </>
+    )
+  }
 }
 
 Index.Layout = Layout
@@ -47,11 +48,8 @@ export async function getStaticProps(context: any) {
       },
     },
   })
-  // if (!queryClient.getQueryData('home')) {
-  await queryClient.prefetchQuery('home', getdata)
-  // await queryClient.prefetchQuery('brand', getbrand)
 
-  // }
+  await queryClient.prefetchQuery('home', () => getPage('home'))
 
   // return props with data to component
   return {

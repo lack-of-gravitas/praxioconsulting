@@ -6,13 +6,6 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { FC, useEffect, useRef } from 'react'
 import type { AppProps } from 'next/app'
 import { Head } from '@components/organisms'
-// import { ManagedUIContext } from '@components/ui/context'
-
-// supabase auth
-// import { UserProvider } from '@supabase/supabase-auth-helpers/react'
-// import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
-// import { MyUserContextProvider } from '@lib/hooks/useUser'
-// end supabase imports
 
 const Noop: FC = ({ children }) => <>{children}</>
 

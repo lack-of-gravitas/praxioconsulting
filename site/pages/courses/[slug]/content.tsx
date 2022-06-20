@@ -1,25 +1,35 @@
-import { useRouter } from 'next/router'
-import { PageNotFound, CourseLayout as Layout } from '@components/templates'
-import { useQuery, QueryClient, dehydrate } from 'react-query'
+import dynamic from 'next/dynamic'
+import { useQueries, QueryClient, dehydrate } from 'react-query'
+import { PageNotFound } from '@components/templates'
+import { getPage } from '@lib/queries'
 
-let getdata: any
+const Layout = dynamic(
+  () => import('@components/templates/_courseLayout/Layout')
+)
+
 export default function Content({ slug, preview }: any) {
-  const { status, data, error, isFetching, isSuccess }: any = useQuery(
-    slug,
-    getdata,
-    {
-      staleTime: 1000 * 60 * 10,
-    }
-  )
+  let results: any = useQueries([
+    { queryKey: slug, queryFn: () => getPage(slug), cacheTime: Infinity },
+  ])
 
-  // log data
-  console.log(data)
+  if (!results[0].isFetching) {
+    console.log(slug, ': ', results[0].data?.data[0])
 
-  if (isFetching) {
-    return <div>Loading...</div>
+    return (
+      <>
+        {/* {results[0].data?.data[0]?.sections?.map((section: any) => (
+          <Section key={section.sort} section={section} />
+        ))} */}
+      </>
+    )
   }
-  if (!data || data.data.length === 0) {
-    return <div>Error: No data</div>
+
+  if (results[0].isError) {
+    return (
+      <>
+        <PageNotFound />
+      </>
+    )
   }
 
   return <></>
@@ -33,13 +43,6 @@ export async function getStaticProps(context: any) {
   // in production, this only runs once then revalidates based on the revalidate parameter
   // context contains route params for dynamic routes, preview, previewData, locale,locales, defaultLocale
 
-  getdata = async () =>
-    await (
-      await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API}/products?fields=id,name,stripeId,type,image,sections.id,sections.item,sections.sort,sections.collection&filter[slug][_eq]=${context.params.slug}&filter[status][_eq]=published&filter[brands][Brands_id][domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
-      )
-    ).json()
-
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -48,9 +51,10 @@ export async function getStaticProps(context: any) {
       },
     },
   })
-  // if (!queryClient.getQueryData('home')) {
-  await queryClient.prefetchQuery(context.params.slug, getdata)
-  // }
+
+  await queryClient.prefetchQuery(context.params.slug[0], () =>
+    getPage(context.params.slug[0])
+  )
 
   return {
     props: {
@@ -71,50 +75,4 @@ export async function getStaticPaths() {
     // fallback: true, // if true, if page not in the paths array above, will run getStaticProps to gen page on request
     fallback: 'blocking', // doesnt send any props down and waits for getstaticprops to return before rendering page "no flashes of missing content". Con is only the 1st visitor will have a delay on pages. Use this most of the time unless getStaticProps is slow on first run (slow API calls, slow to build pages, etc)
   }
-
-  // // get list of valid paths associated to this domain (built at runtime) can be a subset of all paths
-  // let dbQuery = `
-  // query getSlugs ( $brand: String!) {
-  //   slugs: globals (where: {domain: $brand}) {
-  //     products { slug }
-  //   }
-  // }`
-
-  // let req = {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({
-  //     query: `${dbQuery}`,
-  //     variables: {
-  //       brand: `${process.env.NEXT_PUBLIC_BRAND}`,
-  //     },
-  //   }),
-  // }
-
-  // let data = []
-
-  // fetch(`${process.env.NEXT_PUBLIC_BACKEND}/graphql`, req)
-  //   .then((res) => res.json())
-  //   .then((results) => {
-  //     // process all returned slugs and build business friendly paths
-  //     // console.log("results (getstaticpaths): ", JSON.stringify(results));
-
-  //     let slugArray = []
-
-  //     // generate all blog post paths
-  //     results.data.slugs[0].articles.forEach((article) => {
-  //       slugArray = [] // reset temp array
-  //       slugArray.push('products', product.slug)
-  //       data = [...data, { params: { slug: slugArray } }]
-  //     })
-
-  //     // console.log("data (getstaticpaths):", JSON.stringify(data));
-  //   })
-
-  // return {
-  //   paths: data, // anything not present inside will be built dynamically or return 404, if empty, all routes need to be checked in getStaticProps
-  //   // fallback: false, // if false, will return 404 if page not in the paths array above
-  //   // fallback: true, // if true, if page not in the paths array above, will run getStaticProps to gen page on request
-  //   fallback: "blocking", // doesnt send any props down and waits for getstaticprops to return before rendering page "no flashes of missing content". Con is only the 1st visitor will have a delay on pages. Use this most of the time unless getStaticProps is slow on first run (slow API calls, slow to build pages, etc)
-  // };
 }

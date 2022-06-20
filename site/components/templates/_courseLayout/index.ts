@@ -1,1 +1,1 @@
-export { default } from './CourseLayout'
+export { default } from './Layout'

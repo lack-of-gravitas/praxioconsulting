@@ -1,53 +1,49 @@
 import dynamic from 'next/dynamic'
+import { useQueries, useQueryClient } from 'react-query'
 import { useRouter } from 'next/router'
-import { Navbar, Footer } from '@components/organisms'
-import { PageNotFound } from '@components/templates'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
+import { getBrand, getBrandColors } from '@lib/queries'
 
-import { LoadingDots } from '@components/atoms'
-// import type { Page } from 'types/page'
-import { useQuery } from 'react-query'
-
+const Navbar = dynamic(() => import('@components/organisms/Navbar'))
+const Footer = dynamic(() => import('@components/organisms/Footer'))
+const PageNotFound = dynamic(() => import('@components/templates/PageNotFound'))
 const ButtonCookie = dynamic(
   () => import('@components/atoms/Button/ButtonCookie')
 )
 
 const Layout: React.FC = ({ children }: any) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  // console.log('children: ', children)
-  // get brand info
-  const getdata = async () =>
-    await (
-      await fetch(
-        `${process.env.NEXT_PUBLIC_REST_API}/Brands` +
-          `?fields=name,tagline,lightLogo,darkLogo,primaryColor,accentColor,homepage.slug,` +
-          `header.collection,header.item.id,header.item.name,header.item.slug,` +
-          `footer.id,footer.sort,footer.item.id,footer.item.name,footer.item.links.collection,footer.item.links.sort,footer.item.links.item.name,footer.item.links.item.slug` +
-          `&filter[domain][_eq]=${process.env.NEXT_PUBLIC_BRAND}`
-      )
-    ).json()
+  const queryClient = useQueryClient()
 
-  const { status, data, error, isFetching, isSuccess }: any = useQuery(
-    'brand',
-    getdata,
-    { cacheTime: Infinity, staleTime: 1000 * 60 * 10 }
-  )
+  let results: any = useQueries([
+    { queryKey: 'brand: ', queryFn: getBrand, cacheTime: Infinity },
+    { queryKey: 'colors: ', queryFn: getBrandColors, cacheTime: Infinity },
+  ])
 
-  if (isFetching) {
-    return <div>Loading...</div>
+  if (!results[0].isFetching || !results[1].isFetching) {
+    const brand = results[0].data?.data[0]
+    const colors = results[1].data
+
+    return (
+      <>
+        <div className="relative">
+          <Navbar data={brand ? brand : ''} colors={colors ? colors : ''} />
+          <main>{children}</main>
+          <Footer data={brand ? brand : ''} colors={colors ? colors : ''} />
+          {/* {!acceptedCookies && <ButtonCookie data={data.data[0].accentColor} />} */}
+        </div>
+      </>
+    )
   }
-  if (!data || data.data.length === 0) {
-    return <PageNotFound />
-  }
+  // if (!results[0].isError) {
+  //   return (
+  //     <>
+  //       <PageNotFound />
+  //     </>
+  //   )
+  // }
 
-  return (
-    <div className="relative">
-      <Navbar data={data.data[0]} />
-      <main>{children}</main>
-      <Footer data={data.data[0]} />
-      {/* {!acceptedCookies && <ButtonCookie data={data.data[0].accentColor} />} */}
-    </div>
-  )
+  return <></>
 }
 
 export default Layout
