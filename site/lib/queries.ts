@@ -194,7 +194,20 @@ export async function getProductsFeatured(id: any, type: any) {
 
   return section
 }
-export async function getProductComponents(id: any, type: any) {}
+export async function getProductComponents(id: any, type: any) {
+  let section = await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_REST_API}/${type}` +
+        `?fields=item.id,item.text,item.section_name,item.items.*,` +
+        `item.items.item.id,item.items.item.name,item.items.item.description,` + // products
+        `item.items.item.modules.item.id,item.items.item.modules.item.name,item.items.item.modules.item.description,item.items.item.modules.sort` + // modules
+        `&filter[id][_eq]=${id}`
+    )
+  ).json()
+  section = section.data[0].item
+
+  return section
+}
 export async function getProductFAQs(id: any, type: any) {
   return await (
     await fetch(
@@ -229,39 +242,12 @@ export async function getProductPricing(id: any, type: any) {
   let section = await (
     await fetch(
       `${process.env.NEXT_PUBLIC_REST_API}/${type}` +
-        `?fields=item.id,item.text,item.section_name` +
+        `?fields=item.id,item.text,item.section_name,item.prices.*` +
         `&filter[id][_eq]=${id}`
     )
   ).json()
   section = section.data[0].item
-
-  // get pricing info from Directus
-  let prices = await (
-    await fetch(
-      `${process.env.NEXT_PUBLIC_REST_API}/${type}` +
-        `?fields=item.prices.*` +
-        `&filter[id][_eq]=${id}`
-    )
-  ).json()
-
-  section.prices = []
-
-  // get pricing info from Stripe
-  prices.data[0].item.prices.map(async (price: any) => {
-    let priceInfo = await (
-      await fetch(`https://api.stripe.com/v1/prices/${price.stripeId}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRIPE_PRODUCTINFO}`, //basic vs bearer == oauth
-          'Content-Type': 'application/json',
-        },
-      })
-    ).json()
-    price = { ...price, ...priceInfo }
-
-    // append price to section
-    section.prices = [...section.prices, price]
-  })
+  // console.log('section', section)
   return section
 }
 export async function getProductReviews(id: any, type: any) {}

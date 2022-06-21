@@ -34,6 +34,11 @@ const ProductPeek = dynamic(
 const ProductPricing = dynamic(
   () => import('@components/organisms/Product/ProductPricing')
 )
+
+const ProductComponents = dynamic(
+  () => import('@components/organisms/Product/ProductComponents')
+)
+
 const ProductReviews = dynamic(
   () => import('@components/organisms/Product/ProductReviews')
 )
@@ -86,9 +91,9 @@ export const Section = ({ section }: any) => {
       return <ProductsFeatured data={section} colors={colors} />
       break
 
-    // case 'ProductComponents':
-    //   return <ProductComponents data={section} colors={colors} />
-    //   break
+    case 'ProductComponents':
+      return <ProductComponents data={section} colors={colors} />
+      break
     case 'ProductFAQs':
       return <ProductFAQs data={section} colors={colors} />
       break

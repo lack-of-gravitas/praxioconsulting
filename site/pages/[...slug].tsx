@@ -12,7 +12,7 @@ export default function Page({ slug, preview }: any) {
   ])
 
   if (!results[0].isFetching) {
-    console.log(slug + ': ', results[0].data?.data[0])
+    // console.log(slug + ': ', results[0].data?.data[0])
 
     return (
       <>

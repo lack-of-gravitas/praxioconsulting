@@ -9,7 +9,7 @@ const ProseHeading = dynamic(
 const CardPost = dynamic(() => import('@components/molecules/Card/CardPost'))
 
 export default function Posts({ data, colors }: any) {
-  console.log(data.collection, '(received data) ', data)
+  // console.log(data.collection, '(received data) ', data)
 
   const [page, setPage] = useState(0)
 
@@ -25,7 +25,7 @@ export default function Posts({ data, colors }: any) {
 
   if (!results[0].isFetching) {
     sectionData = results[0].data
-    console.log('fetched:', data.collection, sectionData)
+    // console.log('fetched:', data.collection, sectionData)
   }
 
   return (
