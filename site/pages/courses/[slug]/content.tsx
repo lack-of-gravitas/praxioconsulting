@@ -124,7 +124,7 @@ export default function Content({ slug, preview }: any) {
                                   'mr-3 flex-shrink-0 h-6 w-6 material-symbols-outlined'
                                 )}
                               >
-                                window
+                                library_add
                               </span>
 
                               {module.item.name}
@@ -221,7 +221,7 @@ export default function Content({ slug, preview }: any) {
                           'mr-3 flex-shrink-0 h-6 w-6 material-symbols-outlined'
                         )}
                       >
-                        window
+                        library_add
                       </span>
 
                       {module.item.name}
@@ -346,23 +346,28 @@ export default function Content({ slug, preview }: any) {
                             </div>
 
                             {/* TABS MOBILE */}
-                            <div className="max-w-2xl px-4 pt-5 mx-auto pb-auto lg:hidden ">
-                              <label htmlFor="selected-tab" className="sr-only">
-                                Select a tab
-                              </label>
-                              <select
-                                id="selected-tab"
-                                name="selected-tab"
-                                className="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-xs focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
-                                defaultValue={
-                                  tabs.find((tab: any) => tab.current).name
-                                }
-                              >
-                                {tabs.map((tab) => (
-                                  <option key={tab.name}>{tab.name}</option>
-                                ))}
-                              </select>
-                            </div>
+                            {tabs && (
+                              <div className="max-w-2xl px-4 pt-5 mx-auto pb-auto lg:hidden ">
+                                <label
+                                  htmlFor="selected-tab"
+                                  className="sr-only"
+                                >
+                                  Select a tab
+                                </label>
+                                <select
+                                  id="selected-tab"
+                                  name="selected-tab"
+                                  className="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-xs focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
+                                  // defaultValue={
+                                  //   tabs.find((tab: any) => tab.current).name
+                                  // }
+                                >
+                                  {tabs.map((tab) => (
+                                    <option key={tab.name}>{tab.name}</option>
+                                  ))}
+                                </select>
+                              </div>
+                            )}
 
                             {/* TABS DESKTOP */}
                             <div className="hidden px-5 mx-auto lg:block pb-auto">
