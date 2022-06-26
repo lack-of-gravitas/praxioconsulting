@@ -56,6 +56,21 @@ export async function getBasicContent(id: any, type: any) {
   ).json()
 }
 
+export async function getCourseContent(id: any) {
+  // console.log('id', id)
+
+  let content = await (
+    await fetch(
+      `${process.env.NEXT_PUBLIC_REST_API}/Courses` +
+        `?fields=id,slug,name,description,image,modules.item.*,modules.item.content.*,modules.item.content.item.*,modules.item.content.item.links.item.id,modules.item.content.item.links.item.slug,modules.item.content.item.links.item.name,modules.item.content.item.links.item.description` +
+        `&filter[slug][_eq]=${id}`
+    )
+  ).json()
+  // console.log('content--', content)
+  content = content.data[0]
+  return content
+}
+
 export async function getFeatureMajor(id: any, type: any) {
   return await (
     await fetch(
@@ -86,6 +101,38 @@ export async function getHero(id: any, type: any) {
         `&filter[id][_eq]=${id}`
     )
   ).json()
+}
+
+export async function getMediaLibrary(data: any) {
+  let videos: any = []
+  data.map(async (showcase: any) => {
+    let results = await (
+      await fetch(
+        `https://api.vimeo.com/users/user101969903/albums/${showcase}/videos`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_VIMEO_KEY}`, //basic vs bearer == oauth
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+    ).json()
+
+    videos = [...videos, ...results.data]
+  })
+  // console.log('videos--', videos)
+
+  // videos = videos?.data?.filter(
+  //   (video: any, index: any, self: any) =>
+  //     index === self.findIndex((t: any) => t.uri === video.uri)
+  // )
+
+  return videos
+}
+
+export async function getPurchases() {
+  return ''
 }
 
 export async function getPost(path: any) {
@@ -182,6 +229,7 @@ export async function getProducts(id: any, type: any) {
   section.products = products.data
   return section
 }
+
 export async function getProductsFeatured(id: any, type: any) {
   let section = await (
     await fetch(
@@ -251,6 +299,7 @@ export async function getProductPricing(id: any, type: any) {
   return section
 }
 export async function getProductReviews(id: any, type: any) {}
+
 export async function getTeam(id: any, type: any) {
   let section = await (
     await fetch(

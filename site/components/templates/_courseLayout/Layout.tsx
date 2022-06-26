@@ -1,40 +1,41 @@
-import cn from 'clsx'
 import dynamic from 'next/dynamic'
+import { useQueries, useQueryClient } from 'react-query'
 import { useRouter } from 'next/router'
-// import { useUI } from '@components/ui/context'
-import { Navbar, Footer } from '@components/organisms'
+import { getBrand, getBrandColors } from '@lib/queries'
 
-import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
+const Navbar = dynamic(() => import('@components/organisms/Navbar'))
+const Footer = dynamic(() => import('@components/organisms/Footer'))
+const PageNotFound = dynamic(() => import('@components/templates/PageNotFound'))
 
-// import { Button } from '@components/atoms'
-import { LoadingDots } from '@components/atoms'
-// import type { Page } from 'types/page'
+const Layout: React.FC = ({ children }: any) => {
+  let results: any = useQueries([
+    { queryKey: 'brand', queryFn: getBrand, cacheTime: Infinity },
+    { queryKey: 'colors', queryFn: getBrandColors, cacheTime: Infinity },
+  ])
 
-const Loading = () => (
-  <div className="flex items-center justify-center p-3 text-center w-80 h-80">
-    <LoadingDots />
-  </div>
-)
+  if (!results[0].isFetching || !results[1].isFetching) {
+    const brand = results[0].data?.data[0]
+    const colors = results[1].data
 
-const dynamicProps = {
-  loading: Loading,
-}
+    return (
+      <>
+        <div className="relative">
+          {/* <Navbar data={brand ? brand : ''} colors={colors ? colors : ''} /> */}
+          <main>{children}</main>
+          <Footer data={brand ? brand : ''} colors={colors ? colors : ''} />
+        </div>
+      </>
+    )
+  }
+  // if (!results[0].isError) {
+  //   return (
+  //     <>
+  //       <PageNotFound />
+  //     </>
+  //   )
+  // }
 
-// interface Props {
-//   pageProps: {
-//     pages?: Page[]
-//     categories: Category[]
-//   }
-// }
-
-const Layout: React.FC = ({ children }) => {
-  const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-
-  return (
-    <div className="relative">
-      <main className="">{children}</main>
-    </div>
-  )
+  return <></>
 }
 
 export default Layout

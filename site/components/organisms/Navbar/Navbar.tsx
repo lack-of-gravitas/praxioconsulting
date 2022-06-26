@@ -11,7 +11,7 @@ import {
 } from '@components/atoms/Icons'
 import { useRouter } from 'next/router'
 
-export default function Navbar({ data }: any) {
+export default function Navbar({ data, colors }: any) {
   // console.log('navbar:', data)
 
   return (
@@ -253,7 +253,7 @@ export default function Navbar({ data }: any) {
                   })}
                 </div>
                 {/* Profile Mobile */}
-                {false && (
+                {true && (
                   <div className="pt-4 pb-3 border-t border-gray-200">
                     <div className="flex items-center px-4 sm:px-6">
                       <div className="flex-shrink-0">

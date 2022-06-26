@@ -1,23 +1,18 @@
 import dynamic from 'next/dynamic'
-import { useQueries, useQueryClient } from 'react-query'
-import { useRouter } from 'next/router'
+import { useQueries } from 'react-query'
 import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 import { getBrand, getBrandColors } from '@lib/queries'
 
 const Navbar = dynamic(() => import('@components/organisms/Navbar'))
 const Footer = dynamic(() => import('@components/organisms/Footer'))
 const PageNotFound = dynamic(() => import('@components/templates/PageNotFound'))
-const ButtonCookie = dynamic(
-  () => import('@components/atoms/Button/ButtonCookie')
-)
 
 const Layout: React.FC = ({ children }: any) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
-  const queryClient = useQueryClient()
 
   let results: any = useQueries([
-    { queryKey: 'brand: ', queryFn: getBrand, cacheTime: Infinity },
-    { queryKey: 'colors: ', queryFn: getBrandColors, cacheTime: Infinity },
+    { queryKey: 'brand', queryFn: getBrand, cacheTime: Infinity },
+    { queryKey: 'colors', queryFn: getBrandColors, cacheTime: Infinity },
   ])
 
   if (!results[0].isFetching || !results[1].isFetching) {

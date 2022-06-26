@@ -6,7 +6,7 @@ const ProseHeading = dynamic(
 )
 
 export default function ProductComponents({ data, colors }: any) {
-  console.log(data.collection, '(received data) ', data)
+  // console.log(data.collection, '(received data) ', data)
 
   let results: any = useQueries([
     {
@@ -23,7 +23,7 @@ export default function ProductComponents({ data, colors }: any) {
   let sectionData: any = []
   if (!results[0].isFetching) {
     sectionData = results[0].data
-    console.log('fetched:', data.collection, sectionData)
+    // console.log('fetched:', data.collection, sectionData)
   }
 
   return (

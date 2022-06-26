@@ -16,7 +16,7 @@ export default function Courses({ slug, preview }: any) {
   ])
 
   if (!results[0].isFetching) {
-    console.log(slug, '(received data): ', results[0].data?.data[0])
+    // console.log(slug, '(received data): ', results[0].data?.data[0])
 
     return (
       <>

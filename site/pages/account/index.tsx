@@ -2,142 +2,121 @@ import dynamic from 'next/dynamic'
 import { useQueries, QueryClient, dehydrate } from 'react-query'
 import { getAccount } from '@lib/queries'
 
+const ProseHeading = dynamic(
+  () => import('@components/molecules/Prose/ProseHeading')
+)
+
 const Layout = dynamic(
   () => import('@components/templates/_defaultLayout/Layout')
 )
 
-import Link from 'next/link'
-import { useState, ReactNode } from 'react'
-import { useUser } from 'lib/hooks/useUser'
-import { postData } from 'lib/api-helpers'
-import { withAuthRequired, User } from '@supabase/supabase-auth-helpers/nextjs'
+const PageNotFound = dynamic(() => import('@components/templates/PageNotFound'))
 
-interface Props {
-  title: string
-  description?: string
-  footer?: ReactNode
-  children: ReactNode
-}
+export default function Account({ slug, preview }: any) {
+  // useeffect
 
-function Card({ title, description, footer, children }: Props) {
+  // let results: any = useQueries([
+  //   {
+  //     queryKey: 'account',
+  //     queryFn: () => getAccount,
+  //     cacheTime: 1000 * 60 * 10, // 10 minutes
+  //   },
+  // ])
+
+  // if (!results[0].isFetching) {
+  //   // console.log(slug, '(received data): ', results[0].data?.data[0])
+
+  //   return (
+  //     <>
+  //       {results[0].data?.data[0]?.sections?.map((section: any) => (
+  //         <Section key={section.sort} section={section} />
+  //       ))}
+  //     </>
+  //   )
+  // }
+
+  // if (results[0].isError) {
+  //   return (
+  //     <>
+  //       <PageNotFound />
+  //     </>
+  //   )
+  // }
+
+  // placeholder UI
   return (
-    <div className="w-full max-w-3xl m-auto my-8 border rounded-xs border-zinc-700 p">
-      <div className="px-5 py-4">
-        <h3 className="mb-1 text-2xl font-medium">{title}</h3>
-        <p className="text-zinc-300">{description}</p>
-        {children}
-      </div>
-      <div className="p-4 border-t border-zinc-700 bg-zinc-900 text-zinc-500 rounded-b-md">
-        {footer}
-      </div>
-    </div>
-  )
-}
-
-export const getServerSideProps = withAuthRequired({ redirectTo: '/signin' })
-
-export default function Account({ user }: { user: User }) {
-  const [loading, setLoading] = useState(false)
-  const { isLoading, subscription, userDetails } = useUser()
-
-  const redirectToCustomerPortal = async () => {
-    setLoading(true)
-    try {
-      const { url, error } = await postData({
-        url: '/api/create-portal-link',
-      })
-      window.location.assign(url)
-    } catch (error) {
-      if (error) return alert((error as Error).message)
-    }
-    setLoading(false)
-  }
-
-  const subscriptionPrice =
-    subscription &&
-    new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: subscription?.prices?.currency,
-      minimumFractionDigits: 0,
-    }).format((subscription?.prices?.unit_amount || 0) / 100)
-
-  return (
-    <section className="mb-32 bg-black">
-      <div className="max-w-6xl px-4 pt-8 pb-8 mx-auto sm:pt-24 sm:px-6 lg:px-8">
-        <div className="sm:flex sm:flex-col sm:align-center">
-          <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl">
-            Account
-          </h1>
-          <p className="max-w-2xl m-auto mt-5 text-xl text-zinc-200 sm:text-center sm:text-2xl">
-            We partnered with Stripe for a simplified billing.
-          </p>
+    <>
+      <div className="bg-white">
+        <div className="grid items-center max-w-2xl grid-cols-1 px-4 py-8 mx-auto gap-y-16 gap-x-8 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8 lg:grid-cols-1">
+          <div className="">
+            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              Purchases
+            </h2>
+            <p className="mt-4 text-gray-500">
+              Your account information including (active) purchases and bonus
+              content will be listed here. To manage your payment details
+              including subscription payments, please use the Stripe Billing
+              Portal.
+            </p>
+            <div className="flex mt-4">
+              <button
+                type="button"
+                className="inline-flex items-center px-4 py-2 text-lg font-medium prose text-white bg-indigo-600 border border-transparent rounded-sm shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                <span className="material-symbols-outlined">credit_card</span>
+                <span className="ml-2">Stripe Customer Portal</span>
+              </button>
+            </div>
+            <dl className="grid grid-cols-1 mt-16 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+              {features.map((feature) => (
+                <div
+                  key={feature.name}
+                  className="pt-4 border-t border-gray-200 cursor-pointer hover:bg-gray-100 hover:p-2 "
+                >
+                  <dt className="font-medium text-gray-900">{feature.name}</dt>
+                  <dd className="mt-2 text-sm text-gray-500">
+                    {feature.description}
+                  </dd>
+                  <dd className="mt-4 text-sm text-gray-500">
+                    <button
+                      type="button"
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-sm shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                      <span className="mr-2">Visit</span>{' '}
+                      <span className="material-symbols-outlined">
+                        keyboard_arrow_right
+                      </span>
+                    </button>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </div>
-      <div className="p-4">
-        <Card
-          title="Your Plan"
-          description={
-            subscription
-              ? `You are currently on the ${subscription?.prices?.products?.name} plan.`
-              : ''
-          }
-          footer={
-            <div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
-              <p className="pb-4 sm:pb-0">
-                Manage your subscription on Stripe.
-              </p>
-              {/* <Button
-                variant="primary"
-                loading={loading}
-                disabled={loading || !subscription}
-                onClick={redirectToCustomerPortal}
-              >
-                Open customer portal
-              </Button> */}
-            </div>
-          }
-        >
-          <div className="mt-8 mb-4 text-xl font-semibold">
-            {isLoading ? (
-              <div className="h-12 mb-6">{/* <LoadingDots /> */}</div>
-            ) : subscription ? (
-              `${subscriptionPrice}/${subscription?.prices?.interval}`
-            ) : (
-              <Link href="/">
-                <a>Choose your plan</a>
-              </Link>
-            )}
-          </div>
-        </Card>
-        <Card
-          title="Your Name"
-          description="Please enter your full name, or a display name you are comfortable with."
-          footer={<p>Please use 64 characters at maximum.</p>}
-        >
-          <div className="mt-8 mb-4 text-xl font-semibold">
-            {userDetails ? (
-              `${
-                userDetails.full_name ??
-                `${userDetails.first_name} ${userDetails.last_name}`
-              }`
-            ) : (
-              <div className="h-8 mb-6">{/* <LoadingDots /> */}</div>
-            )}
-          </div>
-        </Card>
-        <Card
-          title="Your Email"
-          description="Please enter the email address you want to use to login."
-          footer={<p>We will email you to verify the change.</p>}
-        >
-          <p className="mt-8 mb-4 text-xl font-semibold">
-            {user ? user.email : undefined}
-          </p>
-        </Card>
-      </div>
-    </section>
+    </>
   )
 }
+
+Account.Layout = Layout
+
+/* This example requires Tailwind CSS v2.0+ */
+const features = [
+  { name: 'Origin', description: 'Designed by Good Goods, Inc.' },
+  {
+    name: 'Material',
+    description:
+      'Solid walnut base with rare earth magnets and powder coated steel card cover',
+  },
+  { name: 'Dimensions', description: '6.25" x 3.55" x 1.15"' },
+  { name: 'Finish', description: 'Hand sanded and finished with natural oil' },
+  { name: 'Includes', description: 'Wood card tray and 3 refill packs' },
+  {
+    name: 'Considerations',
+    description:
+      'Made from natural materials. Grain and color vary with each item.',
+  },
+]
 
 // ##############################################################################
 // LEGACY CODE

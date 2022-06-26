@@ -12,7 +12,7 @@ export default function Course({ slug, preview }: any) {
   ])
 
   if (!results[0].isFetching) {
-    console.log(slug + ': ', results[0].data?.data[0])
+    // console.log(slug + ': ', results[0].data?.data[0])
 
     return (
       <>
@@ -40,7 +40,7 @@ export async function getStaticProps(context: any) {
   // locally getStaticProps is run every time
   // in production, this only runs once then revalidates based on the revalidate parameter
   // context contains route params for dynamic routes, preview, previewData, locale,locales, defaultLocale
-  console.log(context.params)
+  // console.log(context.params)
 
   const queryClient = new QueryClient({
     defaultOptions: {
