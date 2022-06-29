@@ -62,7 +62,7 @@ export async function getCourseContent(id: any) {
   let content = await (
     await fetch(
       `${process.env.NEXT_PUBLIC_REST_API}/Courses` +
-        `?fields=id,slug,name,description,image,modules.item.*,modules.item.content.*,modules.item.content.item.*,modules.item.content.item.links.item.id,modules.item.content.item.links.item.slug,modules.item.content.item.links.item.name,modules.item.content.item.links.item.description` +
+        `?fields=id,slug,name,description,image,modules.item.*,modules.item.content.*,modules.item.content.item.*,modules.item.content.item.links.item.id,modules.item.content.item.links.item.slug,modules.item.content.item.links.item.name,modules.item.content.item.links.item.description,modules.item.content.item.links.item.title,modules.item.content.item.links.collection` +
         `&filter[slug][_eq]=${id}`
     )
   ).json()
