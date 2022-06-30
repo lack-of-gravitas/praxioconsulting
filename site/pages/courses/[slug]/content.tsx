@@ -27,6 +27,7 @@ const Layout = dynamic(
   () => import('@components/templates/_courseLayout/Layout')
 )
 const DefaultLogo = dynamic(() => import('@components/atoms/Logo/Logo'))
+
 export default function Content({ slug, preview }: any) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -59,8 +60,8 @@ export default function Content({ slug, preview }: any) {
                     <DefaultLogo className="w-auto h-8" />
                   </>
                 ) : (
-                  <span className="flex ">
-                    <DefaultLogo className="w-auto h-8" />
+                  <span className="flex">
+                    {results[1].data.name ? results[1].data.name : 'ACME'}
                   </span>
                 )}
               </span>

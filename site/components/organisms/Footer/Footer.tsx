@@ -22,8 +22,8 @@ export default function Footer({ data }: any) {
                           <DefaultLogo className="h-10" />
                         </>
                       ) : (
-                        <span className="flex ">
-                          <DefaultLogo className="h-10" />
+                        <span className="flex">
+                          {data.name ? data.name : 'ACME'}
                         </span>
                       )}
                     </span>
