@@ -41,7 +41,7 @@ export default function Prices({ data, colors }: any) {
             {prices.map((price: any) => (
               <div
                 key={price.sort}
-                className="border border-gray-200 divide-y divide-gray-200 rounded-sm shadow-sm"
+                className="border border-gray-200 divide-y divide-gray-200 rounded-sm shadow-md"
               >
                 <div className="p-6">
                   <h2 className="text-lg font-medium leading-6 text-gray-900">

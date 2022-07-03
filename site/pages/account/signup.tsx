@@ -1,62 +1,62 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect, useState, FormEvent } from 'react';
-import { useUser } from '@supabase/supabase-auth-helpers/react';
-import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useState, FormEvent } from 'react'
+import { useUser } from '@supabase/supabase-auth-helpers/react'
+import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
 
-import Button from 'components/ui/Button';
-import Input from 'components/ui/Input';
-import Logo from 'components/icons/Logo';
-import { updateUserName } from 'utils/supabase-client';
-import { User } from '@supabase/gotrue-js';
+// import Button from 'components/ui/Button';
+// import Input from 'components/ui/Input';
+// import Logo from 'components/icons/Logo';
+import { updateUserName } from '@lib/supabase-client'
+import { User } from '@supabase/gotrue-js'
 
 const SignUp = () => {
-  const [newUser, setNewUser] = useState<User | null>(null);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [newUser, setNewUser] = useState<User | null>(null)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [name, setName] = useState('')
+  const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<{ type?: string; content?: string }>({
     type: '',
-    content: ''
-  });
-  const router = useRouter();
-  const { user } = useUser();
+    content: '',
+  })
+  const router = useRouter()
+  const { user } = useUser()
 
   const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    setLoading(true);
-    setMessage({});
+    setLoading(true)
+    setMessage({})
     const { error, user: createdUser } = await supabaseClient.auth.signUp({
       email,
-      password
-    });
+      password,
+    })
     if (error) {
-      setMessage({ type: 'error', content: error.message });
+      setMessage({ type: 'error', content: error.message })
     } else {
       if (createdUser) {
-        await updateUserName(createdUser, name);
-        setNewUser(createdUser);
+        await updateUserName(createdUser, name)
+        setNewUser(createdUser)
       } else {
         setMessage({
           type: 'note',
-          content: 'Check your email for the confirmation link.'
-        });
+          content: 'Check your email for the confirmation link.',
+        })
       }
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   useEffect(() => {
     if (newUser || user) {
-      router.replace('/account');
+      router.replace('/account')
     }
-  }, [newUser, user]);
+  }, [newUser, user])
 
   return (
     <div className="flex justify-center height-screen-helper">
-      <div className="flex flex-col justify-between max-w-lg p-3 m-auto w-80 ">
+      {/* <div className="flex flex-col justify-between max-w-lg p-3 m-auto w-80 ">
         <div className="flex justify-center pb-12 ">
           <Logo width="64px" height="64px" />
         </div>
@@ -86,7 +86,7 @@ const SignUp = () => {
             placeholder="Password"
             onChange={setPassword}
           />
-          <div className="pt-2 w-full flex flex-col">
+          <div className="flex flex-col w-full pt-2">
             <Button
               variant="slim"
               type="submit"
@@ -97,19 +97,19 @@ const SignUp = () => {
             </Button>
           </div>
 
-          <span className="pt-1 text-center text-sm">
+          <span className="pt-1 text-sm text-center">
             <span className="text-zinc-200">Do you have an account?</span>
             {` `}
             <Link href="/signin">
-              <a className="text-accent-9 font-bold hover:underline cursor-pointer">
+              <a className="font-bold cursor-pointer text-accent-9 hover:underline">
                 Sign in.
               </a>
             </Link>
           </span>
         </form>
-      </div>
+      </div> */}
     </div>
-  );
-};
+  )
+}
 
-export default SignUp;
+export default SignUp

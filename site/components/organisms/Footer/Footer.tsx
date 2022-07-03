@@ -50,7 +50,7 @@ export default function Footer({ data }: any) {
               >
                 {data.footer.map((column: any) => {
                   return (
-                    <div key={column.id} className="space-y-5">
+                    <div key={column.sort} className="space-y-5">
                       <h3
                         style={{
                           color: data.accentColor
@@ -86,11 +86,10 @@ export default function Footer({ data }: any) {
                                       ? item.slug
                                       : '/' + coll + item.slug)
                                   }
-                                  passHref
                                 >
-                                  <a className="text-base text-gray-500 cursor-pointer">
-                                    <span>{item.name}</span>
-                                  </a>
+                                  <span className="text-base text-gray-500 cursor-pointer">
+                                    {item.name}
+                                  </span>
                                 </Link>
                               </li>
                             )

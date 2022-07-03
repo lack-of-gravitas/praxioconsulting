@@ -207,7 +207,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //             >
   //               <button
   //                 // type="button"
-  //                 className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-xs shadow-lg bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
+  //                 className="relative inline-flex items-center px-4 py-3 text-lg font-medium text-white border border-transparent rounded-xs shadow-md bg-indigo-700 hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-800"
   //               >
   //                 <ArrowRightIcon
   //                   className="w-6 h-6 mr-2 -ml-1"
@@ -354,7 +354,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //         {prices.map((individualPrice) => (
   //           <div
   //             key={individualPrice.header.title}
-  //             className="relative flex flex-col p-8 bg-white border border-gray-200 rounded-xs shadow-sm"
+  //             className="relative flex flex-col p-8 bg-white border border-gray-200 rounded-xs shadow-md"
   //           >
   //             <div className="flex-1">
   //               <h3 className="text-xl font-semibold text-gray-800">
@@ -618,7 +618,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //               <div className="mt-5 sm:mt-6">
   //                 <button
   //                   type="button"
-  //                   className="inline-flex justify-center w-full px-4 py-2 text-base font-medium bg-white border rounded-xs shadow-sm border-1 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-600 sm:text-sm"
+  //                   className="inline-flex justify-center w-full px-4 py-2 text-base font-medium bg-white border rounded-xs shadow-md border-1 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primaryColor-600 sm:text-sm"
   //                   onClick={() => setOpenLogin(false)}
   //                 >
   //                   Cancel
@@ -700,7 +700,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                 <Link href={`/user/profile`} className="cursor-auto" passHref>
   //                   <button
   //                     type="button"
-  //                     className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-xs shadow-sm bg-amber-400 hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:ml-3 sm:w-auto sm:text-sm"
+  //                     className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-xs shadow-md bg-amber-400 hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:ml-3 sm:w-auto sm:text-sm"
   //                     onClick={() => setOpenPurchaseCheck(false)}
   //                   >
   //                     Go to Account
@@ -708,7 +708,7 @@ const Price = ({ data, product, displayFormat }: any) => {
   //                 </Link>
   //                 <button
   //                   type="button"
-  //                   className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-xs shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+  //                   className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-xs shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
   //                   onClick={() => setOpenPurchaseCheck(false)}
   //                   ref={cancelButtonRef}
   //                 >

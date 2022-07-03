@@ -130,7 +130,7 @@ export default function Navbar({ data, colors }: any) {
                               ? data.accentColor
                               : '#FFA439',
                           }}
-                          className="relative inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent shadow-sm rounded-xs hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          className="relative inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent shadow-md rounded-xs hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                           <PlusIcon
                             className="w-5 h-5 mr-2 -ml-1"
@@ -163,7 +163,7 @@ export default function Navbar({ data, colors }: any) {
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                           >
-                            <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white shadow-lg rounded-xs ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Items className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white shadow-md rounded-xs ring-1 ring-black ring-opacity-5 focus:outline-none">
                               <Menu.Item>
                                 {({ active }: any) => (
                                   <a

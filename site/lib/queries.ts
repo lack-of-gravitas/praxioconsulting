@@ -103,37 +103,6 @@ export async function getHero(id: any, type: any) {
   ).json()
 }
 
-export async function getMediaLibrary(data: any) {
-  let videos: any
-  data
-    .map(async (showcase: any) => {
-      let results = await (
-        await fetch(
-          `https://api.vimeo.com/users/user101969903/albums/${showcase}/videos`,
-          {
-            method: 'GET',
-            headers: {
-              Authorization: `Bearer ${process.env.NEXT_PUBLIC_VIMEO_KEY}`, //basic vs bearer == oauth
-              'Content-Type': 'application/json',
-            },
-          }
-        )
-      ).json()
-      console.log('results->', results)
-      return results
-      // return [...videos, ...results.data]
-    })
-    .then((results: any) => {
-      console.log('videos->', results)
-    })
-  // videos = videos?.data?.filter(
-  //   (video: any, index: any, self: any) =>
-  //     index === self.findIndex((t: any) => t.uri === video.uri)
-  // )
-
-  return videos
-}
-
 export async function getPurchases() {
   return ''
 }

@@ -29,7 +29,7 @@ export default function Account({ user }: { user: User }) {
             <div className="flex mt-4">
               <button
                 type="button"
-                className="inline-flex items-center px-4 py-2 text-lg font-medium prose text-white bg-indigo-600 border border-transparent rounded-sm shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex items-center px-4 py-2 text-lg font-medium prose text-white bg-indigo-600 border border-transparent rounded-sm shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 <span className="material-symbols-outlined">credit_card</span>
                 <span className="ml-2">Stripe Customer Portal</span>
@@ -48,7 +48,7 @@ export default function Account({ user }: { user: User }) {
                   <dd className="mt-4 text-sm text-gray-500">
                     <button
                       type="button"
-                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-sm shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-sm shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                       <span className="mr-2">Visit</span>{' '}
                       <span className="material-symbols-outlined">
@@ -77,7 +77,7 @@ export default function Account({ user }: { user: User }) {
             <div className="flex mt-4">
               <button
                 type="button"
-                className="inline-flex items-center px-4 py-2 text-lg font-medium prose text-white bg-indigo-600 border border-transparent rounded-sm shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex items-center px-4 py-2 text-lg font-medium prose text-white bg-indigo-600 border border-transparent rounded-sm shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 <span className="material-symbols-outlined">credit_card</span>
                 <span className="ml-2">Stripe Customer Portal</span>
@@ -145,7 +145,7 @@ export default function Account({ user }: { user: User }) {
                           <td className="py-6 font-medium text-right whitespace-nowrap">
                             <a
                               href={product.href}
-                              className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-sm shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                              className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-sm shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
                               View
                               <span className="sr-only">, {product.name}</span>

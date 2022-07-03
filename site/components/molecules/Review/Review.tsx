@@ -11,7 +11,7 @@ export default function Review({ data, colors }: any) {
             <div className="flex justify-center mb-6">
               <img
                 src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg"
-                className="rounded-full shadow-lg w-32"
+                className="rounded-full shadow-md w-32"
               />
             </div>
             <h5 className="text-xl font-semibold mb-4">Maria Smantha</h5>
@@ -127,7 +127,7 @@ export default function Review({ data, colors }: any) {
             <div className="flex justify-center mb-6">
               <img
                 src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
-                className="rounded-full shadow-lg w-32"
+                className="rounded-full shadow-md w-32"
               />
             </div>
             <h5 className="text-xl font-semibold mb-4">Lisa Cudrow</h5>
@@ -245,7 +245,7 @@ export default function Review({ data, colors }: any) {
             <div className="flex justify-center mb-6">
               <img
                 src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg"
-                className="rounded-full shadow-lg w-32"
+                className="rounded-full shadow-md w-32"
               />
             </div>
             <h5 className="text-xl font-semibold mb-4">John Smith</h5>

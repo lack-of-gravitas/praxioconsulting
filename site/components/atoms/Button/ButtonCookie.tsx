@@ -30,7 +30,7 @@ export default function ButtonCookie({ data }: any) {
                     onClick={() => onAcceptCookies()}
                     aria-label="Accept Cookies"
                     style={{ backgroundColor: data ? data : '#FFA439' }}
-                    className="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-800 border border-transparent shadow-sm rounded-xs "
+                    className="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-800 border border-transparent shadow-md rounded-xs "
                   >
                     AcceptCookies
                   </button>
