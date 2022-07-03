@@ -5,7 +5,7 @@ import { useEffect, useState, FormEvent } from 'react'
 import { useUser } from '@supabase/supabase-auth-helpers/react'
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
 
-import Logo from '@components/atoms/Logo'
+const DefaultLogo = dynamic(() => import('@components/atoms/Logo/Logo'))
 import { Provider } from '@supabase/supabase-js'
 import { getURL } from '@lib/api-helpers'
 
@@ -13,7 +13,7 @@ const Layout = dynamic(
   () => import('@components/templates/_defaultLayout/Layout')
 )
 
-const SignIn = () => {
+export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPasswordInput, setShowPasswordInput] = useState(false)
@@ -66,134 +66,151 @@ const SignIn = () => {
     return (
       <>
         {/* <div className="flex justify-center height-screen-helper">
-        <div className="flex flex-col justify-between max-w-lg p-3 m-auto w-80 ">
-          <div className="flex justify-center pb-12 ">
-            <Logo width="64px" height="64px" />
-          </div>
-          <div className="flex flex-col space-y-4">
-            {message.content && (
-              <div
-                className={`${
-                  message.type === 'error' ? 'text-pink-500' : 'text-green-500'
-                } border ${
-                  message.type === 'error'
-                    ? 'border-pink-500'
-                    : 'border-green-500'
-                } p-3`}
-              >
-                {message.content}
-              </div>
-            )}
-
-            {!showPasswordInput && (
-              <form onSubmit={handleSignin} className="flex flex-col space-y-4">
-                <Input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={setEmail}
-                  required
-                />
-                <Button
-                  variant="slim"
-                  type="submit"
-                  loading={loading}
-                  disabled={!email.length}
+          <div className="flex flex-col justify-between max-w-lg p-3 m-auto w-80 ">
+            <div className="flex justify-center pb-12 ">
+              <Logo width="64px" height="64px" />
+            </div>
+            <div className="flex flex-col space-y-4">
+              {message.content && (
+                <div
+                  className={`${
+                    message.type === 'error'
+                      ? 'text-pink-500'
+                      : 'text-green-500'
+                  } border ${
+                    message.type === 'error'
+                      ? 'border-pink-500'
+                      : 'border-green-500'
+                  } p-3`}
                 >
-                  Send magic link
-                </Button>
-              </form>
-            )}
+                  {message.content}
+                </div>
+              )}
 
-            {showPasswordInput && (
-              <form onSubmit={handleSignin} className="flex flex-col space-y-4">
-                <Input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={setEmail}
-                  required
-                />
-                <Input
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={setPassword}
-                  required
-                />
-                <Button
-                  className="mt-1"
-                  variant="slim"
-                  type="submit"
-                  loading={loading}
-                  disabled={!password.length || !email.length}
+              {!showPasswordInput && (
+                <form
+                  onSubmit={handleSignin}
+                  className="flex flex-col space-y-4"
                 >
-                  Sign in
-                </Button>
-              </form>
-            )}
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={setEmail}
+                    required
+                  />
+                  <Button
+                    variant="slim"
+                    type="submit"
+                    loading={loading}
+                    disabled={!email.length}
+                  >
+                    Send magic link
+                  </Button>
+                </form>
+              )}
 
-            <span className="pt-1 text-sm text-center">
-              <a
-                href="#"
-                className="cursor-pointer text-zinc-200 text-accent-9 hover:underline"
-                onClick={() => {
-                  if (showPasswordInput) setPassword('')
-                  setShowPasswordInput(!showPasswordInput)
-                  setMessage({})
-                }}
-              >
-                {`Or sign in with ${
-                  showPasswordInput ? 'magic link' : 'password'
-                }.`}
-              </a>
-            </span>
+              {showPasswordInput && (
+                <form
+                  onSubmit={handleSignin}
+                  className="flex flex-col space-y-4"
+                >
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={setEmail}
+                    required
+                  />
+                  <Input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={setPassword}
+                    required
+                  />
+                  <Button
+                    className="mt-1"
+                    variant="slim"
+                    type="submit"
+                    loading={loading}
+                    disabled={!password.length || !email.length}
+                  >
+                    Sign in
+                  </Button>
+                </form>
+              )}
 
-             <span className="pt-1 text-sm text-center">
-              <span className="text-zinc-200">Don't have an account?</span>
-              {` `}
-              <Link href="/account/signup">
-                <a className="font-bold cursor-pointer text-accent-9 hover:underline">
-                  Sign up.
+              <span className="pt-1 text-sm text-center">
+                <a
+                  href="#"
+                  className="cursor-pointer text-zinc-200 text-accent-9 hover:underline"
+                  onClick={() => {
+                    if (showPasswordInput) setPassword('')
+                    setShowPasswordInput(!showPasswordInput)
+                    setMessage({})
+                  }}
+                >
+                  {`Or sign in with ${
+                    showPasswordInput ? 'magic link' : 'password'
+                  }.`}
                 </a>
-              </Link>
-            </span> 
-          </div>
+              </span>
 
-          <div className="flex items-center my-6">
-            <div
-              className="flex-grow mr-3 border-t border-zinc-600"
-              aria-hidden="true"
-            ></div>
-            <div className="text-zinc-400">Or</div>
-            <div
-              className="flex-grow ml-3 border-t border-zinc-600"
-              aria-hidden="true"
-            ></div>
-          </div>
+              <span className="pt-1 text-sm text-center">
+                <span className="text-zinc-200">Don't have an account?</span>
+                {` `}
+                <Link href="/signup">
+                  <a className="font-bold cursor-pointer text-accent-9 hover:underline">
+                    Sign up.
+                  </a>
+                </Link>
+              </span>
+            </div>
 
-          <Button
+            <div className="flex items-center my-6">
+              <div
+                className="flex-grow mr-3 border-t border-zinc-600"
+                aria-hidden="true"
+              ></div>
+              <div className="text-zinc-400">Or</div>
+              <div
+                className="flex-grow ml-3 border-t border-zinc-600"
+                aria-hidden="true"
+              ></div>
+            </div>
+
+             <Button
             variant="slim"
             type="submit"
             disabled={loading}
             onClick={() => handleOAuthSignIn('github')}
           >
-             GitHub
+            <GitHub />
             <span className="ml-2">Continue with GitHub</span>
-          </Button>
-        </div>
-      </div> */}
+          </Button> 
+          </div>
+        </div> */}
 
         <div className="flex flex-col justify-center min-h-full py-12 sm:px-6 lg:px-8">
-          <div className="sm:mx-auto sm:w-full sm:max-w-md">
-            <Logo width="64px" height="64px" />
-            <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
+          <div className="justify-center sm:mx-auto sm:w-full sm:max-w-md">
+            {false ? (
+              <>
+                <DefaultLogo className="w-auto h-8" />
+              </>
+            ) : (
+              <h1 className="mt-6 text-3xl font-extrabold text-center text-gray-900 ">
+                {'ACME'}
+              </h1>
+            )}
+
+            <h2 className="text-3xl font-extrabold text-center text-gray-900">
               Sign in to your account
             </h2>
           </div>
 
           <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-            <div className="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
+            <div className="px-4 py-8 bg-gray-100 shadow-md rounded-xs sm:px-10">
               <form onSubmit={handleSignin} className="space-y-6">
                 {/* action="#" method="POST" */}
                 <div>
@@ -211,7 +228,7 @@ const SignIn = () => {
                       autoComplete="email"
                       value={email}
                       required
-                      className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 shadow-md appearance-none rounded-xs focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                   </div>
                 </div>
@@ -230,7 +247,7 @@ const SignIn = () => {
                       type="password"
                       autoComplete="current-password"
                       required
-                      className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 shadow-md appearance-none rounded-xs focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                   </div>
                 </div>
@@ -241,7 +258,7 @@ const SignIn = () => {
                       id="remember-me"
                       name="remember-me"
                       type="checkbox"
-                      className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                      className="w-4 h-4 text-indigo-600 border-gray-300 rounded-xs focus:ring-indigo-500"
                     />
                     <label
                       htmlFor="remember-me"
@@ -264,7 +281,7 @@ const SignIn = () => {
                 <div>
                   <button
                     type="submit"
-                    className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent shadow-md rounded-xs hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     Sign in
                   </button>
@@ -287,7 +304,7 @@ const SignIn = () => {
                   <div>
                     <a
                       href="#"
-                      className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50"
+                      className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 shadow-md rounded-xs hover:bg-gray-50"
                     >
                       <span className="sr-only">Sign in with Facebook</span>
                       <svg
@@ -308,7 +325,7 @@ const SignIn = () => {
                   <div>
                     <a
                       href="#"
-                      className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50"
+                      className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 shadow-md rounded-xs hover:bg-gray-50"
                     >
                       <span className="sr-only">Sign in with Twitter</span>
                       <svg
@@ -325,7 +342,7 @@ const SignIn = () => {
                   <div>
                     <a
                       href="#"
-                      className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50"
+                      className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 shadow-md rounded-xs hover:bg-gray-50"
                     >
                       <span className="sr-only">Sign in with GitHub</span>
                       <svg
@@ -353,4 +370,4 @@ const SignIn = () => {
   return <div className="m-6">Loading...</div>
 }
 
-export default SignIn.Layout = Layout
+SignIn.Layout = Layout
