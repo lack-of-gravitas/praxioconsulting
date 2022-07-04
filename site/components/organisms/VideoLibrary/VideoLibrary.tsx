@@ -7,7 +7,7 @@ const VideoLibrary = ({ data }: any) => {
 
   const VideoCard = (video: any) => {
     return (
-      <div className="max-w-2xl pb-16 mx-auto overflow-hidden bg-white shadow-md rounded-xs dark:bg-gray-800">
+      <div className="max-w-2xl pb-16 mx-auto overflow-hidden bg-white shadow-xs rounded-xs dark:bg-gray-800">
         <div className="object-cover w-full player-wrapper aspect-video h-4/5">
           <ReactPlayer
             controls={true}
@@ -43,7 +43,7 @@ const VideoLibrary = ({ data }: any) => {
                   <div className="space-y-4">
                     <div className="aspect-w-3 aspect-h-2">
                       <Image
-                        className="object-cover shadow-md rounded-xs"
+                        className="object-cover shadow-xs rounded-xs"
                         src={video.link}
                         alt=""
                       />
