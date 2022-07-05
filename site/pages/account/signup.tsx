@@ -15,12 +15,13 @@ const DefaultLogo = dynamic(() => import('@components/atoms/Logo/Logo'))
 import {
   Facebook as FacebookIcon,
   Google as GoogleIcon,
+  Exclamation as ExclamationIcon,
 } from '@components/atoms/Icons'
 const Layout = dynamic(
   () => import('@components/templates/_defaultLayout/Layout')
 )
 export default function SignUp() {
-  const [newUser, setNewUser]: any = useState<User | null>(null)
+  const [newUser, setNewUser] = useState<User | null>(null)
   const [email, setEmail]: any = useState('')
   const [password, setPassword]: any = useState('')
   const [name, setName]: any = useState('')
@@ -86,6 +87,10 @@ export default function SignUp() {
       setBrand(results[0].data.data[0])
     }
     console.log('brand->', brand)
+    setMessage({
+      type: 'error',
+      content: 'Enter details or sign up using Social.',
+    })
   }, [results])
 
   return (
@@ -123,25 +128,22 @@ export default function SignUp() {
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="px-4 py-8 bg-gray-100 shadow-md rounded-xs sm:px-10">
             <form onSubmit={handleSignup} className="space-y-6">
-              <div className="relative">
-                <div className="relative flex justify-center text-sm">
-                  <span className="px-4 text-gray-500 bg-gray-100">
-                    {message.content && (
-                      <div
-                        className={`${
-                          message.type === 'error'
-                            ? 'text-pink-500'
-                            : 'text-green-500'
-                        } border ${
-                          message.type === 'error'
-                            ? 'border-pink-500'
-                            : 'border-green-500'
-                        } p-3`}
-                      >
-                        {message.content}
+              <div className="relative flex justify-center text-sm">
+                <div className="block w-full p-4 bg-yellow-50">
+                  <div className="flex">
+                    <ExclamationIcon
+                      className="w-5 h-5 text-yellow-400"
+                      aria-hidden="true"
+                    />
+                    <div className="ml-3">
+                      <h3 className="text-sm font-medium text-yellow-800">
+                        Attention
+                      </h3>
+                      <div className="mt-2 text-sm text-yellow-700">
+                        <p>{message.content}</p>
                       </div>
-                    )}
-                  </span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -187,7 +189,7 @@ export default function SignUp() {
                     autoCorrect="off"
                     autoCapitalize="off"
                     spellCheck="false"
-                    value={email}
+                    // value={email}
                     onChange={setEmail}
                     required
                     className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 shadow-xs appearance-none rounded-xs focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -224,8 +226,12 @@ export default function SignUp() {
                 <button
                   type="submit"
                   // loading={loading}
-                  disabled={!password.length || !email.length}
-                  className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent shadow-xs rounded-xs hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  disabled={!name.length || !password.length || !email.length}
+                  className={`${
+                    loading || !name.length || !password.length || !email.length
+                      ? `bg-gray-200 hover:bg-gray-200 `
+                      : `bg-indigo-600 hover:bg-indigo-700 `
+                  } flex justify-center w-full px-4 py-2 text-sm font-medium text-white  border border-transparent shadow-xs  rounded-xs  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
                 >
                   Sign Up
                 </button>
@@ -248,14 +254,14 @@ export default function SignUp() {
                 <div>
                   <button
                     type="submit"
-                    className={
-                      loading
-                        ? `grayscale `
-                        : `` +
-                          `inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 shadow-xs rounded-xs hover:bg-gray-50`
-                    }
+                    className={`inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 shadow-xs rounded-xs hover:bg-gray-50 ${
+                      loading ? 'grayscale' : ''
+                    }`}
                     disabled={loading}
-                    onClick={() => handleOAuthSignIn('google')}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleOAuthSignIn('google')
+                    }}
                   >
                     <span className="sr-only">Sign in with Google</span>
                     <GoogleIcon className="block w-6 h-6" aria-hidden="true" />
@@ -265,14 +271,13 @@ export default function SignUp() {
                 <div>
                   <button
                     type="submit"
-                    className={
-                      loading
-                        ? `grayscale `
-                        : `` +
-                          `inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 shadow-xs rounded-xs hover:bg-gray-50`
-                    }
-                    disabled={loading}
-                    onClick={() => handleOAuthSignIn('google')}
+                    className={`inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 shadow-xs rounded-xs hover:bg-gray-50 ${
+                      loading ? 'grayscale' : ''
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleOAuthSignIn('facebook')
+                    }}
                   >
                     <span className="sr-only">Sign in with Facebook</span>
                     <FacebookIcon
@@ -284,7 +289,7 @@ export default function SignUp() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between mt-5">
+            <div className="flex items-center justify-center mt-5">
               <div className="text-sm">
                 <a
                   href="/account/signin"
@@ -293,6 +298,20 @@ export default function SignUp() {
                   Already have an account? Sign in here.
                 </a>
               </div>
+            </div>
+
+            <div className="flex items-center justify-center p-4 bg-gray-100">
+              <p className="text-xs text-center text-gray-500">
+                Sign up is required to purchase courses and programs, access to
+                your previous purchases, bonus content and other exclusive
+                materials. Refer to our{' '}
+                <Link href="/privacy" passHref>
+                  <a className="transition duration-100 text-primaryColor-500 hover:text-primaryColor-600 active:text-primaryColor-700">
+                    Privacy Policy
+                  </a>
+                </Link>{' '}
+                for details.
+              </p>
             </div>
           </div>
         </div>

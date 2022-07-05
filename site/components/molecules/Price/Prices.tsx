@@ -6,6 +6,7 @@ export default function Prices({ data, colors }: any) {
   const [prices, setPrices]: any = useState([])
 
   useEffect(() => {
+    setPrices([]) // get fresh prices
     data.map(async (price: any) => {
       let priceInfo = await (
         await fetch(`https://api.stripe.com/v1/prices/${price.stripeId}`, {
@@ -50,7 +51,11 @@ export default function Prices({ data, colors }: any) {
                   <p className="mt-4 text-sm text-gray-500">{price.text}</p>
                   <p className="mt-8">
                     <span className="text-4xl font-extrabold text-gray-900">
-                      ${price.unit_amount / 100}
+                      {Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: price.currency ? price.currency : 'USD',
+                        minimumFractionDigits: 2,
+                      }).format(price?.unit_amount / 100)}
                     </span>{' '}
                     <span className="text-base font-medium text-gray-500">
                       {price.type === 'recurring'
@@ -58,12 +63,27 @@ export default function Prices({ data, colors }: any) {
                         : '/one time'}
                     </span>
                   </p>
-                  <a
-                    // href={tier.href}
-                    className="block w-full py-2 mt-8 text-sm font-semibold text-center text-white bg-gray-800 border border-gray-800 rounded-sm hover:bg-gray-900"
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault()
+                      // if signed in show modal
+                      // if (session) {
+                      //   // proceed to Stripe Checkout
+                      //   handleCheckout(price);
+                      // } else {
+                      //   // show sign in modal
+                      //   setOpenLogin(true);
+                      // }
+                    }}
+                    // action="/api/checkout-session" method="POST"
                   >
-                    {price.button_text}
-                  </a>
+                    <button
+                      // href={tier.href}
+                      className="block w-full py-2 mt-8 text-sm font-semibold text-center text-white bg-gray-800 border border-gray-800 rounded-sm cursor-pointer hover:bg-gray-900"
+                    >
+                      {price.button_text}
+                    </button>
+                  </form>
                 </div>
                 {price.attributes && (
                   <div className="px-6 pt-6 pb-8">
