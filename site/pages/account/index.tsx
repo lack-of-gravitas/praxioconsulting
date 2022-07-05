@@ -10,9 +10,9 @@ const Layout = dynamic(
   () => import('@components/templates/_defaultLayout/Layout')
 )
 
-export const getServerSideProps = withAuthRequired({
-  redirectTo: '/account/signin',
-})
+// export const getServerSideProps = withAuthRequired({
+//   redirectTo: '/account/signin',
+// })
 export default function Account({ user }: { user: User }) {
   const [loading, setLoading] = useState(false)
   const { isLoading, subscription, userDetails } = useUser()

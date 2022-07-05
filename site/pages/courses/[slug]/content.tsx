@@ -45,7 +45,7 @@ export default function Content({ slug, preview }: any) {
   ])
 
   if (!results[0].isFetching && !results[1].isFetching) {
-    console.log(slug, ': ', results[0].data)
+    // console.log(slug, ': ', results[0].data)
     let { modules } = results[0].data
     let { darkLogo } = results[1].data
 
@@ -179,7 +179,7 @@ export default function Content({ slug, preview }: any) {
                             e.preventDefault()
                             setActiveContent(subItem)
                             setActiveExtraContent('Files & Links')
-                            console.log('activeContent->', activeContent)
+                            // console.log('activeContent->', activeContent)
                           }}
                         >
                           {subItem.item.name}
@@ -379,7 +379,7 @@ export default function Content({ slug, preview }: any) {
                         onChange={(e: any) => {
                           e.preventDefault()
                           setActiveExtraContent(e.target.value)
-                          console.log(e.target.value)
+                          // console.log(e.target.value)
                         }}
                       >
                         {tabs.map((tab) => (
@@ -404,7 +404,7 @@ export default function Content({ slug, preview }: any) {
                               onClick={(e: any) => {
                                 e.preventDefault()
                                 setActiveExtraContent(tab.name)
-                                console.log('tabname->', tab.name)
+                                // console.log('tabname->', tab.name)
                               }}
                             >
                               {tab.name}
@@ -452,7 +452,7 @@ export default function Content({ slug, preview }: any) {
                                   }
                                   prefetch={false}
                                 >
-                                  <a>
+                                  <a target="_blank" rel="noopener noreferrer">
                                     <div className=" hover:bg-gray-200">
                                       <dt className="font-medium text-gray-900">
                                         {link.item.name}

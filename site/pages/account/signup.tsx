@@ -86,7 +86,7 @@ export default function SignUp() {
       results[0].data.data[0].colors = results[1].data
       setBrand(results[0].data.data[0])
     }
-    console.log('brand->', brand)
+    // console.log('brand->', brand)
     setMessage({
       type: 'error',
       content: 'Enter details or sign up using Social.',

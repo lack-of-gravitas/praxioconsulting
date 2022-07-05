@@ -83,7 +83,7 @@ export default function SignIn() {
       results[0].data.data[0].colors = results[1].data
       setBrand(results[0].data.data[0])
     }
-    console.log('brand->', brand)
+    // console.log('brand->', brand)
   }, [results])
 
   // if there's no user, show login page
