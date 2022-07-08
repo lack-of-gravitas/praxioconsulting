@@ -160,11 +160,9 @@ export default function SignUp() {
                     id="name"
                     placeholder="Joe Blogs"
                     name="name"
-                    // autoComplete="email"
                     autoCorrect="off"
                     autoCapitalize="off"
                     spellCheck="false"
-                    // value={email}
                     onChange={setName}
                     required
                     className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 shadow-xs appearance-none rounded-xs focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -185,11 +183,9 @@ export default function SignUp() {
                     id="email"
                     placeholder="joe@company.com"
                     name="email"
-                    // autoComplete="email"
                     autoCorrect="off"
                     autoCapitalize="off"
                     spellCheck="false"
-                    // value={email}
                     onChange={setEmail}
                     required
                     className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 shadow-xs appearance-none rounded-xs focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -210,8 +206,6 @@ export default function SignUp() {
                     name="password"
                     type="password"
                     placeholder="Password"
-                    // autoComplete="current-password"
-                    // value={password}
                     onChange={setPassword}
                     autoCorrect="off"
                     autoCapitalize="off"
@@ -225,7 +219,6 @@ export default function SignUp() {
               <div>
                 <button
                   type="submit"
-                  // loading={loading}
                   disabled={!name.length || !password.length || !email.length}
                   className={`${
                     loading || !name.length || !password.length || !email.length

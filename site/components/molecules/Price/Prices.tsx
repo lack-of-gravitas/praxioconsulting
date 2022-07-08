@@ -133,19 +133,7 @@ export default function Prices({ data, colors }: any) {
                         : '/one time'}
                     </span>
                   </p>
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault()
-                      // if signed in show modal
-                      // if (session) {
-                      //   // proceed to Stripe Checkout
-                      //   handleCheckout(price);
-                      // } else {
-                      //   // show sign in modal
-                      //   setOpenLogin(true);
-                      // }
-                    }}
-                  >
+                  <form>
                     <button
                       // href={tier.href}
                       className="block w-full py-2 mt-8 text-sm font-semibold text-center text-white bg-gray-800 border border-gray-800 rounded-sm cursor-pointer hover:bg-gray-900"

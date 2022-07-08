@@ -176,7 +176,6 @@ export default function SignIn() {
                   <div>
                     <button
                       type="submit"
-                      // loading={loading}
                       disabled={!email.length}
                       className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent shadow-xs rounded-xs hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
@@ -188,7 +187,6 @@ export default function SignIn() {
 
               {showPasswordInput && (
                 <form onSubmit={handleSignin} className="space-y-6">
-                  {/* action="#" method="POST" */}
                   <div>
                     <label
                       htmlFor="email"
@@ -202,7 +200,6 @@ export default function SignIn() {
                         id="email"
                         placeholder="joe@company.com"
                         name="email"
-                        // autoComplete="email"
                         autoCorrect="off"
                         autoCapitalize="off"
                         spellCheck="false"
@@ -241,7 +238,6 @@ export default function SignIn() {
                   <div>
                     <button
                       type="submit"
-                      // loading={loading}
                       disabled={!password.length || !email.length}
                       className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent shadow-xs rounded-xs hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >

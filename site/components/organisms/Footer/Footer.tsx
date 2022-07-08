@@ -112,26 +112,3 @@ export default function Footer({ data }: any) {
     </>
   )
 }
-
-// function usePages(pages?: Page[]) {
-//   const { locale } = useRouter()
-//   const sitePages: Page[] = []
-
-//   if (pages) {
-//     pages.forEach((page) => {
-//       const slug = page.url && getSlug(page.url)
-//       if (!slug) return
-//       if (locale && !slug.startsWith(`${locale}/`)) return
-//       sitePages.push(page)
-//     })
-//   }
-
-//   return {
-//     sitePages: sitePages.sort(bySortOrder),
-//   }
-// }
-
-// Sort pages by the sort order assigned in the BC dashboard
-// function bySortOrder(a: Page, b: Page) {
-//   return (a.sort_order ?? 0) - (b.sort_order ?? 0)
-// }
