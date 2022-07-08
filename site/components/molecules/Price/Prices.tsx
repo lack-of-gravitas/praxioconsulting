@@ -97,9 +97,6 @@ export default function Prices({ data, colors }: any) {
     })
   }, [])
 
-  // check current purchases
-  useEffect(() => {}, [])
-
   return (
     <>
       {data && (
@@ -148,7 +145,6 @@ export default function Prices({ data, colors }: any) {
                       //   setOpenLogin(true);
                       // }
                     }}
-                    // action="/api/checkout-session" method="POST"
                   >
                     <button
                       // href={tier.href}
