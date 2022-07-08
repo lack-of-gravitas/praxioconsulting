@@ -3,14 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState, FormEvent } from 'react'
-import { useUser } from '@supabase/auth-helpers-react'
-import { supabaseClient } from '@supabase/auth-helpers-nextjs'
 import { useQueries, QueryClient, dehydrate } from 'react-query'
 import { getBrand, getBrandColors } from '@lib/queries'
-import { Provider } from '@supabase/supabase-js'
 import { getURL } from '@lib/api-helpers'
-import { updateUserName } from '@lib/supabase-client'
-import { User } from '@supabase/gotrue-js'
 const DefaultLogo = dynamic(() => import('@components/atoms/Logo/Logo'))
 import {
   Facebook as FacebookIcon,
@@ -21,7 +16,6 @@ const Layout = dynamic(
   () => import('@components/templates/_defaultLayout/Layout')
 )
 export default function SignUp() {
-  const [newUser, setNewUser] = useState<User | null>(null)
   const [email, setEmail]: any = useState('')
   const [password, setPassword]: any = useState('')
   const [name, setName]: any = useState('')
@@ -31,54 +25,12 @@ export default function SignUp() {
     content: '',
   })
   const router = useRouter()
-  const { user } = useUser()
 
   const [brand, setBrand]: any = useState()
   let results: any = useQueries([
     { queryKey: 'brand', queryFn: () => getBrand, cacheTime: Infinity },
     { queryKey: 'colors', queryFn: getBrandColors, cacheTime: Infinity },
   ])
-
-  const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    setLoading(true)
-    setMessage({})
-    const { error, user: createdUser } = await supabaseClient.auth.signUp({
-      email,
-      password,
-    })
-    if (error) {
-      setMessage({ type: 'error', content: error.message })
-    } else {
-      if (createdUser) {
-        await updateUserName(createdUser, name)
-        setNewUser(createdUser)
-      } else {
-        setMessage({
-          type: 'note',
-          content: 'Check your email for the confirmation link.',
-        })
-      }
-    }
-    setLoading(false)
-  }
-
-  const handleOAuthSignIn = async (provider: Provider) => {
-    setLoading(true)
-    const { error } = await supabaseClient.auth.signIn({ provider })
-    if (error) {
-      setMessage({ type: 'error', content: error.message })
-    }
-    setLoading(false)
-  }
-
-  // route to account page if user is logged in
-  useEffect(() => {
-    if (newUser || user) {
-      router.replace('/account')
-    }
-  }, [newUser, user])
 
   // get brand and colors
   useEffect(() => {
@@ -127,7 +79,7 @@ export default function SignUp() {
 
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="px-4 py-8 bg-gray-100 shadow-md rounded-xs sm:px-10">
-            <form onSubmit={handleSignup} className="space-y-6">
+            <form className="space-y-6">
               <div className="relative flex justify-center text-sm">
                 <div className="block w-full p-4 bg-yellow-50">
                   <div className="flex">
@@ -253,7 +205,6 @@ export default function SignUp() {
                     disabled={loading}
                     onClick={(e) => {
                       e.preventDefault()
-                      handleOAuthSignIn('google')
                     }}
                   >
                     <span className="sr-only">Sign in with Google</span>
@@ -269,7 +220,6 @@ export default function SignUp() {
                     }`}
                     onClick={(e) => {
                       e.preventDefault()
-                      handleOAuthSignIn('facebook')
                     }}
                   >
                     <span className="sr-only">Sign in with Facebook</span>

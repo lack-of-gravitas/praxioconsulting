@@ -1,9 +1,4 @@
 import dynamic from 'next/dynamic'
-import { useQueries } from 'react-query'
-import { getAccount } from '@lib/queries'
-import { useUser } from '@lib/hooks/useUser'
-import { postData } from '@lib/api-helpers'
-import { withPageAuth, User } from '@supabase/auth-helpers-nextjs'
 import { useState } from 'react'
 
 const Layout = dynamic(
@@ -13,9 +8,8 @@ const Layout = dynamic(
 // export const getServerSideProps = withPageAuth({
 //   redirectTo: '/account/signin',
 // })
-export default function Account({ user }: { user: User }) {
+export default function Account({ user }: any) {
   const [loading, setLoading] = useState(false)
-  const { isLoading, subscription, userDetails } = useUser()
 
   return (
     <>

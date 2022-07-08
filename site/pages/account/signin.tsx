@@ -1,10 +1,7 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState, FormEvent } from 'react'
-import { useUser } from '@supabase/auth-helpers-react'
-import { supabaseClient } from '@supabase/auth-helpers-nextjs'
 import { useQueries, QueryClient, dehydrate } from 'react-query'
 import { getBrand, getBrandColors } from '@lib/queries'
 import {
@@ -12,7 +9,6 @@ import {
   Google as GoogleIcon,
 } from '@components/atoms/Icons'
 const DefaultLogo = dynamic(() => import('@components/atoms/Logo/Logo'))
-import { Provider } from '@supabase/supabase-js'
 import { getURL } from '@lib/api-helpers'
 
 const Layout = dynamic(
@@ -32,50 +28,11 @@ export default function SignIn() {
     content: '',
   })
   const router = useRouter()
-  const { user } = useUser()
   const [brand, setBrand]: any = useState()
   let results: any = useQueries([
     { queryKey: 'brand', queryFn: () => getBrand, cacheTime: Infinity },
     { queryKey: 'colors', queryFn: getBrandColors, cacheTime: Infinity },
   ])
-
-  const handleSignin = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    setLoading(true)
-    setMessage({})
-
-    const { error } = await supabaseClient.auth.signIn(
-      { email, password },
-      { redirectTo: getURL() }
-    )
-    if (error) {
-      setMessage({ type: 'error', content: error.message })
-    }
-    if (!password) {
-      setMessage({
-        type: 'note',
-        content: 'Check your email for the magic link.',
-      })
-    }
-    setLoading(false)
-  }
-
-  const handleOAuthSignIn = async (provider: Provider) => {
-    setLoading(true)
-    const { error } = await supabaseClient.auth.signIn({ provider })
-    if (error) {
-      setMessage({ type: 'error', content: error.message })
-    }
-    setLoading(false)
-  }
-
-  // route to account page if user is logged in
-  useEffect(() => {
-    if (user) {
-      router.replace('/account')
-    }
-  }, [user])
 
   // get brand and colors
   useEffect(() => {
@@ -87,7 +44,7 @@ export default function SignIn() {
   }, [results])
 
   // if there's no user, show login page
-  if (!user)
+  if (false)
     return (
       <>
         <div className="flex flex-col justify-center min-h-full py-12 sm:px-6 lg:px-8">
@@ -145,10 +102,7 @@ export default function SignIn() {
               </div>
 
               {!showPasswordInput && (
-                <form
-                  onSubmit={handleSignin}
-                  className="flex flex-col space-y-4"
-                >
+                <form className="flex flex-col space-y-4">
                   <div>
                     <label
                       htmlFor="email"
@@ -186,7 +140,7 @@ export default function SignIn() {
               )}
 
               {showPasswordInput && (
-                <form onSubmit={handleSignin} className="space-y-6">
+                <form className="space-y-6">
                   <div>
                     <label
                       htmlFor="email"
@@ -286,7 +240,6 @@ export default function SignIn() {
                             `inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 shadow-xs rounded-xs hover:bg-gray-50`
                       }
                       disabled={loading}
-                      onClick={() => handleOAuthSignIn('google')}
                     >
                       <span className="sr-only">Sign in with Google</span>
                       <GoogleIcon
@@ -306,7 +259,6 @@ export default function SignIn() {
                             `inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 shadow-xs rounded-xs hover:bg-gray-50`
                       }
                       disabled={loading}
-                      onClick={() => handleOAuthSignIn('google')}
                     >
                       <span className="sr-only">Sign in with Facebook</span>
                       <FacebookIcon
