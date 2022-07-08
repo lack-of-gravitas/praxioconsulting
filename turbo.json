@@ -3,15 +3,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
-    },
-    "next-commerce#build": {
-      "dependsOn": ["^build"],
-      "outputs": [".next/**"]
-    },
-    "test": {
-      "dependsOn": ["^build"],
-      "outputs": []
+      "outputs": ["dist/**",".next/**,public/dist/**"]
     },
     "lint": {
       "outputs": []
