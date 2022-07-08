@@ -174,12 +174,10 @@ export default function Content({ slug, preview }: any) {
                           key={subItem.item.name}
                           as="a"
                           className="flex items-center w-full py-2 pl-10 pr-2 text-sm font-normal text-gray-600 cursor-pointer rounded-xs group hover:text-gray-900 hover:bg-gray-50"
-                          // aria-current={tab.current ? 'page' : undefined}
                           onClick={(e: any) => {
                             e.preventDefault()
                             setActiveContent(subItem)
                             setActiveExtraContent('Files & Links')
-                            // console.log('activeContent->', activeContent)
                           }}
                         >
                           {subItem.item.name}
@@ -404,7 +402,6 @@ export default function Content({ slug, preview }: any) {
                               onClick={(e: any) => {
                                 e.preventDefault()
                                 setActiveExtraContent(tab.name)
-                                // console.log('tabname->', tab.name)
                               }}
                             >
                               {tab.name}

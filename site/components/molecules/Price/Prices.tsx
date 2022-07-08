@@ -134,10 +134,7 @@ export default function Prices({ data, colors }: any) {
                     </span>
                   </p>
                   <form>
-                    <button
-                      // href={tier.href}
-                      className="block w-full py-2 mt-8 text-sm font-semibold text-center text-white bg-gray-800 border border-gray-800 rounded-sm cursor-pointer hover:bg-gray-900"
-                    >
+                    <button className="block w-full py-2 mt-8 text-sm font-semibold text-center text-white bg-gray-800 border border-gray-800 rounded-sm cursor-pointer hover:bg-gray-900">
                       {price.button_text}
                     </button>
                   </form>
