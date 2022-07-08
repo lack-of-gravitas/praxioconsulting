@@ -7,8 +7,8 @@ import { FC, useEffect, useRef } from 'react'
 import type { AppProps } from 'next/app'
 import { Head } from '@components/organisms'
 
-import { UserProvider } from '@supabase/supabase-auth-helpers/react'
-import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs'
+import { UserProvider } from '@supabase/auth-helpers-react'
+import { supabaseClient } from '@supabase/auth-helpers-nextjs'
 import { MyUserContextProvider } from '@lib/hooks/useUser'
 
 const Noop: FC = ({ children }) => <>{children}</>

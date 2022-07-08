@@ -1,8 +1,5 @@
 import { stripe } from '@lib/stripe'
-import {
-  getUser,
-  withAuthRequired,
-} from '@supabase/supabase-auth-helpers/nextjs'
+import { getUser, withPageAuth } from '@supabase/auth-helpers-nextjs'
 import { createOrRetrieveCustomer } from '@lib/supabase-admin'
 import { getURL } from '@lib/api-helpers'
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -53,7 +50,7 @@ const createCheckoutSession = async (
   }
 }
 
-export default withAuthRequired(createCheckoutSession)
+// export default withPageAuth(createCheckoutSession)
 
 // LEGACY CODE BELOW
 // GOES TO CHECKOUT SESSION INSTANCE CREATED BY PREV API CALL FOR CUSTOMER CHECKING OUT

@@ -3,14 +3,14 @@ import { useQueries } from 'react-query'
 import { getAccount } from '@lib/queries'
 import { useUser } from '@lib/hooks/useUser'
 import { postData } from '@lib/api-helpers'
-import { withAuthRequired, User } from '@supabase/supabase-auth-helpers/nextjs'
+import { withPageAuth, User } from '@supabase/auth-helpers-nextjs'
 import { useState } from 'react'
 
 const Layout = dynamic(
   () => import('@components/templates/_defaultLayout/Layout')
 )
 
-// export const getServerSideProps = withAuthRequired({
+// export const getServerSideProps = withPageAuth({
 //   redirectTo: '/account/signin',
 // })
 export default function Account({ user }: { user: User }) {

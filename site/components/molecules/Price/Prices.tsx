@@ -4,7 +4,77 @@ import { useState, useEffect, useRef, Fragment } from 'react'
 export default function Prices({ data, colors }: any) {
   // console.log('price data: ', data)
   const [prices, setPrices]: any = useState([])
+  const [openLogin, setOpenLogin] = useState(false)
+  const [purchased, setPutchased] = useState(false)
 
+  // getproduct
+  // getbrand
+
+  // const handleCheckout = async (selectedPrice) => {
+  //   // construct data
+  //   const data = {
+  //     orgId: `${brand.name}`, // business id
+  //     customerId: session.user.stripeId, // stripe customer id
+  //     customerEmail: session.user.email,
+  //     customerName: session.user.name,
+  //     subscribed: false,
+  //     // stale: false,
+  //     price: selectedPrice,
+  //     productId: product.stripeId,
+  //     productSlug: `${product.categories[0].slug}s/${product.slug}`,
+  //     productCategory: product.categories[0].slug,
+  //   };
+
+  //   getSession().then(async (session) => {
+  //     // check if already purchased
+  //     const { purchases } = await fetchPostJSON(`/api/get-purchases`, {
+  //       stripeId: session.user.stripeId,
+  //     });
+
+  //     // console.log("purchases: ", purchases);
+  //     let checkoutReady = false;
+
+  //     if (purchases && purchases.length === 0) {
+  //       checkoutReady = true; // no previous purchases
+  //     }
+
+  //     if (purchases && purchases.length > 0) {
+  //       // find previous purchase
+  //       const { productInfo } = purchases?.find(
+  //         (p) => p.productInfo.stripeId === product.stripeId
+  //       );
+
+  //       if (productInfo) {
+  //         checkoutReady = false;
+  //         setOpenPurchaseCheck(true); // matching product found, show 'already purchased' dialog
+  //       } else {
+  //         checkoutReady = true; // no matching product found, proceed to checkout
+  //       }
+  //     }
+
+  //     if (checkoutReady) {
+  //       // get Checkout Session
+  //       const checkoutSession = await fetchPostJSON(
+  //         "/api/checkout_sessions",
+  //         data
+  //       );
+  //       if (checkoutSession.statusCode === 500) {
+  //         // console.error(checkoutSession.message);
+  //         return;
+  //       }
+
+  //       // Redirect to Checkout.
+  //       const stripe = await getStripe();
+  //       const { error } = await stripe?.redirectToCheckout({
+  //         sessionId: checkoutSession.id,
+  //       });
+  //       console.warn(error.message);
+  //       // setLoading(false);
+  //     }
+  //   });
+  // };
+
+  // get prices
   useEffect(() => {
     setPrices([]) // get fresh prices
     data.map(async (price: any) => {
@@ -26,6 +96,9 @@ export default function Prices({ data, colors }: any) {
       // console.log('prices: ', prices)
     })
   }, [])
+
+  // check current purchases
+  useEffect(() => {}, [])
 
   return (
     <>
